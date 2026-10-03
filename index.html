@@ -1,0 +1,1079 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Stiv Jobs · DATA Biznes Klub</title>
+<meta name="description" content="DATA xalqaro maktabi Biznes klubi: Stiv Jobs — boshqacha fikrlagan inson. Interaktiv taqdimot, mashqlar va uy vazifasi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: Apple keynote — har bo'lim bitta fikr. Sayt rejimida bo'limlar ketma-ket, taqdimot rejimida bittadan 16:9 ekranda. */
+:root{
+  --black:#000; --ink:#1d1d1f; --grey:#f5f5f7; --mute:#86868b; --line:#d2d2d7;
+  --data:#0b2db4; --cyan:#29c5ff; --white:#fff; --good:#30d158;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","Manrope",system-ui,"Segoe UI",sans-serif;
+  --u:clamp(5.6px,1vw,12px);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:var(--font);background:var(--black);color:var(--white);-webkit-font-smoothing:antialiased;line-height:1.45;overflow-x:hidden}
+img{max-width:100%;display:block}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+
+/* ---------- top bar (sayt rejimi) ---------- */
+.bar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:12px;padding:10px 16px;padding-top:calc(10px + env(safe-area-inset-top,0px));background:rgba(0,0,0,.78);backdrop-filter:saturate(180%) blur(18px);-webkit-backdrop-filter:saturate(180%) blur(18px);border-bottom:1px solid rgba(255,255,255,.08);font-size:14px}
+.bar .logo{font-weight:800;letter-spacing:.02em;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.bar .logo i{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--cyan)}
+.bar nav{display:flex;gap:4px;overflow-x:auto;flex:1;min-width:0;scrollbar-width:none}
+.bar nav a{color:#d2d2d7;text-decoration:none;padding:6px 10px;border-radius:99px;white-space:nowrap}
+.bar nav a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:99px;padding:10px 18px;background:var(--data);color:#fff;font-weight:700;text-decoration:none;white-space:nowrap}
+.btn:hover{filter:brightness(1.15)}
+.btn.ghost{background:rgba(255,255,255,.1)}
+.btn.light{background:#fff;color:var(--ink)}
+
+/* ---------- slides ---------- */
+.slide{position:relative;padding:calc(var(--u)*7) max(16px,calc(var(--u)*7));display:flex;flex-direction:column;justify-content:safe center;min-height:min(70vh,820px);overflow:hidden}
+.slide>.in{width:100%;max-width:calc(var(--u)*120);margin:0 auto;display:flex;flex-direction:column;gap:calc(var(--u)*2.6)}
+.slide.dark{background:var(--black);color:#f5f5f7}
+.slide.grey{background:var(--grey);color:var(--ink)}
+.slide.white{background:#fff;color:var(--ink)}
+.slide.blue{background:var(--data);color:#fff}
+.num{position:absolute;right:max(16px,calc(var(--u)*4));bottom:calc(var(--u)*2.4);font-size:12px;opacity:.45;font-variant-numeric:tabular-nums;letter-spacing:.08em}
+
+.eyebrow{font-size:max(12px,calc(var(--u)*1.25));font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}
+.grey .eyebrow,.white .eyebrow{color:var(--data)}
+.new{display:inline-block;margin-left:10px;padding:2px 8px;border-radius:99px;background:var(--cyan);color:#001b33;font-size:.8em;letter-spacing:.06em;vertical-align:1px}
+h1,h2,h3{margin:0;font-weight:800;letter-spacing:-.025em;line-height:1.04;text-wrap:balance}
+h1{font-size:max(44px,calc(var(--u)*9.5))}
+h2{font-size:max(32px,calc(var(--u)*5.6))}
+h3{font-size:max(19px,calc(var(--u)*2.3));letter-spacing:-.01em;line-height:1.2}
+p{margin:0}
+.lead{font-size:max(18px,calc(var(--u)*2.3));color:#a1a1a6;max-width:60ch;text-wrap:pretty}
+.grey .lead,.white .lead{color:#515154}
+.blue .lead{color:#cfe0ff}
+.t{font-size:max(15px,calc(var(--u)*1.75))}
+.small{font-size:max(13px,calc(var(--u)*1.35));color:var(--mute)}
+.grad{background:linear-gradient(90deg,#fff 0%,var(--cyan) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.grey .grad,.white .grad{background-image:linear-gradient(90deg,var(--data),#3b7bff)}
+
+.quote{font-size:max(22px,calc(var(--u)*3.4));font-weight:700;letter-spacing:-.02em;line-height:1.15;text-wrap:balance;margin:0}
+.quote.xl{font-size:max(28px,calc(var(--u)*5))}
+.who{font-size:max(13px,calc(var(--u)*1.4));color:var(--mute);margin-top:calc(var(--u)*1.2)}
+.post{display:inline-block;font-size:max(11px,calc(var(--u)*1.1));font-weight:700;letter-spacing:.08em;color:var(--mute);border:1px solid currentColor;border-radius:99px;padding:2px 9px}
+
+.grid{display:grid;gap:calc(var(--u)*1.6)}
+.g2{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr))}
+.split{display:grid;grid-template-columns:1.25fr 1fr;gap:calc(var(--u)*4);align-items:center}
+.split>*{min-width:0}
+@media (max-width:760px){.split{grid-template-columns:1fr}}
+
+.card{border-radius:calc(var(--u)*1.8);padding:calc(var(--u)*2.4);background:#1c1c1e;display:flex;flex-direction:column;gap:6px}
+.grey .card{background:#fff}
+.white .card{background:var(--grey)}
+.blue .card{background:rgba(255,255,255,.1)}
+.card .k{font-size:max(28px,calc(var(--u)*4));font-weight:800;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.card .k.c{color:var(--cyan)}
+.grey .card .k.c,.white .card .k.c{color:var(--data)}
+.card.hl{background:var(--data);color:#fff}
+
+.photo{border-radius:calc(var(--u)*1.8);overflow:hidden;background:#111}
+.photo img{width:100%;height:100%;object-fit:cover}
+figcaption{font-size:max(12px,calc(var(--u)*1.2));color:var(--mute);margin-top:8px}
+
+.rows{display:flex;flex-direction:column;gap:calc(var(--u)*.9)}
+.row{display:grid;grid-template-columns:minmax(70px,calc(var(--u)*13)) 1fr;gap:calc(var(--u)*2);align-items:baseline;padding:calc(var(--u)*1.1) 0;border-top:1px solid rgba(128,128,128,.25)}
+.row b{font-size:max(18px,calc(var(--u)*2.6));letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.row.on b{color:var(--cyan)}
+.grey .row.on b,.white .row.on b{color:var(--data)}
+
+/* hero */
+.hero{padding:0;min-height:auto}
+.hero .in{max-width:none;display:grid;grid-template-columns:1.1fr 1fr;gap:0;align-items:stretch}
+.hero .txt{padding:calc(var(--u)*8) max(16px,calc(var(--u)*7));display:flex;flex-direction:column;justify-content:center;gap:calc(var(--u)*2.4);background:var(--data)}
+.hero .pic{background:#fff;display:flex;align-items:flex-end;justify-content:center;min-height:320px}
+.hero .pic img{max-height:88vh;width:auto;object-fit:contain}
+@media (max-width:760px){.hero .in{grid-template-columns:1fr}.hero .pic img{max-height:60vh}}
+
+/* 6 soha */
+.era{border-left:2px solid var(--cyan);padding-left:calc(var(--u)*1.6)}
+.era .y{font-size:max(26px,calc(var(--u)*3.6));font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+
+/* 2x2 fokus jadvali */
+.matrix{display:grid;grid-template-columns:auto 1fr 1fr;gap:6px;font-size:max(15px,calc(var(--u)*2));text-align:center}
+.matrix div{padding:calc(var(--u)*1.8) 10px;border-radius:10px;background:#fff}
+.matrix .h{background:transparent;font-weight:700;color:#515154;font-size:.8em}
+.matrix .p{background:var(--data);color:#fff;font-weight:800}
+
+/* feature chips (12 -> 4) */
+.chips{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:8px}
+.chip{position:relative;border-radius:12px;padding:12px 14px;background:#1c1c1e;font-weight:600;font-size:max(14px,calc(var(--u)*1.6));overflow:hidden;display:flex;justify-content:space-between;gap:8px}
+.chip .fill{position:absolute;inset:0;width:0;background:var(--data);transition:width .6s ease;z-index:0}
+.chip span{position:relative;z-index:1}
+.chip .c{font-variant-numeric:tabular-nums;color:var(--cyan)}
+
+/* chorraha */
+.venn{display:flex;justify-content:center;align-items:center;padding:calc(var(--u)*2) 0}
+.venn div{width:calc(var(--u)*24);height:calc(var(--u)*24);min-width:150px;min-height:150px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:800;padding:20px;font-size:max(13px,calc(var(--u)*1.6))}
+.venn div:first-child{background:rgba(41,197,255,.25);border:2px solid var(--cyan);margin-right:calc(var(--u)*-5)}
+.venn div:last-child{background:rgba(11,45,180,.45);border:2px solid #4f74ff}
+
+/* iPhone: 3 -> 1 */
+.merge{display:flex;justify-content:center;gap:calc(var(--u)*3);flex-wrap:wrap;position:relative;padding:calc(var(--u)*3) 0}
+.merge .d{width:calc(var(--u)*17);min-width:110px;aspect-ratio:1;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:max(15px,calc(var(--u)*2));border:2px solid #3a3a3c;transition:transform 1.1s cubic-bezier(.7,0,.2,1),opacity .6s ease 1s}
+.merge .one{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:max(40px,calc(var(--u)*8));font-weight:800;letter-spacing:-.04em;opacity:0;transform:scale(.8);transition:opacity .8s ease 1.4s,transform .8s ease 1.4s;pointer-events:none}
+.active .merge .d:nth-child(1){transform:translateX(calc(var(--u)*20))}
+.active .merge .d:nth-child(3){transform:translateX(calc(var(--u)*-20))}
+.active .merge .d{opacity:0}
+.active .merge .one{opacity:1;transform:none}
+
+/* timers */
+.timer{display:inline-flex;align-items:center;gap:10px;border:0;border-radius:99px;padding:10px 20px;background:#fff;color:var(--ink);font-weight:800;font-variant-numeric:tabular-nums;font-size:max(16px,calc(var(--u)*2))}
+.timer.run{background:var(--cyan);color:#001b33}
+.timer.done{background:#ff453a;color:#fff;animation:pulse 1s infinite}
+@keyframes pulse{50%{transform:scale(1.06)}}
+.phases{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:8px}
+.phase{border-radius:14px;padding:calc(var(--u)*1.8);background:#1c1c1e;transition:background .3s}
+.phase .s{font-size:max(12px,calc(var(--u)*1.2));font-weight:800;color:var(--cyan);letter-spacing:.08em}
+.phase.on{background:var(--data)}
+
+/* breakout */
+.game{position:relative;border-radius:16px;overflow:hidden;background:#000;border:1px solid #2c2c2e;touch-action:none}
+.game canvas{display:block;width:100%;height:auto;aspect-ratio:16/10}
+.game .go{position:absolute;inset:0;margin:auto;width:max-content;height:max-content}
+
+/* QR */
+.qrbox{display:flex;gap:calc(var(--u)*2.4);align-items:center;flex-wrap:wrap}
+.qr{background:#fff;padding:12px;border-radius:16px;width:calc(var(--u)*20);min-width:150px;aspect-ratio:1}
+.qr img,.qr canvas{width:100%!important;height:auto!important}
+.link{font-weight:700;word-break:break-all;color:var(--cyan)}
+.grey .link,.white .link{color:var(--data)}
+
+.ok{color:var(--good)}
+.no{color:#ff6961}
+
+/* ---------- taqdimot rejimi ---------- */
+body.present{overflow:hidden;cursor:default}
+body.present .bar,body.present .foot{display:none}
+body.present{--u:min(.86vw,1.53vh)}
+body.present .slide{display:none;position:fixed;inset:0;min-height:0;height:100%;overflow:auto}
+body.present .slide.cur{display:flex;animation:in .45s ease both}
+body.present .hero{display:none}
+body.present .hero.cur{display:block}
+body.present .hero .in{height:100%}
+body.present .hero .pic img{max-height:100vh}
+@keyframes in{from{opacity:0;transform:scale(.985)}}
+.hud{display:none;position:fixed;z-index:30;left:0;right:0;bottom:0;height:3px;background:rgba(128,128,128,.25)}
+.hud i{display:block;height:100%;background:var(--cyan);width:0;transition:width .3s}
+body.present .hud{display:block}
+.exit{display:none;position:fixed;z-index:31;top:12px;right:12px;opacity:0;transition:opacity .3s}
+body.present .exit{display:inline-flex}
+body.present:hover .exit{opacity:.6}
+
+/* ---------- telefon sahifalari ---------- */
+.view{display:none;min-height:100vh;background:var(--grey);color:var(--ink);padding:24px 16px 60px}
+.view .box{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.view h2{font-size:30px}
+body.v .deck,body.v .bar,body.v .foot{display:none}
+body.v-mashq #v-mashq,body.v-vazifa #v-vazifa,body.v-goyalar #v-goyalar{display:block}
+.view label{font-weight:700;font-size:14px;display:flex;flex-direction:column;gap:6px}
+.view input,.view textarea,.view select{font:inherit;font-size:16px;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--ink);width:100%}
+.view textarea{min-height:84px;resize:vertical}
+.teams{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.teams button,.pick button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:12px 8px;font-weight:700;color:var(--ink)}
+.teams button.sel,.pick button.sel{border-color:var(--data);background:var(--data);color:#fff}
+.pick{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.msg{font-weight:700;min-height:1.4em}
+.idea{background:#fff;border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:8px}
+.idea h3{font-size:22px}
+.idea .meta{font-size:13px;color:#6e6e73}
+.idea .vote{align-self:flex-start}
+.idea .vote.sel{background:var(--good)}
+.wide{max-width:1200px!important}
+.ideas{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:14px}
+.foot{background:#000;color:var(--mute);font-size:13px;padding:28px 16px 48px;text-align:center}
+.foot a{color:#d2d2d7}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <span class="logo"><i></i>DATA Biznes Klub</span>
+  <nav aria-label="Bo‘limlar">
+    <a href="#s-hayot">Hayot yo‘li</a>
+    <a href="#s-qoidalar">7 qoida</a>
+    <a href="#s-taqdimot">Taqdimot san’ati</a>
+    <a href="#s-vazifa">Uy vazifasi</a>
+  </nav>
+  <button class="btn" id="go-present" title="Klaviatura: P">▶ Taqdimot</button>
+</header>
+
+<main class="deck" id="deck">
+
+<!-- 01 -->
+<section class="slide hero dark">
+  <div class="in">
+    <div class="txt">
+      <span class="eyebrow">DATA Biznes Klub · maxsus mashg‘ulot</span>
+      <h1>Stiv Jobs</h1>
+      <p class="lead" style="color:#fff;font-weight:700">Boshqacha fikrlagan inson</p>
+      <p class="t" style="color:#cfe0ff">Hayoti, qoidalari va biz undan nimani o‘rganamiz · Shanba, 12:00–14:00</p>
+      <p class="small" style="color:#9fb6ff">Shahzod Sobirov · Uolter Ayzeksonning “Stiv Jobs” kitobi va kanalimdagi 100 ta post asosida</p>
+    </div>
+    <figure class="pic" style="margin:0"><img src="img/jobs-portrait.jpg" alt="Stiv Jobs portreti, qo‘lini iyagiga qo‘yib turibdi" width="1087" height="1300"></figure>
+  </div>
+</section>
+
+<!-- 02 -->
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Boshlaymiz</span>
+    <h2>Bitta odam <span class="grad">6 ta sohani</span> o‘zgartirdi</h2>
+    <div class="grid g3">
+      <div class="era"><div class="y">1977</div><h3>Shaxsiy kompyuter</h3><p class="small">Apple II, keyin Macintosh</p></div>
+      <div class="era"><div class="y">1995</div><h3>Animatsion kino</h3><p class="small">Pixar studiyasi, “Toy Story”</p></div>
+      <div class="era"><div class="y">2001</div><h3>Musiqa</h3><p class="small">iPod pleyeri va iTunes do‘koni</p></div>
+      <div class="era"><div class="y">2007</div><h3>Telefon</h3><p class="small">iPhone: sensorli ekranli smartfon</p></div>
+      <div class="era"><div class="y">2010</div><h3>Planshet</h3><p class="small">iPad</p></div>
+      <div class="era"><div class="y">2010</div><h3>Raqamli kitob</h3><p class="small">iBooks elektron kitob do‘koni</p></div>
+    </div>
+    <p class="lead">Bugungi savol: u qanday odam edi va biz undan nimani o‘rganamiz?</p>
+  </div>
+</section>
+
+<!-- 03 -->
+<section class="slide grey">
+  <div class="in">
+    <span class="eyebrow">Bugungi manba · <span class="post">POST #140</span></span>
+    <h2>Nega aynan Stiv Jobs?</h2>
+    <div class="split">
+      <div>
+        <p class="quote">“Kecha Uolter Ayzeksonning “Stiv Jobs” kitobini sotib oldim. Menga o‘zimdan ham aqlliroq odamning yordami va maslahati kerak. Shuning uchun shunday kitoblarni o‘qib boraman.”</p>
+        <p class="who">@shahzod_sobirov · 08.09.2019</p>
+      </div>
+      <div class="grid">
+        <div class="card"><div class="k c">2011</div><p class="t">Kitob chiqdi. Uni yozishni Jobsning o‘zi so‘ragan</p></div>
+        <div class="card"><div class="k c">40+</div><p class="t">Jobsning o‘zi bilan suhbat va yuzdan ortiq guvoh</p></div>
+        <div class="card"><div class="k c">100</div><p class="t">post kanalimda Jobs haqida, 2019–2026</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- yangi: reja -->
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Bugungi yo‘l xaritasi <span class="new">YANGI</span></span>
+    <h2>2 soat, 3 qism, 4 ta amaliyot</h2>
+    <div class="grid g4">
+      <div class="card"><span class="eyebrow">1-qism</span><h3>Hayot yo‘li</h3><p class="small">Garajdan dunyoning eng qimmat kompaniyasigacha. Mashq: “nuqtalar”</p></div>
+      <div class="card"><span class="eyebrow">Tanaffus</span><h3>10 daqiqa</h3><p class="small">Dam olamiz, suv ichamiz</p></div>
+      <div class="card"><span class="eyebrow">2-qism</span><h3>7 qoida</h3><p class="small">Telefondan jonli mashq: 12 ta g‘oyadan 4 tasi</p></div>
+      <div class="card"><span class="eyebrow">3-qism</span><h3>Taqdimot san’ati</h3><p class="small">60 soniyalik Jobs-taqdimot va uy vazifasi</p></div>
+    </div>
+    <p class="small">📱 Telefoningizni tayyorlab qo‘ying: mashqlarda kerak bo‘ladi.</p>
+  </div>
+</section>
+
+<!-- 04 -->
+<section class="slide blue" id="s-hayot">
+  <div class="in">
+    <span class="eyebrow" style="color:#9fe3ff">1-qism · Hayot yo‘li</span>
+    <h1>Garajdan dunyoning eng qimmat kompaniyasigacha</h1>
+    <p class="lead">1955–2011 · 56 yillik hayot, 8 ta bekat</p>
+  </div>
+</section>
+
+<!-- 05 -->
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">1-bekat · 1955–1974 · Yoshlik</span>
+    <h2>Asrab olingan bola</h2>
+    <div class="grid g3">
+      <div class="card"><div class="k c">1955</div><h3>Yangi oila</h3><p class="t">San-Fransiskoda tug‘ildi. Chaqaloqligida Pol va Klara Jobslar oilasi asrab oldi. Otasi usta edi va o‘g‘liga qo‘l mehnatini o‘rgatdi.</p></div>
+      <div class="card"><div class="k c">12–13 yosh</div><h3>Bitta qo‘ng‘iroq</h3><p class="t">HP kompaniyasi asoschisi Bill Xyulettga o‘zi qo‘ng‘iroq qilib, detal so‘radi. Detalni ham, yozgi ishni ham oldi.</p></div>
+      <div class="card"><div class="k c">1972</div><h3>Kollejni tashladi</h3><p class="t">Bir semestrdan keyin o‘qishni tashladi, lekin o‘zini qiziqtirgan darslarga, jumladan kalligrafiyaga qatnashda davom etdi.</p></div>
+    </div>
+    <p class="quote" style="font-size:max(18px,calc(var(--u)*2.4))">“Tanimagan odamlaringga qo‘ng‘iroq qilib, taklif qilishdan uyalma.” <span class="post">POST #179</span></p>
+  </div>
+</section>
+
+<!-- yangi: Atari -->
+<section class="slide dark" id="s-atari">
+  <div class="in">
+    <span class="eyebrow">1974–1976 · Atari <span class="new">YANGI</span></span>
+    <h2>4 kecha va bitta o‘yin: <span class="grad">Breakout</span></h2>
+    <div class="split">
+      <div class="rows">
+        <div class="row"><b>1974</b><p class="t">19 yoshli Jobs o‘yin kompaniyasi Atari’ga texnik bo‘lib ishga kirdi.</p></div>
+        <div class="row"><b>Topshiriq</b><p class="t">Rahbar Nolan Bushnell yangi o‘yin so‘radi: to‘p g‘ishtlarni urib sindiradi. Qancha kam mikrosxema ishlatilsa, shuncha katta bonus.</p></div>
+        <div class="row on"><b>4 kecha</b><p class="t">Jobs uni o‘zi yasay olmasdi. Do‘sti Stiv Voznyak kunduzi HP’da ishlab, 4 kecha uxlamay o‘yinni loyihaladi.</p></div>
+        <div class="row"><b>Natija</b><p class="t">Jobs g‘oyani topdi va topshiriqni oldi, Voznyak yasadi. Keyin Apple ham aynan shu juftlikdan tug‘ildi.</p></div>
+      </div>
+      <div>
+        <div class="game" id="game"><canvas width="480" height="300" aria-label="Breakout o‘yini: platformani sichqoncha yoki barmoq bilan suring"></canvas><button class="btn go" id="game-go">▶ O‘ynab ko‘ring</button></div>
+        <figcaption>Breakout’ning oddiy nusxasi. Platformani sichqoncha yoki barmoq bilan suring.</figcaption>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 -->
+<section class="slide grey">
+  <div class="in">
+    <span class="eyebrow">2-bekat · 1976 · Garaj</span>
+    <h2>Ikki Stiv va bitta garaj</h2>
+    <div class="split">
+      <div class="rows">
+        <div class="row"><b>1-aprel</b><p class="t">Jobs (21 yosh) va Stiv Voznyak (25 yosh) Apple kompaniyasiga asos soldi</p></div>
+        <div class="row"><b>Kapital</b><p class="t">Jobs mikroavtobusini, Voznyak kalkulyatorini sotdi: taxminan 1 300 dollar</p></div>
+        <div class="row"><b>Buyurtma</b><p class="t">Birinchi mijoz: do‘kon 500 dollardan 50 ta kompyuter so‘radi</p></div>
+        <div class="row on"><b>666,66 $</b><p class="t">Apple I narxi. Voznyak takrorlanuvchi raqamlarni yoqtirgani uchun shunday qo‘yilgan <span class="new">YANGI</span></p></div>
+        <div class="grid g2" style="margin-top:6px">
+          <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">Voznyak</span><p class="t">Muhandis: kompyuterni yaratdi</p></div>
+          <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">Jobs</span><p class="t">G‘oya, sotuv, biznes</p></div>
+        </div>
+      </div>
+      <figure style="margin:0"><div class="photo"><img src="img/garaj.jpg" alt="Stiv Voznyak va Stiv Jobs kompyuter ustida ishlamoqda" loading="lazy" width="1200" height="1034"></div><figcaption>Stiv Voznyak (chapda) va Stiv Jobs, Apple’ning ilk yillari</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- 07 -->
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">3-bekat · 1984 · Macintosh · <span class="post">POST #219, #226</span></span>
+    <h2>Qaroqchilar yasagan kompyuter</h2>
+    <div class="split">
+      <div class="grid">
+        <div class="card"><span class="eyebrow">Jamoa shiori</span><p class="quote" style="font-size:max(19px,calc(var(--u)*2.6))">“Harbiy flotga qo‘shilgandan ko‘ra qaroqchi bo‘lgan yaxshi.”</p></div>
+        <div class="card"><span class="eyebrow">Korpus ichidagi imzolar</span><p class="quote" style="font-size:max(19px,calc(var(--u)*2.6))">“Haqiqiy rassomlar o‘z asariga imzo qo‘yadi.”</p></div>
+        <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">24-yanvar, 1984</span><p class="t">Macintosh sotuvga chiqdi: sichqoncha va oynali ekranni oddiy odamlar uyiga olib kirdi. Ikki kun oldin “1984” nomli reklama roligi Super Bowl paytida bir marta ko‘rsatildi va reklama tarixiga kirdi. <span class="new">YANGI</span></p></div>
+      </div>
+      <figure style="margin:0"><div class="photo"><img src="img/macintosh.jpg" alt="Yosh Stiv Jobs birinchi Macintosh kompyuteri yonida" loading="lazy" width="1200" height="1034"></div><figcaption>Stiv Jobs va birinchi Macintosh, 1984</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- yangi: yiqilishlar -->
+<section class="slide white">
+  <div class="in">
+    <span class="eyebrow">Kam aytiladigan tomoni <span class="new">YANGI</span></span>
+    <h2>Jobs ham ko‘p marta yiqilgan</h2>
+    <div class="grid g4">
+      <div class="card"><div class="k c">1980</div><h3>Apple III</h3><p class="small">Ventilyatorsiz bo‘lsin, dedi Jobs. Kompyuter qizib ketib, buzilaverdi.</p></div>
+      <div class="card"><div class="k c">1983</div><h3>Lisa</h3><p class="small">9 995 dollar turardi. Juda qimmat edi, kam sotildi.</p></div>
+      <div class="card"><div class="k c">1988</div><h3>NeXT Computer</h3><p class="small">Chiroyli qora kub, lekin 6 500 dollar. Maktab va universitetlar ololmadi.</p></div>
+      <div class="card"><div class="k c">2005</div><h3>ROKR telefoni</h3><p class="small">Motorola bilan qilingan iTunes telefoni. Jobsning o‘zi ham yoqtirmadi. 2 yildan keyin iPhone chiqdi.</p></div>
+    </div>
+    <p class="lead">Har bir yiqilish keyingi g‘alabaga dars bo‘ldi. Muvaffaqiyatsizlik — bu tajriba, oxiri emas.</p>
+  </div>
+</section>
+
+<!-- 08 -->
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">4-bekat · 1985–1995 · Haydalish · <span class="post">POST #258</span></span>
+    <h2>30 yoshida o‘z kompaniyasidan haydaldi</h2>
+    <div class="grid g3">
+      <div class="card"><div class="k c">1985</div><h3>NeXT</h3><p class="t">Yangi kompyuter kompaniyasi. Logotipiga 100 000 dollar to‘ladi</p></div>
+      <div class="card"><div class="k c">1986</div><h3>Pixar</h3><p class="t">Kichik grafika studiyasini 10 mln dollarga sotib oldi</p></div>
+      <div class="card"><div class="k c">1995</div><h3>“Toy Story”</h3><p class="t">Dunyodagi birinchi to‘liq kompyuterda yaratilgan multfilm</p></div>
+    </div>
+    <p class="quote">“Apple’dan haydalishim menga yuz bergan eng yaxshi voqea bo‘lib chiqdi.”</p>
+    <p class="who">Stenford nutqi, 2005</p>
+  </div>
+</section>
+
+<!-- 09 -->
+<section class="slide grey">
+  <div class="in">
+    <span class="eyebrow">5-bekat · 1997 · Qaytish · <span class="post">POST #141</span></span>
+    <h2>Bankrotlik yoqasidagi Apple’ga qaytish</h2>
+    <div class="grid g3">
+      <div class="card"><div class="k c">o‘nlab → 4</div><p class="t">mahsulot turi qisqartirildi</p></div>
+      <div class="card"><div class="k c">1 $</div><p class="t">Jobsning yillik maoshi</p></div>
+      <div class="card"><div class="k c">“Boshqacha fikrla”</div><p class="t">yangi reklama kampaniyasi (Think Different)</p></div>
+    </div>
+    <p class="quote">“Dunyoni o‘zgartira olaman deb o‘ylaydigan darajada telba odamlar aslida uni o‘zgartiradi.”</p>
+    <p class="who">Apple reklamasi, 1997</p>
+  </div>
+</section>
+
+<!-- yangi: qora sviter -->
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Qiziq fakt <span class="new">YANGI</span></span>
+    <div class="split">
+      <div>
+        <h2>Nega har kuni bir xil kiyim?</h2>
+        <p class="lead" style="margin-top:calc(var(--u)*2.4)">Qora sviter, jinsi shim, krossovka. Jobs dizayner Issey Miyakega shunday sviterdan 100 ga yaqin buyurtma bergan.</p>
+      </div>
+      <div class="grid">
+        <div class="card"><h3>Fokus</h3><p class="t">Har kuni ertalab “nima kiyaman?” deb o‘ylamaslik. Kuch muhim qarorlarga qoladi.</p></div>
+        <div class="card"><h3>Brend</h3><p class="t">Sahnada uni uzoqdan ham tanib olishardi. Kiyim ham “oddiylik” qoidasining bir qismi edi.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 -->
+<section class="slide white">
+  <div class="in">
+    <span class="eyebrow">6-bekat · 2001–2010 · Cho‘qqi · <span class="post">POST #777</span></span>
+    <h2>Cho‘ntagingizdagi inqilob</h2>
+    <div class="split">
+      <div class="rows">
+        <div class="row"><b>2001</b><p class="t"><strong>iPod:</strong> “1 000 ta qo‘shiq cho‘ntagingizda”</p></div>
+        <div class="row"><b>2003</b><p class="t"><strong>iTunes:</strong> bir haftaga yetmay 1 million qo‘shiq sotildi</p></div>
+        <div class="row on"><b>2007</b><p class="t"><strong>iPhone:</strong> pleyer, telefon va internet bitta qurilmada</p></div>
+        <div class="row"><b>2010</b><p class="t"><strong>iPad:</strong> kompyuter bilan telefon orasidagi yangi qurilma</p></div>
+      </div>
+      <figure style="margin:0"><div class="photo"><img src="img/iphone-2007.jpg" alt="Stiv Jobs sahnada birinchi iPhone'ni ko‘tarib turibdi" loading="lazy" width="1200" height="1034"></div><figcaption>iPhone taqdimoti, San-Fransisko, 9-yanvar 2007</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- 11 -->
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">7-bekat · 2011 · Vidolashuv · <span class="post">POST #320</span></span>
+    <h2>56 yillik hayot</h2>
+    <div class="grid g4">
+      <div class="card"><span class="eyebrow">Avgust 2011</span><p class="t">Kasalligi sabab rahbarlikni Tim Kukka topshirdi</p></div>
+      <div class="card"><span class="eyebrow">5-oktabr, 2011</span><p class="t">Uzoq kasallikdan so‘ng vafot etdi</p></div>
+      <div class="card"><span class="eyebrow">Shu yili</span><p class="t">Garajda boshlangan Apple dunyodagi eng qimmat kompaniyaga aylandi</p></div>
+      <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">Bugun <span class="new">YANGI</span></span><p class="t">Dunyoda 2,35 milliarddan ortiq faol Apple qurilmasi bor (2025)</p></div>
+    </div>
+    <p class="quote">“U boshqacha o‘ylashga jur’at qildi. Dunyoni o‘zgartira olishiga ishonadigan darajada dadil edi va buni uddalaydigan iste’dodga ega edi.”</p>
+    <p class="who">Barak Obama, AQSH Prezidenti</p>
+  </div>
+</section>
+
+<!-- 12 -->
+<section class="slide grey">
+  <div class="in">
+    <span class="eyebrow">8-bekat · 2005 · Stenford nutqi · <span class="post">POST #159</span></span>
+    <h2>Uchta hikoya</h2>
+    <p class="lead">12-iyun 2005. Jobs Stenford universiteti bitiruvchilari oldida chiqdi: “Bugun sizlarga hayotimdan uchta hikoya aytib bermoqchiman. Hammasi shu. Faqat uchta hikoya.”</p>
+    <div class="grid g3">
+      <div class="card"><div class="k c">1</div><h3>Nuqtalarni birlashtirish</h3><p class="t">Bugun foydasiz tuyulgan narsa ertaga eng kerakli bo‘lib chiqishi mumkin</p></div>
+      <div class="card"><div class="k c">2</div><h3>Sevgi va yo‘qotish</h3><p class="t">Haydalganidan keyin ham sevgan ishini davom ettirdi</p></div>
+      <div class="card"><div class="k c">3</div><h3>Vaqt cheklangan</h3><p class="t">Birovning emas, o‘z hayotingni yasha</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 -->
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">1-hikoya · Nuqtalar</span>
+    <h2>Nuqtalarni birlashtirish</h2>
+    <div class="grid g2">
+      <div class="card"><div class="k c">1972</div><p class="t">Kalligrafiya darsi. O‘shanda hech qanday foydasi yo‘qdek edi</p></div>
+      <div class="card hl"><div class="k">1984 <span class="small" style="color:#9fe3ff">· 10 yil o‘tib</span></div><p class="t">Macintosh: chiroyli shriftlarga ega birinchi kompyuter</p></div>
+    </div>
+    <p class="quote">“Nuqtalarni oldinga qarab birlashtira olmaysiz, faqat orqaga qarab. Ular kelajakda qandaydir birlashishiga ishonishingiz kerak.”</p>
+    <div class="card" style="background:#1c1c1e">
+      <span class="eyebrow">Mashq · 6 daqiqa</span>
+      <p class="t">Hayotingizdagi 3 ta “nuqta”ni yozing: sevimli mashg‘ulot, qiyin voqea, kutilmagan dars. Ular kelajakda qanday birlashishi mumkin?</p>
+      <div><button class="timer" data-sec="360">▶ 6:00</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- 14 -->
+<section class="slide white">
+  <div class="in">
+    <span class="eyebrow">2 va 3-hikoya · <span class="post">POST #84, #765</span></span>
+    <h2>Sevgan ishingni qil, vaqt cheklangan</h2>
+    <div class="grid g2">
+      <div class="card"><span class="eyebrow">2-hikoya · Sevgi va yo‘qotish</span><p class="quote" style="font-size:max(19px,calc(var(--u)*2.5))">“Buyuk ish qilishning yagona yo‘li — qilayotgan ishingni sevish. Hali topmagan bo‘lsang, izlashda davom et. Kelishib qolma.”</p></div>
+      <div class="card"><span class="eyebrow">3-hikoya · Har kuni ertalab</span><p class="quote" style="font-size:max(19px,calc(var(--u)*2.5))">“Agar bugun hayotimning oxirgi kuni bo‘lsa, bugun qilmoqchi bo‘lgan ishimni qilgan bo‘larmidim?”</p></div>
+    </div>
+    <p class="quote">“Vaqtingiz cheklangan. Uni birovning hayotini yashab isrof qilmang.”</p>
+    <p class="h3" style="font-weight:800;font-size:max(22px,calc(var(--u)*3));color:var(--data)">Och bo‘l. Nodon bo‘l.</p>
+  </div>
+</section>
+
+<!-- 15 -->
+<section class="slide blue">
+  <div class="in" style="align-items:center;text-align:center">
+    <span class="eyebrow" style="color:#9fe3ff">Tanaffus</span>
+    <h1>10 daqiqa</h1>
+    <p class="lead">Qaytgach: Jobsning 7 qoidasi va telefondan jonli mashq. Telefoningizni quvvatlab oling.</p>
+    <button class="timer" data-sec="600">▶ 10:00</button>
+  </div>
+</section>
+
+<!-- 18 -->
+<section class="slide dark" id="s-qoidalar">
+  <div class="in">
+    <span class="eyebrow">2-qism · Qoidalar</span>
+    <h1>Jobsning 7 qoidasi <span class="grad">va bitta ogohlantirish</span></h1>
+    <p class="lead">Oddiylik · Fokus · Sifat · Jamoa · Mijoz · Chorraha · Pul</p>
+  </div>
+</section>
+
+<!-- 19 -->
+<section class="slide white">
+  <div class="in">
+    <span class="eyebrow">Qoida 1 · <span class="post">POST #195, #217, #448</span></span>
+    <h2>Oddiylik — eng yuksak donolik</h2>
+    <div class="grid g2">
+      <div class="card"><p class="quote" style="font-size:max(19px,calc(var(--u)*2.6))">“Oddiylik — eng yuksak donolik.”</p><p class="who">Apple’ning 1977-yilgi birinchi reklama broshyurasidagi shior</p></div>
+      <div class="card"><p class="quote" style="font-size:max(19px,calc(var(--u)*2.6))">“Dizayn — bu faqat tashqi ko‘rinish emas. Dizayn — bu narsa qanday ishlashi.”</p><p class="who">Stiv Jobs, 2003</p></div>
+    </div>
+    <p class="lead">“Muammoni yechishni boshlaganda avval murakkab yechimlar keladi va ko‘pchilik shu yerda to‘xtaydi. Piyozni artgandek qatlamma-qatlam davom etsangiz, eng oddiy yechimga yetasiz.” <span class="small">Stiv Jobs, 2006</span></p>
+    <p class="t"><strong>Misol:</strong> iPod’da yuzlab tugma o‘rniga bitta g‘ildirak. iPhone’da klaviatura o‘rniga bitta ekran. <span class="new">YANGI</span></p>
+  </div>
+</section>
+
+<!-- 20 -->
+<section class="slide grey">
+  <div class="in">
+    <span class="eyebrow">Qoida 2 · <span class="post">POST #497</span></span>
+    <h2>Fokus — bu “yo‘q” deyish</h2>
+    <div class="split">
+      <div>
+        <div class="matrix" role="table" aria-label="1997 yilgi 4 ta mahsulot">
+          <div class="h"></div><div class="h">Stol kompyuteri</div><div class="h">Noutbuk</div>
+          <div class="h">Oddiy iste’molchi</div><div class="p">iMac</div><div class="p">iBook</div>
+          <div class="h">Professional</div><div class="p">Power Mac</div><div class="p">PowerBook</div>
+        </div>
+        <p class="small" style="margin-top:10px">1997: o‘nlab model o‘rniga 4 ta. Jobs doskaga shu jadvalni chizgan</p>
+      </div>
+      <div>
+        <p class="quote">“Nimani qilish kerakligini tushunish muhim. Lekin nimani qilmaslik kerakligini tushunish undan ham muhim.”</p>
+        <p class="who">Stiv Jobs</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 21: jonli mashq -->
+<section class="slide dark" id="s-mashq">
+  <div class="in">
+    <span class="eyebrow">Mashq · jamoada · 8 daqiqa · telefondan <span class="new">JONLI</span></span>
+    <h2>12 ta g‘oyadan faqat 4 tasi qoladi</h2>
+    <div class="split" style="align-items:start">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <p class="t">O‘quvchilar uchun maktab ilovasi. Jamoangiz 12 ta funksiya taklif qildi. Faqat 4 tasini tanlang, qolgan 8 tasiga “yo‘q” deng.</p>
+        <div class="chips" id="tally"></div>
+        <p class="small" id="tally-info">Javoblar shu yerda jonli chiqadi.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="qrbox"><div class="qr" data-qr="mashq"></div></div>
+        <p class="small">Skanerlang yoki oching: <span class="link" data-href="mashq"></span></p>
+        <div class="phases" style="grid-template-columns:1fr 1fr">
+          <div class="phase"><span class="s">5 DAQIQA</span><p class="t">Jamoada 4 tasini tanlang va yuboring</p></div>
+          <div class="phase"><span class="s">3 DAQIQA</span><p class="t">2 jamoa aytadi: nimaga “yo‘q” dedingiz va nega?</p></div>
+        </div>
+        <div><button class="timer" data-sec="480">▶ 8:00</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 22 -->
+<section class="slide white">
+  <div class="in">
+    <span class="eyebrow">Qoida 3 · <span class="post">POST #166, #218</span></span>
+    <h2>Orqa tomon ham sifatli bo‘lsin</h2>
+    <div class="grid g3">
+      <div class="card"><span class="eyebrow">Otasining sabog‘i</span><p class="t">Otasi shkaf va devor yasaganda orqa tomonini ham old tomonidek chiroyli qilgan: “Hech kim ko‘rmasa ham, o‘zing bilasan.”</p></div>
+      <div class="card"><span class="eyebrow">Mac ichidagi plata</span><p class="t">Jobs kompyuter ichidagi platani ham chiroyli qilishni talab qilgan, garchi uni deyarli hech kim ochib ko‘rmasa ham.</p></div>
+      <div class="card"><span class="eyebrow">Qutini ochish lahzasi</span><p class="t">Apple mahsulot qutisini ochish ham o‘ziga xos tajriba bo‘lishi uchun qadoqqa ham alohida e’tibor bergan.</p></div>
+    </div>
+    <p class="quote">“Hech kim ko‘rmaydigan narsani ham yaxshilab bajar.” <span class="post">#166</span></p>
+  </div>
+</section>
+
+<!-- 23 -->
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Qoida 4 · <span class="post">POST #244, #452, #223</span></span>
+    <h2>Faqat eng kuchlilar bilan ishla</h2>
+    <p class="quote">“Aqlli odamlarni ishga olib, keyin ularga nima qilishni o‘rgatishning ma’nosi yo‘q. Biz aqlli odamlarni bizga nima qilish kerakligini aytishlari uchun yollaymiz.”</p>
+    <p class="who">Stiv Jobs · #452</p>
+    <div class="grid g2">
+      <div class="card"><div class="k c">A → A&nbsp;&nbsp;·&nbsp;&nbsp;B → C</div><p class="t">Kuchli odam o‘zidan kuchliroqni yollaydi. O‘rtacha odam o‘zidan kuchsizini. Jamoa shunday pasayib ketadi.</p></div>
+      <div class="card"><h3>O‘z fikrida turadiganlar</h3><p class="t">“Kreativ va kerak bo‘lsa o‘z aytganida turib oladigan aqlli odamlarni tanlang.” (#223)</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 24 -->
+<section class="slide grey">
+  <div class="in">
+    <span class="eyebrow">Qoida 5 · <span class="post">POST #172, #194, #801</span></span>
+    <h2>Mijozga kelajakni ko‘rsat</h2>
+    <p class="quote">“Odamlar nima xohlashini siz ko‘rsatmaguningizcha bilishmaydi.” <span class="who" style="display:inline">Stiv Jobs, 1998</span></p>
+    <p class="small">Apple’ning marketing falsafasi, 1977 (Mayk Markkula yozgan)</p>
+    <div class="grid g3">
+      <div class="card"><div class="k c">1</div><h3>Hamdardlik</h3><p class="t">Mijozning hissini boshqalardan yaxshiroq tushun</p></div>
+      <div class="card"><div class="k c">2</div><h3>Fokus</h3><p class="t">Ikkinchi darajali ishlarni chetga surib qo‘y</p></div>
+      <div class="card"><div class="k c">3</div><h3>Birinchi taassurot</h3><p class="t">Odamlar kitobga muqovasiga qarab baho beradi</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 25 -->
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Qoida 6 · <span class="post">POST #164, #291, #1572</span></span>
+    <h2>Texnologiya va san’at chorrahasi</h2>
+    <div class="split">
+      <div class="venn" aria-hidden="true"><div>TEXNOLOGIYA</div><div>SAN’AT VA GUMANITAR FANLAR</div></div>
+      <div class="grid">
+        <p class="quote" style="font-size:max(19px,calc(var(--u)*2.6))">“Men o‘zimdagi barcha texnologiyalarni Suqrot bilan bir kunlik suhbatga almashgan bo‘lardim.”</p>
+        <p class="who" style="margin:0">Stiv Jobs, 2001 · #1572</p>
+        <div class="card"><h3>Aql uchun velosiped</h3><p class="t">Harakatda eng tejamkor jonzot kondor burguti. Lekin velosipeddagi odam undan ham o‘zib ketadi. Jobs uchun kompyuter — aql uchun velosiped.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 26 -->
+<section class="slide white">
+  <div class="in">
+    <span class="eyebrow">Qoida 7 · <span class="post">POST #216, #237, #791</span></span>
+    <h2>Maqsad pul emas</h2>
+    <p class="quote">“Qabristondagi eng boy odam bo‘lish men uchun muhim emas. Kechasi yotib, ‘Bugun ajoyib ish qildik’ deya olish muhim.”</p>
+    <p class="who">Stiv Jobs, 1993</p>
+    <div class="grid g2">
+      <div class="card"><p class="t">“Maqsad raqobatchidan o‘zib ketish yoki ko‘proq pul topish emas. Maqsad — eng zo‘r mahsulotni yaratish.”</p><p class="who">#216</p></div>
+      <div class="card"><p class="t">“Hech qachon boyib ketish maqsadida kompaniya tuzmang. Maqsad — o‘zingiz ishongan narsa va uzoq yashaydigan kompaniya.”</p><p class="who">#791</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 27 -->
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Ogohlantirish · <span class="post">POST #170, #242, #485, #860</span></span>
+    <h2>Nimani olamiz, nimani olmaymiz</h2>
+    <div class="grid g2">
+      <div class="card"><span class="eyebrow ok">✓ Olamiz</span>
+        <p class="t">Fokus va oddiylik</p><p class="t">Sifatga talabchanlik</p><p class="t">Ishiga muhabbat</p><p class="t">Yiqilgandan keyin turish</p><p class="t">Katta orzu qilish jasorati</p></div>
+      <div class="card"><span class="eyebrow no">✕ Olmaymiz</span>
+        <p class="t">Odamlarni haqorat qilish, “galvars” deb atash</p><p class="t">Sabrsizlik va keskin kayfiyat</p><p class="t">Haqiqatni inkor etish</p>
+        <p class="t">Do‘stdan pulni yashirish <span class="new">YANGI</span><br><span class="small">Atari Breakout uchun katta bonus olgan, Voznyakka esa kichik ulush bergan. Voznyak buni yillar o‘tib bilgan (raqamlar manbalarda turlicha).</span></p></div>
+    </div>
+    <p class="lead">“Reallikni buzib ko‘rsatish rag‘bat beradi, lekin reallik keyin javob zarbasini beradi.” <span class="small">Stiv Jobs, #242</span></p>
+  </div>
+</section>
+
+<!-- 28 -->
+<section class="slide dark" id="s-taqdimot">
+  <div class="in">
+    <span class="eyebrow">3-qism · Taqdimot san’ati · 9-yanvar 2007</span>
+    <h2>Uchta qurilma emas, bitta qurilma</h2>
+    <div class="merge" aria-label="Pleyer, telefon va internet bitta iPhone qurilmasiga birlashadi">
+      <div class="d">Pleyer</div><div class="d">Telefon</div><div class="d">Internet</div>
+      <div class="one grad">iPhone</div>
+    </div>
+    <div class="grid g3">
+      <div class="card"><div class="k c">1</div><p class="t">“Bugun uchta inqilobiy mahsulot taqdim qilamiz: pleyer, telefon va internet qurilmasi.”</p></div>
+      <div class="card"><div class="k c">2</div><p class="t">Uch so‘zni qayta-qayta takrorladi. Zal asta-sekin tushuna boshladi.</p></div>
+      <div class="card"><div class="k c">3</div><p class="t">“Bular uchta alohida qurilma emas. Bu bitta qurilma. Biz uni iPhone deb ataymiz.”</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 29 -->
+<section class="slide grey">
+  <div class="in">
+    <span class="eyebrow">3-qism · Taqdimot san’ati · <span class="post">POST #202</span></span>
+    <h2>Jobs qanday taqdimot qilardi</h2>
+    <div class="split" style="grid-template-columns:.7fr 1.3fr">
+      <figure style="margin:0"><div class="photo"><img src="img/keynote.jpg" alt="Stiv Jobs sahnada, orqada katta iPhone surati va 499 dollar narxi" loading="lazy" width="964" height="1300"></div><figcaption>Ekranda: bitta rasm, bitta raqam</figcaption></figure>
+      <div class="rows">
+        <div class="row"><b>1</b><p class="t"><strong>Bitta sarlavha jumla:</strong> “1 000 qo‘shiq cho‘ntagingizda”</p></div>
+        <div class="row"><b>2</b><p class="t"><strong>Avval muammo:</strong> odamlarni nima qiynayapti</p></div>
+        <div class="row"><b>3</b><p class="t"><strong>Uchlik qoidasi:</strong> hammasi 3 ta qismda</p></div>
+        <div class="row on"><b>4</b><p class="t"><strong>Slaydda kam so‘z:</strong> bitta rasm, bitta fikr, chapdagi suratdagidek</p></div>
+        <div class="row"><b>5</b><p class="t"><strong>“Yana bir narsa...”:</strong> oxirida kutilmagan sovg‘a</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 30 -->
+<section class="slide dark" id="s-pitch">
+  <div class="in">
+    <span class="eyebrow">Amaliyot · jamoada · 11 daqiqa</span>
+    <h2>60 soniyalik Jobs-taqdimot</h2>
+    <p class="t">Jamoangiz buyumi: <strong>Ruchka · Suv shishasi · Ryukzak · Daftar · Soat · Kalkulyator</strong></p>
+    <div class="phases" id="pitch-phases">
+      <div class="phase" data-from="0" data-to="15"><span class="s">0–15 SONIYA</span><h3>Muammo</h3><p class="t">“Hammamiz ... dan charchaganmiz”</p></div>
+      <div class="phase" data-from="15" data-to="30"><span class="s">15–30 SONIYA</span><h3>Sarlavha</h3><p class="t">Bitta esda qoladigan jumla</p></div>
+      <div class="phase" data-from="30" data-to="50"><span class="s">30–50 SONIYA</span><h3>3 ta afzallik</h3><p class="t">Xususiyat emas, odam uchun foyda</p></div>
+      <div class="phase" data-from="50" data-to="60"><span class="s">50–60 SONIYA</span><h3>“Yana bir narsa...”</h3><p class="t">Kutilmagan xususiyat</p></div>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+      <button class="timer" data-sec="60" data-phases="pitch-phases">▶ 1:00 · chiqish</button>
+      <button class="timer" data-sec="300">▶ 5:00 · tayyorgarlik</button>
+      <span class="small">Mezonlar: sodda · esda qoladi · “voy!” lahzasi bor</span>
+    </div>
+  </div>
+</section>
+
+<!-- 31 -->
+<section class="slide white">
+  <div class="in">
+    <h2>Stiv Jobsdan 3 saboq</h2>
+    <div class="rows">
+      <div class="row"><b>1</b><p class="quote" style="font-size:max(20px,calc(var(--u)*3))">Oddiy qil va fokusda bo‘l: “yo‘q” deyishni o‘rgan.</p></div>
+      <div class="row"><b>2</b><p class="quote" style="font-size:max(20px,calc(var(--u)*3))">Hech kim ko‘rmaydigan joyni ham sifatli qil.</p></div>
+      <div class="row"><b>3</b><p class="quote" style="font-size:max(20px,calc(var(--u)*3))">Yiqilsang tur: nuqtalar keyin birlashadi.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- yangi: yana bir narsa -->
+<section class="slide dark">
+  <div class="in" style="align-items:center;text-align:center">
+    <h1 class="grad" style="font-size:max(44px,calc(var(--u)*10))">Yana bir narsa...</h1>
+    <p class="lead">One more thing</p>
+  </div>
+</section>
+
+<!-- yangi: uy vazifasi -->
+<section class="slide blue" id="s-vazifa">
+  <div class="in">
+    <span class="eyebrow" style="color:#9fe3ff">Uy vazifasi · 1 hafta <span class="new">YANGI</span></span>
+    <h2>Atari topshirig‘i</h2>
+    <div class="split" style="align-items:start">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <p class="lead">1975-yilda Atari Jobsga o‘yin yaratishni topshirdi. Jobs g‘oyani berdi, Voznyak uni yasadi. Endi navbat sizda: jamoangiz bilan <strong style="color:#fff">yangi o‘yin g‘oyasini</strong> o‘ylab toping.</p>
+        <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))">
+          <div class="card"><span class="eyebrow" style="color:#9fe3ff">1</span><p class="t">O‘yin nomi</p></div>
+          <div class="card"><span class="eyebrow" style="color:#9fe3ff">2</span><p class="t">O‘yinchi nima qiladi (1–2 jumla)</p></div>
+          <div class="card"><span class="eyebrow" style="color:#9fe3ff">3</span><p class="t">“Voy!” xususiyati: nega qiziq?</p></div>
+          <div class="card"><span class="eyebrow" style="color:#9fe3ff">4</span><p class="t">Kim “Jobs”, kim “Voznyak”?</p></div>
+        </div>
+        <p class="t"><strong>Muddat:</strong> keyingi shanba, <span id="deadline">10-oktabr</span>. Keyingi mashg‘ulotda g‘oyalarni ekranda ko‘rib, eng zo‘riga ovoz beramiz.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="qr" data-qr="vazifa"></div>
+        <p class="small" style="color:#cfe0ff">Skanerlang yoki oching: <span class="link" data-href="vazifa" style="color:#fff"></span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 32 -->
+<section class="slide dark">
+  <div class="in" style="align-items:center;text-align:center">
+    <span class="eyebrow">Stenford, 2005 · Nutqning so‘nggi so‘zlari</span>
+    <h1 style="font-size:max(48px,calc(var(--u)*11))">Och bo‘l.<br><span class="grad">Nodon bo‘l.</span></h1>
+    <p class="lead">Stay hungry. Stay foolish.</p>
+    <p class="small">O‘qish uchun: Uolter Ayzekson, “Stiv Jobs” (2011)</p>
+    <p class="eyebrow" style="margin-top:calc(var(--u)*3)">DATA · Bilimga to‘ldiramiz</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  DATA xalqaro maktabi · Biznes klub · 7–10-sinflar · har shanba<br>
+  <a href="#mashq">Mashq (12 → 4)</a> · <a href="#vazifa">Uy vazifasi</a> · <a href="#goyalar">O‘yin g‘oyalari va ovoz berish</a>
+</footer>
+
+<div class="hud"><i id="prog"></i></div>
+<button class="btn ghost exit" id="exit-present">Esc · chiqish</button>
+
+<!-- ============ telefon: 12 -> 4 ============ -->
+<section class="view" id="v-mashq">
+  <div class="box">
+    <span class="eyebrow" style="color:var(--data)">DATA Biznes Klub · jonli mashq</span>
+    <h2>12 ta g‘oyadan 4 tasi</h2>
+    <p>Maktab ilovasi uchun faqat 4 ta funksiyani tanlang. Qolganlariga “yo‘q” deng.</p>
+    <div><b>Jamoangiz:</b></div>
+    <div class="teams" id="m-teams"></div>
+    <div><b>4 ta funksiya:</b> <span id="m-count">0/4</span></div>
+    <div class="pick" id="m-pick"></div>
+    <button class="btn" id="m-send">Yuborish</button>
+    <p class="msg" id="m-msg" role="status"></p>
+  </div>
+</section>
+
+<!-- ============ telefon: uy vazifasi ============ -->
+<section class="view" id="v-vazifa">
+  <form class="box" id="h-form">
+    <span class="eyebrow" style="color:var(--data)">DATA Biznes Klub · uy vazifasi</span>
+    <h2>Atari topshirig‘i</h2>
+    <p>Jamoangiz bilan yangi o‘yin g‘oyasini yozing. Muddat: keyingi shanba.</p>
+    <label for="h-team">Jamoa nomi<input id="h-team" maxlength="60" required placeholder="Masalan: 3-jamoa yoki “Qaroqchilar”"></label>
+    <label for="h-members">Jamoa a’zolari<input id="h-members" maxlength="200" placeholder="Ism, ism, ism"></label>
+    <label for="h-name">O‘yin nomi<input id="h-name" maxlength="80" required></label>
+    <label for="h-play">O‘yinchi nima qiladi? (1–2 jumla)<textarea id="h-play" maxlength="500" required></textarea></label>
+    <label for="h-wow">“Voy!” xususiyati: nega qiziq?<textarea id="h-wow" maxlength="400" required></textarea></label>
+    <label for="h-jobs">Kim “Jobs”? (g‘oya va sotuv)<input id="h-jobs" maxlength="80"></label>
+    <label for="h-woz">Kim “Voznyak”? (qanday ishlashi)<input id="h-woz" maxlength="80"></label>
+    <button class="btn" type="submit">Yuborish</button>
+    <p class="msg" id="h-msg" role="status"></p>
+    <a href="#goyalar" style="color:var(--data)">Boshqa jamoalar g‘oyalarini ko‘rish →</a>
+  </form>
+</section>
+
+<!-- ============ g'oyalar + ovoz ============ -->
+<section class="view" id="v-goyalar">
+  <div class="box wide">
+    <span class="eyebrow" style="color:var(--data)">DATA Biznes Klub · Atari topshirig‘i</span>
+    <h2>O‘yin g‘oyalari</h2>
+    <p>Eng zo‘r g‘oyaga bitta ovoz bering. Ovozni boshqa g‘oyaga o‘tkazish mumkin.</p>
+    <div class="ideas" id="ideas"><p>Yuklanmoqda...</p></div>
+    <p class="msg" id="g-msg" role="status"></p>
+  </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+// Supabase sozlamalari (bo'sh bo'lsa, jonli funksiyalar o'chadi, taqdimot baribir ishlaydi)
+const SB_URL = 'https://onbvjawjvxbiyqnimvnh.supabase.co';
+const SB_KEY = 'sb_publishable_ch6uaEZEkI5r-fTOtlJxrw_XI0qJuUQ';
+
+const FEATURES = ['Baholar','Uy vazifasi','Dars jadvali','Oshxona menyusi','Chat','O‘yinlar','Musiqa','Reyting','Avtobus qayerda','To‘lovlar','Yangiliklar','Ob-havo'];
+const TEAMS = 6;
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const base = location.origin + location.pathname;
+const store = { get(k){ try { return localStorage.getItem(k) } catch { return null } }, set(k, v){ try { localStorage.setItem(k, v) } catch {} } };
+
+async function api(path, opt = {}) {
+  if (!SB_URL) throw new Error('offline');
+  const r = await fetch(SB_URL + '/rest/v1/' + path, { ...opt, headers: { apikey: SB_KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal', ...(opt.headers || {}) } });
+  if (!r.ok) throw new Error(r.status + ' ' + await r.text());
+  return r.status === 200 ? r.json() : null;
+}
+const today = () => { const d = new Date(); d.setHours(0, 0, 0, 0); return d.toISOString() };
+
+/* ---------- QR va havolalar ---------- */
+$$('[data-qr]').forEach(el => { if (window.QRCode) new QRCode(el, { text: base + '#' + el.dataset.qr, width: 512, height: 512, correctLevel: QRCode.CorrectLevel.M }) });
+$$('[data-href]').forEach(el => el.textContent = base.replace(/^https?:\/\//, '') + '#' + el.dataset.href);
+
+/* ---------- muddat: keyingi shanba ---------- */
+(() => {
+  const d = new Date(); d.setDate(d.getDate() + ((6 - d.getDay() + 7) % 7 || 7));
+  const oy = ['yanvar','fevral','mart','aprel','may','iyun','iyul','avgust','sentabr','oktabr','noyabr','dekabr'];
+  $('#deadline').textContent = d.getDate() + '-' + oy[d.getMonth()];
+})();
+
+/* ---------- taqdimot rejimi ---------- */
+const slides = $$('.deck .slide');
+slides.forEach((s, i) => { const n = document.createElement('span'); n.className = 'num'; n.textContent = String(i + 1).padStart(2, '0') + ' / ' + slides.length; s.append(n) });
+let cur = 0;
+function show(i) {
+  cur = Math.max(0, Math.min(slides.length - 1, i));
+  slides.forEach((s, j) => { s.classList.toggle('cur', j === cur); s.classList.toggle('active', j === cur) });
+  $('#prog').style.width = ((cur + 1) / slides.length * 100) + '%';
+  onSlide(slides[cur]);
+}
+function present(on) {
+  document.body.classList.toggle('present', on);
+  if (on) {
+    // ko'rinib turgan bo'limdan boshlash
+    const y = window.scrollY + innerHeight / 3;
+    const k = slides.findIndex(s => s.offsetTop + s.offsetHeight > y);
+    show(k < 0 ? 0 : k);
+    document.documentElement.requestFullscreen?.().catch(() => {});
+  } else {
+    slides.forEach(s => s.classList.remove('cur'));
+    document.fullscreenElement && document.exitFullscreen?.().catch(() => {});
+    slides[cur].scrollIntoView();
+  }
+}
+$('#go-present').onclick = () => present(true);
+$('#exit-present').onclick = () => present(false);
+document.addEventListener('fullscreenchange', () => { if (!document.fullscreenElement && document.body.classList.contains('present')) present(false) });
+document.addEventListener('keydown', e => {
+  if (document.body.classList.contains('v') || e.target.closest('input,textarea')) return;
+  const p = document.body.classList.contains('present');
+  if (!p) { if (e.key === 'p' || e.key === 'P') present(true); return }
+  if (['ArrowRight','ArrowDown','PageDown',' ','Enter'].includes(e.key)) { e.preventDefault(); show(cur + 1) }
+  else if (['ArrowLeft','ArrowUp','PageUp','Backspace'].includes(e.key)) { e.preventDefault(); show(cur - 1) }
+  else if (e.key === 'Home') show(0);
+  else if (e.key === 'End') show(slides.length - 1);
+  else if (e.key === 'Escape') present(false);
+});
+// taqdimotda ekranning chap/o'ng chetini bosish
+document.addEventListener('click', e => {
+  if (!document.body.classList.contains('present') || e.target.closest('button,a,canvas,.qr')) return;
+  show(cur + (e.clientX > innerWidth / 3 ? 1 : -1));
+});
+
+// sayt rejimida: ko'rinib turgan bo'lim "active" bo'ladi (animatsiya, jonli natija)
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (document.body.classList.contains('present')) return;
+  e.target.classList.toggle('active', e.isIntersecting);
+  if (e.isIntersecting) onSlide(e.target);
+}), { threshold: .35 });
+slides.forEach(s => io.observe(s));
+
+function onSlide(s) { s.id === 's-mashq' ? startTally() : stopTally() }
+
+/* ---------- taymerlar ---------- */
+const fmt = s => Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+$$('.timer').forEach(b => {
+  const total = +b.dataset.sec, label = b.textContent.replace(/^▶\s*\S+/, '');
+  let left = total, t = null;
+  const paint = () => {
+    b.textContent = (t ? '❚❚ ' : left === 0 ? '↺ ' : '▶ ') + fmt(left) + label;
+    const ph = b.dataset.phases && $('#' + b.dataset.phases);
+    if (ph) { const el = total - left; $$('.phase', ph).forEach(p => p.classList.toggle('on', t !== null && el >= +p.dataset.from && el < +p.dataset.to)) }
+  };
+  b.onclick = e => {
+    e.stopPropagation();
+    if (left === 0) { left = total; b.classList.remove('done') }
+    if (t) { clearInterval(t); t = null; b.classList.remove('run') }
+    else {
+      b.classList.add('run');
+      t = setInterval(() => {
+        left--;
+        if (left <= 0) { left = 0; clearInterval(t); t = null; b.classList.remove('run'); b.classList.add('done') }
+        paint();
+      }, 1000);
+    }
+    paint();
+  };
+});
+
+/* ---------- jonli natija: 12 -> 4 ---------- */
+let tallyT = null;
+function renderTally(rows) {
+  const latest = {};
+  rows.forEach(r => { latest[r.team] = r.picks });   // har jamoaning oxirgi javobi
+  const teams = Object.keys(latest).length;
+  const cnt = Object.fromEntries(FEATURES.map(f => [f, 0]));
+  Object.values(latest).forEach(p => p.forEach(f => { if (f in cnt) cnt[f]++ }));
+  const sorted = FEATURES.slice().sort((a, b) => cnt[b] - cnt[a]);
+  $('#tally').innerHTML = sorted.map(f => `<div class="chip"><div class="fill" style="width:${teams ? cnt[f] / teams * 100 : 0}%"></div><span>${f}</span><span class="c">${cnt[f]}</span></div>`).join('');
+  $('#tally-info').textContent = SB_URL ? `${teams} / ${TEAMS} jamoa javob berdi` : 'Jonli natija uchun internet ulanishi kerak.';
+}
+renderTally([]);
+async function pullTally() {
+  try { renderTally(await api(`jobs_picks?select=team,picks&created_at=gte.${today()}&order=created_at`)) } catch {}
+}
+function startTally() { if (!tallyT && SB_URL) { pullTally(); tallyT = setInterval(pullTally, 3000) } }
+function stopTally() { clearInterval(tallyT); tallyT = null }
+
+/* ---------- telefon: 12 -> 4 ---------- */
+let mTeam = store.get('team'), mPick = [];
+$('#m-teams').innerHTML = Array.from({ length: TEAMS }, (_, i) => `<button type="button" data-t="${i + 1}-jamoa">${i + 1}-jamoa</button>`).join('');
+$('#m-pick').innerHTML = FEATURES.map(f => `<button type="button" data-f="${f}">${f}</button>`).join('');
+const paintM = () => {
+  $$('#m-teams button').forEach(b => b.classList.toggle('sel', b.dataset.t === mTeam));
+  $$('#m-pick button').forEach(b => b.classList.toggle('sel', mPick.includes(b.dataset.f)));
+  $('#m-count').textContent = mPick.length + '/4';
+};
+$('#m-teams').onclick = e => { const b = e.target.closest('button'); if (b) { mTeam = b.dataset.t; store.set('team', mTeam); paintM() } };
+$('#m-pick').onclick = e => {
+  const b = e.target.closest('button'); if (!b) return;
+  const f = b.dataset.f;
+  if (mPick.includes(f)) mPick = mPick.filter(x => x !== f);
+  else if (mPick.length < 4) mPick.push(f);
+  else { $('#m-msg').textContent = 'Faqat 4 ta! Avval bittasini olib tashlang.'; return }
+  $('#m-msg').textContent = ''; paintM();
+};
+$('#m-send').onclick = async () => {
+  const m = $('#m-msg');
+  if (!mTeam) return m.textContent = 'Jamoangizni tanlang.';
+  if (mPick.length !== 4) return m.textContent = 'Aynan 4 ta funksiya tanlang.';
+  m.textContent = 'Yuborilmoqda...';
+  try { await api('jobs_picks', { method: 'POST', body: JSON.stringify({ team: mTeam, picks: mPick }) }); m.innerHTML = '<span class="ok">✓ Yuborildi! Natija ekranda.</span> Fikr o‘zgarsa, qayta yuboring.' }
+  catch (e) { m.innerHTML = '<span class="no">Yuborilmadi. Internetni tekshirib, qayta urinib ko‘ring.</span>' }
+};
+paintM();
+
+/* ---------- telefon: uy vazifasi ---------- */
+$('#h-form').addEventListener('submit', async e => {
+  e.preventDefault();
+  const m = $('#h-msg'), v = id => $('#' + id).value.trim();
+  const row = { team: v('h-team'), members: v('h-members'), name: v('h-name'), play: v('h-play'), wow: v('h-wow'), jobs: v('h-jobs'), woz: v('h-woz') };
+  m.textContent = 'Yuborilmoqda...';
+  try { await api('jobs_ideas', { method: 'POST', body: JSON.stringify(row) }); m.innerHTML = '<span class="ok">✓ G‘oyangiz qabul qilindi! Keyingi shanba ekranda ko‘ramiz.</span>'; e.target.reset() }
+  catch { m.innerHTML = '<span class="no">Yuborilmadi. Internetni tekshirib, qayta urinib ko‘ring.</span>' }
+});
+
+/* ---------- g'oyalar va ovoz ---------- */
+let voter = store.get('voter');
+if (!voter) { voter = crypto.randomUUID?.() || 'xxxxxxxx-xxxx-4xxx-8xxx-xxxxxxxxxxxx'.replace(/x/g, () => (Math.random() * 16 | 0).toString(16)); store.set('voter', voter) }
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+async function loadIdeas() {
+  try {
+    const [ideas, votes] = await Promise.all([api('jobs_ideas?select=*&order=created_at'), api('rpc/vote_counts', { method: 'POST', body: '{}' })]);
+    const cnt = {}, mine = +store.get('myvote');
+    votes.forEach(v => cnt[v.idea_id] = v.n);
+    ideas.sort((a, b) => (cnt[b.id] || 0) - (cnt[a.id] || 0));
+    $('#ideas').innerHTML = ideas.length ? ideas.map(i => `<article class="idea">
+      <span class="meta">${esc(i.team)}${i.members ? ' · ' + esc(i.members) : ''}</span>
+      <h3>${esc(i.name)}</h3><p>${esc(i.play)}</p><p><b>Voy!</b> ${esc(i.wow)}</p>
+      <span class="meta">Jobs: ${esc(i.jobs) || '—'} · Voznyak: ${esc(i.woz) || '—'}</span>
+      <button class="btn vote ${mine === i.id ? 'sel' : ''}" data-id="${i.id}">${mine === i.id ? '✓ Sizning ovozingiz' : '♥ Ovoz berish'} · ${cnt[i.id] || 0}</button></article>`).join('')
+      : '<p>Hali g‘oya yo‘q. Birinchi bo‘ling: <a href="#vazifa">g‘oya yuborish</a>.</p>';
+  } catch { $('#ideas').innerHTML = '<p>Ma’lumot yuklanmadi. Internetni tekshiring.</p>' }
+}
+$('#ideas').onclick = async e => {
+  const b = e.target.closest('.vote'); if (!b) return;
+  try {
+    await api('rpc/cast_vote', { method: 'POST', body: JSON.stringify({ p_voter: voter, p_idea: +b.dataset.id }) });
+    store.set('myvote', b.dataset.id); loadIdeas();
+  } catch { $('#g-msg').textContent = 'Ovoz yuborilmadi. Qayta urinib ko‘ring.' }
+};
+let ideasT = null;
+
+/* ---------- marshrut: #mashq, #vazifa, #goyalar ---------- */
+function route() {
+  const h = location.hash.slice(1);
+  const v = ['mashq', 'vazifa', 'goyalar'].includes(h) ? h : null;
+  document.body.className = document.body.className.replace(/\bv(-\w+)?\b/g, '').trim();
+  clearInterval(ideasT);
+  if (v) { document.body.classList.add('v', 'v-' + v); scrollTo(0, 0); if (v === 'goyalar') { loadIdeas(); ideasT = setInterval(loadIdeas, 5000) } }
+}
+addEventListener('hashchange', route); route();
+// ?s=N — taqdimotni N-slayddan ochish
+const qs = +new URLSearchParams(location.search).get('s');
+if (qs) { document.body.classList.add('present'); show(qs - 1) }
+
+/* ---------- Breakout ---------- */
+(() => {
+  const cv = $('#game canvas'), g = cv.getContext('2d'), go = $('#game-go');
+  const W = 480, H = 300, C = 10, R = 5, bw = W / C;
+  const colors = ['#ff453a', '#ff9f0a', '#ffd60a', '#30d158', '#29c5ff'];
+  let bricks, ball, pad, run = false, score = 0;
+  function reset() { bricks = []; for (let r = 0; r < R; r++) for (let c = 0; c < C; c++) bricks.push({ x: c * bw + 2, y: 30 + r * 16, on: true, r }); ball = { x: W / 2, y: H - 40, dx: 3, dy: -3 }; pad = W / 2; score = 0 }
+  function draw() {
+    g.fillStyle = '#000'; g.fillRect(0, 0, W, H);
+    bricks.forEach(b => { if (b.on) { g.fillStyle = colors[b.r]; g.fillRect(b.x, b.y, bw - 4, 12) } });
+    g.fillStyle = '#fff'; g.fillRect(pad - 35, H - 14, 70, 8);
+    g.beginPath(); g.arc(ball.x, ball.y, 5, 0, 7); g.fill();
+    g.font = '600 13px system-ui'; g.fillText('Ochko: ' + score, 10, 18);
+  }
+  function step() {
+    if (!run) return;
+    ball.x += ball.dx; ball.y += ball.dy;
+    if (ball.x < 5 || ball.x > W - 5) ball.dx *= -1;
+    if (ball.y < 5) ball.dy *= -1;
+    if (ball.y > H - 19 && ball.y < H - 8 && Math.abs(ball.x - pad) < 40 && ball.dy > 0) { ball.dy *= -1; ball.dx = (ball.x - pad) / 8 }
+    bricks.forEach(b => { if (b.on && ball.x > b.x && ball.x < b.x + bw - 4 && ball.y > b.y && ball.y < b.y + 12) { b.on = false; ball.dy *= -1; score++ } });
+    if (ball.y > H || score === C * R) { run = false; go.hidden = false; go.textContent = score === C * R ? '🏆 G‘alaba! Yana' : '↺ Yana o‘ynash (' + score + ')' }
+    draw(); requestAnimationFrame(step);
+  }
+  const move = e => { const r = cv.getBoundingClientRect(); pad = Math.max(35, Math.min(W - 35, (e.clientX - r.left) / r.width * W)) };
+  cv.addEventListener('pointermove', move);
+  cv.addEventListener('pointerdown', move);
+  go.onclick = e => { e.stopPropagation(); reset(); run = true; go.hidden = true; step() };
+  reset(); draw();
+})();
+</script>
+</body>
+</html>
