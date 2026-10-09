@@ -1,0 +1,1023 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Startup va million · DATA Biznes Klub</title>
+<meta name="description" content="DATA Biznes Klub 2-mashg‘ulot: Startup orqali birinchi million. Interaktiv taqdimot, million kalkulyatori va g‘oya kartasi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: Apple keynote — har bo'lim bitta fikr. Sayt rejimida bo'limlar ketma-ket, taqdimot rejimida bittadan 16:9 ekranda. */
+:root{
+  --black:#000; --ink:#1d1d1f; --grey:#f5f5f7; --mute:#86868b; --line:#d2d2d7;
+  --data:#0b2db4; --cyan:#29c5ff; --white:#fff; --good:#30d158;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","Manrope",system-ui,"Segoe UI",sans-serif;
+  --u:clamp(5.6px,1vw,12px);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:var(--font);background:var(--black);color:var(--white);-webkit-font-smoothing:antialiased;line-height:1.45;overflow-x:hidden}
+img{max-width:100%;display:block}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+
+/* ---------- top bar (sayt rejimi) ---------- */
+.bar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:12px;padding:10px 16px;padding-top:calc(10px + env(safe-area-inset-top,0px));background:rgba(0,0,0,.78);backdrop-filter:saturate(180%) blur(18px);-webkit-backdrop-filter:saturate(180%) blur(18px);border-bottom:1px solid rgba(255,255,255,.08);font-size:14px}
+.bar .logo{font-weight:800;letter-spacing:.02em;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.bar .logo i{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--cyan)}
+.bar nav{display:flex;gap:4px;overflow-x:auto;flex:1;min-width:0;scrollbar-width:none}
+.bar nav a{color:#d2d2d7;text-decoration:none;padding:6px 10px;border-radius:99px;white-space:nowrap}
+.bar nav a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:99px;padding:10px 18px;background:var(--data);color:#fff;font-weight:700;text-decoration:none;white-space:nowrap}
+.btn:hover{filter:brightness(1.15)}
+.btn.ghost{background:rgba(255,255,255,.1)}
+.btn.light{background:#fff;color:var(--ink)}
+
+/* ---------- slides ---------- */
+.slide{position:relative;padding:calc(var(--u)*7) max(16px,calc(var(--u)*7));display:flex;flex-direction:column;justify-content:safe center;min-height:min(70vh,820px);overflow:hidden}
+.slide>.in{width:100%;max-width:calc(var(--u)*120);margin:0 auto;display:flex;flex-direction:column;gap:calc(var(--u)*2.6)}
+.slide.dark{background:var(--black);color:#f5f5f7}
+.slide.grey{background:var(--grey);color:var(--ink)}
+.slide.white{background:#fff;color:var(--ink)}
+.slide.blue{background:var(--data);color:#fff}
+.num{position:absolute;right:max(16px,calc(var(--u)*4));bottom:calc(var(--u)*2.4);font-size:12px;opacity:.45;font-variant-numeric:tabular-nums;letter-spacing:.08em}
+
+.eyebrow{font-size:max(12px,calc(var(--u)*1.25));font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}
+.grey .eyebrow,.white .eyebrow{color:var(--data)}
+.new{display:inline-block;margin-left:10px;padding:2px 8px;border-radius:99px;background:var(--cyan);color:#001b33;font-size:.8em;letter-spacing:.06em;vertical-align:1px}
+h1,h2,h3{margin:0;font-weight:800;letter-spacing:-.025em;line-height:1.04;text-wrap:balance}
+h1{font-size:max(44px,calc(var(--u)*9.5))}
+h2{font-size:max(32px,calc(var(--u)*5.6))}
+h3{font-size:max(19px,calc(var(--u)*2.3));letter-spacing:-.01em;line-height:1.2}
+p{margin:0}
+.lead{font-size:max(18px,calc(var(--u)*2.3));color:#a1a1a6;max-width:60ch;text-wrap:pretty}
+.grey .lead,.white .lead{color:#515154}
+.blue .lead{color:#cfe0ff}
+.t{font-size:max(15px,calc(var(--u)*1.75))}
+.small{font-size:max(13px,calc(var(--u)*1.35));color:var(--mute)}
+.grad{background:linear-gradient(90deg,#fff 0%,var(--cyan) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.grey .grad,.white .grad{background-image:linear-gradient(90deg,var(--data),#3b7bff)}
+
+.quote{font-size:max(22px,calc(var(--u)*3.4));font-weight:700;letter-spacing:-.02em;line-height:1.15;text-wrap:balance;margin:0}
+.quote.xl{font-size:max(28px,calc(var(--u)*5))}
+.who{font-size:max(13px,calc(var(--u)*1.4));color:var(--mute);margin-top:calc(var(--u)*1.2)}
+.post{display:inline-block;font-size:max(11px,calc(var(--u)*1.1));font-weight:700;letter-spacing:.08em;color:var(--mute);border:1px solid currentColor;border-radius:99px;padding:2px 9px}
+
+.grid{display:grid;gap:calc(var(--u)*1.6)}
+.g2{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr))}
+.split{display:grid;grid-template-columns:1.25fr 1fr;gap:calc(var(--u)*4);align-items:center}
+.split>*{min-width:0}
+@media (max-width:760px){.split{grid-template-columns:1fr}}
+
+.card{border-radius:calc(var(--u)*1.8);padding:calc(var(--u)*2.4);background:#1c1c1e;display:flex;flex-direction:column;gap:6px}
+.grey .card{background:#fff}
+.white .card{background:var(--grey)}
+.blue .card{background:rgba(255,255,255,.1)}
+.card .k{font-size:max(28px,calc(var(--u)*4));font-weight:800;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.card .k.c{color:var(--cyan)}
+.grey .card .k.c,.white .card .k.c{color:var(--data)}
+.card.hl{background:var(--data);color:#fff}
+
+.photo{border-radius:calc(var(--u)*1.8);overflow:hidden;background:#111}
+.photo img{width:100%;height:100%;object-fit:cover}
+figcaption{font-size:max(12px,calc(var(--u)*1.2));color:var(--mute);margin-top:8px}
+
+.rows{display:flex;flex-direction:column;gap:calc(var(--u)*.9)}
+.row{display:grid;grid-template-columns:minmax(70px,calc(var(--u)*13)) 1fr;gap:calc(var(--u)*2);align-items:baseline;padding:calc(var(--u)*1.1) 0;border-top:1px solid rgba(128,128,128,.25)}
+.row b{font-size:max(18px,calc(var(--u)*2.6));letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.row.on b{color:var(--cyan)}
+.grey .row.on b,.white .row.on b{color:var(--data)}
+
+/* hero */
+.hero{padding:0;min-height:auto}
+.hero .in{max-width:none;display:grid;grid-template-columns:1.1fr 1fr;gap:0;align-items:stretch}
+.hero .txt{padding:calc(var(--u)*8) max(16px,calc(var(--u)*7));display:flex;flex-direction:column;justify-content:center;gap:calc(var(--u)*2.4);background:var(--data)}
+.hero .pic{background:#fff;display:flex;align-items:flex-end;justify-content:center;min-height:320px}
+.hero .pic img{max-height:88vh;width:auto;object-fit:contain}
+@media (max-width:760px){.hero .in{grid-template-columns:1fr}.hero .pic img{max-height:60vh}}
+
+/* 6 soha */
+.era{border-left:2px solid var(--cyan);padding-left:calc(var(--u)*1.6)}
+.era .y{font-size:max(26px,calc(var(--u)*3.6));font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+
+/* 2x2 fokus jadvali */
+.matrix{display:grid;grid-template-columns:auto 1fr 1fr;gap:6px;font-size:max(15px,calc(var(--u)*2));text-align:center}
+.matrix div{padding:calc(var(--u)*1.8) 10px;border-radius:10px;background:#fff}
+.matrix .h{background:transparent;font-weight:700;color:#515154;font-size:.8em}
+.matrix .p{background:var(--data);color:#fff;font-weight:800}
+
+/* feature chips (12 -> 4) */
+.chips{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:8px}
+.chip{position:relative;border-radius:12px;padding:12px 14px;background:#1c1c1e;font-weight:600;font-size:max(14px,calc(var(--u)*1.6));overflow:hidden;display:flex;justify-content:space-between;gap:8px}
+.chip .fill{position:absolute;inset:0;width:0;background:var(--data);transition:width .6s ease;z-index:0}
+.chip span{position:relative;z-index:1}
+.chip .c{font-variant-numeric:tabular-nums;color:var(--cyan)}
+
+/* chorraha */
+.venn{display:flex;justify-content:center;align-items:center;padding:calc(var(--u)*2) 0}
+.venn div{width:calc(var(--u)*24);height:calc(var(--u)*24);min-width:150px;min-height:150px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:800;padding:20px;font-size:max(13px,calc(var(--u)*1.6))}
+.venn div:first-child{background:rgba(41,197,255,.25);border:2px solid var(--cyan);margin-right:calc(var(--u)*-5)}
+.venn div:last-child{background:rgba(11,45,180,.45);border:2px solid #4f74ff}
+
+/* iPhone: 3 -> 1 */
+.merge{display:flex;justify-content:center;gap:calc(var(--u)*3);flex-wrap:wrap;position:relative;padding:calc(var(--u)*3) 0}
+.merge .d{width:calc(var(--u)*17);min-width:110px;aspect-ratio:1;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:max(15px,calc(var(--u)*2));border:2px solid #3a3a3c;transition:transform 1.1s cubic-bezier(.7,0,.2,1),opacity .6s ease 1s}
+.merge .one{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:max(40px,calc(var(--u)*8));font-weight:800;letter-spacing:-.04em;opacity:0;transform:scale(.8);transition:opacity .8s ease 1.4s,transform .8s ease 1.4s;pointer-events:none}
+.active .merge .d:nth-child(1){transform:translateX(calc(var(--u)*20))}
+.active .merge .d:nth-child(3){transform:translateX(calc(var(--u)*-20))}
+.active .merge .d{opacity:0}
+.active .merge .one{opacity:1;transform:none}
+
+/* timers */
+.timer{display:inline-flex;align-items:center;gap:10px;border:0;border-radius:99px;padding:10px 20px;background:#fff;color:var(--ink);font-weight:800;font-variant-numeric:tabular-nums;font-size:max(16px,calc(var(--u)*2))}
+.timer.run{background:var(--cyan);color:#001b33}
+.timer.done{background:#ff453a;color:#fff;animation:pulse 1s infinite}
+@keyframes pulse{50%{transform:scale(1.06)}}
+.phases{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:8px}
+.phase{border-radius:14px;padding:calc(var(--u)*1.8);background:#1c1c1e;transition:background .3s}
+.phase .s{font-size:max(12px,calc(var(--u)*1.2));font-weight:800;color:var(--cyan);letter-spacing:.08em}
+.phase.on{background:var(--data)}
+
+/* breakout */
+.game{position:relative;border-radius:16px;overflow:hidden;background:#000;border:1px solid #2c2c2e;touch-action:none}
+.game canvas{display:block;width:100%;height:auto;aspect-ratio:16/10}
+.game .go{position:absolute;inset:0;margin:auto;width:max-content;height:max-content}
+
+/* QR */
+.qrbox{display:flex;gap:calc(var(--u)*2.4);align-items:center;flex-wrap:wrap}
+.qr{background:#fff;padding:12px;border-radius:16px;width:calc(var(--u)*20);min-width:150px;aspect-ratio:1}
+.qr img,.qr canvas{width:100%!important;height:auto!important}
+.link{font-weight:700;word-break:break-all;color:var(--cyan)}
+.grey .link,.white .link{color:var(--data)}
+
+.ok{color:var(--good)}
+.no{color:#ff6961}
+
+/* ---------- taqdimot rejimi ---------- */
+body.present{overflow:hidden;cursor:default}
+body.present .bar,body.present .foot{display:none}
+body.present{--u:min(.86vw,1.53vh)}
+body.present .slide{display:none;position:fixed;inset:0;min-height:0;height:100%;overflow:auto}
+body.present .slide.cur{display:flex;animation:in .45s ease both}
+body.present .hero{display:none}
+body.present .hero.cur{display:block}
+body.present .hero .in{height:100%}
+body.present .hero .pic img{max-height:100vh}
+@keyframes in{from{opacity:0;transform:scale(.985)}}
+.hud{display:none;position:fixed;z-index:30;left:0;right:0;bottom:0;height:3px;background:rgba(128,128,128,.25)}
+.hud i{display:block;height:100%;background:var(--cyan);width:0;transition:width .3s}
+body.present .hud{display:block}
+.exit{display:none;position:fixed;z-index:31;top:12px;right:12px;opacity:0;transition:opacity .3s}
+body.present .exit{display:inline-flex}
+body.present:hover .exit{opacity:.6}
+
+/* ---------- telefon sahifalari ---------- */
+.view{display:none;min-height:100vh;background:var(--grey);color:var(--ink);padding:24px 16px 60px}
+.view .box{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.view h2{font-size:30px}
+body.v .deck,body.v .bar,body.v .foot{display:none}
+body.v-mashq #v-mashq,body.v-vazifa #v-vazifa,body.v-goyalar #v-goyalar{display:block}
+.view label{font-weight:700;font-size:14px;display:flex;flex-direction:column;gap:6px}
+.view input,.view textarea,.view select{font:inherit;font-size:16px;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--ink);width:100%}
+.view textarea{min-height:84px;resize:vertical}
+.teams{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.teams button,.pick button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:12px 8px;font-weight:700;color:var(--ink)}
+.teams button.sel,.pick button.sel{border-color:var(--data);background:var(--data);color:#fff}
+.pick{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.msg{font-weight:700;min-height:1.4em}
+.idea{background:#fff;border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:8px}
+.idea h3{font-size:22px}
+.idea .meta{font-size:13px;color:#6e6e73}
+.idea .vote{align-self:flex-start}
+.idea .vote.sel{background:var(--good)}
+.wide{max-width:1200px!important}
+.ideas{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:14px}
+.foot{background:#000;color:var(--mute);font-size:13px;padding:28px 16px 48px;text-align:center}
+.foot a{color:#d2d2d7}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ---------- startup darsi: qo'shimcha ---------- */
+/* Surat joyi: fayl qo'yilsa rasm chiqadi, bo'lmasa nomi ko'rinadi */
+.ph{position:relative;border-radius:calc(var(--u)*1.8);overflow:hidden;background:repeating-linear-gradient(135deg,rgba(128,128,128,.08) 0 12px,transparent 12px 24px);border:2px dashed rgba(128,128,128,.45);min-height:160px;aspect-ratio:var(--ar,4/3);display:flex;align-items:center;justify-content:center;text-align:center;padding:14px}
+.ph span{font-size:max(12px,calc(var(--u)*1.2));color:var(--mute);font-weight:600;line-height:1.35}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ph.sq{--ar:1/1}.ph.tall{--ar:3/4}.ph.wide{--ar:16/9}
+.card .ph{min-height:90px;margin-bottom:6px}
+.g6{grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr))}
+.g6 .card{padding:calc(var(--u)*1.6)}
+.c3{grid-template-columns:repeat(3,1fr)}.c4{grid-template-columns:repeat(4,1fr)}
+@media (max-width:760px){.c3,.c4{grid-template-columns:repeat(2,1fr)}}@media (max-width:420px){.c3,.c4{grid-template-columns:1fr}}
+.c4 .ph.wide{--ar:5/2;min-height:70px}.card .ph.sq{--ar:4/3}
+#teens .ph{--ar:16/9}.c4.big .ph.wide{--ar:16/10}
+.g6 h3{font-size:max(16px,calc(var(--u)*1.9))}
+.hero .pic.ph{border-radius:0;border:0;aspect-ratio:auto;min-height:320px;background-color:#fff}
+
+.tl{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:calc(var(--u)*1.4)}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--u)*1.6)}
+@media (max-width:560px){.vs{grid-template-columns:1fr}}
+.bar-h{display:flex;flex-direction:column;gap:8px}
+.bar-h .r{display:grid;grid-template-columns:minmax(120px,38%) 1fr auto;gap:12px;align-items:center;font-size:max(14px,calc(var(--u)*1.7))}
+.bar-h .r i{display:block;height:calc(var(--u)*1.8);min-height:12px;border-radius:99px;background:var(--cyan)}
+.white .bar-h .r i,.grey .bar-h .r i{background:var(--data)}
+.bar-h .r b{font-variant-numeric:tabular-nums}
+
+/* savol-javob (takrorlash) */
+.qa{border-radius:14px;background:#1c1c1e;padding:calc(var(--u)*1.6) calc(var(--u)*2)}
+.qa summary{cursor:pointer;font-weight:700;font-size:max(16px,calc(var(--u)*2));list-style:none}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::before{content:"? ";color:var(--cyan)}
+.qa[open] summary::before{content:"✓ ";color:var(--good)}
+.qa p{margin-top:8px;color:var(--cyan);font-weight:700;font-size:max(15px,calc(var(--u)*1.8))}
+
+/* jonli g'oyalar va podium */
+.board{display:flex;flex-direction:column;gap:8px}
+.board .it{position:relative;border-radius:12px;background:#1c1c1e;padding:10px 14px;display:flex;justify-content:space-between;gap:12px;overflow:hidden;font-size:max(14px,calc(var(--u)*1.7))}
+.board .it .fill{position:absolute;inset:0;width:0;background:var(--data);transition:width .6s ease}
+.board .it>span{position:relative}
+.board .it .c{color:var(--cyan);font-weight:800;font-variant-numeric:tabular-nums}
+.podium{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:calc(var(--u)*1.6);align-items:end}
+.podium .p{border-radius:18px 18px 0 0;padding:calc(var(--u)*2);text-align:center;display:flex;flex-direction:column;gap:6px;align-items:center}
+.podium .p .m{font-size:max(34px,calc(var(--u)*5))}
+.podium .p1{background:var(--data);min-height:calc(var(--u)*34)}
+.podium .p2{background:#2c2c2e;min-height:calc(var(--u)*28)}
+.podium .p3{background:#1c1c1e;min-height:calc(var(--u)*24)}
+@media (max-width:560px){.podium{grid-template-columns:1fr}}
+
+/* million kalkulyatori */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--u)*3);align-items:start}
+@media (max-width:760px){.calc{grid-template-columns:1fr}}
+.calc label{display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:max(14px,calc(var(--u)*1.6))}
+.calc label b{color:var(--cyan);font-size:1.3em;font-variant-numeric:tabular-nums}
+.calc input[type=range]{width:100%;accent-color:var(--cyan)}
+.calc .presets{display:flex;flex-wrap:wrap;gap:8px}
+.calc .presets button{border:1px solid #3a3a3c;background:#1c1c1e;color:#fff;border-radius:99px;padding:8px 14px;font-weight:600}
+.calc .presets button.sel{background:var(--data);border-color:var(--data)}
+.res{display:flex;flex-direction:column;gap:calc(var(--u)*1.4)}
+.res .card .k{font-size:max(30px,calc(var(--u)*5))}
+.track{height:14px;border-radius:99px;background:#2c2c2e;overflow:hidden}
+.track i{display:block;height:100%;background:var(--good);width:0;transition:width .4s}
+
+/* telefon: g'oya kartasi */
+body.v-karta #v-karta{display:block}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <span class="logo"><i></i>DATA Biznes Klub</span>
+  <nav aria-label="Bo‘limlar">
+    <a href="#s-takror">Takrorlash</a>
+    <a href="#s-nima">Startup nima</a>
+    <a href="#s-million">Birinchi million</a>
+    <a href="#s-mvp">G‘oya va MVP</a>
+    <a href="#s-ai">AI zamoni</a>
+    <a href="#s-topshiriq">Topshiriq</a>
+    <a href="index.html">← Stiv Jobs</a>
+  </nav>
+  <button class="btn" id="go-present" title="Klaviatura: P">▶ Taqdimot</button>
+</header>
+
+<main class="deck" id="deck">
+
+<!-- 01 hero -->
+<section class="slide hero dark">
+  <div class="in">
+    <div class="txt">
+      <span class="eyebrow">DATA Biznes Klub · 2-mashg‘ulot</span>
+      <h1>Startup orqali birinchi million</h1>
+      <p class="lead" style="color:#fff;font-weight:700">G‘oyadan birinchi pulgacha: dunyo tajribasi, raqamlar va sizning birinchi qadamingiz</p>
+      <p class="t" style="color:#cfe0ff">Shanba, 10-oktabr · 12:30–14:30</p>
+      <p class="small" style="color:#9fb6ff">Shahzod Sobirov · DATA asoschisi</p>
+    </div>
+    <div class="pic ph" data-img="hero" data-cap="Muqova surati: garaj, jamoa yoki noutbuk ortidagi yosh startuper"></div>
+  </div>
+</section>
+
+<!-- 02 reja -->
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Bugungi yo‘l xaritasi</span>
+    <h2>2 soat, 5 bekat</h2>
+    <div class="grid c3">
+      <div class="card"><span class="eyebrow">12:30 · 25 daq</span><h3>Takrorlash va g‘oliblar</h3><p class="small">Stiv Jobs: 5 savol. Atari topshirig‘i: ovoz berish va 3 ta kitob</p></div>
+      <div class="card"><span class="eyebrow">12:55 · 25 daq</span><h3>Startup nima?</h3><p class="small">Tarixi, mashhur startuplar va asoschilar, statistika, yo‘nalishlar, yosh chegarasi</p></div>
+      <div class="card"><span class="eyebrow">13:20 · 30 daq</span><h3>Birinchi million</h3><p class="small">30 yoshgacha milliarderlar, million kalkulyatori, muvaffaqiyat formulasi</p></div>
+      <div class="card"><span class="eyebrow">13:50 · 20 daq</span><h3>G‘oya, MVP, birinchi pul</h3><p class="small">Garajdagi birinchi mahsulot va birinchi mijoz. O‘zbekistondan bir hikoya</p></div>
+      <div class="card"><span class="eyebrow">14:10 · 20 daq</span><h3>AI zamoni va topshiriq</h3><p class="small">Maktabda o‘qib turib dunyoga chiqqanlar. G‘oya kartasi</p></div>
+      <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">Bugungi savol</span><h3>Nega hamma startup qilmaydi, agar u eng tez yo‘l bo‘lsa?</h3></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 0. TAKRORLASH ================= -->
+<section class="slide blue" id="s-takror">
+  <div class="in">
+    <span class="eyebrow" style="color:#9fe3ff">O‘tgan shanba · takrorlash</span>
+    <h1>Stiv Jobs: boshqacha fikrlagan inson</h1>
+    <p class="lead">Garaj, haydalish, qaytish va 7 qoida. Eslaymizmi?</p>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">1 daqiqada butun hayot</span>
+    <div class="split">
+      <div class="rows">
+        <div class="row"><b>1976</b><p class="t">Garaj: ikki Stiv, taxminan 1 300 dollar va 50 ta kompyuterga birinchi buyurtma</p></div>
+        <div class="row"><b>1985</b><p class="t">30 yoshida o‘z kompaniyasidan haydaldi. NeXT va Pixar’ni qurdi</p></div>
+        <div class="row"><b>1997</b><p class="t">Bankrotlik yoqasidagi Apple’ga qaytdi: o‘nlab mahsulotdan 4 tasi qoldi</p></div>
+        <div class="row on"><b>2007</b><p class="t">iPhone: pleyer, telefon va internet bitta qurilmada</p></div>
+        <div class="row"><b>7 qoida</b><p class="t">Oddiylik · Fokus · Sifat · Jamoa · Mijoz · Chorraha · Pul emas, mahsulot</p></div>
+      </div>
+      <figure style="margin:0"><div class="photo"><img src="img/garaj.jpg" alt="Stiv Voznyak va Stiv Jobs kompyuter ustida ishlamoqda" loading="lazy" width="1200" height="1034"></div><figcaption>Apple ham garajdagi startup edi</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Tezkor savollar · 5 daqiqa · javobni bosib oching</span>
+    <h2>Kim birinchi aytadi?</h2>
+    <div class="grid g2">
+      <details class="qa"><summary>Apple’ga qaysi yili va qayerda asos solingan?</summary><p>1976-yil, garajda</p></details>
+      <details class="qa"><summary>Breakout o‘yinini 4 kechada kim loyihalagan?</summary><p>Stiv Voznyak</p></details>
+      <details class="qa"><summary>Jobs 1997-yilda Apple mahsulotlarini nechta qilib qisqartirgan?</summary><p>4 ta: 2 × 2 jadval</p></details>
+      <details class="qa"><summary>Kalligrafiya darsi 10 yildan keyin qayerda “ishga tushdi”?</summary><p>Macintosh shriftlarida (1984)</p></details>
+      <details class="qa"><summary>Stenford nutqining so‘nggi 4 so‘zi?</summary><p>“Och bo‘l. Nodon bo‘l.”</p></details>
+      <details class="qa"><summary>Fokus nima, Jobsning ta’rifi bo‘yicha?</summary><p>“Yo‘q” deyish</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- jonli g'oyalar -->
+<section class="slide dark" id="s-goyalar">
+  <div class="in">
+    <span class="eyebrow">Atari topshirig‘i · natija <span class="new">JONLI</span></span>
+    <h2>Sizning o‘yin g‘oyalaringiz</h2>
+    <div class="split" style="align-items:start">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="board" id="board"><p class="small">Yuklanmoqda...</p></div>
+        <p class="small" id="board-info"></p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="phases" style="grid-template-columns:1fr 1fr">
+          <div class="phase"><span class="s">1 DAQIQA × JAMOA</span><p class="t">Har jamoa o‘yinini Jobs uslubida taqdim qiladi</p></div>
+          <div class="phase"><span class="s">3 DAQIQA</span><p class="t">Hamma telefondan bitta ovoz beradi. O‘z jamoangizga ovoz bermang!</p></div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="timer" data-sec="60">▶ 1:00 · chiqish</button><button class="timer" data-sec="180">▶ 3:00 · ovoz</button></div>
+        <div class="qrbox"><div class="qr" data-qr="goyalar"></div></div>
+        <p class="small">Ovoz berish: <span class="link" data-href="goyalar"></span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- podium -->
+<section class="slide dark" id="s-podium">
+  <div class="in">
+    <span class="eyebrow">G‘oliblar · sovg‘a: Uolter Ayzekson, “Stiv Jobs”</span>
+    <h2>Uchta kitob, uchta g‘olib</h2>
+    <div class="podium" id="podium">
+      <div class="p p2"><div class="m">🥈</div><h3 data-place="2">—</h3><p class="small" data-votes="2"></p></div>
+      <div class="p p1"><div class="m">🥇</div><h3 data-place="1">—</h3><p class="small" data-votes="1" style="color:#cfe0ff"></p></div>
+      <div class="p p3"><div class="m">🥉</div><h3 data-place="3">—</h3><p class="small" data-votes="3"></p></div>
+    </div>
+    <div class="grid g3">
+      <div class="ph wide" data-img="kitob" data-cap="Kitob surati: “Stiv Jobs”, Uolter Ayzekson"></div>
+      <div class="ph wide" data-img="goliblar" data-cap="G‘oliblar surati (dars paytida olinadi)"></div>
+      <div class="card"><p class="t">Natija o‘quvchilar ovozi bilan aniqlanadi. Ovozlar teng bo‘lsa, jamoalar 30 soniyalik qo‘shimcha taqdimot qiladi.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ko'prik -->
+<section class="slide white">
+  <div class="in">
+    <span class="eyebrow">Ko‘prik: Jobsdan startupga</span>
+    <h2>Garajdan milliongacha: <span class="grad">4 yil</span></h2>
+    <div class="grid g4">
+      <div class="card"><div class="k c">1976</div><p class="t">Garaj. Kapital: mikroavtobus va kalkulyator puli, taxminan 1 300 $</p></div>
+      <div class="card"><div class="k c">50 × 500 $</div><p class="t">Birinchi buyurtma: Byte Shop do‘koni. 25 000 $ tushum</p></div>
+      <div class="card"><div class="k c">1977</div><p class="t">Apple II chiqdi. Investor Mayk Markkula 250 000 $ olib keldi</p></div>
+      <div class="card hl"><div class="k">1980</div><p class="t">Apple birjaga chiqdi. 25 yoshli Jobs boyligi 200 mln dollardan oshdi</p></div>
+    </div>
+    <p class="lead">Bu oddiy biznes emas edi. Bu <strong>startup</strong> edi. Bugun shu so‘zni ochamiz.</p>
+  </div>
+</section>
+
+<!-- ================= 1. STARTUP NIMA ================= -->
+<section class="slide blue" id="s-nima">
+  <div class="in">
+    <span class="eyebrow" style="color:#9fe3ff">1-bekat</span>
+    <h1>Startup nima va u qanday paydo bo‘lgan?</h1>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Oddiy tilda</span>
+    <h2>Startup — <span class="grad">tez o‘sish uchun</span> yaratilgan kompaniya</h2>
+    <div class="vs">
+      <div class="card"><span class="eyebrow">Oddiy biznes</span><h3>Choyxona</h3><p class="t">Mahalladagi 50 kishiga xizmat qiladi. Yaxshi daromad, barqaror. 10 yildan keyin ham 1–2 ta filial.</p></div>
+      <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">Startup</span><h3>Ovqat yetkazish ilovasi</h3><p class="t">Bugun 1 shahar, ertaga butun mamlakat. Har oy 2 baravar o‘sishga harakat qiladi. Hali foyda yo‘q bo‘lishi mumkin.</p></div>
+    </div>
+    <div class="grid g2">
+      <div class="card"><p class="quote" style="font-size:max(18px,calc(var(--u)*2.4))">“Startup — tez o‘sish uchun yaratilgan kompaniya.”</p><p class="who">Pol Grem, Y Combinator asoschisi, 2012</p></div>
+      <div class="card"><p class="quote" style="font-size:max(18px,calc(var(--u)*2.4))">“Startup — takrorlanadigan va kengayadigan biznes modelini izlayotgan vaqtinchalik tashkilot.”</p><p class="who">Stiv Blank</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide grey">
+  <div class="in">
+    <span class="eyebrow">Startup formulasi · 4 belgi</span>
+    <h2>Startup = Muammo + Yangi yechim + Tez o‘sish + Kichik jamoa</h2>
+    <div class="grid g4">
+      <div class="card"><div class="k c">1</div><h3>Ko‘p odamning muammosi</h3><p class="small">Millionlab odamni qiynaydigan narsa</p></div>
+      <div class="card"><div class="k c">2</div><h3>Yangi yechim</h3><p class="small">Odatda texnologiya orqali: ilova, sayt, AI</p></div>
+      <div class="card"><div class="k c">3</div><h3>Kengayadi</h3><p class="small">10 mijozdan 1 million mijozga xarajat deyarli oshmaydi</p></div>
+      <div class="card"><div class="k c">4</div><h3>Noaniqlik</h3><p class="small">Ishlashi aniq emas. Shuning uchun xavfli, lekin katta yutuq beradi</p></div>
+    </div>
+    <p class="quote">“Startap qilish uchun g‘oya va jamoa bo‘lsa bo‘ldi.” <span class="post">POST #567</span></p>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Tarix · garajlar vodiysi</span>
+    <h2>Startup qanday paydo bo‘lgan?</h2>
+    <div class="tl">
+      <div class="era"><div class="y">1939</div><h3>HP garaji</h3><p class="small">Palo-Alto. Xyulett va Pakkard 538 $ bilan boshladi. “Silikon vodiysining tug‘ilgan joyi”</p></div>
+      <div class="era"><div class="y">1946</div><h3>Venchur kapital</h3><p class="small">ARDC: xavfli yangi kompaniyalarga pul tikadigan birinchi fond</p></div>
+      <div class="era"><div class="y">1957</div><h3>“Sotqin sakkizlik”</h3><p class="small">8 muhandis ishdan ketib, Fairchild’ni qurdi. Undan yuzlab kompaniya, jumladan Intel chiqdi</p></div>
+      <div class="era"><div class="y">1976</div><h3>Apple</h3><p class="small">Garajdan dunyoning eng qimmat kompaniyasigacha</p></div>
+      <div class="era"><div class="y">1995–2000</div><h3>Internet buumi</h3><p class="small">“Dot-com”: minglab internet startuplar. Ko‘pi yopildi, Amazon va Google qoldi</p></div>
+      <div class="era"><div class="y">2005</div><h3>Y Combinator</h3><p class="small">Startuplar “maktabi”: Airbnb, Dropbox, Stripe shu yerdan chiqdi</p></div>
+      <div class="era"><div class="y">2008</div><h3>App Store</h3><p class="small">Har kim telefon uchun ilova yasab, butun dunyoga sota oladigan bo‘ldi</p></div>
+      <div class="era"><div class="y">2022</div><h3>ChatGPT</h3><p class="small">AI davri boshlandi: endi bitta odam ham kompaniya qura oladi</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide white" id="s-mashhur">
+  <div class="in">
+    <span class="eyebrow">Hammamiz ishlatamiz · 1/2</span>
+    <h2>Zamonaviy dunyoning eng mashhur startuplari</h2>
+    <div class="grid c4 big">
+      <div class="card"><div class="ph wide" data-img="google" data-cap="Google logosi / garaj"></div><span class="eyebrow">1998 · garaj</span><h3>Google</h3><p class="small">2 nafar Stenford talabasi. Ijaraga olingan garajda boshlangan</p></div><div class="card"><div class="ph wide" data-img="facebook" data-cap="Facebook / yotoqxona"></div><span class="eyebrow">2004 · yotoqxona</span><h3>Facebook</h3><p class="small">19 yoshli Mark Sukerberg, Garvard yotoqxonasidan</p></div><div class="card"><div class="ph wide" data-img="airbnb" data-cap="Airbnb: havo matraslari"></div><span class="eyebrow">2008 · 3 ta matras</span><h3>Airbnb</h3><p class="small">Ijara pulini to‘lash uchun xonadagi havo matraslarini ijaraga berishdi</p></div><div class="card"><div class="ph wide" data-img="instagram" data-cap="Instagram logosi"></div><span class="eyebrow">2010 · 13 xodim</span><h3>Instagram</h3><p class="small">2 yildan keyin 1 mlrd dollarga sotildi. Jamoada atigi 13 kishi bor edi</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide white">
+  <div class="in">
+    <span class="eyebrow">Hammamiz ishlatamiz · 2/2</span>
+    <h2>Zamonaviy dunyoning eng mashhur startuplari</h2>
+    <div class="grid c4 big">
+      <div class="card"><div class="ph wide" data-img="whatsapp" data-cap="WhatsApp logosi"></div><span class="eyebrow">2009 · 55 xodim</span><h3>WhatsApp</h3><p class="small">2014-yilda 19 mlrd dollarga sotildi</p></div><div class="card"><div class="ph wide" data-img="telegram" data-cap="Telegram logosi"></div><span class="eyebrow">2013 · aka-uka</span><h3>Telegram</h3><p class="small">Pavel va Nikolay Durovlar. 2025-yilda 1 mlrd foydalanuvchi</p></div><div class="card"><div class="ph wide" data-img="openai" data-cap="ChatGPT / OpenAI"></div><span class="eyebrow">2015 · ChatGPT 2022</span><h3>OpenAI</h3><p class="small">ChatGPT 2 oyda 100 mln foydalanuvchiga yetdi: tarixdagi rekord</p></div><div class="card"><div class="ph wide" data-img="canva" data-cap="Canva logosi"></div><span class="eyebrow">2013 · Avstraliya</span><h3>Canva</h3><p class="small">G‘oya 19 yoshli talaba Melani Perkinsdan. Investorlar 100 martadan ko‘p “yo‘q” degan</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Eng mashhur startuperlar</span>
+    <h2>Ular ham sizdek boshlagan</h2>
+    <div class="grid g6">
+      <div class="card"><div class="ph sq" data-img="gates" data-cap="Bill Geyts portreti"></div><span class="eyebrow">Microsoft</span><h3>Bill Geyts</h3><p class="small">19 yoshida Garvardni tashlab, do‘sti bilan Microsoft’ni ochdi (1975)</p></div>
+      <div class="card"><div class="ph sq" data-img="zuckerberg" data-cap="Mark Sukerberg portreti"></div><span class="eyebrow">Facebook</span><h3>Mark Sukerberg</h3><p class="small">19 yoshida yotoqxonada. 23 yoshida eng yosh milliarder</p></div>
+      <div class="card"><div class="ph sq" data-img="musk" data-cap="Ilon Mask portreti"></div><span class="eyebrow">Tesla, SpaceX</span><h3>Ilon Mask</h3><p class="small">12 yoshida Blastar o‘yinini yozib, 500 dollarga sotgan</p></div>
+      <div class="card"><div class="ph sq" data-img="perkins" data-cap="Melani Perkins portreti"></div><span class="eyebrow">Canva</span><h3>Melani Perkins</h3><p class="small">Talabalarga dizayn darsi berib yurganda g‘oya topdi</p></div>
+      <div class="card"><div class="ph sq" data-img="huang" data-cap="Jensen Xuang portreti"></div><span class="eyebrow">Nvidia</span><h3>Jensen Xuang</h3><p class="small">1993-yilda kafe stolida reja tuzdi. Bugun AI chiplarining asosiy ishlab chiqaruvchisi</p></div>
+      <div class="card"><div class="ph sq" data-img="altman" data-cap="Sem Altman portreti"></div><span class="eyebrow">OpenAI</span><h3>Sem Altman</h3><p class="small">19 yoshida birinchi startupi Loopt’ni ochgan. Bugun ChatGPT ortida</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide grey" id="s-stat">
+  <div class="in">
+    <span class="eyebrow">Bugungi dunyo · raqamlarda</span>
+    <h2>Startup dunyosi statistikasi</h2>
+    <div class="grid g4" id="stats">
+      <div class="card"><div class="k c">~90%</div><p class="t">startup oxir-oqibat yopiladi</p><p class="small">Startup Genome, taxminiy</p></div>
+      <div class="card"><div class="k c">~1 400</div><p class="t">“yagona shox” (unicorn): qiymati 1 mlrd dollardan oshgan startup</p><p class="small">CB Insights, 2026. Boshqa hisoblarda 1 800 dan ortiq</p></div>
+      <div class="card"><div class="k c">425 mlrd $</div><p class="t">2025-yilda startuplarga kiritilgan venchur investitsiya (+30%)</p><p class="small">Crunchbase</p></div>
+      <div class="card hl"><div class="k">~50%</div><p class="t">shu pulning qariyb yarmi AI startuplarga ketdi. 2024-yilda uchdan biri edi</p></div>
+    </div>
+    <p class="lead">Ya’ni har 10 ta startupdan 9 tasi yopiladi. Lekin qolgan 1 tasi dunyoni o‘zgartiradi.</p>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Startup o‘limi · nega yopiladi?</span>
+    <h2>9 tasi nega yiqiladi?</h2>
+    <div class="bar-h" id="fail"><div class="r"><span>Pul tugadi, investor topilmadi</span><i style="width:100%"></i><b>38%</b></div><div class="r"><span>Mahsulot bozorga kerak emasdi</span><i style="width:92%"></i><b>35%</b></div><div class="r"><span>Raqobatchi o‘zib ketdi</span><i style="width:53%"></i><b>20%</b></div><div class="r"><span>Pul topish modeli noto‘g‘ri</span><i style="width:50%"></i><b>19%</b></div><div class="r"><span>Qonun bilan muammo</span><i style="width:47%"></i><b>18%</b></div></div>
+    <p class="small">CB Insights: 111 ta yopilgan startup asoschilari aytgan sabablar, 2021. Bir startupda bir nechta sabab bo‘lishi mumkin.</p>
+    <p class="lead">Eng katta sabab: <strong style="color:#fff">hech kimga kerak bo‘lmagan narsani yasash.</strong> Shuning uchun avval muammo, keyin mahsulot.</p>
+  </div>
+</section>
+
+<section class="slide white">
+  <div class="in">
+    <span class="eyebrow">Qaysi sohada startup qilish mumkin?</span>
+    <h2>Startup yo‘nalishlari</h2>
+    <div class="grid g4">
+      <div class="card"><h3>🤖 AI</h3><p class="small">Sun’iy intellekt yordamchilari, agentlar</p></div>
+      <div class="card"><h3>💳 Fintech</h3><p class="small">To‘lov, bank, hamyon: Payme, Click</p></div>
+      <div class="card"><h3>🎓 Edtech</h3><p class="small">Ta’lim: Duolingo, Khan Academy</p></div>
+      <div class="card"><h3>🛒 E-commerce</h3><p class="small">Onlayn savdo: Amazon, Uzum</p></div>
+      <div class="card"><h3>🩺 Healthtech</h3><p class="small">Sog‘liq: onlayn shifokor, fitnes ilovalari</p></div>
+      <div class="card"><h3>🎮 Gaming</h3><p class="small">O‘yinlar: Roblox, Minecraft</p></div>
+      <div class="card"><h3>🚕 Transport va yetkazish</h3><p class="small">Uber, Yandex Go, Express24</p></div>
+      <div class="card"><h3>🌱 Klimat va agro</h3><p class="small">Toza energiya, aqlli dehqonchilik</p></div>
+    </div>
+    <p class="t"><strong>Savol:</strong> sizning qiziqishingiz qaysi biriga yaqin? 3 kishi aytadi.</p>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Necha yoshdan?</span>
+    <h2>G‘oyaga yosh chegarasi yo‘q. <span class="grad">Hujjatga bor.</span></h2>
+    <div class="grid g3">
+      <div class="card"><div class="k c">0+</div><h3>G‘oya, MVP, birinchi mijoz</h3><p class="t">Istalgan yoshda. Mikaila Ulmer 4 yoshida limonad biznesini boshlagan</p></div>
+      <div class="card"><div class="k c">16</div><h3>Ota-ona roziligi bilan</h3><p class="t">16 yoshdan tadbirkorlik qilsa, ota-ona roziligi bilan to‘liq muomalaga layoqatli deb topilishi mumkin (Fuqarolik kodeksi, 28-modda)</p></div>
+      <div class="card"><div class="k c">18</div><h3>To‘liq mustaqil</h3><p class="t">Kompaniya ochish, shartnoma imzolash, investor bilan ishlash</p></div>
+    </div>
+    <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">O‘zbekiston · Prezident qarori PQ-59, 11.02.2026 <span class="post" style="color:#cfe0ff">POST #1548</span></span><p class="t">O‘quvchilar o‘rtasida “Eng yaxshi startap g‘oyasi” tanlovi: g‘oliblarga <strong>10 mln so‘mgacha</strong> mukofot. Hududlarda hokimlar rahbarligida “Startaplar klubi”. Har yili “Yosh tadbirkorlar” chempionati.</p></div>
+  </div>
+</section>
+
+<!-- ================= 2. BIRINCHI MILLION ================= -->
+<section class="slide blue" id="s-million">
+  <div class="in">
+    <span class="eyebrow" style="color:#9fe3ff">2-bekat</span>
+    <h1>Birinchi million</h1>
+    <p class="lead">Kim, qayerda va qancha vaqtda topdi?</p>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">30 yoshga to‘lmagan · o‘zi topganlar</span>
+    <h2>Dunyoning eng yosh boylari</h2>
+    <div class="grid g6" id="young"><div class="card"><div class="ph sq" data-img="mercor" data-cap="Mercor asoschilari: 3 do‘st"></div><span class="eyebrow">22 yosh · AI · 2025</span><h3>Mercor asoschilari</h3><p class="small">Brendan Fudi, Adarsh Xiremat, Surya Midha. Maktabdagi debat do‘stlari. Kompaniya 10 mlrd $ baholandi: tarixdagi eng yosh o‘zi topgan milliarderlar</p></div><div class="card"><div class="ph sq" data-img="coplan" data-cap="Shayn Koplan portreti"></div><span class="eyebrow">27 yosh · Polymarket · 2025</span><h3>Shayn Koplan</h3><p class="small">21 yoshida universitetni tashlab boshladi. Kompaniya ~9 mlrd $ baholandi</p></div><div class="card"><div class="ph sq" data-img="wang" data-cap="Aleksandr Vang portreti"></div><span class="eyebrow">24 yoshida milliarder · Scale AI</span><h3>Aleksandr Vang</h3><p class="small">AI uchun ma’lumot tayyorlaydi. 2025-yilda Meta kompaniyaning 49% ini 14,3 mlrd $ ga oldi</p></div><div class="card"><div class="ph sq" data-img="cursor" data-cap="Cursor asoschilari"></div><span class="eyebrow">20 yoshlar · AI dasturlash</span><h3>Cursor asoschilari</h3><p class="small">MIT’dagi 4 do‘st, 2022. Dasturchilar uchun AI muharrir. 2026-yilda SpaceX 60 mlrd $ ga sotib olishga kelishdi</p></div><div class="card"><div class="ph sq" data-img="zuckerberg2" data-cap="Yosh Sukerberg surati"></div><span class="eyebrow">23 yosh · Facebook · 2008</span><h3>Mark Sukerberg</h3><p class="small">O‘z davrida eng yosh o‘zi topgan milliarder. 17 yil o‘tib rekordni AI startuperlar buzdi</p></div><div class="card hl"><span class="eyebrow" style="color:#9fe3ff">Forbes, 2026</span><h3>30 yoshgacha 35 milliarder</h3><p class="small" style="color:#cfe0ff">Ulardan 12 tasi boylikni o‘zi topgan. O‘zi topganlarning ko‘pchiligi — AI startup asoschilari. Qolganlari meros olgan.</p></div></div>
+    <p class="lead">Meros emas, startup: o‘zi topgan yosh boylarning deyarli hammasi texnologik startup asoschilari.</p>
+  </div>
+</section>
+
+<section class="slide white">
+  <div class="in">
+    <span class="eyebrow">Nega aynan startup?</span>
+    <h2>1 000 000 $ ga uchta yo‘l</h2>
+    <div class="grid g3">
+      <div class="card"><span class="eyebrow">Ish haqi</span><h3>Oyiga 1 000 $</h3><div class="k c">83 yil</div><p class="small">Hammasini yig‘sangiz ham, birorta tiyin sarflamasdan</p></div>
+      <div class="card"><span class="eyebrow">Oddiy biznes</span><h3>Oyiga 5 000 $ foyda</h3><div class="k c">17 yil</div><p class="small">Yaxshi do‘kon yoki o‘quv markazi</p></div>
+      <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">Startup</span><h3>Har oy 2 baravar o‘sish</h3><div class="k">1–3 yil</div><p class="small" style="color:#cfe0ff">Yoki 0. Startup — eng tez, lekin eng xavfli yo‘l</p></div>
+    </div>
+    <p class="lead">Sir — <strong>kengayish</strong>: ilova 10 kishiga ham, 10 million kishiga ham bir xil kod bilan ishlaydi. Choyxona esa har bir mijoz uchun yangi stul so‘raydi.</p>
+  </div>
+</section>
+
+<section class="slide dark" id="s-calc">
+  <div class="in">
+    <span class="eyebrow">Mashq · Million kalkulyatori <span class="new">JONLI</span></span>
+    <h2>Siz millionga qachon yetasiz?</h2>
+    <div class="calc">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div class="presets" id="presets">
+          <button type="button" data-p="3,200,10">📱 Ilova · 3 $</button>
+          <button type="button" data-p="20,50,10">🎓 Onlayn kurs · 20 $</button>
+          <button type="button" data-p="1,1000,15">🤖 Telegram bot · 1 $</button>
+          <button type="button" data-p="2,30,0">🍋 Limonad · 2 $</button>
+        </div>
+        <label>Bitta mijoz necha dollar to‘laydi? <b id="o-price"></b><input type="range" id="i-price" min="1" max="200" value="5"></label>
+        <label>1-oyda nechta mijoz? <b id="o-cust"></b><input type="range" id="i-cust" min="10" max="5000" step="10" value="100"></label>
+        <label>Har oy mijozlar necha foiz ko‘payadi? <b id="o-grow"></b><input type="range" id="i-grow" min="0" max="50" value="10"></label>
+      </div>
+      <div class="res">
+        <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">1 000 000 $ tushumga</span><div class="k" id="r-time">—</div><p class="t" id="r-note"></p></div>
+        <div class="card"><span class="eyebrow">O‘sishsiz bo‘lsa</span><div class="k c" id="r-flat">—</div></div>
+        <div class="track" aria-hidden="true"><i id="r-bar"></i></div>
+        <p class="small">Bu tushum, foyda emas: xarajatlar hali ayrilmagan. 50 yildan ko‘p chiqsa, “50+ yil” deb ko‘rsatiladi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide grey">
+  <div class="in">
+    <span class="eyebrow">Qanday startuplar muvaffaqiyat qozonadi?</span>
+    <h2>Eng muhim omil: <span class="grad">vaqt</span></h2>
+    <div class="split">
+      <div class="bar-h">
+        <div class="r"><span>To‘g‘ri vaqt</span><i style="width:100%"></i><b>42%</b></div>
+        <div class="r"><span>Jamoa va ijro</span><i style="width:76%"></i><b>32%</b></div>
+        <div class="r"><span>G‘oya</span><i style="width:67%"></i><b>28%</b></div>
+        <div class="r"><span>Biznes model</span><i style="width:57%"></i><b>24%</b></div>
+        <div class="r"><span>Pul (investitsiya)</span><i style="width:33%"></i><b>14%</b></div>
+      </div>
+      <div>
+        <p class="t">Bill Gross 200 ta kompaniyani o‘rganib, muvaffaqiyatga nima ko‘proq ta’sir qilganini o‘lchadi (TED, 2015).</p>
+        <p class="t" style="margin-top:12px"><strong>Misol:</strong> Airbnb 2008-yil inqirozida chiqdi: odamlarga qo‘shimcha pul kerak edi. 5 yil oldin bunday g‘oya “begona uyda yotish” deb kulgi bo‘lardi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Muvaffaqiyat uchun nimaga e’tibor berish kerak?</span>
+    <h2>7 ta qoida</h2>
+    <div class="grid g4">
+      <div class="card"><div class="k c">1</div><h3>Muammoni seving</h3><p class="small">G‘oyani emas. G‘oya o‘zgaradi, muammo qoladi</p></div>
+      <div class="card"><div class="k c">2</div><h3>Odamlar bilan gaplashing</h3><p class="small">Yasashdan oldin 20 kishidan so‘rang</p></div>
+      <div class="card"><div class="k c">3</div><h3>Kichik boshlang</h3><p class="small">Avval bitta sinf, keyin maktab, keyin shahar</p></div>
+      <div class="card"><div class="k c">4</div><h3>Tez qiling</h3><p class="small">Mukammal emas, ishlaydigan versiya bir haftada</p></div>
+      <div class="card"><div class="k c">5</div><h3>Jamoa</h3><p class="small">Jobs + Voznyak: biri sotadi, biri yasaydi</p></div>
+      <div class="card"><div class="k c">6</div><h3>Raqamlarni kuzating</h3><p class="small">Nechta odam qaytib keldi? Nechta to‘ladi?</p></div>
+      <div class="card"><div class="k c">7</div><h3>Taslim bo‘lmang</h3><p class="small">Canva 100 dan ortiq “yo‘q” eshitgan</p></div>
+      <div class="card hl"><h3>Jobsdan</h3><p class="small" style="color:#cfe0ff">“Muvaffaqiyatli tadbirkorni muvaffaqiyatsizidan ajratib turadigan narsaning yarmi — sabr-toqat.”</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 3. G'OYA, MVP, PUL ================= -->
+<section class="slide blue" id="s-mvp">
+  <div class="in">
+    <span class="eyebrow" style="color:#9fe3ff">3-bekat</span>
+    <h1>G‘oya, MVP va birinchi pul</h1>
+  </div>
+</section>
+
+<section class="slide white">
+  <div class="in">
+    <span class="eyebrow">G‘oya qayerdan keladi?</span>
+    <h2>Eng yaxshi g‘oya — sizni jahlingizni chiqaradigan narsa</h2>
+    <div class="grid g3">
+      <div class="card"><div class="k c">“Nega...?”</div><p class="t">Nega maktab oshxonasida navbat 15 daqiqa? Nega uy vazifasini topish qiyin?</p></div>
+      <div class="card"><div class="k c">“Qani edi...”</div><p class="t">Qani edi repetitorni 1 daqiqada topsam. Qani edi kiyimimni sotib, yangisini olsam.</p></div>
+      <div class="card"><div class="k c">“Men bilaman”</div><p class="t">Siz yaxshi biladigan narsa: o‘yin, sport, rasm, dasturlash, til.</p></div>
+    </div>
+    <p class="quote">“Odamlar nima xohlashini siz ko‘rsatmaguningizcha bilishmaydi.” <span class="who" style="display:inline">Stiv Jobs</span></p>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">MVP · Minimal Viable Product · eng kichik ishlaydigan mahsulot</span>
+    <h2>Mashina emas, avval <span class="grad">skeytbord</span></h2>
+    <div class="split">
+      <div class="ph wide" data-img="mvp" data-cap="Rasm: skeytbord → samokat → velosiped → mototsikl → mashina (Henrik Kniberg chizmasi)"></div>
+      <div class="rows">
+        <div class="row"><b>Airbnb</b><p class="t">Sayt + 3 ta havo matrasi o‘z kvartirasida. Birinchi 3 mehmon</p></div>
+        <div class="row"><b>Dropbox</b><p class="t">Mahsulot yo‘q, faqat 3 daqiqalik video. Bir kechada kutish ro‘yxati 5 000 dan 75 000 ga oshdi</p></div>
+        <div class="row"><b>Zappos</b><p class="t">Do‘kondagi poyabzallarni suratga olib, saytga qo‘ydi. Buyurtma kelsa, borib sotib olib yuborardi</p></div>
+        <div class="row on"><b>Siz</b><p class="t">Telegram kanal, bot, Google Forma yoki AI bilan 1 kunda sayt</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide grey">
+  <div class="in">
+    <span class="eyebrow">MVP qurishning 5 qadami</span>
+    <h2>Bir haftada g‘oyani tekshirish</h2>
+    <div class="phases">
+      <div class="phase"><span class="s">1-KUN</span><h3>Muammo</h3><p class="t">Bitta jumla: “... odamlar ... dan qiynaladi”</p></div>
+      <div class="phase"><span class="s">2-KUN</span><h3>10 suhbat</h3><p class="t">10 kishidan so‘rang: rostdan qiynalasizmi? Hozir nima qilyapsiz?</p></div>
+      <div class="phase"><span class="s">3–4-KUN</span><h3>Eng kichik yechim</h3><p class="t">Kanal, bot, forma, Canva sahifa yoki AI sayt</p></div>
+      <div class="phase"><span class="s">5–6-KUN</span><h3>Birinchi foydalanuvchilar</h3><p class="t">Sinfdoshlar, oila, mahalla. Kim qaytib keldi?</p></div>
+      <div class="phase"><span class="s">7-KUN</span><h3>Pul so‘rang</h3><p class="t">Kimdir 5 000 so‘m to‘lasa, demak g‘oya tirik</p></div>
+    </div>
+    <p class="lead">Maqsad — chiroyli mahsulot emas. Maqsad — <strong>odamlarga kerakmi, yo‘qmi</strong>, tez bilish.</p>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Birinchi pul qanday topiladi?</span>
+    <h2>Eng yaxshi investor — <span class="grad">birinchi mijoz</span></h2>
+    <div class="grid g3">
+      <div class="card"><div class="k c">25 000 $</div><h3>Apple, 1976</h3><p class="t">Byte Shop 50 ta kompyuter buyurtma qildi. Detallar shu buyurtma ishonchiga qarzga olindi</p></div>
+      <div class="card"><div class="k c">30 000 $</div><h3>Airbnb, 2008</h3><p class="t">Pul tugadi. Asoschilar “Obama O’s” nonushta yormasini chiroyli qutiga solib sotdi</p></div>
+      <div class="card"><div class="k c">3 000 $</div><h3>Microsoft, 1975</h3><p class="t">19 yoshli Geyts va Allen Altair kompyuteri uchun dastur sotdi: 3 000 $ va har nusxadan ulush</p></div>
+    </div>
+    <div class="rows">
+      <div class="row"><b>1</b><p class="t"><strong>Birinchi mijozlar</strong> — eng toza pul: hech kimga ulush bermaysiz</p></div>
+      <div class="row"><b>2</b><p class="t"><strong>O‘z jamg‘armangiz, oila va do‘stlar</strong> — kichik, lekin tez</p></div>
+      <div class="row"><b>3</b><p class="t"><strong>Tanlov va grantlar</strong> — O‘zbekistonda o‘quvchilar uchun ham bor (PQ-59)</p></div>
+      <div class="row"><b>4</b><p class="t"><strong>Investor</strong> — pul beradi, evaziga kompaniyaning bir qismini oladi</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide white" id="s-uz">
+  <div class="in">
+    <span class="eyebrow">Mahalliy qahramon · O‘zbekiston</span>
+    <h2>Uzum: O‘zbekistonning birinchi “yagona shox”i</h2>
+    <div class="split">
+      <div class="rows" id="uz-rows"><div class="row"><b>2022</b><p class="t">Djasur Djumayev va jamoasi Uzum’ga asos soldi. Oktabrda Uzum Market ishga tushdi</p></div><div class="row on"><b>2024</b><p class="t">Mart: qiymati 1,16 mlrd $. O‘zbekistonning birinchi unicorn’i — atigi 1,5 yilda</p></div><div class="row"><b>2025</b><p class="t">Tencent va VR Capital 65,5 mln $ kiritdi. Qiymati ~1,5 mlrd $</p></div><div class="row"><b>Payme</b><p class="t">2019-yilda 10,8 mln $ baholangan, 2023-yilda 113,6 mln $: 4 yilda 10 baravar</p></div></div>
+      <div class="ph tall" data-img="uzbek" data-cap="Uzum logosi yoki Djasur Djumayev surati"></div>
+    </div>
+    <p class="lead">Akmal Paiziyev: Yarmarka.uz, MyTaxi, Express24. Ba’zi loyihalari yopildi, lekin har biri keyingisiga dars bo‘ldi. 2025-yilda San-Fransiskoda AI startup ochdi.</p>
+  </div>
+</section>
+
+<!-- ================= 4. AI ZAMONI ================= -->
+<section class="slide blue" id="s-ai">
+  <div class="in">
+    <span class="eyebrow" style="color:#9fe3ff">4-bekat</span>
+    <h1>Sun’iy intellekt zamonida startup</h1>
+    <p class="lead">Dastur yozish endi ixtiro emas. Unda nima qoladi?</p>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Nima o‘zgardi?</span>
+    <h2>Oldin va hozir</h2>
+    <div class="vs">
+      <div class="card"><span class="eyebrow">2010</span><h3>Ilova yasash uchun</h3><p class="t">5–10 dasturchi · 6–12 oy · yuz minglab dollar</p></div>
+      <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">2026</span><h3>Ilova yasash uchun</h3><p class="t">1 kishi + AI · 1 hafta yoki 1 kun · oyiga 20 dollarlik obuna</p></div>
+    </div>
+    <div class="grid g3" id="ai-cases"><div class="card"><div class="k c">1 kishi</div><h3>Base44</h3><p class="small">Maor Shlomo yolg‘iz, investorsiz, 6 oyda qurdi. 2025-yilda Wix 80 mln $ ga sotib oldi</p></div><div class="card"><div class="k c">8 oy</div><h3>Lovable</h3><p class="small">AI bilan sayt yasash xizmati. Ishga tushgandan 8 oyda yillik tushum 100 mln $</p></div><div class="card"><div class="k c">~40 kishi</div><h3>Midjourney</h3><p class="small">AI rasm. Investorsiz, yiliga ~200 mln $ tushum (2023, taxmin)</p></div><div class="card hl"><span class="eyebrow" style="color:#9fe3ff">Sem Altman, 2024</span><p class="small" style="color:#cfe0ff">“Bitta odamdan iborat milliard dollarlik kompaniya qachon paydo bo‘lishiga do‘stlar bilan garov o‘ynayapmiz. AI’siz buni tasavvur qilib bo‘lmasdi, endi bu albatta bo‘ladi.”</p></div></div>
+  </div>
+</section>
+
+<section class="slide white">
+  <div class="in">
+    <span class="eyebrow">Dasturni hamma yasay olsa, sizni nima himoya qiladi?</span>
+    <h2>AI ko‘chira olmaydigan 6 narsa</h2>
+    <div class="grid c3">
+      <div class="card"><div class="k c">1</div><h3>Muammoni chuqur bilish</h3><p class="small">Siz o‘sha muammo ichida yashaysiz. Masalan, maktab hayoti</p></div>
+      <div class="card"><div class="k c">2</div><h3>Ishonch va brend</h3><p class="small">Odamlar sizni tanisa, ko‘chirmaga emas, sizga keladi</p></div>
+      <div class="card"><div class="k c">3</div><h3>Auditoriya</h3><p class="small">1 000 obunachili kanal — eng kuchli start</p></div>
+      <div class="card"><div class="k c">4</div><h3>Hamjamiyat</h3><p class="small">Foydalanuvchilar bir-biriga bog‘lansa, ketmaydi</p></div>
+      <div class="card"><div class="k c">5</div><h3>Tezlik</h3><p class="small">Ko‘chirguncha siz 3 qadam oldinda</p></div>
+      <div class="card"><div class="k c">6</div><h3>Oflayn dunyo</h3><p class="small">Yetkazish, xizmat, odam bilan ishlash: buni kod qilib bo‘lmaydi</p></div>
+    </div>
+    <p class="lead">Kod — endi arzon. Qimmat narsa: <strong>odamlar, ishonch va tezlik</strong>.</p>
+  </div>
+</section>
+
+<section class="slide dark" id="s-teens">
+  <div class="in">
+    <span class="eyebrow">Maktab partasidan dunyoga</span>
+    <h2>Maktabda o‘qib turib dunyoga chiqqan 4 startuper</h2>
+    <div class="grid c4" id="teens"><div class="card"><div class="ph sq" data-img="daloisio" data-cap="Nik D’Aloizio portreti"></div><span class="eyebrow">Summly · Buyuk Britaniya</span><h3>Nik D’Aloizio</h3><p class="small">15 yoshida yotoqxonasida yangiliklarni qisqartiradigan ilova yozdi. 17 yoshida Yahoo ~30 mln $ ga sotib oldi</p></div><div class="card"><div class="ph sq" data-img="yadegari" data-cap="Zak Yadegari portreti"></div><span class="eyebrow">Cal AI · AQSH</span><h3>Zak Yadegari</h3><p class="small">Maktabda o‘qib turib ovqat suratidan kaloriya sanaydigan AI ilova qildi. 2-oyda 115 000 $, keyin yiliga 30 mln $ dan ortiq</p></div><div class="card"><div class="ph sq" data-img="awasthi" data-cap="Pranjali Avasti portreti"></div><span class="eyebrow">Delv.AI · AQSH</span><h3>Pranjali Avasti</h3><p class="small">15–16 yoshida olimlar uchun AI qidiruv yaratdi. 450 000 $ investitsiya oldi</p></div><div class="card"><div class="ph sq" data-img="ulmer" data-cap="Mikaila Ulmer portreti"></div><span class="eyebrow">Me & the Bees · AQSH</span><h3>Mikaila Ulmer</h3><p class="small">4 yoshida buvisining retsepti bilan limonad sotdi. Shark Tank’da 60 000 $ oldi, bugun 600+ do‘konda</p></div></div>
+    <p class="lead">Ularning hech biri “katta bo‘lganimda” deb kutmagan.</p>
+  </div>
+</section>
+
+<section class="slide grey">
+  <div class="in">
+    <h2>Bugungi 3 saboq</h2>
+    <div class="rows">
+      <div class="row"><b>1</b><p class="quote" style="font-size:max(20px,calc(var(--u)*3))">Startup — tez o‘sish uchun. 10 tadan 9 tasi yiqiladi, shuning uchun kichik va tez boshla.</p></div>
+      <div class="row"><b>2</b><p class="quote" style="font-size:max(20px,calc(var(--u)*3))">Avval muammo va odamlar. Keyin MVP. Keyin birinchi pul.</p></div>
+      <div class="row"><b>3</b><p class="quote" style="font-size:max(20px,calc(var(--u)*3))">AI davrida kod arzon. Ishonch, auditoriya va tezlik qimmat.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- topshiriq -->
+<section class="slide blue" id="s-topshiriq">
+  <div class="in">
+    <span class="eyebrow" style="color:#9fe3ff">Topshiriq · 1 hafta · har kim alohida</span>
+    <h2>Startup g‘oya kartasi</h2>
+    <div class="split" style="align-items:start">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <p class="lead">Bir hafta davomida atrofingizdagi muammolarni kuzating. Eng yaxshisini tanlang va g‘oya kartasini to‘ldiring.</p>
+        <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))">
+          <div class="card"><span class="eyebrow" style="color:#9fe3ff">1</span><p class="t">Muammo: kim, nimadan qiynaladi?</p></div>
+          <div class="card"><span class="eyebrow" style="color:#9fe3ff">2</span><p class="t">Mijoz: aynan kim? Nechta odam?</p></div>
+          <div class="card"><span class="eyebrow" style="color:#9fe3ff">3</span><p class="t">Yechim: bitta jumlada</p></div>
+          <div class="card"><span class="eyebrow" style="color:#9fe3ff">4</span><p class="t">Pul: kim, qancha va nega to‘laydi?</p></div>
+          <div class="card"><span class="eyebrow" style="color:#9fe3ff">5</span><p class="t">MVP: 1 haftada nima yasay olasiz?</p></div>
+          <div class="card"><span class="eyebrow" style="color:#9fe3ff">+</span><p class="t">Bonus: 10 kishidan so‘rab, javoblarini yozing</p></div>
+        </div>
+        <p class="t"><strong>Muddat:</strong> keyingi shanba, <span id="deadline">17-oktabr</span>. Eng kuchli g‘oyalar keyingi darsda ekranda va “Eng yaxshi startap g‘oyasi” tanloviga tayyorlanadi.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="qr" data-qr="karta"></div>
+        <p class="small" style="color:#cfe0ff">Skanerlang yoki oching: <span class="link" data-href="karta" style="color:#fff"></span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in" style="align-items:center;text-align:center">
+    <span class="eyebrow">Birinchi million birinchi mijozdan boshlanadi</span>
+    <h1 style="font-size:max(48px,calc(var(--u)*11))">Sen ham<br><span class="grad">uddalaysan.</span></h1>
+    <p class="lead">“Nuqtalarni faqat orqaga qarab birlashtira olasiz.” · Stiv Jobs</p>
+    <p class="eyebrow" style="margin-top:calc(var(--u)*3)">DATA · Bilimga to‘ldiramiz</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  DATA xalqaro maktabi · Biznes klub · 7–10-sinflar · har shanba<br>
+  <a href="index.html">1-dars: Stiv Jobs</a> · <a href="index.html#goyalar">O‘yin g‘oyalari va ovoz</a> · <a href="#karta">Startup g‘oya kartasi</a>
+</footer>
+
+<div class="hud"><i id="prog"></i></div>
+<button class="btn ghost exit" id="exit-present">Esc · chiqish</button>
+
+<!-- ============ telefon: g'oya kartasi ============ -->
+<section class="view" id="v-karta">
+  <form class="box" id="k-form">
+    <span class="eyebrow" style="color:var(--data)">DATA Biznes Klub · topshiriq</span>
+    <h2>Startup g‘oya kartasi</h2>
+    <p>Har kim alohida to‘ldiradi. Muddat: keyingi shanba.</p>
+    <label for="k-author">Ism va familiya, sinf<input id="k-author" maxlength="80" required placeholder="Masalan: Aziza Karimova, 8-B"></label>
+    <label for="k-title">Startup nomi<input id="k-title" maxlength="80" required></label>
+    <label for="k-problem">Muammo: kim, nimadan qiynaladi?<textarea id="k-problem" maxlength="500" required></textarea></label>
+    <label for="k-customer">Mijoz: aynan kim? Taxminan nechta odam?<textarea id="k-customer" maxlength="300" required></textarea></label>
+    <label for="k-solution">Yechim: bitta jumlada<textarea id="k-solution" maxlength="500" required></textarea></label>
+    <label for="k-money">Pul: kim, qancha va nega to‘laydi?<textarea id="k-money" maxlength="300" required></textarea></label>
+    <label for="k-mvp">MVP: 1 haftada nima yasay olasiz? (ixtiyoriy)<textarea id="k-mvp" maxlength="400"></textarea></label>
+    <button class="btn" type="submit">Yuborish</button>
+    <p class="msg" id="k-msg" role="status"></p>
+  </form>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+const SB_URL = 'https://onbvjawjvxbiyqnimvnh.supabase.co';
+const SB_KEY = 'sb_publishable_ch6uaEZEkI5r-fTOtlJxrw_XI0qJuUQ';
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const dir = location.origin + location.pathname.replace(/[^/]*$/, '');
+const links = { goyalar: dir + 'index.html#goyalar', karta: dir + 'startup.html#karta' };
+
+async function api(path, opt = {}) {
+  const r = await fetch(SB_URL + '/rest/v1/' + path, { ...opt, headers: { apikey: SB_KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal', ...(opt.headers || {}) } });
+  if (!r.ok) throw new Error(r.status + ' ' + await r.text());
+  return r.status === 200 ? r.json() : null;
+}
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+
+/* ---------- surat joylari: img/s/<nom>.jpg qo'yilsa o'zi chiqadi ---------- */
+$$('.ph[data-img]').forEach(el => {
+  const f = 'img/s/' + el.dataset.img + '.jpg';
+  el.innerHTML = `<span>📷 ${esc(el.dataset.cap)}<br>${f}</span><img src="${f}" alt="${esc(el.dataset.cap)}" loading="lazy" onerror="this.remove()">`;
+});
+
+/* ---------- QR va havolalar ---------- */
+$$('[data-qr]').forEach(el => { if (window.QRCode) new QRCode(el, { text: links[el.dataset.qr], width: 512, height: 512, correctLevel: QRCode.CorrectLevel.M }) });
+$$('[data-href]').forEach(el => el.textContent = links[el.dataset.href].replace(/^https?:\/\//, ''));
+
+/* ---------- muddat: keyingi shanba ---------- */
+(() => {
+  const d = new Date(); d.setDate(d.getDate() + ((6 - d.getDay() + 7) % 7 || 7));
+  const oy = ['yanvar','fevral','mart','aprel','may','iyun','iyul','avgust','sentabr','oktabr','noyabr','dekabr'];
+  $('#deadline').textContent = d.getDate() + '-' + oy[d.getMonth()];
+})();
+
+/* ---------- taqdimot rejimi (1-darsdagidek) ---------- */
+const slides = $$('.deck .slide');
+slides.forEach((s, i) => { const n = document.createElement('span'); n.className = 'num'; n.textContent = String(i + 1).padStart(2, '0') + ' / ' + slides.length; s.append(n) });
+let cur = 0;
+function show(i) {
+  cur = Math.max(0, Math.min(slides.length - 1, i));
+  slides.forEach((s, j) => { s.classList.toggle('cur', j === cur); s.classList.toggle('active', j === cur) });
+  $('#prog').style.width = ((cur + 1) / slides.length * 100) + '%';
+  onSlide(slides[cur]);
+}
+function present(on) {
+  document.body.classList.toggle('present', on);
+  if (on) {
+    const y = window.scrollY + innerHeight / 3;
+    const k = slides.findIndex(s => s.offsetTop + s.offsetHeight > y);
+    show(k < 0 ? 0 : k);
+    document.documentElement.requestFullscreen?.().catch(() => {});
+  } else {
+    slides.forEach(s => s.classList.remove('cur'));
+    document.fullscreenElement && document.exitFullscreen?.().catch(() => {});
+    slides[cur].scrollIntoView();
+  }
+}
+$('#go-present').onclick = () => present(true);
+$('#exit-present').onclick = () => present(false);
+document.addEventListener('fullscreenchange', () => { if (!document.fullscreenElement && document.body.classList.contains('present')) present(false) });
+document.addEventListener('keydown', e => {
+  if (document.body.classList.contains('v') || e.target.closest('input,textarea')) return;
+  const p = document.body.classList.contains('present');
+  if (!p) { if (e.key === 'p' || e.key === 'P') present(true); return }
+  if (['ArrowRight','ArrowDown','PageDown',' ','Enter'].includes(e.key)) { e.preventDefault(); show(cur + 1) }
+  else if (['ArrowLeft','ArrowUp','PageUp','Backspace'].includes(e.key)) { e.preventDefault(); show(cur - 1) }
+  else if (e.key === 'Home') show(0);
+  else if (e.key === 'End') show(slides.length - 1);
+  else if (e.key === 'Escape') present(false);
+});
+document.addEventListener('click', e => {
+  if (!document.body.classList.contains('present') || e.target.closest('button,a,input,label,details,.qr')) return;
+  show(cur + (e.clientX > innerWidth / 3 ? 1 : -1));
+});
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (document.body.classList.contains('present')) return;
+  e.target.classList.toggle('active', e.isIntersecting);
+  if (e.isIntersecting) onSlide(e.target);
+}), { threshold: .35 });
+slides.forEach(s => io.observe(s));
+
+/* ---------- jonli g'oyalar va podium ---------- */
+let boardT = null;
+async function pullBoard() {
+  try {
+    const [ideas, votes] = await Promise.all([api('jobs_ideas?select=id,team,name&order=created_at'), api('rpc/vote_counts', { method: 'POST', body: '{}' })]);
+    const cnt = {}; votes.forEach(v => cnt[v.idea_id] = v.n);
+    ideas.sort((a, b) => (cnt[b.id] || 0) - (cnt[a.id] || 0));
+    const max = Math.max(1, ...ideas.map(i => cnt[i.id] || 0)), total = ideas.reduce((s, i) => s + (cnt[i.id] || 0), 0);
+    $('#board').innerHTML = ideas.length ? ideas.map(i => `<div class="it"><div class="fill" style="width:${(cnt[i.id] || 0) / max * 100}%"></div><span><b>${esc(i.name)}</b> · ${esc(i.team)}</span><span class="c">${cnt[i.id] || 0}</span></div>`).join('') : '<p class="small">Hali g‘oya yo‘q.</p>';
+    $('#board-info').textContent = `${ideas.length} ta g‘oya · ${total} ta ovoz`;
+    [1, 2, 3].forEach(n => { const i = ideas[n - 1]; $(`[data-place="${n}"]`).textContent = i ? i.name : '—'; $(`[data-votes="${n}"]`).textContent = i ? `${i.team} · ${cnt[i.id] || 0} ovoz` : '' });
+  } catch { $('#board-info').textContent = 'Jonli natija uchun internet kerak.' }
+}
+function onSlide(s) {
+  const live = s.id === 's-goyalar' || s.id === 's-podium';
+  if (live && !boardT) { pullBoard(); boardT = setInterval(pullBoard, 4000) }
+  if (!live && boardT && !slides.some(x => x.classList.contains('active') && (x.id === 's-goyalar' || x.id === 's-podium'))) { clearInterval(boardT); boardT = null }
+}
+
+/* ---------- taymerlar ---------- */
+const fmt = s => Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+$$('.timer').forEach(b => {
+  const total = +b.dataset.sec, label = b.textContent.replace(/^▶\s*\S+/, '');
+  let left = total, t = null;
+  const paint = () => { b.textContent = (t ? '❚❚ ' : left === 0 ? '↺ ' : '▶ ') + fmt(left) + label };
+  b.onclick = e => {
+    e.stopPropagation();
+    if (left === 0) { left = total; b.classList.remove('done') }
+    if (t) { clearInterval(t); t = null; b.classList.remove('run') }
+    else {
+      b.classList.add('run');
+      t = setInterval(() => {
+        left--;
+        if (left <= 0) { left = 0; clearInterval(t); t = null; b.classList.remove('run'); b.classList.add('done') }
+        paint();
+      }, 1000);
+    }
+    paint();
+  };
+});
+
+/* ---------- million kalkulyatori ---------- */
+// Oyma-oy: mijozlar = boshlang'ich × (1+o'sish)^oy, har biri bir marta to'laydi. 600 oydan keyin to'xtaydi.
+function monthsToMillion(price, cust, grow) {
+  let sum = 0, n = cust;
+  for (let m = 1; m <= 600; m++) { sum += n * price; if (sum >= 1e6) return m; n *= 1 + grow / 100 }
+  return Infinity;
+}
+const say = m => m === Infinity ? '50+ yil' : m < 12 ? m + ' oy' : (m / 12).toFixed(m < 120 ? 1 : 0).replace('.0', '').replace('.', ',') + ' yil';
+const nf = n => Math.round(n).toLocaleString('ru-RU');
+function calc() {
+  const p = +$('#i-price').value, c = +$('#i-cust').value, g = +$('#i-grow').value;
+  $('#o-price').textContent = p + ' $'; $('#o-cust').textContent = nf(c); $('#o-grow').textContent = g + '%';
+  const m = monthsToMillion(p, c, g), f = monthsToMillion(p, c, 0);
+  $('#r-time').textContent = say(m);
+  $('#r-flat').textContent = say(f);
+  $('#r-note').textContent = m === Infinity ? 'Narxni, mijozlarni yoki o‘sishni oshiring.' : `Oxirgi oyda ${nf(c * (1 + g / 100) ** (m - 1))} ta yangi mijoz kerak bo‘ladi.`;
+  $('#r-bar').style.width = (m === Infinity ? 2 : Math.max(4, 100 - m / 6)) + '%';
+}
+$$('#s-calc input').forEach(i => i.oninput = () => { $$('#presets button').forEach(b => b.classList.remove('sel')); calc() });
+$('#presets').onclick = e => {
+  const b = e.target.closest('button'); if (!b) return;
+  e.stopPropagation();
+  const [p, c, g] = b.dataset.p.split(',');
+  $('#i-price').value = p; $('#i-cust').value = c; $('#i-grow').value = g;
+  $$('#presets button').forEach(x => x.classList.toggle('sel', x === b)); calc();
+};
+calc();
+
+/* ---------- telefon: g'oya kartasi ---------- */
+$('#k-form').addEventListener('submit', async e => {
+  e.preventDefault();
+  const m = $('#k-msg'), v = id => $('#' + id).value.trim();
+  const row = { author: v('k-author'), title: v('k-title'), problem: v('k-problem'), customer: v('k-customer'), solution: v('k-solution'), money: v('k-money'), mvp: v('k-mvp') || null };
+  m.textContent = 'Yuborilmoqda...';
+  try { await api('startup_cards', { method: 'POST', body: JSON.stringify(row) }); m.innerHTML = '<span class="ok">✓ G‘oya kartangiz qabul qilindi! Keyingi shanba ko‘ramiz.</span>'; e.target.reset() }
+  catch { m.innerHTML = '<span class="no">Yuborilmadi. Internetni tekshirib, qayta urinib ko‘ring.</span>' }
+});
+
+/* ---------- marshrut: #karta ---------- */
+function route() {
+  const v = location.hash === '#karta';
+  document.body.classList.toggle('v', v); document.body.classList.toggle('v-karta', v);
+  if (v) scrollTo(0, 0);
+}
+addEventListener('hashchange', route); route();
+const qs = +new URLSearchParams(location.search).get('s');
+if (qs) { document.body.classList.add('present'); show(qs - 1) }
+</script>
+</body>
+</html>
