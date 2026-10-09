@@ -205,7 +205,8 @@ body.v-mashq #v-mashq,body.v-vazifa #v-vazifa,body.v-goyalar #v-goyalar{display:
 /* Surat joyi: fayl qo'yilsa rasm chiqadi, bo'lmasa nomi ko'rinadi */
 .ph{position:relative;border-radius:calc(var(--u)*1.8);overflow:hidden;background:repeating-linear-gradient(135deg,rgba(128,128,128,.08) 0 12px,transparent 12px 24px);border:2px dashed rgba(128,128,128,.45);min-height:160px;aspect-ratio:var(--ar,4/3);display:flex;align-items:center;justify-content:center;text-align:center;padding:14px}
 .ph span{font-size:max(12px,calc(var(--u)*1.2));color:var(--mute);font-weight:600;line-height:1.35}
-.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%}
+.ph.logo{background:#fff;border-style:solid}.ph.logo img{object-fit:contain;padding:8px}
 .ph.sq{--ar:1/1}.ph.tall{--ar:3/4}.ph.wide{--ar:16/9}
 .card .ph{min-height:90px;margin-bottom:6px}
 .g6{grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr))}
@@ -215,6 +216,7 @@ body.v-mashq #v-mashq,body.v-vazifa #v-vazifa,body.v-goyalar #v-goyalar{display:
 .c4 .ph.wide{--ar:5/2;min-height:70px}.card .ph.sq{--ar:4/3}
 #teens .ph{--ar:16/9}.c4.big .ph.wide{--ar:16/10}
 .g6 h3{font-size:max(16px,calc(var(--u)*1.9))}
+.hero .pic.ph img{width:100%;height:100%;max-height:none;object-fit:cover}
 .hero .pic.ph{border-radius:0;border:0;aspect-ratio:auto;min-height:320px;background-color:#fff}
 
 .tl{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:calc(var(--u)*1.4)}
@@ -243,9 +245,9 @@ body.v-mashq #v-mashq,body.v-vazifa #v-vazifa,body.v-goyalar #v-goyalar{display:
 .podium{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:calc(var(--u)*1.6);align-items:end}
 .podium .p{border-radius:18px 18px 0 0;padding:calc(var(--u)*2);text-align:center;display:flex;flex-direction:column;gap:6px;align-items:center}
 .podium .p .m{font-size:max(34px,calc(var(--u)*5))}
-.podium .p1{background:var(--data);min-height:calc(var(--u)*34)}
-.podium .p2{background:#2c2c2e;min-height:calc(var(--u)*28)}
-.podium .p3{background:#1c1c1e;min-height:calc(var(--u)*24)}
+.podium .p1{background:var(--data);min-height:calc(var(--u)*22)}
+.podium .p2{background:#2c2c2e;min-height:calc(var(--u)*18)}
+.podium .p3{background:#1c1c1e;min-height:calc(var(--u)*15)}
 @media (max-width:560px){.podium{grid-template-columns:1fr}}
 
 /* million kalkulyatori */
@@ -469,7 +471,7 @@ body.v-karta #v-karta{display:block}
     <span class="eyebrow">Hammamiz ishlatamiz · 1/2</span>
     <h2>Zamonaviy dunyoning eng mashhur startuplari</h2>
     <div class="grid c4 big">
-      <div class="card"><div class="ph wide" data-img="google" data-cap="Google logosi / garaj"></div><span class="eyebrow">1998 · garaj</span><h3>Google</h3><p class="small">2 nafar Stenford talabasi. Ijaraga olingan garajda boshlangan</p></div><div class="card"><div class="ph wide" data-img="facebook" data-cap="Facebook / yotoqxona"></div><span class="eyebrow">2004 · yotoqxona</span><h3>Facebook</h3><p class="small">19 yoshli Mark Sukerberg, Garvard yotoqxonasidan</p></div><div class="card"><div class="ph wide" data-img="airbnb" data-cap="Airbnb: havo matraslari"></div><span class="eyebrow">2008 · 3 ta matras</span><h3>Airbnb</h3><p class="small">Ijara pulini to‘lash uchun xonadagi havo matraslarini ijaraga berishdi</p></div><div class="card"><div class="ph wide" data-img="instagram" data-cap="Instagram logosi"></div><span class="eyebrow">2010 · 13 xodim</span><h3>Instagram</h3><p class="small">2 yildan keyin 1 mlrd dollarga sotildi. Jamoada atigi 13 kishi bor edi</p></div>
+      <div class="card"><div class="ph wide" data-img="google" data-cap="Google logosi / garaj"></div><span class="eyebrow">1998 · garaj</span><h3>Google</h3><p class="small">2 nafar Stenford talabasi. Ijaraga olingan garajda boshlangan</p></div><div class="card"><div class="ph wide" data-img="facebook" data-cap="Facebook / yotoqxona"></div><span class="eyebrow">2004 · yotoqxona</span><h3>Facebook</h3><p class="small">19 yoshli Mark Sukerberg, Garvard yotoqxonasidan</p></div><div class="card"><div class="ph wide" data-img="airbnb" data-cap="Airbnb: havo matraslari"></div><span class="eyebrow">2008 · 3 ta matras</span><h3>Airbnb</h3><p class="small">Ijara pulini to‘lash uchun xonadagi havo matraslarini ijaraga berishdi</p></div><div class="card"><div class="ph wide logo" data-img="instagram" data-cap="Instagram logosi"></div><span class="eyebrow">2010 · 13 xodim</span><h3>Instagram</h3><p class="small">2 yildan keyin 1 mlrd dollarga sotildi. Jamoada atigi 13 kishi bor edi</p></div>
     </div>
   </div>
 </section>
@@ -479,7 +481,7 @@ body.v-karta #v-karta{display:block}
     <span class="eyebrow">Hammamiz ishlatamiz · 2/2</span>
     <h2>Zamonaviy dunyoning eng mashhur startuplari</h2>
     <div class="grid c4 big">
-      <div class="card"><div class="ph wide" data-img="whatsapp" data-cap="WhatsApp logosi"></div><span class="eyebrow">2009 · 55 xodim</span><h3>WhatsApp</h3><p class="small">2014-yilda 19 mlrd dollarga sotildi</p></div><div class="card"><div class="ph wide" data-img="telegram" data-cap="Telegram logosi"></div><span class="eyebrow">2013 · aka-uka</span><h3>Telegram</h3><p class="small">Pavel va Nikolay Durovlar. 2025-yilda 1 mlrd foydalanuvchi</p></div><div class="card"><div class="ph wide" data-img="openai" data-cap="ChatGPT / OpenAI"></div><span class="eyebrow">2015 · ChatGPT 2022</span><h3>OpenAI</h3><p class="small">ChatGPT 2 oyda 100 mln foydalanuvchiga yetdi: tarixdagi rekord</p></div><div class="card"><div class="ph wide" data-img="canva" data-cap="Canva logosi"></div><span class="eyebrow">2013 · Avstraliya</span><h3>Canva</h3><p class="small">G‘oya 19 yoshli talaba Melani Perkinsdan. Investorlar 100 martadan ko‘p “yo‘q” degan</p></div>
+      <div class="card"><div class="ph wide logo" data-img="whatsapp" data-cap="WhatsApp logosi"></div><span class="eyebrow">2009 · 55 xodim</span><h3>WhatsApp</h3><p class="small">2014-yilda 19 mlrd dollarga sotildi</p></div><div class="card"><div class="ph wide logo" data-img="telegram" data-cap="Telegram logosi"></div><span class="eyebrow">2013 · aka-uka</span><h3>Telegram</h3><p class="small">Pavel va Nikolay Durovlar. 2025-yilda 1 mlrd foydalanuvchi</p></div><div class="card"><div class="ph wide logo" data-img="openai" data-cap="ChatGPT / OpenAI"></div><span class="eyebrow">2015 · ChatGPT 2022</span><h3>OpenAI</h3><p class="small">ChatGPT 2 oyda 100 mln foydalanuvchiga yetdi: tarixdagi rekord</p></div><div class="card"><div class="ph wide logo" data-img="canva" data-cap="Canva logosi"></div><span class="eyebrow">2013 · Avstraliya</span><h3>Canva</h3><p class="small">G‘oya 19 yoshli talaba Melani Perkinsdan. Investorlar 100 martadan ko‘p “yo‘q” degan</p></div>
     </div>
   </div>
 </section>
@@ -568,7 +570,6 @@ body.v-karta #v-karta{display:block}
     <span class="eyebrow">30 yoshga to‘lmagan · o‘zi topganlar</span>
     <h2>Dunyoning eng yosh boylari</h2>
     <div class="grid g6" id="young"><div class="card"><div class="ph sq" data-img="mercor" data-cap="Mercor asoschilari: 3 do‘st"></div><span class="eyebrow">22 yosh · AI · 2025</span><h3>Mercor asoschilari</h3><p class="small">Brendan Fudi, Adarsh Xiremat, Surya Midha. Maktabdagi debat do‘stlari. Kompaniya 10 mlrd $ baholandi: tarixdagi eng yosh o‘zi topgan milliarderlar</p></div><div class="card"><div class="ph sq" data-img="coplan" data-cap="Shayn Koplan portreti"></div><span class="eyebrow">27 yosh · Polymarket · 2025</span><h3>Shayn Koplan</h3><p class="small">21 yoshida universitetni tashlab boshladi. Kompaniya ~9 mlrd $ baholandi</p></div><div class="card"><div class="ph sq" data-img="wang" data-cap="Aleksandr Vang portreti"></div><span class="eyebrow">24 yoshida milliarder · Scale AI</span><h3>Aleksandr Vang</h3><p class="small">AI uchun ma’lumot tayyorlaydi. 2025-yilda Meta kompaniyaning 49% ini 14,3 mlrd $ ga oldi</p></div><div class="card"><div class="ph sq" data-img="cursor" data-cap="Cursor asoschilari"></div><span class="eyebrow">20 yoshlar · AI dasturlash</span><h3>Cursor asoschilari</h3><p class="small">MIT’dagi 4 do‘st, 2022. Dasturchilar uchun AI muharrir. 2026-yilda SpaceX 60 mlrd $ ga sotib olishga kelishdi</p></div><div class="card"><div class="ph sq" data-img="zuckerberg2" data-cap="Yosh Sukerberg surati"></div><span class="eyebrow">23 yosh · Facebook · 2008</span><h3>Mark Sukerberg</h3><p class="small">O‘z davrida eng yosh o‘zi topgan milliarder. 17 yil o‘tib rekordni AI startuperlar buzdi</p></div><div class="card hl"><span class="eyebrow" style="color:#9fe3ff">Forbes, 2026</span><h3>30 yoshgacha 35 milliarder</h3><p class="small" style="color:#cfe0ff">Ulardan 12 tasi boylikni o‘zi topgan. O‘zi topganlarning ko‘pchiligi — AI startup asoschilari. Qolganlari meros olgan.</p></div></div>
-    <p class="lead">Meros emas, startup: o‘zi topgan yosh boylarning deyarli hammasi texnologik startup asoschilari.</p>
   </div>
 </section>
 
@@ -674,7 +675,7 @@ body.v-karta #v-karta{display:block}
     <span class="eyebrow">MVP · Minimal Viable Product · eng kichik ishlaydigan mahsulot</span>
     <h2>Mashina emas, avval <span class="grad">skeytbord</span></h2>
     <div class="split">
-      <div class="ph wide" data-img="mvp" data-cap="Rasm: skeytbord → samokat → velosiped → mototsikl → mashina (Henrik Kniberg chizmasi)"></div>
+      <div class="card" style="align-items:center;text-align:center;gap:14px"><p style="font-size:max(40px,calc(var(--u)*6.5));letter-spacing:.1em;margin:0">🛹 → 🛴 → 🚲 → 🏍️ → 🚗</p><p class="t">Har bosqichda mijoz <strong>allaqachon yura oladi</strong>. Mashinani birdaniga yasasangiz, 1 yil hech kim hech qayerga bormaydi.</p><p class="small">Henrik Kniberg g‘oyasi</p></div>
       <div class="rows">
         <div class="row"><b>Airbnb</b><p class="t">Sayt + 3 ta havo matrasi o‘z kvartirasida. Birinchi 3 mehmon</p></div>
         <div class="row"><b>Dropbox</b><p class="t">Mahsulot yo‘q, faqat 3 daqiqalik video. Bir kechada kutish ro‘yxati 5 000 dan 75 000 ga oshdi</p></div>
