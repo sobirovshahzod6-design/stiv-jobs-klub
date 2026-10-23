@@ -270,6 +270,68 @@ body.v-mashq #v-mashq,body.v-vazifa #v-vazifa,body.v-goyalar #v-goyalar{display:
 body.v-karta #v-karta{display:block}
 
 /* ---------- AI darsi: qo'shimcha ---------- */
+/* interaktiv laboratoriyalar */
+.lab{display:grid;grid-template-columns:1.35fr 1fr;gap:calc(var(--u)*2.4);align-items:start}
+@media (max-width:860px){.lab{grid-template-columns:1fr}}
+.lab>*{min-width:0}
+.lab canvas{display:block;width:100%;height:auto;border-radius:16px;background:#0d0d10;border:1px solid #2c2c2e;touch-action:none}
+.white .lab canvas,.grey .lab canvas{background:#fff;border-color:var(--line)}
+.ctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ctl button,.seg button{border:1px solid #3a3a3c;background:#1c1c1e;color:#fff;border-radius:99px;padding:8px 14px;font-weight:700;font-size:max(13px,calc(var(--u)*1.45))}
+.ctl button.on,.seg button.on{background:var(--data);border-color:var(--data)}
+.ctl button.go{background:var(--cyan);color:#001b33;border-color:var(--cyan)}
+.white .ctl button,.grey .ctl button{background:#fff;color:var(--ink);border-color:var(--line)}
+.white .ctl button.on,.grey .ctl button.on{background:var(--data);color:#fff}
+.white .ctl button.go,.grey .ctl button.go{background:var(--data);color:#fff;border-color:var(--data)}
+.stat{display:flex;gap:calc(var(--u)*2.4);flex-wrap:wrap}
+.stat div{display:flex;flex-direction:column}
+.stat b{font-size:max(28px,calc(var(--u)*4.2));font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums;line-height:1}
+.stat span{font-size:12px;color:var(--mute);font-weight:600}
+.lab input[type=range]{width:100%;accent-color:var(--cyan)}
+.lab textarea,.lab-tok textarea{font:inherit;font-size:max(16px,calc(var(--u)*1.9));width:100%;min-height:calc(var(--u)*12);border-radius:14px;padding:14px;border:1px solid #3a3a3c;background:#1c1c1e;color:#fff;resize:vertical}
+.white .lab textarea,.grey .lab textarea,.lab-tok textarea{min-height:calc(var(--u)*7)}
+.white .lab textarea,.grey .lab textarea{background:#fff;color:var(--ink);border-color:var(--line)}
+/* tokenizer */
+.chips2{display:flex;flex-wrap:wrap;gap:3px;font-family:ui-monospace,Menlo,monospace;font-size:max(15px,calc(var(--u)*2));line-height:1.6;min-height:3em}
+.chips2 span{padding:1px 4px;border-radius:5px;white-space:pre}
+.chips2 span:nth-child(5n+1){background:rgba(41,197,255,.28)}.chips2 span:nth-child(5n+2){background:rgba(255,159,10,.3)}
+.chips2 span:nth-child(5n+3){background:rgba(48,209,88,.28)}.chips2 span:nth-child(5n+4){background:rgba(191,90,242,.32)}.chips2 span:nth-child(5n){background:rgba(255,69,58,.28)}
+/* keyingi so'z */
+.gen{font-size:max(24px,calc(var(--u)*3.6));font-weight:800;letter-spacing:-.02em;line-height:1.25;min-height:2.6em}
+.gen i{font-style:normal;color:var(--cyan);animation:pop .35s ease}
+@keyframes pop{from{opacity:0;transform:translateY(6px)}}
+.cands{display:flex;flex-direction:column;gap:6px}
+.cands button{position:relative;display:grid;grid-template-columns:1fr auto;gap:10px;border:0;border-radius:10px;padding:10px 14px;background:#1c1c1e;color:#fff;font-weight:700;font-size:max(15px,calc(var(--u)*1.9));overflow:hidden;text-align:left}
+.cands button i{position:absolute;inset:0;width:0;background:rgba(11,45,180,.85);transition:width .4s ease}
+.cands button span,.cands button b{position:relative}.cands button b{color:var(--cyan);font-variant-numeric:tabular-nums}
+/* kontekst */
+.chat{display:flex;flex-direction:column;gap:6px;max-height:min(46vh,480px);overflow:auto;padding:4px}
+.chat .m{align-self:flex-start;max-width:85%;border-radius:14px 14px 14px 4px;padding:8px 12px;background:#1c1c1e;font-size:max(14px,calc(var(--u)*1.7));transition:opacity .4s,filter .4s}
+.chat .m.out{opacity:.28;filter:grayscale(1);text-decoration:line-through}
+.chat .m.ai{align-self:flex-end;background:var(--data);border-radius:14px 14px 4px 14px}
+.chat .m.bad{background:#5c0d0a;border:1px solid #ff453a}
+.chat .sep{align-self:stretch;text-align:center;font-size:11px;font-weight:800;letter-spacing:.1em;color:#ff6961;border-top:1px dashed #ff6961;padding-top:4px}
+/* poyga */
+.race{display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--u)*1.6)}
+@media (max-width:640px){.race{grid-template-columns:1fr}}
+.race h3 b{color:var(--cyan);font-variant-numeric:tabular-nums}
+/* agent */
+.tools{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+@media (max-width:640px){.tools{grid-template-columns:repeat(3,1fr)}}
+.tools div{border-radius:12px;padding:10px 6px;background:#1c1c1e;text-align:center;font-size:12px;font-weight:700;color:#a1a1a6;transition:all .3s}
+.tools div em{display:block;font-style:normal;font-size:max(22px,calc(var(--u)*3))}
+.tools div.on{background:var(--data);color:#fff;transform:translateY(-4px);box-shadow:0 8px 24px rgba(41,197,255,.35)}
+.log{font-family:ui-monospace,Menlo,monospace;font-size:max(13px,calc(var(--u)*1.55));line-height:1.55;background:#0d0d10;border:1px solid #2c2c2e;border-radius:14px;padding:14px;min-height:calc(var(--u)*26);max-height:min(50vh,520px);overflow:auto;white-space:pre-wrap}
+.log .h{color:var(--cyan);font-weight:800}.log .ok{color:var(--good)}.log .w{color:#ffd60a}
+/* prompt o'lchagich */
+.meter{display:flex;gap:calc(var(--u)*2.4);align-items:center}
+.ring{--v:0;--c:#ff453a;width:calc(var(--u)*16);min-width:110px;aspect-ratio:1;border-radius:50%;background:conic-gradient(var(--c) calc(var(--v)*1%),#2c2c2e 0);display:grid;place-items:center;transition:--v .5s}
+.ring b{width:76%;aspect-ratio:1;border-radius:50%;background:#000;display:grid;place-items:center;font-size:max(28px,calc(var(--u)*4.4));font-weight:800;font-variant-numeric:tabular-nums}
+.checks{display:flex;flex-direction:column;gap:6px;flex:1}
+.checks div{display:grid;grid-template-columns:28px 1fr;gap:8px;align-items:baseline;font-size:max(14px,calc(var(--u)*1.6))}
+.checks div b{font-size:1.1em}.checks div.y b{color:var(--good)}.checks div.n b{color:#ff6961}
+.checks div small{display:block;color:var(--mute);font-size:.85em}
+
 .ph.empty span{opacity:.7}
 body.present .ph.empty{display:none}
 body.present .ph.tall{max-height:62vh;aspect-ratio:auto;height:62vh}
@@ -463,6 +525,23 @@ body.v-ai #v-ai,body.v-uy #v-uy{display:block}
   </div>
 </section>
 
+
+<section class="slide dark" id="s-learn">
+  <div class="in">
+    <span class="eyebrow">Laboratoriya · AI o‘rganmoqda <span class="new">INTERAKTIV</span></span>
+    <h2>Misollardan qoidani <span class="grad">o‘zi topadi</span></h2>
+    <div class="lab">
+      <canvas id="learn-c" width="720" height="440" aria-label="Mushuk va itlarni ajratishni o‘rganayotgan model"></canvas>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <p class="t">Har bir nuqta — bitta hayvon. Model hech qanday qoidani bilmaydi: u faqat misollarga qarab chegara chizishni o‘rganadi. Ekranga bosib, yangi misol qo‘shing.</p>
+        <div class="ctl seg" id="learn-mode"><button type="button" class="on" data-c="0">🐱 Mushuk qo‘shish</button><button type="button" data-c="1">🐶 It qo‘shish</button></div>
+        <div class="ctl"><button type="button" class="go" id="learn-go">▶ O‘rgatish</button><button type="button" id="learn-data">🎲 Yangi misollar</button><button type="button" id="learn-clear">Tozalash</button></div>
+        <div class="stat"><div><b id="learn-acc">—</b><span>ANIQLIK</span></div><div><b id="learn-ep">0</b><span>O‘QISH QADAMI</span></div><div><b id="learn-n">0</b><span>MISOL</span></div></div>
+        <p class="small">X o‘qi — vazn, Y o‘qi — quloq uzunligi. Rang — modelning ishonchi: 🐱 yoki 🐶.</p>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="slide dark">
   <div class="in">
     <span class="eyebrow">ChatGPT qanday ishlaydi?</span>
@@ -494,16 +573,37 @@ body.v-ai #v-ai,body.v-uy #v-uy{display:block}
 </section>
 
 
+
+<section class="slide dark" id="s-gen">
+  <div class="in">
+    <span class="eyebrow">Laboratoriya · keyingi so‘z mashinasi <span class="new">INTERAKTIV</span></span>
+    <h2>Siz — tilli model. <span class="grad">Gap tuzing</span></h2>
+    <div class="lab">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="ctl" id="gen-start"><span class="small">Boshlash:</span><button type="button" data-w="bugun">Bugun</button><button type="button" data-w="sun’iy">Sun’iy intellekt</button><button type="button" data-w="men">Men</button><button type="button" data-w="kelajakda">Kelajakda</button><button type="button" data-w="yaxshi">Yaxshi</button></div>
+        <div class="gen" id="gen-text"></div>
+        <div class="ctl"><button type="button" class="go" id="gen-auto">▶ AI o‘zi yozsin</button><button type="button" id="gen-reset">↺ Qaytadan</button></div>
+        <label class="t" style="display:flex;flex-direction:column;gap:6px;font-weight:700">Temperatura: <span id="gen-tv" style="color:var(--cyan)">0,7 · muvozanat</span><input type="range" id="gen-t" min="0.1" max="2" step="0.1" value="0.7"></label>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <p class="small">Keyingi so‘z ehtimollari. Bosib tanlang:</p>
+        <div class="cands" id="gen-cands"></div>
+        <p class="small">Past temperatura — har doim eng ehtimolli so‘z, zerikarli lekin aniq. Yuqori — ijodkor, lekin ba’zan bema’ni. ChatGPT ham shunday sozlanadi.</p>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="slide dark">
   <div class="in">
     <span class="eyebrow">Token · AI’ning hisob birligi</span>
     <h2>AI so‘zni emas, <span class="grad">bo‘laklarni</span> o‘qiydi</h2>
     <div class="split" style="align-items:start">
-      <div style="display:flex;flex-direction:column;gap:14px">
-        <p class="small">INGLIZCHA · 1 token</p><div class="tok"><span>Apple</span></div>
-        <p class="small">O‘ZBEKCHA · 2 token</p><div class="tok"><span>ol</span><span>ma</span></div>
-        <p class="small">O‘ZBEKCHA · 5 token</p><div class="tok"><span>o‘</span><span>quv</span><span>chi</span><span>lar</span><span>imiz</span></div>
-        <p class="small">Bo‘linish modelga qarab farq qiladi. Bu shartli misol.</p>
+      <div style="display:flex;flex-direction:column;gap:12px" class="lab-tok">
+        <div class="ctl" id="tok-ex"><button type="button">Apple</button><button type="button">olma</button><button type="button">o‘quvchilarimiz</button><button type="button">Sun’iy intellekt kelajakni o‘zgartiradi</button><button type="button">Artificial intelligence will change the future</button></div>
+        <textarea id="tok-in" spellcheck="false" placeholder="O‘zingiz yozing...">o‘quvchilarimiz</textarea>
+        <div class="chips2" id="tok-out"><span class="small">Tokenizer yuklanmoqda...</span></div>
+        <div class="stat"><div><b id="tok-n">—</b><span>TOKEN</span></div><div><b id="tok-c">—</b><span>BELGI</span></div><div><b id="tok-m">—</b><span>1 MLN KISHI YUBORSA</span></div></div>
+        <p class="small">Haqiqiy GPT-4o tokenizeri (o200k_base). Narx: 1 mln kirish tokeni uchun 3 $ deb shartli.</p>
       </div>
       <div class="grid" style="gap:10px">
         <div class="card"><h3>Pul tokenda hisoblanadi</h3><p class="small">Kompaniyalar “1 million token uchun N dollar” deb to‘lov oladi. Javob (chiqish) savoldan qimmatroq</p></div>
@@ -539,6 +639,23 @@ body.v-ai #v-ai,body.v-uy #v-uy{display:block}
   </div>
 </section>
 
+
+<section class="slide dark" id="s-ctx">
+  <div class="in">
+    <span class="eyebrow">Laboratoriya · kontekst oynasi <span class="new">INTERAKTIV</span></span>
+    <h2>Stol to‘lsa, AI <span class="grad">unutadi</span></h2>
+    <div class="lab">
+      <div class="chat" id="ctx-chat"></div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <label class="t" style="display:flex;flex-direction:column;gap:6px;font-weight:700">Stol sig‘imi: <span id="ctx-v" style="color:var(--cyan)">5 ta xabar</span><input type="range" id="ctx-cap" min="2" max="10" value="5"></label>
+        <div class="ctl"><button type="button" class="go" id="ctx-add">+ Gap qo‘shish</button><button type="button" id="ctx-reset">↺</button></div>
+        <p class="small">Endi AI’dan so‘rang:</p>
+        <div class="ctl" id="ctx-q"><button type="button" data-q="0">Ismim nima?</button><button type="button" data-q="1">Qayerda yashayman?</button><button type="button" data-q="2">Sevimli o‘yinim?</button></div>
+        <p class="small">Ma’lumot stoldan tushib ketsa, AI ba’zan “bilmayman” demaydi — <strong style="color:#ff6961">ishonch bilan o‘ylab topadi</strong>. Bu gallyutsinatsiya.</p>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="slide grey">
   <div class="in">
     <span class="eyebrow">Ogohlantirish</span>
@@ -598,6 +715,19 @@ body.v-ai #v-ai,body.v-uy #v-uy{display:block}
   </div>
 </section>
 
+
+<section class="slide dark" id="s-race">
+  <div class="in">
+    <span class="eyebrow">Laboratoriya · CPU va GPU poygasi <span class="new">INTERAKTIV</span></span>
+    <h2>7 200 ta hisob. <span class="grad">Kim tezroq?</span></h2>
+    <div class="race">
+      <div style="display:flex;flex-direction:column;gap:8px"><h3>🧑‍🏫 CPU · 1 professor <b id="race-t0">0,0 s</b></h3><canvas id="race-c0" width="480" height="240"></canvas></div>
+      <div style="display:flex;flex-direction:column;gap:8px"><h3>👥 GPU · 1 000 hisobchi <b id="race-t1">0,0 s</b></h3><canvas id="race-c1" width="480" height="240"></canvas></div>
+    </div>
+    <div class="ctl"><button type="button" class="go" id="race-go">▶ Poyga!</button><span class="t" id="race-msg"></span></div>
+    <p class="small">Har bir katak — bitta oddiy amal. AI javob yozganda milliardlab shunday amal bajariladi. Shuning uchun AI uchun GPU kerak. Tezlik farqi tushunarli bo‘lishi uchun kichraytirilgan.</p>
+  </div>
+</section>
 <section class="slide white">
   <div class="in">
     <span class="eyebrow">Elektr</span>
@@ -874,6 +1004,24 @@ body.v-ai #v-ai,body.v-uy #v-uy{display:block}
   </div>
 </section>
 
+
+<section class="slide dark" id="s-meter">
+  <div class="in">
+    <span class="eyebrow">Laboratoriya · prompt o‘lchagich <span class="new">INTERAKTIV</span></span>
+    <h2>Topshiriqingiz necha <span class="grad">ball</span>?</h2>
+    <div class="lab">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="ctl"><button type="button" data-p="0">✗ Iste’molchi</button><button type="button" data-p="1">~ O‘rtacha</button><button type="button" data-p="2">✓ Rahbar</button><button type="button" data-p="3">Tozalash</button></div>
+        <textarea id="pm-in" spellcheck="false" style="min-height:calc(var(--u)*22)">Menga biznes g‘oya ber.</textarea>
+        <p class="small">O‘quvchilardan biror topshiriqni o‘qib, shu yerga yozing — ball jonli o‘zgaradi.</p>
+      </div>
+      <div class="meter" style="flex-direction:column;align-items:stretch">
+        <div style="display:flex;gap:18px;align-items:center"><div class="ring" id="pm-ring"><b id="pm-n">0</b></div><p class="t" id="pm-say"></p></div>
+        <div class="checks" id="pm-checks"></div>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="slide dark" id="s-mashq1">
   <div class="in">
     <span class="eyebrow">Mashq · 1-raund · 2 daqiqa <span class="new">JONLI</span></span>
@@ -967,6 +1115,17 @@ body.v-ai #v-ai,body.v-uy #v-uy{display:block}
   </div>
 </section>
 
+
+<section class="slide dark" id="s-agent">
+  <div class="in">
+    <span class="eyebrow">Laboratoriya · agent ishlamoqda <span class="new">INTERAKTIV</span></span>
+    <h2>Vazifa bering — <span class="grad">agent o‘zi bajaradi</span></h2>
+    <div class="ctl" id="ag-pick"><button type="button" class="on" data-a="0">🚌 Sinf ekskursiyasi</button><button type="button" data-a="1">📚 Biologiyadan ustoz</button><button type="button" data-a="2">🍋 Limonad biznesi</button><button type="button" class="go" id="ag-go">▶ Ishga tushir</button></div>
+    <div class="tools" id="ag-tools"><div data-t="model"><em>🧠</em>Model</div><div data-t="search"><em>🔎</em>Qidiruv</div><div data-t="calc"><em>🧮</em>Hisob</div><div data-t="file"><em>✍️</em>Fayl</div><div data-t="mem"><em>💾</em>Xotira</div><div data-t="human"><em>🙋</em>Inson</div></div>
+    <div class="log" id="ag-log" aria-live="polite">Vazifani tanlang va “Ishga tushir”ni bosing.</div>
+    <p class="small">Bu simulyatsiya: haqiqiy agentlar xuddi shu tsiklda ishlaydi. Narx va raqamlar shartli.</p>
+  </div>
+</section>
 <section class="slide white">
   <div class="in">
     <span class="eyebrow">AI bilan ishlash zinapoyasi</span>
@@ -1286,6 +1445,7 @@ $('#exit-present').onclick = () => present(false);
 document.addEventListener('fullscreenchange', () => { if (!document.fullscreenElement && document.body.classList.contains('present')) present(false) });
 document.addEventListener('keydown', e => {
   if (document.body.classList.contains('v') || e.target.closest('input,textarea')) return;
+  if (e.target.closest('button') && (e.key === ' ' || e.key === 'Enter')) return;
   const p = document.body.classList.contains('present');
   if (!p) { if (e.key === 'p' || e.key === 'P') present(true); return }
   if (['ArrowRight','ArrowDown','PageDown',' ','Enter'].includes(e.key)) { e.preventDefault(); show(cur + 1) }
@@ -1295,7 +1455,7 @@ document.addEventListener('keydown', e => {
   else if (e.key === 'Escape') present(false);
 });
 document.addEventListener('click', e => {
-  if (!document.body.classList.contains('present') || e.target.closest('button,a,input,label,details,.qr,.tasks')) return;
+  if (!document.body.classList.contains('present') || e.target.closest('button,a,input,label,details,.qr,.tasks,.lab,canvas,textarea,.chips2')) return;
   show(cur + (e.clientX > innerWidth / 3 ? 1 : -1));
 });
 const io = new IntersectionObserver(es => es.forEach(e => {
@@ -1343,7 +1503,7 @@ async function pullKasb() {
 }
 const LIVE = { 's-kartalar': pullCards, 's-mashq1': () => pullTasks(1), 's-mashq2': () => pullTasks(2), 's-ovoz': pullKasb };
 let liveT = null, liveId = null;
-function onSlide(s) {
+var onSlide = function (s) {
   if (!LIVE[s.id] || liveId === s.id) return;
   clearInterval(liveT); liveId = s.id; LIVE[s.id](); liveT = setInterval(() => { if (slides.some(x => x.id === liveId && x.classList.contains('active'))) LIVE[liveId](); else { clearInterval(liveT); liveId = null } }, 4000);
 }
@@ -1352,6 +1512,235 @@ document.addEventListener('click', e => {
   e.stopPropagation();
   navigator.clipboard?.writeText(b.closest('.it').querySelector('p').textContent).then(() => { b.textContent = '✓ Nusxa olindi'; b.classList.add('okb') });
 });
+
+
+/* ================= LABORATORIYALAR ================= */
+const LABS = {};
+const prevOnSlide = onSlide;
+onSlide = function (s) { prevOnSlide(s); LABS[s.id]?.() };
+
+/* --- A. o'rganish: logistik regressiya, 6 belgi --- */
+(() => {
+  const c = $('#learn-c'), g = c.getContext('2d'), W = c.width, H = c.height;
+  let pts = [], w = new Array(6).fill(0), ep = 0, run = false, mode = 0, raf = 0;
+  const f = (x, y) => { const u = (x - .5) * 2, v = (y - .5) * 2; return [1, u, v, u * u, v * v, u * v] };
+  const pr = (x, y) => { const z = f(x, y).reduce((s, a, i) => s + a * w[i], 0); return 1 / (1 + Math.exp(-z)) };
+  const rnd = (m, s) => m + s * (Math.random() + Math.random() + Math.random() - 1.5);
+  function sample() {
+    pts = [];
+    for (let i = 0; i < 22; i++) pts.push({ x: rnd(.28, .22), y: rnd(.68, .2), c: 0 });
+    for (let i = 0; i < 22; i++) pts.push({ x: rnd(.66, .26), y: rnd(.34, .24), c: 1 });
+    pts = pts.filter(p => p.x > .02 && p.x < .98 && p.y > .02 && p.y < .98);
+    w.fill(0); ep = 0; draw();
+  }
+  function step() {
+    if (!pts.length) return;
+    for (let k = 0; k < 25; k++) {
+      const gr = new Array(6).fill(0);
+      pts.forEach(p => { const e = pr(p.x, p.y) - p.c; f(p.x, p.y).forEach((a, i) => gr[i] += e * a) });
+      w = w.map((v, i) => v - 1.2 * gr[i] / pts.length); ep++;
+    }
+  }
+  function draw() {
+    const n = 48, m = 30;
+    for (let i = 0; i < n; i++) for (let j = 0; j < m; j++) {
+      const q = pr((i + .5) / n, 1 - (j + .5) / m), a = Math.abs(q - .5) * 1.3;
+      g.fillStyle = q < .5 ? `rgba(41,197,255,${a})` : `rgba(255,159,10,${a})`;
+      g.fillRect(i * W / n, j * H / m, W / n + 1, H / m + 1);
+    }
+    g.strokeStyle = 'rgba(255,255,255,.08)'; g.lineWidth = 1;
+    for (let i = 1; i < 6; i++) { g.beginPath(); g.moveTo(i * W / 6, 0); g.lineTo(i * W / 6, H); g.stroke(); g.beginPath(); g.moveTo(0, i * H / 6); g.lineTo(W, i * H / 6); g.stroke() }
+    g.font = '26px system-ui'; g.textAlign = 'center'; g.textBaseline = 'middle';
+    let ok = 0;
+    pts.forEach(p => { const right = (pr(p.x, p.y) >= .5 ? 1 : 0) === p.c; ok += right; g.fillText(p.c ? '🐶' : '🐱', p.x * W, (1 - p.y) * H); if (ep && !right) { g.strokeStyle = '#ff453a'; g.lineWidth = 3; g.beginPath(); g.arc(p.x * W, (1 - p.y) * H, 18, 0, 7); g.stroke() } });
+    g.fillStyle = 'rgba(255,255,255,.55)'; g.font = '600 14px system-ui'; g.textAlign = 'left'; g.fillText('vazn →', W - 70, H - 14); g.save(); g.translate(16, 70); g.rotate(-Math.PI / 2); g.fillText('quloq →', 0, 0); g.restore();
+    $('#learn-acc').textContent = ep && pts.length ? Math.round(ok / pts.length * 100) + '%' : '—';
+    $('#learn-ep').textContent = ep.toLocaleString('ru-RU'); $('#learn-n').textContent = pts.length;
+  }
+  function loop() { if (!run) return; step(); draw(); raf = requestAnimationFrame(loop) }
+  const go = $('#learn-go');
+  go.onclick = () => { run = !run; go.textContent = run ? '❚❚ To‘xtatish' : '▶ O‘rgatish'; if (run) loop() };
+  $('#learn-data').onclick = sample;
+  $('#learn-clear').onclick = () => { pts = []; w.fill(0); ep = 0; draw() };
+  $('#learn-mode').onclick = e => { const b = e.target.closest('button'); if (!b) return; mode = +b.dataset.c; $$('#learn-mode button').forEach(x => x.classList.toggle('on', x === b)) };
+  c.addEventListener('pointerdown', e => { const r = c.getBoundingClientRect(); pts.push({ x: (e.clientX - r.left) / r.width, y: 1 - (e.clientY - r.top) / r.height, c: mode }); draw() });
+  sample();
+})();
+
+/* --- B. keyingi so'z mashinasi: kichik trigram model --- */
+(() => {
+  const corpus = `bugun havo issiq va quyoshli . bugun havo bulutli va salqin . bugun havo issiq bo‘ladi . bugun havo juda sovuq . bugun maktabda biznes klub bo‘ladi . bugun biz sun’iy intellektni o‘rganamiz . bugun biz yangi narsa o‘rganamiz .
+  sun’iy intellekt matn yozadi va rasm chizadi . sun’iy intellekt keyingi so‘zni taxmin qiladi . sun’iy intellekt xato qilishi mumkin . sun’iy intellekt bizga yordam beradi . sun’iy intellekt kelajakni o‘zgartiradi . sun’iy intellekt bizga yordam beradi va vaqtni tejaydi .
+  men kelajakda shifokor bo‘lmoqchiman . men kelajakda dasturchi bo‘lmoqchiman . men kelajakda tadbirkor bo‘laman . men sun’iy intellektdan yordamchi sifatida foydalanaman . men har kuni kitob o‘qiyman . men har kuni yangi narsa o‘rganaman .
+  kelajakda har bir odamning sun’iy intellekt yordamchisi bo‘ladi . kelajakda yangi kasblar paydo bo‘ladi . kelajakda men o‘z kompaniyamni ochaman .
+  yaxshi savol yaxshi javob beradi . yaxshi topshiriq yaxshi natija beradi . yaxshi jamoa katta natija beradi . yaxshi rahbar aniq vazifa beradi .`;
+  const toks = corpus.trim().split(/\s+/), tri = {}, bi = {};
+  const add = (m, k, v) => { (m[k] ||= {})[v] = (m[k][v] || 0) + 1 };
+  for (let i = 0; i < toks.length - 1; i++) { add(bi, toks[i], toks[i + 1]); if (i < toks.length - 2) add(tri, toks[i] + ' ' + toks[i + 1], toks[i + 2]) }
+  let words = [], auto = null;
+  const T = () => +$('#gen-t').value;
+  function cands() {
+    const n = words.length, d = (n > 1 && tri[words[n - 2] + ' ' + words[n - 1]]) || bi[words[n - 1]] || {};
+    const t = T(), e = Object.entries(d).map(([w, c]) => [w, Math.pow(c, 1 / t)]), z = e.reduce((s, x) => s + x[1], 0);
+    return e.map(([w, v]) => [w, v / z]).sort((a, b) => b[1] - a[1]);
+  }
+  function render() {
+    const done = words.at(-1) === '.';
+    $('#gen-text').innerHTML = words.map((w, i) => (i === words.length - 1 ? `<i>${w}</i>` : w)).join(' ').replace(/ (<i>)?\.(<\/i>)?$/, '$1.$2').replace(/^./, c => c.toUpperCase()) || '<span class="small">Boshlash so‘zini tanlang</span>';
+    const cs = done ? [] : cands().slice(0, 5);
+    $('#gen-cands').innerHTML = cs.length ? cs.map(([w, p]) => `<button type="button" data-w="${w}"><i style="width:0"></i><span>${w === '.' ? '. (gap tugadi)' : w}</span><b>${Math.round(p * 100)}%</b></button>`).join('') : `<p class="small">${done ? 'Gap tugadi ✓' : '—'}</p>`;
+    requestAnimationFrame(() => $$('#gen-cands i').forEach((el, k) => el.style.width = cs[k][1] * 100 + '%'));
+  }
+  function pick() { const cs = cands(); let r = Math.random(); for (const [w, p] of cs) { r -= p; if (r <= 0) return w } return cs.at(-1)?.[0] }
+  function stop() { clearInterval(auto); auto = null; $('#gen-auto').textContent = '▶ AI o‘zi yozsin' }
+  $('#gen-start').onclick = e => { const b = e.target.closest('button'); if (!b) return; stop(); words = b.dataset.w === 'sun’iy' ? ['sun’iy', 'intellekt'] : [b.dataset.w]; render() };
+  $('#gen-cands').onclick = e => { const b = e.target.closest('button'); if (!b) return; words.push(b.dataset.w); render() };
+  $('#gen-reset').onclick = () => { stop(); words = []; render() };
+  $('#gen-auto').onclick = () => {
+    if (auto) return stop();
+    if (!words.length || words.at(-1) === '.') words = ['bugun'];
+    $('#gen-auto').textContent = '❚❚ To‘xtatish'; render();
+    auto = setInterval(() => { if (words.at(-1) === '.' || words.length > 16) return stop(); const w = pick(); if (!w) return stop(); words.push(w); render() }, 650);
+  };
+  $('#gen-t').oninput = () => { const t = T(); $('#gen-tv').textContent = String(t).replace('.', ',') + (t < .5 ? ' · aniq, zerikarli' : t > 1.3 ? ' · ijodkor, ba’zan bema’ni' : ' · muvozanat'); render() };
+  words = ['bugun', 'havo']; render();
+})();
+
+/* --- C. jonli tokenizer (GPT-4o, o200k_base) --- */
+(() => {
+  let tk = null, loading = false;
+  const run = () => {
+    const s = $('#tok-in').value;
+    if (!tk) return;
+    const ids = tk.encode(s);
+    $('#tok-out').innerHTML = ids.map(i => `<span title="${i}">${esc(tk.decode([i]))}</span>`).join('') || '<span class="small">Matn yozing</span>';
+    $('#tok-n').textContent = ids.length; $('#tok-c').textContent = [...s].length;
+    $('#tok-m').textContent = '≈ ' + (ids.length * 3).toLocaleString('ru-RU') + ' $';
+  };
+  function load() {
+    if (tk || loading) return; loading = true;
+    const sc = document.createElement('script');
+    sc.src = 'https://cdn.jsdelivr.net/npm/gpt-tokenizer@2.9.0/dist/o200k_base.js';
+    sc.onload = () => { tk = window.GPTTokenizer_o200k_base; run() };
+    sc.onerror = () => { loading = false; $('#tok-out').innerHTML = '<span class="small">Tokenizer uchun internet kerak.</span>' };
+    document.head.append(sc);
+  }
+  const host = $('#tok-in').closest('.slide'); host.id ||= 's-tok'; LABS[host.id] = load;
+  $('#tok-in').oninput = run;
+  $('#tok-ex').onclick = e => { const b = e.target.closest('button'); if (!b) return; $('#tok-in').value = b.textContent; load(); run() };
+})();
+
+/* --- D. kontekst oynasi --- */
+(() => {
+  const msgs = ['Salom! Ismim Aziza.', 'Men Urganchda yashayman.', '8-sinfda o‘qiyman.', 'Sevimli o‘yinim — shaxmat.', 'Bugun matematikadan nazorat bor edi.', 'Ertaga futbol o‘ynaymiz.', 'Menga ingliz tili biroz qiyin.', 'Kecha yangi kitob oldim.', 'Ukam bilan multfilm ko‘rdik.', 'Dam olishda bobomnikiga boramiz.', 'Ertaga ob-havo yaxshi bo‘lsa kerak.'];
+  const qa = [[0, 'Ismingiz Aziza 😊', 'Ismingiz Malika, to‘g‘rimi? 🙂'], [1, 'Siz Urganchda yashaysiz.', 'Siz Toshkentda yashaysiz.'], [3, 'Sevimli o‘yiningiz — shaxmat ♟️', 'Sevimli o‘yiningiz — futbol ⚽']];
+  let n = 4, ans = [];
+  const cap = () => +$('#ctx-cap').value;
+  function render() {
+    const c = cap(), first = Math.max(0, n - c);
+    let h = msgs.slice(0, n).map((m, i) => (i === first && first > 0 ? '<div class="sep">↑ STOLDAN TUSHIB KETDI ↑</div>' : '') + `<div class="m${i < first ? ' out' : ''}">${m}</div>`).join('');
+    h += ans.map(a => `<div class="m ai${a.bad ? ' bad' : ''}">${a.t}${a.bad ? '<br><small>⚠ Gallyutsinatsiya: ishonch bilan, lekin xato</small>' : ''}</div>`).join('');
+    $('#ctx-chat').innerHTML = h; $('#ctx-chat').scrollTop = 1e6;
+    $('#ctx-v').textContent = c + ' ta xabar';
+  }
+  $('#ctx-add').onclick = () => { if (n < msgs.length) n++; ans = []; render() };
+  $('#ctx-reset').onclick = () => { n = 4; ans = []; render() };
+  $('#ctx-cap').oninput = () => { ans = []; render() };
+  $('#ctx-q').onclick = e => { const b = e.target.closest('button'); if (!b) return; const [k, ok, bad] = qa[+b.dataset.q]; const inside = k < n && k >= Math.max(0, n - cap()); ans.push({ t: k >= n ? 'Buni hali aytmadingiz. Aytib bera olasizmi?' : inside ? ok : bad, bad: k < n && !inside }); render() };
+  render();
+})();
+
+/* --- E. CPU va GPU poygasi --- */
+(() => {
+  const C = [0, 1].map(i => $('#race-c' + i)), G = C.map(c => c.getContext('2d')), cols = 120, rows = 60, N = cols * rows;
+  let raf = 0;
+  function clear() { G.forEach(g => { g.fillStyle = '#0d0d10'; g.fillRect(0, 0, 480, 240) }) }
+  function cell(g, k, col) { const x = k % cols, y = (k / cols) | 0; g.fillStyle = col; g.fillRect(x * 4, y * 4, 3, 3) }
+  $('#race-go').onclick = () => {
+    cancelAnimationFrame(raf); clear(); $('#race-msg').textContent = '';
+    let a = 0, b = 0; const t0 = performance.now(); let tA = 0, tB = 0;
+    const loop = now => {
+      const t = (now - t0) / 1000;
+      if (a < N) { const to = Math.min(N, a + 14); for (; a < to; a++) cell(G[0], a, '#29c5ff'); tA = t; $('#race-t0').textContent = t.toFixed(1).replace('.', ',') + ' s' }
+      if (b < N) { const to = Math.min(N, b + 1000); for (; b < to; b++) cell(G[1], b, '#30d158'); tB = t; $('#race-t1').textContent = t.toFixed(1).replace('.', ',') + ' s' }
+      if (b >= N && !$('#race-msg').textContent) $('#race-msg').textContent = '🏁 GPU tugatdi! CPU hali ishlayapti...';
+      if (a < N || b < N) raf = requestAnimationFrame(loop);
+      else $('#race-msg').textContent = `🏁 GPU ${Math.max(1, Math.round(tA / Math.max(tB, .05)))} baravar tez. Haqiqiy AI’da farq minglab baravar.`;
+    };
+    raf = requestAnimationFrame(loop);
+  };
+  clear();
+})();
+
+/* --- F. agent simulyatori --- */
+(() => {
+  const S = [
+    [['model', 'h', '🧠 REJA', 'Vazifa: Xivaga ekskursiya, 25 o‘quvchi, byudjet 2 000 000 so‘m.\n   1) joylar  2) transport  3) narx  4) ota-onalarga xat'],
+     ['search', 'h', '🔎 QIDIRUV', '“Xiva muzeylari o‘quvchilar uchun kirish narxi”\n   → Ichan qal’a, Kalta minor, Juma masjidi topildi'],
+     ['search', 'h', '🔎 QIDIRUV', '“Urganch — Xiva avtobus ijarasi 30 o‘rinli”\n   → 3 ta taklif. Eng arzoni: 1 200 000 so‘m'],
+     ['calc', 'h', '🧮 HISOB', 'Avtobus 1 200 000 + chipta 25 × 20 000 = 1 700 000 so‘m'],
+     ['calc', 'ok', '✓ TEKSHIRUV', '1 700 000 ≤ 2 000 000 — byudjetga sig‘adi, 300 000 zaxira'],
+     ['file', 'h', '✍️ FAYL', 'reja.pdf va ota-onalarga-xat.docx qoralamasi tayyor'],
+     ['model', 'w', '⚠ SAVOL', 'Sana va jo‘nash vaqti noma’lum. Rahbardan so‘rash kerak.'],
+     ['human', 'h', '🙋 INSON', '“Shanba, soat 09:00, maktab oldidan.”'],
+     ['mem', 'ok', '💾 XOTIRA + ✅ TAYYOR', 'Sana saqlandi. Xat yakunlandi va yuborishga tayyor.']],
+    [['model', 'h', '🧠 REJA', 'Vazifa: 7-sinf biologiya, fotosintez. Javobni bermayman — o‘rgataman.\n   1) mavzu  2) test  3) tekshirish  4) zaif joyni qayta tushuntirish'],
+     ['search', 'h', '🔎 MANBA', 'Darslik: “Fotosintez” bo‘limi o‘qildi'],
+     ['file', 'h', '✍️ TEST', '5 ta savol tuzildi: xlorofill, quyosh nuri, CO₂, kislorod, glyukoza'],
+     ['human', 'h', '🙋 O‘QUVCHI', 'Javoblar: 1-✓ 2-✓ 3-✗ 4-✓ 5-✗'],
+     ['calc', 'ok', '🧮 NATIJA', '3 / 5 — 60%'],
+     ['model', 'w', '⚠ ZAIF JOY', 'CO₂ va glyukoza bog‘liqligi tushunilmagan'],
+     ['model', 'h', '🧠 TUSHUNTIRISH', 'Oddiy misol: o‘simlik — oshxona, quyosh — gaz, CO₂ va suv — mahsulot, glyukoza — taom'],
+     ['mem', 'ok', '💾 XOTIRA', 'Ertaga 2 ta qo‘shimcha savol bilan qayta tekshiraman.']],
+    [['model', 'h', '🧠 REJA', 'Vazifa: maktab yonida limonad sotish. 1) xarajat 2) narx 3) foyda 4) reklama'],
+     ['search', 'h', '🔎 QIDIRUV', 'Limon, shakar, stakan narxlari bozorda'],
+     ['calc', 'h', '🧮 HISOB', '1 stakan tannarxi ≈ 2 500 so‘m. Narx 5 000 so‘m → 1 stakandan 2 500 foyda'],
+     ['calc', 'h', '🧮 HISOB', 'Kuniga 40 stakan × 2 500 = 100 000 so‘m foyda'],
+     ['file', 'h', '✍️ FAYL', 'Afisha matni: “Muzdek limonad — darsdan keyin, 5 000 so‘m”'],
+     ['model', 'w', '⚠ XAVF', 'Ob-havo sovusa, savdo tushadi. B-reja: issiq choy'],
+     ['human', 'h', '🙋 INSON', '“Ota-onam ruxsat berdi. Boshlaymiz!”'],
+     ['mem', 'ok', '✅ TAYYOR', 'Biznes-reja va afisha saqlandi.']]
+  ];
+  let pick = 0, timer = null;
+  $('#ag-pick').onclick = e => { const b = e.target.closest('[data-a]'); if (!b) return; pick = +b.dataset.a; $$('#ag-pick [data-a]').forEach(x => x.classList.toggle('on', x === b)) };
+  $('#ag-go').onclick = () => {
+    clearTimeout(timer); const log = $('#ag-log'), steps = S[pick]; log.innerHTML = ''; let i = 0;
+    const light = t => $$('#ag-tools div').forEach(d => d.classList.toggle('on', d.dataset.t === t));
+    const next = () => {
+      if (i >= steps.length) { light(null); return }
+      const [t, cls, head, body] = steps[i++]; light(t);
+      const line = document.createElement('div'); line.innerHTML = `<span class="${cls}">${head}</span> `; log.append(line);
+      let k = 0; const tx = document.createElement('span'); line.append(tx);
+      const type = () => { tx.textContent = body.slice(0, k += 3); log.scrollTop = 1e6; if (k < body.length) timer = setTimeout(type, 18); else timer = setTimeout(next, 650) };
+      type();
+    };
+    next();
+  };
+})();
+
+/* --- G. prompt o'lchagich --- */
+(() => {
+  const P = ['Menga biznes g‘oya ber.', 'Sen biznes murabbiysan. Menga biznes g‘oyalar taklif qil.', 'Sen — tajribali biznes-murabbiysan.\nVazifa: menga 3 ta kichik biznes g‘oyasini taklif qil.\nMen haqimda: 14 yoshdaman, Urganchda yashayman, rasm chizishni yaxshi ko‘raman, 500 000 so‘m pulim bor.\nNatija: jadval — g‘oya, birinchi qadam, xarajat, birinchi mijoz.\nChegara: maktabdan keyin kuniga 1 soatdan oshmasin.', ''];
+  const R = [
+    ['Rol', /(\bsen\b|\bsiz\b)\s*[—–-]|sifatida|rolida|murabbiy|ustoz|mutaxassis|ekspert|tajribali|\bsen\s+\S+(san|siz)\b/, 'AI kim bo‘lib ishlasin? “Sen — tajribali ...”'],
+    ['Vazifa', /(tuz|yoz|top|taklif|solishtir|tushuntir|tahlil|tayyorla|hisobla|tekshir|ber)\w*/, 'Aniq fe’l: tuz, yoz, taklif qil, solishtir'],
+    ['Kontekst', /(men haqimda|yosh|sinf|maktab|urganch|toshkent|yashayman|pulim|\bmen\s+\d|\d+\s*(yosh|so'?m|ming|mln))/, 'O‘zingiz va vaziyat haqida: yosh, joy, maqsad, imkoniyat'],
+    ['Natija', /(jadval|ro'?yxat|band|so'?z|qator|format|punkt|slayd|natija:|\d+\s*ta)/, 'Qanday ko‘rinishda: jadval, 5 band, 100 so‘z'],
+    ['Chegara', /(oshmasin|ko'?p emas|faqat|emas\b|qilma|ishlatma|chegara|byudjet|muddat|kerak emas)/, 'Nima qilmasin: vaqt, pul, til, uslub']
+  ];
+  function run() {
+    const s = $('#pm-in').value.toLowerCase().replace(/[‘’ʻʼ`]/g, "'");
+    const hit = R.map(([, re]) => re.test(s) && s.length > 12);
+    const n = hit.filter(Boolean).length * 20, ring = $('#pm-ring');
+    ring.style.setProperty('--v', n); ring.style.setProperty('--c', n < 40 ? '#ff453a' : n < 80 ? '#ffd60a' : '#30d158');
+    $('#pm-n').textContent = n;
+    $('#pm-say').textContent = n < 40 ? 'Iste’molchi darajasi: AI taxmin qilishga majbur.' : n < 80 ? 'Yaxshi boshlanish. Yetishmagan qismlarni qo‘shing.' : 'Rahbar darajasi! AI aniq bilgan holda ishlaydi.';
+    $('#pm-checks').innerHTML = R.map(([name, , tip], i) => `<div class="${hit[i] ? 'y' : 'n'}"><b>${hit[i] ? '✓' : '✗'}</b><span>${name}${hit[i] ? '' : `<small>${tip}</small>`}</span></div>`).join('');
+  }
+  $('#pm-in').oninput = run;
+  $('#s-meter .ctl').onclick = e => { const b = e.target.closest('[data-p]'); if (!b) return; $('#pm-in').value = P[+b.dataset.p]; run() };
+  run();
+})();
 
 /* ---------- taymerlar ---------- */
 const fmt = s => Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
