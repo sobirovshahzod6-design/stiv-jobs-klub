@@ -274,6 +274,15 @@ body.v-karta #v-karta{display:block}
 .lab{display:grid;grid-template-columns:1.35fr 1fr;gap:calc(var(--u)*2.4);align-items:start}
 @media (max-width:860px){.lab{grid-template-columns:1fr}}
 .lab>*{min-width:0}
+.sp-list{display:flex;flex-direction:column;gap:5px;max-height:min(40vh,420px);overflow:auto}
+.sp-list div{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;border-radius:10px;padding:7px 12px;background:#1c1c1e;font-size:max(13px,calc(var(--u)*1.55));animation:pop .35s ease}
+.sp-list b{font-size:12px;padding:2px 8px;border-radius:99px;white-space:nowrap}
+.sp-list .s b{background:rgba(255,69,58,.25);color:#ff8a80}.sp-list .o b{background:rgba(48,209,88,.22);color:#7ee2a0}
+.sp-res{border-radius:16px;padding:calc(var(--u)*1.8);background:#1c1c1e;display:flex;flex-direction:column;gap:8px}
+.sp-res .big{font-size:max(30px,calc(var(--u)*4.6));font-weight:800;letter-spacing:-.03em;line-height:1}
+.sp-res .bar{height:14px;border-radius:99px;background:rgba(48,209,88,.35);overflow:hidden}.sp-res .bar i{display:block;height:100%;background:#ff453a;transition:width .5s ease}
+.sp-words{display:flex;flex-wrap:wrap;gap:6px;font-weight:700;font-size:max(15px,calc(var(--u)*1.9))}
+.sp-words span{padding:3px 10px;border-radius:8px}
 .lab canvas{display:block;width:100%;height:auto;border-radius:16px;background:#0d0d10;border:1px solid #2c2c2e;touch-action:none}
 .white .lab canvas,.grey .lab canvas{background:#fff;border-color:var(--line)}
 .ctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
@@ -529,15 +538,21 @@ body.v-ai #v-ai,body.v-uy #v-uy{display:block}
 <section class="slide dark" id="s-learn">
   <div class="in">
     <span class="eyebrow">Laboratoriya · AI o‘rganmoqda <span class="new">INTERAKTIV</span></span>
-    <h2>Misollardan qoidani <span class="grad">o‘zi topadi</span></h2>
+    <h2>AI’ni spamni tanishga <span class="grad">o‘rgatamiz</span></h2>
     <div class="lab">
-      <canvas id="learn-c" width="720" height="440" aria-label="Mushuk va itlarni ajratishni o‘rganayotgan model"></canvas>
-      <div style="display:flex;flex-direction:column;gap:14px">
-        <p class="t">Har bir nuqta — bitta hayvon. Model hech qanday qoidani bilmaydi: u faqat misollarga qarab chegara chizishni o‘rganadi. Ekranga bosib, yangi misol qo‘shing.</p>
-        <div class="ctl seg" id="learn-mode"><button type="button" class="on" data-c="0">🐱 Mushuk qo‘shish</button><button type="button" data-c="1">🐶 It qo‘shish</button></div>
-        <div class="ctl"><button type="button" class="go" id="learn-go">▶ O‘rgatish</button><button type="button" id="learn-data">🎲 Yangi misollar</button><button type="button" id="learn-clear">Tozalash</button></div>
-        <div class="stat"><div><b id="learn-acc">—</b><span>ANIQLIK</span></div><div><b id="learn-ep">0</b><span>O‘QISH QADAMI</span></div><div><b id="learn-n">0</b><span>MISOL</span></div></div>
-        <p class="small">X o‘qi — vazn, Y o‘qi — quloq uzunligi. Rang — modelning ishonchi: 🐱 yoki 🐶.</p>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <p class="t"><strong>1-qadam · misollar.</strong> AI’ga hech qanday qoida aytmaymiz. Faqat xabarlarni ko‘rsatib, “bu spam”, “bu oddiy” deymiz.</p>
+        <div class="sp-list" id="sp-list"></div>
+        <div class="ctl"><button type="button" class="go" id="sp-more">+ 4 ta misol qo‘shish</button><button type="button" id="sp-reset">↺ Boshidan</button></div>
+        <div class="stat"><div><b id="sp-n">0</b><span>MISOL</span></div><div><b id="sp-w">0</b><span>O‘RGANGAN SO‘Z</span></div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <p class="t"><strong>2-qadam · sinov.</strong> AI ko‘rmagan yangi xabarni yozing:</p>
+        <div class="ctl" id="sp-tests"><button type="button">Siz bepul telefon yutib oldingiz!</button><button type="button">Ertaga dars soat nechada?</button><button type="button">Bonus oling, havolani bosing</button></div>
+        <textarea id="sp-in" spellcheck="false" style="min-height:calc(var(--u)*8)">Siz bepul telefon yutib oldingiz!</textarea>
+        <div class="sp-res" id="sp-res"></div>
+        <div class="sp-words" id="sp-words"></div>
+        <p class="small">So‘z rangi — AI uni qanday tushungani: qizil spamga, yashil oddiy xabarga ishora. Misol ko‘paysa, AI aqlliroq bo‘ladi.</p>
       </div>
     </div>
   </div>
@@ -1519,52 +1534,46 @@ const LABS = {};
 const prevOnSlide = onSlide;
 onSlide = function (s) { prevOnSlide(s); LABS[s.id]?.() };
 
-/* --- A. o'rganish: logistik regressiya, 6 belgi --- */
+/* --- A. o'rganish: spam aniqlagich (naive Bayes) --- */
 (() => {
-  const c = $('#learn-c'), g = c.getContext('2d'), W = c.width, H = c.height;
-  let pts = [], w = new Array(6).fill(0), ep = 0, run = false, mode = 0, raf = 0;
-  const f = (x, y) => { const u = (x - .5) * 2, v = (y - .5) * 2; return [1, u, v, u * u, v * v, u * v] };
-  const pr = (x, y) => { const z = f(x, y).reduce((s, a, i) => s + a * w[i], 0); return 1 / (1 + Math.exp(-z)) };
-  const rnd = (m, s) => m + s * (Math.random() + Math.random() + Math.random() - 1.5);
-  function sample() {
-    pts = [];
-    for (let i = 0; i < 22; i++) pts.push({ x: rnd(.28, .22), y: rnd(.68, .2), c: 0 });
-    for (let i = 0; i < 22; i++) pts.push({ x: rnd(.66, .26), y: rnd(.34, .24), c: 1 });
-    pts = pts.filter(p => p.x > .02 && p.x < .98 && p.y > .02 && p.y < .98);
-    w.fill(0); ep = 0; draw();
+  const POOL = [
+    ['Tabriklaymiz! Siz iPhone yutib oldingiz, havolani bosing', 1], ['Ertaga darsga kitobni olib kel', 0],
+    ['Bepul bonus oling, hozir havolani bosing', 1], ['Bugun futbol soat 5 da bo‘ladi', 0],
+    ['Faqat bugun! 90% chegirma, tezda havolaga o‘ting', 1], ['Uy vazifasi matematikadan 15-mashq', 0],
+    ['Kartangiz bloklandi, kodni yuboring', 1], ['Onam kechki ovqatga chaqiryapti', 0],
+    ['Siz yutuq egasisiz! Pulni olish uchun bosing', 1], ['Biznes klub shanba kuni 12:30 da', 0],
+    ['Bepul internet paketi, havolani bosing va oling', 1], ['Kitobni o‘qib bo‘ldingmi?', 0],
+    ['Tez boyish sirlari: kuniga 500$ bepul kurs', 1], ['Ertaga maktabga erta kel, tadbir bor', 0],
+    ['Yutuqli o‘yin! Telefon raqamingizni yuboring', 1], ['Rahmat, uy vazifasini tushundim', 0]
+  ];
+  let n = 4;
+  const words = t => t.toLowerCase().replace(/[‘’ʻʼ`']/g, '').split(/[^a-zа-яёқғўҳ0-9]+/i).filter(w => w.length > 2);
+  function model() {
+    const c = [{}, {}], tot = [0, 0], voc = new Set();
+    POOL.slice(0, n).forEach(([t, y]) => words(t).forEach(w => { c[y][w] = (c[y][w] || 0) + 1; tot[y]++; voc.add(w) }));
+    const V = voc.size || 1, lr = w => Math.log(((c[1][w] || 0) + 1) / (tot[1] + V)) - Math.log(((c[0][w] || 0) + 1) / (tot[0] + V));
+    return { voc, lr };
   }
-  function step() {
-    if (!pts.length) return;
-    for (let k = 0; k < 25; k++) {
-      const gr = new Array(6).fill(0);
-      pts.forEach(p => { const e = pr(p.x, p.y) - p.c; f(p.x, p.y).forEach((a, i) => gr[i] += e * a) });
-      w = w.map((v, i) => v - 1.2 * gr[i] / pts.length); ep++;
-    }
+  function render() {
+    $('#sp-list').innerHTML = POOL.slice(0, n).map(([t, y]) => `<div class="${y ? 's' : 'o'}"><span>${esc(t)}</span><b>${y ? '🚫 Spam' : '✅ Oddiy'}</b></div>`).join('');
+    $('#sp-list').scrollTop = 1e6;
+    const m = model(); $('#sp-n').textContent = n; $('#sp-w').textContent = m.voc.size;
+    $('#sp-more').disabled = n >= POOL.length; $('#sp-more').textContent = n >= POOL.length ? 'Hamma misollar qo‘shildi' : '+ 4 ta misol qo‘shish';
+    test(m);
   }
-  function draw() {
-    const n = 48, m = 30;
-    for (let i = 0; i < n; i++) for (let j = 0; j < m; j++) {
-      const q = pr((i + .5) / n, 1 - (j + .5) / m), a = Math.abs(q - .5) * 1.3;
-      g.fillStyle = q < .5 ? `rgba(41,197,255,${a})` : `rgba(255,159,10,${a})`;
-      g.fillRect(i * W / n, j * H / m, W / n + 1, H / m + 1);
-    }
-    g.strokeStyle = 'rgba(255,255,255,.08)'; g.lineWidth = 1;
-    for (let i = 1; i < 6; i++) { g.beginPath(); g.moveTo(i * W / 6, 0); g.lineTo(i * W / 6, H); g.stroke(); g.beginPath(); g.moveTo(0, i * H / 6); g.lineTo(W, i * H / 6); g.stroke() }
-    g.font = '26px system-ui'; g.textAlign = 'center'; g.textBaseline = 'middle';
-    let ok = 0;
-    pts.forEach(p => { const right = (pr(p.x, p.y) >= .5 ? 1 : 0) === p.c; ok += right; g.fillText(p.c ? '🐶' : '🐱', p.x * W, (1 - p.y) * H); if (ep && !right) { g.strokeStyle = '#ff453a'; g.lineWidth = 3; g.beginPath(); g.arc(p.x * W, (1 - p.y) * H, 18, 0, 7); g.stroke() } });
-    g.fillStyle = 'rgba(255,255,255,.55)'; g.font = '600 14px system-ui'; g.textAlign = 'left'; g.fillText('vazn →', W - 70, H - 14); g.save(); g.translate(16, 70); g.rotate(-Math.PI / 2); g.fillText('quloq →', 0, 0); g.restore();
-    $('#learn-acc').textContent = ep && pts.length ? Math.round(ok / pts.length * 100) + '%' : '—';
-    $('#learn-ep').textContent = ep.toLocaleString('ru-RU'); $('#learn-n').textContent = pts.length;
+  function test(m = model()) {
+    const ws = words($('#sp-in').value), known = ws.filter(w => m.voc.has(w));
+    const z = ws.reduce((a, w) => a + m.lr(w), 0), p = 1 / (1 + Math.exp(-z)), pc = Math.round(p * 100);
+    $('#sp-res').innerHTML = !ws.length ? '<span class="small">Xabar yozing</span>' : !known.length
+      ? '<div class="big">🤷 Bilmayman</div><p class="small">Bu so‘zlarning birortasini misollarda ko‘rmaganman. Ko‘proq misol kerak.</p>'
+      : `<div class="big" style="color:${p > .5 ? '#ff6961' : '#30d158'}">${p > .5 ? '🚫 Spam' : '✅ Oddiy xabar'} · ${p > .5 ? pc : 100 - pc}%</div><div class="bar"><i style="width:${pc}%"></i></div><p class="small">${known.length} ta tanish so‘z asosida, ${ws.length - known.length} tasi notanish</p>`;
+    $('#sp-words').innerHTML = ws.map(w => { const v = m.voc.has(w) ? m.lr(w) : 0, a = Math.min(.85, Math.abs(v) / 2.2); return `<span style="background:${!m.voc.has(w) ? '#2c2c2e' : v > 0 ? `rgba(255,69,58,${a})` : `rgba(48,209,88,${a})`}">${esc(w)}</span>` }).join('');
   }
-  function loop() { if (!run) return; step(); draw(); raf = requestAnimationFrame(loop) }
-  const go = $('#learn-go');
-  go.onclick = () => { run = !run; go.textContent = run ? '❚❚ To‘xtatish' : '▶ O‘rgatish'; if (run) loop() };
-  $('#learn-data').onclick = sample;
-  $('#learn-clear').onclick = () => { pts = []; w.fill(0); ep = 0; draw() };
-  $('#learn-mode').onclick = e => { const b = e.target.closest('button'); if (!b) return; mode = +b.dataset.c; $$('#learn-mode button').forEach(x => x.classList.toggle('on', x === b)) };
-  c.addEventListener('pointerdown', e => { const r = c.getBoundingClientRect(); pts.push({ x: (e.clientX - r.left) / r.width, y: 1 - (e.clientY - r.top) / r.height, c: mode }); draw() });
-  sample();
+  $('#sp-more').onclick = () => { n = Math.min(POOL.length, n + 4); render() };
+  $('#sp-reset').onclick = () => { n = 4; render() };
+  $('#sp-in').oninput = () => test();
+  $('#sp-tests').onclick = e => { const b = e.target.closest('button'); if (!b) return; $('#sp-in').value = b.textContent; test() };
+  render();
 })();
 
 /* --- B. keyingi so'z mashinasi: kichik trigram model --- */
