@@ -270,6 +270,27 @@ body.v-mashq #v-mashq,body.v-vazifa #v-vazifa,body.v-goyalar #v-goyalar{display:
 body.v-karta #v-karta{display:block}
 
 /* ---------- AI darsi: qo'shimcha ---------- */
+.ph.empty span{opacity:.7}
+body.present .ph.empty{display:none}
+body.present .kasb.ph4:has(>.ph.empty){grid-template-columns:repeat(3,1fr)}
+body.present .split:has(>.ph.empty){grid-template-columns:1fr}
+.chain{display:grid;grid-template-columns:repeat(4,1fr);gap:calc(var(--u)*1.4)}
+@media (max-width:760px){.chain{grid-template-columns:1fr 1fr}}
+.chain .card{position:relative}
+.chain .flag{font-size:max(26px,calc(var(--u)*3.6))}
+.loop{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;counter-reset:l}
+@media (max-width:760px){.loop{grid-template-columns:1fr 1fr}}
+.loop .card::before{counter-increment:l;content:counter(l);font-weight:800;color:var(--cyan);font-size:max(22px,calc(var(--u)*3))}
+.tok{display:flex;gap:6px;flex-wrap:wrap;font-family:ui-monospace,Menlo,monospace;font-size:max(18px,calc(var(--u)*2.6));font-weight:700}
+.tok span{padding:4px 10px;border-radius:8px;background:rgba(41,197,255,.18);border:1px solid rgba(41,197,255,.5)}
+.tok span:nth-child(even){background:rgba(79,116,255,.28);border-color:#4f74ff}
+.tbl{width:100%;border-collapse:collapse;font-size:max(14px,calc(var(--u)*1.6))}
+.tbl th,.tbl td{text-align:left;padding:calc(var(--u)*1) calc(var(--u)*1.2);border-top:1px solid rgba(128,128,128,.25);vertical-align:top}
+.tbl th{font-size:.78em;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.tbl td b{color:var(--cyan)}.grey .tbl td b,.white .tbl td b{color:var(--data)}
+.kasb.ph4{grid-template-columns:1.1fr 1fr 1fr 1fr}
+@media (max-width:900px){.kasb.ph4{grid-template-columns:1fr 1fr}}
+.kasb .ph{--ar:3/4;min-height:0}
 .hero .pic.aihero{background:#000;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:40px 16px}
 .aihero div{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(var(--u)*1.6)}
 .aihero span{width:calc(var(--u)*11);min-width:72px;aspect-ratio:1;border-radius:50%;background:#1c1c1e;border:1px solid #2c2c2e;display:flex;align-items:center;justify-content:center;font-size:max(30px,calc(var(--u)*4.4))}
@@ -327,6 +348,8 @@ body.v-ai #v-ai,body.v-uy #v-uy{display:block}
   <span class="logo"><i></i>DATA Biznes Klub</span>
   <nav aria-label="Bo‘limlar">
     <a href="#s-nima">AI nima</a>
+    <a href="#s-zavod">Serverlar va siyosat</a>
+    <a href="#s-model">Modellar</a>
     <a href="#s-tarix">Kecha · bugun · ertaga</a>
     <a href="#s-rahbar">Iste’molchi yoki rahbar</a>
     <a href="#s-kasb">Kasbingiz va AI</a>
@@ -356,14 +379,16 @@ body.v-ai #v-ai,body.v-uy #v-uy{display:block}
 <section class="slide dark">
   <div class="in">
     <span class="eyebrow">Bugungi yo‘l xaritasi</span>
-    <h2>2 soat, 5 bekat</h2>
+    <h2>2 soat, 6 bekat</h2>
     <div class="grid c3">
-      <div class="card"><span class="eyebrow">12:30 · 15 daq</span><h3>Takrorlash</h3><p class="small">Startup darsidan 3 saboq va g‘oya kartalari</p></div>
-      <div class="card"><span class="eyebrow">12:45 · 25 daq</span><h3>AI nima va qanday ishlaydi?</h3><p class="small">Kino roboti emas. Keyingi so‘zni topish o‘yini, 3 qavat, ish stoli</p></div>
-      <div class="card"><span class="eyebrow">13:10 · 20 daq</span><h3>Kecha, bugun, ertaga</h3><p class="small">1950-yildan 2035-yilgacha</p></div>
-      <div class="card"><span class="eyebrow">13:30 · 30 daq</span><h3>Iste’molchi yoki rahbar?</h3><p class="small">AI’ga xodimdek topshiriq berish. Telefondan jonli mashq</p></div>
-      <div class="card"><span class="eyebrow">14:00 · 30 daq</span><h3>Sizning kasbingiz va AI</h3><p class="small">Ovoz berish, kasblar, xavfsizlik qoidalari va topshiriq</p></div>
-      <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">Bugungi savol</span><h3>AI sizni almashtiradimi yoki sizga 10 ta xodim beradimi?</h3></div>
+      <div class="card"><span class="eyebrow">12:30 · 10 daq</span><h3>Takrorlash</h3><p class="small">Startup darsi va g‘oya kartalari</p></div>
+      <div class="card"><span class="eyebrow">12:40 · 20 daq</span><h3>1. AI nima va qanday ishlaydi?</h3><p class="small">Keyingi so‘z, token, kontekst, xatolar</p></div>
+      <div class="card"><span class="eyebrow">13:00 · 15 daq</span><h3>2. AI zavodi</h3><p class="small">Serverlar, GPU, elektr, suv va chiplar siyosati</p></div>
+      <div class="card"><span class="eyebrow">13:15 · 15 daq</span><h3>3. Modellar</h3><p class="small">Mavjud AI’lar, yopiq va ochiq modellar, farqlari, narxi</p></div>
+      <div class="card"><span class="eyebrow">13:30 · 10 daq</span><h3>4. Kecha, bugun, ertaga</h3><p class="small">1950-yildan 2035-yilgacha</p></div>
+      <div class="card"><span class="eyebrow">13:40 · 30 daq</span><h3>5. Iste’molchi yoki rahbar?</h3><p class="small">Prompt, jonli mashq, skillar va agentlar</p></div>
+      <div class="card"><span class="eyebrow">14:10 · 20 daq</span><h3>6. Kasbingiz va AI</h3><p class="small">Ovoz berish, kasblar, xavfsizlik, topshiriq</p></div>
+      <div class="card hl" style="grid-column:span 2"><span class="eyebrow" style="color:#9fe3ff">Bugungi savol</span><h3>AI sizni almashtiradimi yoki sizga 10 ta xodim beradimi?</h3></div>
     </div>
   </div>
 </section>
@@ -467,6 +492,26 @@ body.v-ai #v-ai,body.v-uy #v-uy{display:block}
   </div>
 </section>
 
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Token · AI’ning hisob birligi</span>
+    <h2>AI so‘zni emas, <span class="grad">bo‘laklarni</span> o‘qiydi</h2>
+    <div class="split" style="align-items:start">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <p class="small">INGLIZCHA · 1 token</p><div class="tok"><span>Apple</span></div>
+        <p class="small">O‘ZBEKCHA · 2 token</p><div class="tok"><span>ol</span><span>ma</span></div>
+        <p class="small">O‘ZBEKCHA · 5 token</p><div class="tok"><span>o‘</span><span>quv</span><span>chi</span><span>lar</span><span>imiz</span></div>
+        <p class="small">Bo‘linish modelga qarab farq qiladi. Bu shartli misol.</p>
+      </div>
+      <div class="grid" style="gap:10px">
+        <div class="card"><h3>Pul tokenda hisoblanadi</h3><p class="small">Kompaniyalar “1 million token uchun N dollar” deb to‘lov oladi. Javob (chiqish) savoldan qimmatroq</p></div>
+        <div class="card"><h3>O‘zbek tili qimmatroq</h3><p class="small">Bir xil mazmun o‘zbekchada inglizchadan ko‘proq token sarflaydi: internetda o‘zbekcha matn kam</p></div>
+        <div class="card hl"><h3>Shartli hisob: bitta so‘rov</h3><p class="small" style="color:#cfe0ff">10 000 token PDF + savol ≈ 0,03 $ · 2 000 token javob ≈ 0,03 $ · jami ≈ 0,06 $</p></div>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="slide grey">
   <div class="in">
     <span class="eyebrow">AI tizimi 3 qavatdan iborat</span>
@@ -508,10 +553,169 @@ body.v-ai #v-ai,body.v-uy #v-uy{display:block}
   </div>
 </section>
 
-<!-- ================= 2. TARIX ================= -->
-<section class="slide blue" id="s-tarix">
+<!-- ================= 2. AI ZAVODI ================= -->
+<section class="slide blue" id="s-zavod">
   <div class="in">
     <span class="eyebrow" style="color:#9fe3ff">2-bekat</span>
+    <h1>AI zavodi: serverlar, suv va siyosat</h1>
+    <p class="lead">“Bulut” — bu osmondagi narsa emas. Bu ulkan binolar, millionlab chiplar va shahar darajasidagi elektr.</p>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Infratuzilma</span>
+    <h2>Kompyuterdan <span class="grad">data-markazgacha</span></h2>
+    <div class="split">
+      <div class="rows">
+        <div class="row"><b>Kompyuter</b><span class="t">Bitta odamning ishi uchun</span></div>
+        <div class="row"><b>Server</b><span class="t">Kecha-kunduz o‘chmaydigan kuchli kompyuter</span></div>
+        <div class="row"><b>Rack</b><span class="t">Bitta shkafda o‘nlab server</span></div>
+        <div class="row on"><b>Data-markaz</b><span class="t">Minglab shkaf, o‘z elektr stansiyasi va sovitish tizimi bilan bino</span></div>
+      </div>
+      <div class="ph wide" data-img="datacenter" data-cap="Data-markaz ichi: server shkaflari qatorlari"></div>
+    </div>
+    <p class="small">Siz ChatGPT’ga savol yozganingizda, javob shunday binolardan birida hisoblanadi.</p>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Nega aynan GPU?</span>
+    <h2>Bitta professor va <span class="grad">10 000 o‘quvchi</span></h2>
+    <div class="split">
+      <div class="grid" style="gap:10px">
+        <div class="card"><span class="eyebrow">CPU · protsessor</span><h3>Bitta aqlli professor</h3><p class="small">Har qanday murakkab ishni qiladi, lekin navbat bilan</p></div>
+        <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">GPU · grafik protsessor</span><h3>Minglab oddiy hisobchi</h3><p class="small" style="color:#cfe0ff">Bir xil amalni bir vaqtda bajaradi. AI’ni o‘qitish va ishlatish aynan shunday ish</p></div>
+        <p class="small">AI chiplari bozorida yetakchi — NVIDIA. Asoschisi Jensen Xuang.</p>
+      </div>
+      <div class="grid g2">
+        <div class="ph sq" data-img="h100" data-cap="NVIDIA H100 GPU chipi"></div>
+        <div class="ph sq" data-img="huang" data-cap="Jensen Xuang, NVIDIA"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide white">
+  <div class="in">
+    <span class="eyebrow">Elektr</span>
+    <h2>Bitta AI shkafi — <span class="grad">12 baravar</span> ko‘p quvvat</h2>
+    <div class="split">
+      <div class="grid g2">
+        <div class="card"><span class="eyebrow">Oddiy server shkafi</span><div class="k c">8–10 kVt</div><p class="small">Saytlar, bazalar, pochta</p></div>
+        <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">AI shkafi · NVIDIA GB200 NVL72</span><div class="k">~120 kVt</div><p class="small" style="color:#cfe0ff">72 ta GPU bitta shkafda</p></div>
+        <div class="card" style="grid-column:1/-1"><span class="eyebrow">xAI Colossus · 2024</span><h3>100 000 ta GPU — 122 kunda ishga tushirildi</h3><p class="small">Chip, elektr, tarmoq va sovitish bir vaqtda tayyor bo‘lishi kerak edi</p></div>
+      </div>
+      <div class="ph tall" data-img="gb200" data-cap="NVIDIA GB200 NVL72 AI shkafi"></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Suv nega kerak?</span>
+    <h2>Har bir hisob — <span class="grad">issiqlik</span></h2>
+    <div class="split">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="loop" style="grid-template-columns:repeat(3,1fr)">
+          <div class="card"><h3>Chip qiziydi</h3><p class="small">Milliardlab amal = katta issiqlik</p></div>
+          <div class="card"><h3>Suyuqlik oladi</h3><p class="small">Chip ustidagi sovitish bloki orqali</p></div>
+          <div class="card"><h3>Tashqariga chiqadi</h3><p class="small">Sovitish minoralarida suv bug‘lanadi</p></div>
+        </div>
+        <p class="t">Shuning uchun data-markazlar <strong>elektr va suv</strong> manbai yonida quriladi. Bu AI’ning ekologik narxi.</p>
+        <p class="small">Bitta so‘rov uchun yagona “N litr suv” raqami yo‘q: iqlim va sovitish texnologiyasiga bog‘liq. Internetdagi aniq raqamlarga ehtiyot bo‘ling.</p>
+      </div>
+      <div class="ph wide" data-img="cooling" data-cap="Data-markazning sovitish minoralari yoki quvurlari"></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide grey">
+  <div class="in">
+    <span class="eyebrow">Bitta chipning global zanjiri</span>
+    <h2>AI chipini <span class="grad">hech bir davlat</span> yolg‘iz yasay olmaydi</h2>
+    <div class="chain">
+      <div class="card"><span class="flag">🇺🇸</span><h3>NVIDIA</h3><p class="small">Chip dizayni va dasturiy ekotizim</p><div class="ph wide" data-img="nvidia" data-cap="NVIDIA logotipi yoki ofisi"></div></div>
+      <div class="card"><span class="flag">🇯🇵</span><h3>Yaponiya</h3><p class="small">Kremniy plastina (wafer) va kimyoviy materiallar</p><div class="ph wide" data-img="wafer" data-cap="Kremniy plastina (wafer)"></div></div>
+      <div class="card"><span class="flag">🇳🇱</span><h3>ASML</h3><p class="small">EUV litografiya mashinasi. Dunyoda yagona yetkazib beruvchi</p><div class="ph wide" data-img="asml" data-cap="ASML EUV mashinasi"></div></div>
+      <div class="card hl"><span class="flag">🇹🇼</span><h3>TSMC</h3><p class="small" style="color:#cfe0ff">Chipni fizik ishlab chiqaradi</p><div class="ph wide" data-img="tsmc" data-cap="TSMC zavodi, Tayvan"></div></div>
+    </div>
+    <p class="small">NVIDIA loyihalaydi, TSMC ishlab chiqaradi. Bitta bo‘g‘in to‘xtasa, butun dunyo AI’si sekinlashadi.</p>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Siyosat</span>
+    <h2>Chiplar — <span class="grad">XXI asrning nefti</span></h2>
+    <div class="grid c3">
+      <div class="card"><div class="k c">01</div><h3>Eksport nazorati</h3><p class="small">AQSh eng kuchli AI chiplarini ayrim davlatlarga sotishni cheklaydi</p></div>
+      <div class="card"><div class="k c">02</div><h3>Javob: o‘z yo‘li</h3><p class="small">Xitoy o‘z chiplari va kam resurs talab qiladigan tejamkor modellar ustida ishlaydi</p></div>
+      <div class="card hl"><div class="k">03</div><h3>Kichik davlatlar uchun</h3><p class="small" style="color:#cfe0ff">Kim AI’ni yaxshi ishlata oladigan odamlarga ega bo‘lsa — o‘sha yutadi. O‘zbekiston uchun bu siz</p></div>
+    </div>
+    <p class="lead">Texnologiya poygasi endi kompaniyalar emas, <strong>davlatlar</strong> o‘rtasida ketmoqda.</p>
+  </div>
+</section>
+
+<!-- ================= 3. MODELLAR ================= -->
+<section class="slide blue" id="s-model">
+  <div class="in">
+    <span class="eyebrow" style="color:#9fe3ff">3-bekat</span>
+    <h1>Modellar: kim kim?</h1>
+    <p class="lead">ChatGPT — bu AI’ning o‘zi emas, bitta ilova. Ortida o‘nlab kompaniya va modellar raqobati bor.</p>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Mavjud AI’lar · 2026-yil kuzi</span>
+    <h2>Katta uchlik va <span class="grad">Xitoy to‘lqini</span></h2>
+    <div class="grid c3">
+      <div class="card"><span class="eyebrow">OpenAI · AQSh</span><h3>ChatGPT · GPT-6 Astra</h3><p class="small">Eng ko‘p foydalanuvchi, keng auditoriya</p></div>
+      <div class="card"><span class="eyebrow">Google · AQSh</span><h3>Gemini 3.8</h3><p class="small">Google qidiruv, Gmail, YouTube bilan bog‘langan</p></div>
+      <div class="card"><span class="eyebrow">Anthropic · AQSh</span><h3>Claude Fable 5.1</h3><p class="small">Professional ish, matn va dasturlashda kuchli</p></div>
+    </div>
+    <div class="grid g4">
+      <div class="card"><span class="eyebrow">Ochiq · Xitoy</span><h3>DeepSeek</h3></div>
+      <div class="card"><span class="eyebrow">Ochiq · Xitoy</span><h3>Qwen · Alibaba</h3></div>
+      <div class="card"><span class="eyebrow">Ochiq · Xitoy</span><h3>Kimi K3 · GLM 5.3</h3></div>
+      <div class="card"><span class="eyebrow">Ochiq · AQSh</span><h3>Llama · Meta</h3></div>
+    </div>
+    <p class="small">Ro‘yxat har oy o‘zgaradi. Bugungi yetakchi ertaga ikkinchi bo‘lishi mumkin — shuning uchun bitta ilovaga bog‘lanib qolmang.</p>
+  </div>
+</section>
+
+<section class="slide white">
+  <div class="in">
+    <span class="eyebrow">Yopiq va ochiq modellar</span>
+    <h2>Taksi yoki <span class="grad">o‘z mashinangiz?</span></h2>
+    <div class="vs">
+      <div class="card"><span class="eyebrow">Yopiq model · ChatGPT, Gemini, Claude</span><h3>🚕 Taksi</h3><p class="t">Tez boshlaysiz, har safar foydalanishingizga qarab to‘laysiz. Model kompaniya serverida.</p><p class="small">Tayyor taom: retseptini bermaydi</p></div>
+      <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">Ochiq vaznli model · DeepSeek, Qwen, Llama</span><h3>🚗 O‘z mashinangiz</h3><p class="t">Yuklab olib, o‘z serveringizda ishlatasiz. Ma’lumot sizda qoladi.</p><p class="small" style="color:#cfe0ff">Lekin “mashina” — kuchli kompyuter, elektr va mutaxassis kerak</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Model farqlari</span>
+    <h2>Har ishga — <span class="grad">o‘z asbobi</span></h2>
+    <table class="tbl">
+      <tr><th>Turi</th><th>Qachon</th><th>Misol</th></tr>
+      <tr><td><b>Tez va arzon</b></td><td>Oddiy savol, tarjima, qisqa matn</td><td>Gemini Flash, kichik modellar</td></tr>
+      <tr><td><b>Fikrlaydigan</b></td><td>Murakkab masala, reja, kod, tahlil. Javobdan oldin “o‘ylaydi”</td><td>GPT, Claude, Gemini’ning kuchli versiyalari</td></tr>
+      <tr><td><b>Multimodal</b></td><td>Rasm, ovoz, video, fayl bilan ishlash</td><td>Ko‘pchilik zamonaviy modellar</td></tr>
+      <tr><td><b>Maxsus vosita</b></td><td>Bitta ish uchun tayyor jarayon</td><td>Gamma (slayd), Higgsfield (video), Harvey (yurist)</td></tr>
+    </table>
+    <p class="small">Farq qiladigan 4 narsa: sifat, tezlik, narx va kontekst hajmi (stol qanchalik katta).</p>
+  </div>
+</section>
+
+<!-- ================= 4. TARIX ================= -->
+<section class="slide blue" id="s-tarix">
+  <div class="in">
+    <span class="eyebrow" style="color:#9fe3ff">4-bekat</span>
     <h1>Kecha, bugun, ertaga</h1>
     <p class="lead">AI 3 yil oldin paydo bo‘lgani yo‘q. Unga 75 yil bo‘ldi.</p>
   </div>
@@ -521,6 +725,12 @@ body.v-ai #v-ai,body.v-uy #v-uy{display:block}
   <div class="in">
     <span class="eyebrow">Kecha · 75 yillik yo‘l</span>
     <h2>Orzudan haqiqatga</h2>
+    <div class="grid g4">
+      <div class="ph wide" data-img="turing" data-cap="Alan Tyuring portreti"></div>
+      <div class="ph wide" data-img="kasparov" data-cap="Kasparov va Deep Blue, 1997"></div>
+      <div class="ph wide" data-img="alphago" data-cap="AlphaGo va Li Sedol, 2016"></div>
+      <div class="ph wide" data-img="chatgpt" data-cap="ChatGPT oynasi, 2022"></div>
+    </div>
     <div class="tl">
       <div class="era"><div class="y">1950</div><p class="t">Alan Tyuring: “Mashina o‘ylay oladimi?” savolini berdi</p></div>
       <div class="era"><div class="y">1956</div><p class="t">“Sun’iy intellekt” atamasi paydo bo‘ldi (AQSh, Dartmut)</p></div>
@@ -592,7 +802,7 @@ body.v-ai #v-ai,body.v-uy #v-uy{display:block}
 <!-- ================= 3. ISTE'MOLCHI YOKI RAHBAR ================= -->
 <section class="slide blue" id="s-rahbar">
   <div class="in">
-    <span class="eyebrow" style="color:#9fe3ff">3-bekat · eng muhimi</span>
+    <span class="eyebrow" style="color:#9fe3ff">5-bekat · eng muhimi</span>
     <h1>Iste’molchi yoki rahbar?</h1>
     <p class="lead">Bir xil AI. Bir xil telefon. Lekin natija butunlay boshqacha.</p>
   </div>
@@ -702,10 +912,78 @@ body.v-ai #v-ai,body.v-uy #v-uy{display:block}
   </div>
 </section>
 
-<!-- ================= 4. KASBLAR ================= -->
+
+<section class="slide grey">
+  <div class="in">
+    <span class="eyebrow">Prompt · professional usullar</span>
+    <h2>Formuladan keyingi <span class="grad">5 usul</span></h2>
+    <div class="grid c3">
+      <div class="card"><h3>1. Namuna bering</h3><p class="small">“Mana shunday uslubda yoz:” va bitta misol. AI namunani juda yaxshi takrorlaydi</p></div>
+      <div class="card"><h3>2. Avval savol bersin</h3><p class="small">“Boshlashdan oldin menga 3 ta aniqlovchi savol ber”</p></div>
+      <div class="card"><h3>3. Bosqichma-bosqich</h3><p class="small">Katta ishni bo‘ling: avval reja, keyin har bir qism</p></div>
+      <div class="card"><h3>4. Takrorlang</h3><p class="small">Birinchi javob — qoralama. “Qisqaroq qil, chunki...” deb sababini ayting</p></div>
+      <div class="card"><h3>5. Tanqidchi qiling</h3><p class="small">“Endi qattiqqo‘l o‘qituvchi sifatida bu javobdagi xatolarni top”</p></div>
+      <div class="card hl"><h3>Oltin qoida</h3><p class="small" style="color:#cfe0ff">Yangi xodimga qanday tushuntirsangiz, AI’ga ham shunday tushuntiring</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Skill · xodimning yo‘riqnomasi</span>
+    <h2>Bir marta o‘rgating — <span class="grad">har doim</span> ishlatsin</h2>
+    <div class="split" style="align-items:start">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <p class="t">Har safar bir xil narsani qayta tushuntirmaslik uchun AI’ga <strong>skill</strong> beriladi — tayyor yo‘riqnoma: qoidalar, namunalar, kerakli fayllar.</p>
+        <div class="rows">
+          <div class="row"><b>Qoidalar</b><span class="t">“Har doim o‘zbek tilida, qisqa yoz” — har suhbatda o‘zi o‘qiladi</span></div>
+          <div class="row"><b>Xotira</b><span class="t">AI siz haqingizdagi muhim narsalarni eslab qoladi</span></div>
+          <div class="row on"><b>Skill</b><span class="t">Bitta ish uchun to‘liq yo‘riqnoma: “DATA uslubida taqdimot yasash”</span></div>
+        </div>
+      </div>
+      <div class="grid" style="gap:10px">
+        <div class="card"><span class="eyebrow">Odamlarda</span><h3>Yangi xodimga SOP papkasi</h3><p class="small">Kompaniya qoidalari, namunalar, “bu ishni qanday qilamiz”</p></div>
+        <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">Bu taqdimotda</span><h3>DATA dizayn uslubi skill sifatida yozilgan</h3><p class="small" style="color:#cfe0ff">Shuning uchun har bir dars bir xil ko‘rinishda chiqadi</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Agent · o‘zi ishlaydigan AI</span>
+    <h2>Agent = model + <span class="grad">qo‘l</span> + xotira + maqsad</h2>
+    <div class="loop">
+      <div class="card"><h3>Reja tuzadi</h3><p class="small">Maqsadni qadamlarga bo‘ladi</p></div>
+      <div class="card"><h3>Harakat qiladi</h3><p class="small">Qidiradi, fayl yozadi, xat yuboradi</p></div>
+      <div class="card"><h3>Natijani ko‘radi</h3><p class="small">Ishladimi yoki yo‘qmi?</p></div>
+      <div class="card hl"><h3>Tuzatadi</h3><p class="small" style="color:#cfe0ff">Maqsadga yetguncha takrorlaydi</p></div>
+    </div>
+    <div class="grid g2">
+      <div class="card"><span class="eyebrow">Vositalar · MCP</span><h3>AI uchun USB-port</h3><p class="small">Agentni Gmail, kalendar, Telegram, CRM va bazalarga ulaydi. Chatbot gapiradi, agent <strong>qiladi</strong></p></div>
+      <div class="card"><span class="eyebrow">Mening agentim · Mirzo</span><h3>Telegram’dagi shaxsiy yordamchi</h3><p class="small">Ovozli xabarni tushunadi, eslatma qiladi, ma’lumot topadi va ovoz bilan javob beradi</p><div class="ph wide" data-img="mirzo" data-cap="Mirzo bilan Telegram suhbati skrinshoti"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide white">
+  <div class="in">
+    <span class="eyebrow">AI bilan ishlash zinapoyasi</span>
+    <h2>Chatbotdan <span class="grad">AI-jamoagacha</span></h2>
+    <div class="tl">
+      <div class="era"><div class="y">1</div><h3>Chatbot</h3><p class="small">Savol — javob</p></div>
+      <div class="era"><div class="y">2</div><h3>Yordamchi</h3><p class="small">Qoidalar, xotira, fayllar bilan</p></div>
+      <div class="era"><div class="y">3</div><h3>Agent</h3><p class="small">Vositalar bilan o‘zi ishni bajaradi</p></div>
+      <div class="era"><div class="y" style="color:var(--data)">4</div><h3>Agentlar jamoasi</h3><p class="small">Sotuvchi, hisobchi, dizayner agentlar birga ishlaydi. Siz — rahbar</p></div>
+    </div>
+    <p class="lead">Bugun ko‘pchilik 1-zinada. Siz 4-zinaga chiqishni maktabda o‘rganishingiz mumkin.</p>
+  </div>
+</section>
+
+<!-- ================= 6. KASBLAR ================= -->
 <section class="slide blue" id="s-kasb">
   <div class="in">
-    <span class="eyebrow" style="color:#9fe3ff">4-bekat</span>
+    <span class="eyebrow" style="color:#9fe3ff">6-bekat</span>
     <h1>Sizning kasbingiz va AI</h1>
     <p class="lead">Kim bo‘lishni orzu qilasiz? Telefondan ovoz bering — eng ko‘p ovoz olgan 2–3 kasbni ochamiz.</p>
   </div>
@@ -733,7 +1011,8 @@ body.v-ai #v-ai,body.v-uy #v-uy{display:block}
   <div class="in">
     <span class="eyebrow">🩺 Shifokor</span>
     <h2>AI ko‘radi, shifokor <span class="grad">davolaydi</span></h2>
-    <div class="kasb">
+    <div class="kasb ph4">
+      <div class="ph" data-img="k-shifokor" data-cap="Shifokor AI bilan rentgen yoki MRT ekranini ko‘rmoqda"></div>
       <div class="card"><span class="eyebrow">Kecha</span><ul class="small"><li>Qog‘oz tibbiy karta</li><li>Tashxis faqat shifokor tajribasiga tayanadi</li></ul></div>
       <div class="card"><span class="eyebrow">Bugun</span><ul class="small"><li>AI rentgen, MRT va teri suratida shubhali joyni belgilaydi</li><li>Qabuldagi suhbatni yozib, hujjatni o‘zi tayyorlaydi</li></ul></div>
       <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">2035</span><ul class="small" style="color:#cfe0ff"><li>Har bir shifokor yonida AI-yordamchi</li><li>Shifokor qog‘ozga emas, bemorga vaqt ajratadi</li></ul></div>
@@ -746,7 +1025,8 @@ body.v-ai #v-ai,body.v-uy #v-uy{display:block}
   <div class="in">
     <span class="eyebrow">⚖️ Yurist</span>
     <h2>100 sahifa — <span class="grad">5 daqiqada</span></h2>
-    <div class="kasb">
+    <div class="kasb ph4">
+      <div class="ph" data-img="k-yurist" data-cap="Yurist hujjatlar va noutbuk bilan"></div>
       <div class="card"><span class="eyebrow">Kecha</span><ul class="small"><li>Yuzlab sahifani qo‘lda o‘qish</li><li>Qonun moddalarini kitobdan qidirish</li></ul></div>
       <div class="card"><span class="eyebrow">Bugun</span><ul class="small"><li>AI shartnomadagi xavfli bandlarni bir necha daqiqada topadi</li><li>Yuristlar uchun maxsus AI’lar bor (masalan, Harvey)</li></ul></div>
       <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">2035</span><ul class="small" style="color:#cfe0ff"><li>Oddiy hujjatlarni AI tayyorlaydi</li><li>Yurist strategiya, muzokara va sudda himoya bilan band</li></ul></div>
@@ -759,7 +1039,8 @@ body.v-ai #v-ai,body.v-uy #v-uy{display:block}
   <div class="in">
     <span class="eyebrow">💻 Dasturchi</span>
     <h2>Kod yozuvchidan <span class="grad">AI-jamoa rahbariga</span></h2>
-    <div class="kasb">
+    <div class="kasb ph4">
+      <div class="ph" data-img="k-dasturchi" data-cap="Dasturchi ekranida kod va AI yordamchi"></div>
       <div class="card"><span class="eyebrow">Kecha</span><ul class="small"><li>Har bir qatorni qo‘lda yozish</li><li>Xatoni topish uchun soatlab qidirish</li></ul></div>
       <div class="card"><span class="eyebrow">Bugun</span><ul class="small"><li>AI kodni yozadi, xatoni topadi, tushuntiradi</li><li>Claude Code, GitHub Copilot, Cursor kabi vositalar</li></ul></div>
       <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">2035</span><ul class="small" style="color:#cfe0ff"><li>Bitta dasturchi bir nechta AI-agentni boshqaradi</li><li>Ilova g‘oyadan tayyor holgacha kunlar ichida</li></ul></div>
@@ -772,7 +1053,8 @@ body.v-ai #v-ai,body.v-uy #v-uy{display:block}
   <div class="in">
     <span class="eyebrow">🎨 Dizayner</span>
     <h2>100 ta variant — <span class="grad">bitta to‘g‘ri tanlov</span></h2>
-    <div class="kasb">
+    <div class="kasb ph4">
+      <div class="ph" data-img="k-dizayner" data-cap="Dizayner AI yaratgan rasmlar bilan ishlamoqda"></div>
       <div class="card"><span class="eyebrow">Kecha</span><ul class="small"><li>Bitta afishani soatlab chizish</li><li>Har bir o‘zgarish — qaytadan</li></ul></div>
       <div class="card"><span class="eyebrow">Bugun</span><ul class="small"><li>AI matndan rasm, logo, hatto video yaratadi</li><li>Canva, Midjourney, Higgsfield kabi vositalar</li></ul></div>
       <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">2035</span><ul class="small" style="color:#cfe0ff"><li>G‘oyadan tayyor reklama videosigacha bir kunda</li><li>Dizayner — art-direktor: yo‘nalish beradi, tanlaydi</li></ul></div>
@@ -785,7 +1067,8 @@ body.v-ai #v-ai,body.v-uy #v-uy{display:block}
   <div class="in">
     <span class="eyebrow">🚀 Tadbirkor</span>
     <h2>Kichik jamoa, <span class="grad">katta kompaniya</span></h2>
-    <div class="kasb">
+    <div class="kasb ph4">
+      <div class="ph" data-img="altman" data-cap="Sem Altman, OpenAI"></div>
       <div class="card"><span class="eyebrow">Kecha</span><ul class="small"><li>Har bir ish uchun alohida xodim</li><li>O‘sish = ko‘proq odam yollash</li></ul></div>
       <div class="card"><span class="eyebrow">Bugun</span><ul class="small"><li>AI reklama yozadi, mijoz savollariga javob beradi, hisobot tuzadi</li><li>DATA’da Durbin tizimi uchun AI-xodimlar jamoasini loyihalayapmiz</li></ul></div>
       <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">2035</span><ul class="small" style="color:#cfe0ff"><li>Sem Altman (OpenAI) bashorati: bir kishilik milliard dollarlik kompaniya</li><li>1–3 kishilik jamoa millionlab mijozga xizmat qiladi</li></ul></div>
@@ -798,7 +1081,8 @@ body.v-ai #v-ai,body.v-uy #v-uy{display:block}
   <div class="in">
     <span class="eyebrow">🎬 Bloger va jurnalist</span>
     <h2>Bitta video — <span class="grad">20 ta tilda</span></h2>
-    <div class="kasb">
+    <div class="kasb ph4">
+      <div class="ph" data-img="k-bloger" data-cap="Bloger kamera oldida"></div>
       <div class="card"><span class="eyebrow">Kecha</span><ul class="small"><li>Kamera, montajchi, katta jamoa</li><li>Faqat bitta tilda auditoriya</li></ul></div>
       <div class="card"><span class="eyebrow">Bugun</span><ul class="small"><li>AI ssenariy, subtitr, montaj va tarjimaga yordam beradi</li><li>Ovozingizni boshqa tilga o‘girish mumkin</li></ul></div>
       <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">2035</span><ul class="small" style="color:#cfe0ff"><li>Urganchdagi bloger butun dunyoga o‘z ovozida gapiradi</li><li>Soxta video ko‘payadi — ishonch eng qimmat narsaga aylanadi</li></ul></div>
@@ -958,7 +1242,8 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': 
 /* ---------- surat joylari: img/s/<nom>.jpg qo'yilsa o'zi chiqadi ---------- */
 $$('.ph[data-img]').forEach(el => {
   const f = 'img/s/' + el.dataset.img + '.jpg';
-  el.innerHTML = `<span>📷 ${esc(el.dataset.cap)}<br>${f}</span><img src="${f}" alt="${esc(el.dataset.cap)}" loading="lazy" onerror="this.remove()">`;
+  el.innerHTML = `<span>📷 ${esc(el.dataset.cap)}<br>${f}</span><img src="${f}" alt="${esc(el.dataset.cap)}" onload="this.parentNode.classList.remove('empty')" onerror="this.remove()">`;
+  el.classList.add('empty');
 });
 
 /* ---------- QR va havolalar ---------- */
