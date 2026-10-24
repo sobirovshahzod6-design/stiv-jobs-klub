@@ -412,6 +412,14 @@ body.v-ai #v-ai,body.v-uy #v-uy{display:block}
 .view .pick3 button.sel{border-color:var(--data);background:var(--data);color:#fff}
 .view .step{background:#fff;border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:12px}
 .view .hint{font-size:13px;color:#6e6e73;font-weight:500}
+.hist{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;height:calc(var(--u)*24);min-height:170px}
+.hist div{display:flex;flex-direction:column;justify-content:flex-end;align-items:stretch;gap:4px;cursor:pointer;user-select:none}
+.hist i{display:block;height:0;min-height:3px;border-radius:8px 8px 3px 3px;background:#3a3a3c;transition:height .25s ease}
+.hist .c7 i{background:var(--cyan)}
+.hist b{font-size:max(12px,calc(var(--u)*1.3));text-align:center;color:var(--mute);font-variant-numeric:tabular-nums}
+.hist span{font-weight:800;text-align:center;font-size:max(15px,calc(var(--u)*1.9))}
+.hist .c7 span,.hist .c7 b{color:var(--cyan)}
+.ask{font-weight:800;font-size:max(18px,calc(var(--u)*2.4));padding:14px 18px;border-radius:14px;background:#1c1c1e;border-left:4px solid var(--cyan)}
 </style>
 </head>
 <body>
@@ -606,6 +614,43 @@ body.v-ai #v-ai,body.v-uy #v-uy{display:block}
         <p class="small">Past temperatura — har doim eng ehtimolli so‘z, zerikarli lekin aniq. Yuqori — ijodkor, lekin ba’zan bema’ni. ChatGPT ham shunday sozlanadi.</p>
       </div>
     </div>
+  </div>
+</section>
+<section class="slide dark" id="s-yetti">
+  <div class="in">
+    <span class="eyebrow">Tajriba · hamma telefon olsin <span class="new">INTERAKTIV</span></span>
+    <h2>ChatGPT’dan <span class="grad">tasodifiy raqam</span> so‘raymiz</h2>
+    <div class="lab">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <p class="ask">“Menga 1 dan 10 gacha istalgan raqam yoz”</p>
+        <p class="small">Har kim <b>yangi chat</b> ochib yozsin. Keyin raqamlarni aytamiz, ustoz ustunni bosib sanaydi.</p>
+        <div class="hist" id="h-sinf"></div>
+        <div class="ctl"><span class="small" id="h-sinf-n">0 ta javob</span><button type="button" id="h-sinf-undo">− Oxirgisini o‘chirish</button></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <p class="small">Nega bunday chiqdi? AI ichidagi ehtimollar (shartli):</p>
+        <div class="hist" id="h-sim"></div>
+        <div class="ctl"><button type="button" class="go" id="h-ai">🤖 AI’dan 100 marta</button><button type="button" id="h-zar">🎲 Haqiqiy zar 100 marta</button></div>
+        <label class="t" style="display:flex;flex-direction:column;gap:6px;font-weight:700">Temperatura: <span id="h-tv" style="color:var(--cyan)">1,0</span><input type="range" id="h-t" min="0.2" max="2" step="0.1" value="1"></label>
+        <p class="small" id="h-sim-n">Zar har raqamga teng imkon beradi. AI esa yo‘q.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="slide white">
+  <div class="in">
+    <span class="eyebrow">Nega hamma 7 oldi?</span>
+    <h2>AI zar tashlamaydi. U <span class="grad">eng odatiy</span> javobni aytadi</h2>
+    <div class="grid g3">
+      <div class="card"><h3>1. Odamlardan o‘rgangan</h3><p class="small">Odamlarga “1 dan 10 gacha son o‘ylang” desangiz, eng ko‘p 7 ni aytishadi. 1 va 10 chetda, 5 o‘rtada, juft sonlar “tekis”. 7 eng “tasodifiy ko‘rinadi”. Internet matnlari shunday, AI ham shuni o‘rgangan</p></div>
+      <div class="card"><h3>2. Ehtimol, zar emas</h3><p class="small">AI keyingi tokenni ehtimollar jadvalidan tanlaydi. 30 kishi bir xil savol berdi — 30 marta bir xil jadval. 7 ning ulushi katta, shuning uchun ko‘pchilikka 7 tushdi</p></div>
+      <div class="card"><h3>3. “Yoqimli” javobga sozlangan</h3><p class="small">O‘qitish oxirida odamlar javoblarni baholaydi. Model eng ko‘p ma’qullangan, odatiy javobni yanada ko‘proq beradigan bo‘ladi</p></div>
+    </div>
+    <div class="grid g2">
+      <div class="card hl"><h3>2-urinish: haqiqiy tasodif</h3><p class="small" style="color:#cfe0ff">“Python kodini ishga tushirib, random.randint(1, 10) bilan son tanla”. Endi AI taxmin qilmaydi — kompyuter zar tashlaydi. Natijalar sochilib ketadi</p></div>
+      <div class="card"><h3>Rahbar uchun xulosa</h3><p class="small">Hamma “menga biznes g‘oya ber” desa, hammaga bir xil g‘oya chiqadi. AI standart holatda o‘rtacha javob beradi. Farqni sizning kontekstingiz yaratadi</p></div>
+    </div>
+    <p class="small">Oraliq aytilmasa ham ko‘pincha 7 yoki 42 chiqadi. 42 — “Galaktika bo‘ylab avtostop” kitobidagi “hamma narsaning javobi”.</p>
   </div>
 </section>
 <section class="slide dark">
@@ -1810,6 +1855,34 @@ $('#u-form').addEventListener('submit', async e => {
   catch { m.innerHTML = '<span class="no">Yuborilmadi. Internetni tekshirib, qayta urinib ko‘ring.</span>' }
 });
 
+/* ---------- tajriba: nega hamma 7 oldi ---------- */
+(() => {
+  const P = [2, 3, 8, 7, 6, 5, 48, 9, 4, 2]; // shartli taqsimot, haqiqiy model ulushlari emas
+  const sinf = Array(10).fill(0), sim = Array(10).fill(0), log = [];
+  let anim = null;
+  const draw = (id, a) => {
+    const m = Math.max(1, ...a);
+    $(id).innerHTML = a.map((c, i) => `<div data-i="${i}" class="${i === 6 ? 'c7' : ''}"><b>${c || ''}</b><i style="height:${c / m * 100}%"></i><span>${i + 1}</span></div>`).join('');
+  };
+  const T = () => +$('#h-t').value;
+  const pick = w => { let r = Math.random() * w.reduce((x, y) => x + y, 0); return w.findIndex(v => (r -= v) < 0) };
+  function run(w, label) {
+    clearInterval(anim); sim.fill(0); let n = 0;
+    anim = setInterval(() => {
+      for (let k = 0; k < 5; k++) sim[pick(w)]++;
+      n += 5; draw('#h-sim', sim);
+      $('#h-sim-n').textContent = `${label}: 100 tadan ${n === 100 ? '' : n + ' · '}7 — ${sim[6]} marta`;
+      if (n >= 100) clearInterval(anim);
+    }, 60);
+  }
+  $('#h-ai').onclick = () => run(P.map(p => Math.pow(p, 1 / T())), '🤖 AI');
+  $('#h-zar').onclick = () => run(Array(10).fill(1), '🎲 Zar');
+  $('#h-t').oninput = () => $('#h-tv').textContent = String(T()).replace('.', ',') + (T() < .6 ? ' · deyarli har doim 7' : T() > 1.4 ? ' · sochilib ketadi' : '');
+  const upd = () => { draw('#h-sinf', sinf); $('#h-sinf-n').textContent = log.length + ' ta javob' + (log.length ? ` · 7 — ${Math.round(sinf[6] / log.length * 100)}%` : '') };
+  $('#h-sinf').onclick = e => { const d = e.target.closest('[data-i]'); if (!d) return; sinf[d.dataset.i]++; log.push(+d.dataset.i); upd() };
+  $('#h-sinf-undo').onclick = () => { if (log.length) { sinf[log.pop()]--; upd() } };
+  upd(); draw('#h-sim', P.map(() => 0));
+})();
 /* ---------- marshrut: #ai, #uy ---------- */
 function route() {
   const h = location.hash.slice(1), v = h === 'ai' || h === 'uy';
