@@ -1,0 +1,978 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Biznes — bu shaxsiyat · DATA Biznes Klub</title>
+<meta name="description" content="DATA Biznes Klub 5-mashgʻulot: Biznes — bu shaxsiyat. Yuqorida tur, mehmondek yasha.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: Apple keynote — har bo'lim bitta fikr. Sayt rejimida bo'limlar ketma-ket, taqdimot rejimida bittadan 16:9 ekranda. */
+:root{
+  --black:#000; --ink:#1d1d1f; --grey:#f5f5f7; --mute:#86868b; --line:#d2d2d7;
+  --data:#0b2db4; --cyan:#29c5ff; --white:#fff; --good:#30d158;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","Manrope",system-ui,"Segoe UI",sans-serif;
+  --u:clamp(5.6px,1vw,12px);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:var(--font);background:var(--black);color:var(--white);-webkit-font-smoothing:antialiased;line-height:1.45;overflow-x:hidden}
+img{max-width:100%;display:block}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+
+/* ---------- top bar (sayt rejimi) ---------- */
+.bar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:12px;padding:10px 16px;padding-top:calc(10px + env(safe-area-inset-top,0px));background:rgba(0,0,0,.78);backdrop-filter:saturate(180%) blur(18px);-webkit-backdrop-filter:saturate(180%) blur(18px);border-bottom:1px solid rgba(255,255,255,.08);font-size:14px}
+.bar .logo{font-weight:800;letter-spacing:.02em;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.bar .logo i{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--cyan)}
+.bar nav{display:flex;gap:4px;overflow-x:auto;flex:1;min-width:0;scrollbar-width:none}
+.bar nav a{color:#d2d2d7;text-decoration:none;padding:6px 10px;border-radius:99px;white-space:nowrap}
+.bar nav a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:99px;padding:10px 18px;background:var(--data);color:#fff;font-weight:700;text-decoration:none;white-space:nowrap}
+.btn:hover{filter:brightness(1.15)}
+.btn.ghost{background:rgba(255,255,255,.1)}
+.btn.light{background:#fff;color:var(--ink)}
+
+/* ---------- slides ---------- */
+.slide{position:relative;padding:calc(var(--u)*7) max(16px,calc(var(--u)*7));display:flex;flex-direction:column;justify-content:safe center;min-height:min(70vh,820px);overflow:hidden}
+.slide>.in{width:100%;max-width:calc(var(--u)*120);margin:0 auto;display:flex;flex-direction:column;gap:calc(var(--u)*2.6)}
+.slide.dark{background:var(--black);color:#f5f5f7}
+.slide.grey{background:var(--grey);color:var(--ink)}
+.slide.white{background:#fff;color:var(--ink)}
+.slide.blue{background:var(--data);color:#fff}
+.num{position:absolute;right:max(16px,calc(var(--u)*4));bottom:calc(var(--u)*2.4);font-size:12px;opacity:.45;font-variant-numeric:tabular-nums;letter-spacing:.08em}
+
+.eyebrow{font-size:max(12px,calc(var(--u)*1.25));font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}
+.grey .eyebrow,.white .eyebrow{color:var(--data)}
+.new{display:inline-block;margin-left:10px;padding:2px 8px;border-radius:99px;background:var(--cyan);color:#001b33;font-size:.8em;letter-spacing:.06em;vertical-align:1px}
+h1,h2,h3{margin:0;font-weight:800;letter-spacing:-.025em;line-height:1.04;text-wrap:balance}
+h1{font-size:max(44px,calc(var(--u)*9.5))}
+h2{font-size:max(32px,calc(var(--u)*5.6))}
+h3{font-size:max(19px,calc(var(--u)*2.3));letter-spacing:-.01em;line-height:1.2}
+p{margin:0}
+.lead{font-size:max(18px,calc(var(--u)*2.3));color:#a1a1a6;max-width:60ch;text-wrap:pretty}
+.grey .lead,.white .lead{color:#515154}
+.blue .lead{color:#cfe0ff}
+.t{font-size:max(15px,calc(var(--u)*1.75))}
+.small{font-size:max(13px,calc(var(--u)*1.35));color:var(--mute)}
+.grad{background:linear-gradient(90deg,#fff 0%,var(--cyan) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.grey .grad,.white .grad{background-image:linear-gradient(90deg,var(--data),#3b7bff)}
+
+.quote{font-size:max(22px,calc(var(--u)*3.4));font-weight:700;letter-spacing:-.02em;line-height:1.15;text-wrap:balance;margin:0}
+.quote.xl{font-size:max(28px,calc(var(--u)*5))}
+.who{font-size:max(13px,calc(var(--u)*1.4));color:var(--mute);margin-top:calc(var(--u)*1.2)}
+.post{display:inline-block;font-size:max(11px,calc(var(--u)*1.1));font-weight:700;letter-spacing:.08em;color:var(--mute);border:1px solid currentColor;border-radius:99px;padding:2px 9px}
+
+.grid{display:grid;gap:calc(var(--u)*1.6)}
+.g2{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr))}
+.split{display:grid;grid-template-columns:1.25fr 1fr;gap:calc(var(--u)*4);align-items:center}
+.split>*{min-width:0}
+@media (max-width:760px){.split{grid-template-columns:1fr}}
+
+.card{border-radius:calc(var(--u)*1.8);padding:calc(var(--u)*2.4);background:#1c1c1e;display:flex;flex-direction:column;gap:6px}
+.grey .card{background:#fff}
+.white .card{background:var(--grey)}
+.blue .card{background:rgba(255,255,255,.1)}
+.card .k{font-size:max(28px,calc(var(--u)*4));font-weight:800;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.card .k.c{color:var(--cyan)}
+.grey .card .k.c,.white .card .k.c{color:var(--data)}
+.card.hl{background:var(--data);color:#fff}
+
+.photo{border-radius:calc(var(--u)*1.8);overflow:hidden;background:#111}
+.photo img{width:100%;height:100%;object-fit:cover}
+figcaption{font-size:max(12px,calc(var(--u)*1.2));color:var(--mute);margin-top:8px}
+
+.rows{display:flex;flex-direction:column;gap:calc(var(--u)*.9)}
+.row{display:grid;grid-template-columns:minmax(70px,calc(var(--u)*13)) 1fr;gap:calc(var(--u)*2);align-items:baseline;padding:calc(var(--u)*1.1) 0;border-top:1px solid rgba(128,128,128,.25)}
+.row b{font-size:max(18px,calc(var(--u)*2.6));letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.row.on b{color:var(--cyan)}
+.grey .row.on b,.white .row.on b{color:var(--data)}
+
+/* hero */
+.hero{padding:0;min-height:auto}
+.hero .in{max-width:none;display:grid;grid-template-columns:1.1fr 1fr;gap:0;align-items:stretch}
+.hero .txt{padding:calc(var(--u)*8) max(16px,calc(var(--u)*7));display:flex;flex-direction:column;justify-content:center;gap:calc(var(--u)*2.4);background:var(--data)}
+.hero .pic{background:#fff;display:flex;align-items:flex-end;justify-content:center;min-height:320px}
+.hero .pic img{max-height:88vh;width:auto;object-fit:contain}
+@media (max-width:760px){.hero .in{grid-template-columns:1fr}.hero .pic img{max-height:60vh}}
+
+/* 6 soha */
+.era{border-left:2px solid var(--cyan);padding-left:calc(var(--u)*1.6)}
+.era .y{font-size:max(26px,calc(var(--u)*3.6));font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+
+/* 2x2 fokus jadvali */
+.matrix{display:grid;grid-template-columns:auto 1fr 1fr;gap:6px;font-size:max(15px,calc(var(--u)*2));text-align:center}
+.matrix div{padding:calc(var(--u)*1.8) 10px;border-radius:10px;background:#fff}
+.matrix .h{background:transparent;font-weight:700;color:#515154;font-size:.8em}
+.matrix .p{background:var(--data);color:#fff;font-weight:800}
+
+/* feature chips (12 -> 4) */
+.chips{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:8px}
+.chip{position:relative;border-radius:12px;padding:12px 14px;background:#1c1c1e;font-weight:600;font-size:max(14px,calc(var(--u)*1.6));overflow:hidden;display:flex;justify-content:space-between;gap:8px}
+.chip .fill{position:absolute;inset:0;width:0;background:var(--data);transition:width .6s ease;z-index:0}
+.chip span{position:relative;z-index:1}
+.chip .c{font-variant-numeric:tabular-nums;color:var(--cyan)}
+
+/* chorraha */
+.venn{display:flex;justify-content:center;align-items:center;padding:calc(var(--u)*2) 0}
+.venn div{width:calc(var(--u)*24);height:calc(var(--u)*24);min-width:150px;min-height:150px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:800;padding:20px;font-size:max(13px,calc(var(--u)*1.6))}
+.venn div:first-child{background:rgba(41,197,255,.25);border:2px solid var(--cyan);margin-right:calc(var(--u)*-5)}
+.venn div:last-child{background:rgba(11,45,180,.45);border:2px solid #4f74ff}
+
+/* iPhone: 3 -> 1 */
+.merge{display:flex;justify-content:center;gap:calc(var(--u)*3);flex-wrap:wrap;position:relative;padding:calc(var(--u)*3) 0}
+.merge .d{width:calc(var(--u)*17);min-width:110px;aspect-ratio:1;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:max(15px,calc(var(--u)*2));border:2px solid #3a3a3c;transition:transform 1.1s cubic-bezier(.7,0,.2,1),opacity .6s ease 1s}
+.merge .one{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:max(40px,calc(var(--u)*8));font-weight:800;letter-spacing:-.04em;opacity:0;transform:scale(.8);transition:opacity .8s ease 1.4s,transform .8s ease 1.4s;pointer-events:none}
+.active .merge .d:nth-child(1){transform:translateX(calc(var(--u)*20))}
+.active .merge .d:nth-child(3){transform:translateX(calc(var(--u)*-20))}
+.active .merge .d{opacity:0}
+.active .merge .one{opacity:1;transform:none}
+
+/* timers */
+.timer{display:inline-flex;align-items:center;gap:10px;border:0;border-radius:99px;padding:10px 20px;background:#fff;color:var(--ink);font-weight:800;font-variant-numeric:tabular-nums;font-size:max(16px,calc(var(--u)*2))}
+.timer.run{background:var(--cyan);color:#001b33}
+.timer.done{background:#ff453a;color:#fff;animation:pulse 1s infinite}
+@keyframes pulse{50%{transform:scale(1.06)}}
+.phases{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:8px}
+.phase{border-radius:14px;padding:calc(var(--u)*1.8);background:#1c1c1e;transition:background .3s}
+.phase .s{font-size:max(12px,calc(var(--u)*1.2));font-weight:800;color:var(--cyan);letter-spacing:.08em}
+.phase.on{background:var(--data)}
+
+/* breakout */
+.game{position:relative;border-radius:16px;overflow:hidden;background:#000;border:1px solid #2c2c2e;touch-action:none}
+.game canvas{display:block;width:100%;height:auto;aspect-ratio:16/10}
+.game .go{position:absolute;inset:0;margin:auto;width:max-content;height:max-content}
+
+/* QR */
+.qrbox{display:flex;gap:calc(var(--u)*2.4);align-items:center;flex-wrap:wrap}
+.qr{background:#fff;padding:12px;border-radius:16px;width:calc(var(--u)*20);min-width:150px;aspect-ratio:1}
+.qr img,.qr canvas{width:100%!important;height:auto!important}
+.link{font-weight:700;word-break:break-all;color:var(--cyan)}
+.grey .link,.white .link{color:var(--data)}
+
+.ok{color:var(--good)}
+.no{color:#ff6961}
+
+/* ---------- taqdimot rejimi ---------- */
+body.present{overflow:hidden;cursor:default}
+body.present .bar,body.present .foot{display:none}
+body.present{--u:min(.86vw,1.53vh)}
+body.present .slide{display:none;position:fixed;inset:0;min-height:0;height:100%;overflow:auto}
+body.present .slide.cur{display:flex;animation:in .45s ease both}
+body.present .hero{display:none}
+body.present .hero.cur{display:block}
+body.present .hero .in{height:100%}
+body.present .hero .pic img{max-height:100vh}
+@keyframes in{from{opacity:0;transform:scale(.985)}}
+.hud{display:none;position:fixed;z-index:30;left:0;right:0;bottom:0;height:3px;background:rgba(128,128,128,.25)}
+.hud i{display:block;height:100%;background:var(--cyan);width:0;transition:width .3s}
+body.present .hud{display:block}
+.exit{display:none;position:fixed;z-index:31;top:12px;right:12px;opacity:0;transition:opacity .3s}
+body.present .exit{display:inline-flex}
+body.present:hover .exit{opacity:.6}
+
+/* ---------- telefon sahifalari ---------- */
+.view{display:none;min-height:100vh;background:var(--grey);color:var(--ink);padding:24px 16px 60px}
+.view .box{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.view h2{font-size:30px}
+body.v .deck,body.v .bar,body.v .foot{display:none}
+body.v-mashq #v-mashq,body.v-vazifa #v-vazifa,body.v-goyalar #v-goyalar{display:block}
+.view label{font-weight:700;font-size:14px;display:flex;flex-direction:column;gap:6px}
+.view input,.view textarea,.view select{font:inherit;font-size:16px;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--ink);width:100%}
+.view textarea{min-height:84px;resize:vertical}
+.teams{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.teams button,.pick button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:12px 8px;font-weight:700;color:var(--ink)}
+.teams button.sel,.pick button.sel{border-color:var(--data);background:var(--data);color:#fff}
+.pick{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.msg{font-weight:700;min-height:1.4em}
+.idea{background:#fff;border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:8px}
+.idea h3{font-size:22px}
+.idea .meta{font-size:13px;color:#6e6e73}
+.idea .vote{align-self:flex-start}
+.idea .vote.sel{background:var(--good)}
+.wide{max-width:1200px!important}
+.ideas{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:14px}
+.foot{background:#000;color:var(--mute);font-size:13px;padding:28px 16px 48px;text-align:center}
+.foot a{color:#d2d2d7}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ---------- startup darsi: qo'shimcha ---------- */
+/* Surat joyi: fayl qo'yilsa rasm chiqadi, bo'lmasa nomi ko'rinadi */
+.ph{position:relative;border-radius:calc(var(--u)*1.8);overflow:hidden;background:repeating-linear-gradient(135deg,rgba(128,128,128,.08) 0 12px,transparent 12px 24px);border:2px dashed rgba(128,128,128,.45);min-height:160px;aspect-ratio:var(--ar,4/3);display:flex;align-items:center;justify-content:center;text-align:center;padding:14px}
+.ph span{font-size:max(12px,calc(var(--u)*1.2));color:var(--mute);font-weight:600;line-height:1.35}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%}
+.ph.logo{background:#fff;border-style:solid}.ph.logo img{object-fit:contain;padding:8px}
+.ph.sq{--ar:1/1}.ph.tall{--ar:3/4}.ph.wide{--ar:16/9}
+.card .ph{min-height:90px;margin-bottom:6px}
+.g6{grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr))}
+.g6 .card{padding:calc(var(--u)*1.6)}
+.c3{grid-template-columns:repeat(3,1fr)}.c4{grid-template-columns:repeat(4,1fr)}
+@media (max-width:760px){.c3,.c4{grid-template-columns:repeat(2,1fr)}}@media (max-width:420px){.c3,.c4{grid-template-columns:1fr}}
+.c4 .ph.wide{--ar:5/2;min-height:70px}.card .ph.sq{--ar:4/3}
+#teens .ph{--ar:16/9}.c4.big .ph.wide{--ar:16/10}
+.g6 h3{font-size:max(16px,calc(var(--u)*1.9))}
+.hero .pic.ph img{width:100%;height:100%;max-height:none;object-fit:cover}
+.hero .pic.ph{border-radius:0;border:0;aspect-ratio:auto;min-height:320px;background-color:#fff}
+
+.tl{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:calc(var(--u)*1.4)}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--u)*1.6)}
+@media (max-width:560px){.vs{grid-template-columns:1fr}}
+.bar-h{display:flex;flex-direction:column;gap:8px}
+.bar-h .r{display:grid;grid-template-columns:minmax(120px,38%) 1fr auto;gap:12px;align-items:center;font-size:max(14px,calc(var(--u)*1.7))}
+.bar-h .r i{display:block;height:calc(var(--u)*1.8);min-height:12px;border-radius:99px;background:var(--cyan)}
+.white .bar-h .r i,.grey .bar-h .r i{background:var(--data)}
+.bar-h .r b{font-variant-numeric:tabular-nums}
+
+/* savol-javob (takrorlash) */
+.qa{border-radius:14px;background:#1c1c1e;padding:calc(var(--u)*1.6) calc(var(--u)*2)}
+.qa summary{cursor:pointer;font-weight:700;font-size:max(16px,calc(var(--u)*2));list-style:none}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::before{content:"? ";color:var(--cyan)}
+.qa[open] summary::before{content:"✓ ";color:var(--good)}
+.qa p{margin-top:8px;color:var(--cyan);font-weight:700;font-size:max(15px,calc(var(--u)*1.8))}
+
+/* jonli g'oyalar va podium */
+.board{display:flex;flex-direction:column;gap:8px}
+.board .it{position:relative;border-radius:12px;background:#1c1c1e;padding:10px 14px;display:flex;justify-content:space-between;gap:12px;overflow:hidden;font-size:max(14px,calc(var(--u)*1.7))}
+.board .it .fill{position:absolute;inset:0;width:0;background:var(--data);transition:width .6s ease}
+.board .it>span{position:relative}
+.board .it .c{color:var(--cyan);font-weight:800;font-variant-numeric:tabular-nums}
+.podium{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:calc(var(--u)*1.6);align-items:end}
+.podium .p{border-radius:18px 18px 0 0;padding:calc(var(--u)*2);text-align:center;display:flex;flex-direction:column;gap:6px;align-items:center}
+.podium .p .m{font-size:max(34px,calc(var(--u)*5))}
+.podium .p1{background:var(--data);min-height:calc(var(--u)*22)}
+.podium .p2{background:#2c2c2e;min-height:calc(var(--u)*18)}
+.podium .p3{background:#1c1c1e;min-height:calc(var(--u)*15)}
+@media (max-width:560px){.podium{grid-template-columns:1fr}}
+
+/* million kalkulyatori */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--u)*3);align-items:start}
+@media (max-width:760px){.calc{grid-template-columns:1fr}}
+.calc label{display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:max(14px,calc(var(--u)*1.6))}
+.calc label b{color:var(--cyan);font-size:1.3em;font-variant-numeric:tabular-nums}
+.calc input[type=range]{width:100%;accent-color:var(--cyan)}
+.calc .presets{display:flex;flex-wrap:wrap;gap:8px}
+.calc .presets button{border:1px solid #3a3a3c;background:#1c1c1e;color:#fff;border-radius:99px;padding:8px 14px;font-weight:600}
+.calc .presets button.sel{background:var(--data);border-color:var(--data)}
+.res{display:flex;flex-direction:column;gap:calc(var(--u)*1.4)}
+.res .card .k{font-size:max(30px,calc(var(--u)*5))}
+.track{height:14px;border-radius:99px;background:#2c2c2e;overflow:hidden}
+.track i{display:block;height:100%;background:var(--good);width:0;transition:width .4s}
+
+.grey .phase{background:#fff;color:var(--ink)}.grey .phase .s{color:var(--data)}
+.phase .ph{--ar:4/3;min-height:0;margin:8px 0;border:0;background:#fff}
+/* telefon: g'oya kartasi */
+body.v-karta #v-karta{display:block}
+/* ---------- tadbirkor darsi: qo'shimcha ---------- */
+body.v-ovoz #v-ovoz,body.v-reja #v-reja{display:block}
+.m6{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(var(--u)*1.4)}
+@media (max-width:760px){.m6{grid-template-columns:repeat(2,1fr)}}
+.m6 .card .k{font-size:max(22px,calc(var(--u)*3))}
+.vrow{display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--u)*1.2)}
+.vrow .card{padding:calc(var(--u)*1.1) calc(var(--u)*2)}
+.vstack{display:flex;flex-direction:column;gap:calc(var(--u)*.7)}
+.vrow .card{border-left:4px solid #3a3a3c}
+.vrow .card.t{border-left-color:var(--cyan)}
+.white .vrow .card.t,.grey .vrow .card.t{border-left-color:var(--data)}
+@media (max-width:560px){.vrow{grid-template-columns:1fr}}
+.warn{border-radius:14px;padding:calc(var(--u)*1.8) calc(var(--u)*2.2);background:rgba(255,159,10,.14);border:1px solid rgba(255,159,10,.55);color:#ffd60a;font-weight:600;font-size:max(15px,calc(var(--u)*1.8))}
+.white .warn,.grey .warn{color:#7a4a00;background:#fff4e0}
+.light3{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(var(--u)*1.4)}
+@media (max-width:760px){.light3{grid-template-columns:1fr}}
+.light3 .card{border-top:6px solid}
+.light3 .r{border-color:#ff453a}.light3 .y{border-color:#ffd60a}.light3 .g{border-color:#30d158}
+.dots{display:grid;grid-template-columns:repeat(20,1fr);gap:calc(var(--u)*.6);max-width:calc(var(--u)*70)}
+.dots i{aspect-ratio:1;border-radius:50%;background:#3a3a3c;transition:background .4s}
+.active .dots i.six{background:var(--cyan)}
+.deal{background:#fffdf5;color:#1d1d1f;border-radius:6px;padding:calc(var(--u)*3);font-family:Georgia,serif;box-shadow:0 20px 60px rgba(0,0,0,.5);max-width:calc(var(--u)*70)}
+.deal h3{font-family:Georgia,serif;text-align:center;letter-spacing:.1em}
+.deal .fine{font-size:max(11px,calc(var(--u)*1.05));color:#86868b;margin-top:12px;transition:all .6s}
+.deal.open .fine{font-size:max(16px,calc(var(--u)*2));color:#c00;font-weight:700}
+.sign{font-family:"Brush Script MT",cursive;font-size:max(28px,calc(var(--u)*4));border-bottom:1px solid #999;min-width:200px;display:inline-block;color:#0b2db4}
+.lab{display:flex;flex-direction:column;gap:8px}
+.lab{gap:5px!important}.lab .r{display:grid;grid-template-columns:1fr minmax(120px,30%) 3ch;gap:14px;align-items:center;border-radius:10px;background:#1c1c1e;padding:5px 14px;font-size:max(14px,calc(var(--u)*1.7));transition:background .3s}
+.lab .r.ten{background:var(--data)}
+.lab .r.low{opacity:.45}
+.lab input[type=range]{width:100%;accent-color:var(--cyan)}
+.lab .r b{font-variant-numeric:tabular-nums;color:var(--cyan);text-align:right}
+.lab .r.ten b{color:#fff}
+.teamdraw{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(var(--u)*1.2)}
+@media (max-width:760px){.teamdraw{grid-template-columns:1fr 1fr}}
+.teamdraw{gap:8px!important}.teamdraw .card{min-height:0;padding:calc(var(--u)*1.1) calc(var(--u)*1.6)}
+.teamdraw .card h3{transition:opacity .3s}
+.ladder{display:flex;gap:calc(var(--u)*1);align-items:flex-end;flex-wrap:wrap}
+.ladder div{flex:1;min-width:120px;border-radius:14px;padding:calc(var(--u)*1.6);background:#1c1c1e;font-weight:700;font-size:max(14px,calc(var(--u)*1.7))}
+.ladder div:nth-child(1){min-height:calc(var(--u)*6);background:var(--data)}
+.ladder div:nth-child(2){min-height:calc(var(--u)*8)}
+.ladder div:nth-child(3){min-height:calc(var(--u)*10)}
+.ladder div:nth-child(4){min-height:calc(var(--u)*12)}
+.ladder small{display:block;color:var(--mute);font-weight:600;margin-top:4px}
+.mrow{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+.mrow button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 4px;font-weight:800;color:var(--ink);font-size:13px;line-height:1.2}
+.mrow button.sel{border-color:var(--data);background:var(--data);color:#fff}
+@media (max-width:420px){.mrow{grid-template-columns:repeat(3,1fr)}}
+.legend{display:flex;gap:18px;font-size:max(13px,calc(var(--u)*1.4));color:var(--mute)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.bars2 .r{grid-template-columns:minmax(120px,30%) 1fr}
+.bars2 .two{display:flex;flex-direction:column;gap:4px}
+.bars2 .two span{display:flex;align-items:center;gap:8px;font-variant-numeric:tabular-nums;font-weight:700}
+.bars2 .two i{height:calc(var(--u)*1.4);min-height:10px;border-radius:99px;width:0;transition:width .6s}
+.bars2 .two i.a{background:var(--cyan)}.bars2 .two i.b{background:#bf5af2}
+/* ---------- shaxsiyat darsi ---------- */
+body.v-sorov #v-sorov,body.v-yol #v-yol{display:block}
+.pyr{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.pyr div{border-radius:14px;padding:calc(var(--u)*1.4) calc(var(--u)*2);font-weight:800;font-size:max(15px,calc(var(--u)*2))}
+.pyr .top{background:var(--cyan);color:#001b33;width:55%}
+.pyr .me{background:#fff;color:var(--ink);width:70%;font-size:max(20px,calc(var(--u)*3))}
+.pyr .low{background:#2c2c2e;color:#d2d2d7;width:90%}
+.pyr small{display:block;font-weight:600;opacity:.7;font-size:.75em}
+.joy svg{display:block;width:100%;height:calc(var(--u)*19)}
+.mul{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(var(--u)*1.2)}
+.mul .card .k{font-size:max(22px,calc(var(--u)*3))}
+@media (max-width:760px){.mul{grid-template-columns:1fr}}
+.arrow{font-size:max(22px,calc(var(--u)*3));color:var(--cyan);font-weight:800}
+.count100{font-size:max(60px,calc(var(--u)*14));font-weight:800;letter-spacing:-.04em;color:var(--cyan);line-height:1}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <span class="logo"><i></i>DATA Biznes Klub</span>
+  <nav aria-label="Boʻlimlar">
+    <a href="#s-takror">Takrorlash</a>
+    <a href="#s-oyna">Biznes — oyna</a>
+    <a href="#s-yuqori">Yuqorida tur</a>
+    <a href="#s-mehmon">Mehmondek yasha</a>
+    <a href="#s-kuch">Kuchli shaxs</a>
+    <a href="#s-yol">Mashq</a>
+    <a href="tadbirkor.html">← 4-dars</a>
+  </nav>
+  <button class="btn" id="go-present" title="Klaviatura: P">▶ Taqdimot</button>
+</header>
+
+<main class="deck" id="deck">
+
+<section class="slide hero dark">
+  <div class="in">
+    <div class="txt">
+      <span class="eyebrow">DATA Biznes Klub · 5-mashgʻulot</span>
+      <h1 style="font-size:max(40px,calc(var(--u)*7.5))">Biznes&nbsp;— bu shaxsiyat</h1>
+      <p class="lead" style="color:#fff;font-weight:700">Yuqorida tur. Foydalan, lekin egalik qilma. Mehmondek yasha.</p>
+      <p class="t" style="color:#cfe0ff">Shanba, 7-noyabr · 12:30–14:30</p>
+      <p class="small" style="color:#9fb6ff">Shahzod Sobirov · DATA asoschisi</p>
+    </div>
+    <div class="pic ph" data-src="img/sh/hero.jpg" data-cap="Tepalikdagi oʻsmir"></div>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Bugun</span>
+    <h2>2 soat, 5 bekat</h2>
+    <div class="rows">
+      <div class="row"><b>12:30</b><p class="t"><strong>Takrorlash.</strong> 30 kunlik reja: kim necha kun bajardi?</p></div>
+      <div class="row"><b>12:45</b><p class="t"><strong>Biznes — oyna.</strong> Biznesga qarab, egasini taniysiz</p></div>
+      <div class="row"><b>13:10</b><p class="t"><strong>Yuqorida tur.</strong> Telefonni siz boshqarasizmi yoki u sizni?</p></div>
+      <div class="row"><b>13:35</b><p class="t"><strong>Mehmondek yasha.</strong> Foydalan, lekin egalik qilma</p></div>
+      <div class="row on"><b>14:00</b><p class="t"><strong>Kuchli shaxs belgilari + mashq.</strong> A nuqtadan B nuqtaga</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TAKRORLASH ================= -->
+<section class="slide grey" id="s-takror">
+  <div class="in">
+    <span class="eyebrow">Oʻtgan dars · Tadbirkor kabi fikrla</span>
+    <h2>6% klubida kim qoldi?</h2>
+    <div class="grid c3">
+      <div class="card"><div class="k c">7/7</div><h3>Bir kun ham tashlamadim</h3><p class="small">Qoʻl koʻtaring. Siz — 6% dasiz</p></div>
+      <div class="card"><div class="k c">4–6</div><h3>Baʼzan tushib qoldi</h3><p class="small">Normal. Jarimani bajardingizmi?</p></div>
+      <div class="card"><div class="k c">0–3</div><h3>Tashlab qoʻydim</h3><p class="small">Nima xalaqit berdi? Bugungi dars aynan shu haqida</p></div>
+    </div>
+    <p class="lead">Bugungi savol: <strong>nega bir xil reja bir odamda ishlaydi, boshqasida yoʻq?</strong> Javob — shaxsiyatda.</p>
+  </div>
+</section>
+
+<section class="slide blue">
+  <div class="in">
+    <span class="eyebrow" style="color:#9fe3ff">Bugungi ustoz · Ixtiyor Dosmetov, tadbirkor va murabbiy</span>
+    <p class="quote xl">«Hech qachon biznes insonni kashf qilmagan. Har doim inson biznesni kashf qiladi.»</p>
+    <p class="lead">U 1 000 dan ortiq tadbirkor bilan ishlagan. Uning barcha videolaridagi asosiy fikr bitta: <strong style="color:#fff">inson oʻzgarmasa, biznesi ham, hayoti ham oʻzgarmaydi.</strong></p>
+  </div>
+</section>
+
+<!-- ================= 1. BIZNES — OYNA ================= -->
+<section class="slide dark" id="s-oyna">
+  <div class="in">
+    <div class="split">
+      <div style="display:flex;flex-direction:column;gap:calc(var(--u)*2)">
+        <span class="eyebrow">1-bekat</span>
+        <h1>Biznes&nbsp;— oyna</h1>
+        <p class="lead">Dosmetov: «Biznes — bu sizning aksingiz». Biznesga qarasangiz, egasini koʻrasiz.</p>
+      </div>
+      <div class="ph" data-src="img/sh/mirror.jpg" data-cap="Oynadagi aks" style="--ar:3/2"></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide grey">
+  <div class="in">
+    <span class="eyebrow">Oʻylab koʻraylik · 2 ta nonvoyxona</span>
+    <h2>Egasi qanday odam?</h2>
+    <div class="vs">
+      <div class="card"><h3>A nonvoyxona</h3><p class="t">Non baʼzan xom. Sotuvchi telefonga qarab qaytim beradi. Peshtaxta yopishqoq. «Ertaga keling» deyishadi.</p></div>
+      <div class="card hl"><h3>B nonvoyxona</h3><p class="t">Non har kuni bir xil issiq. Sotuvchi salom beradi, ismingizni eslaydi. Hamma joy toza. Aytilgan vaqtda tayyor.</p></div>
+    </div>
+    <details class="qa"><summary>Ikkala egani tasvirlab bering: ular uyda, maktabda qanday boʻlgan?</summary><p>Biznes egasining odatlarini koʻrsatadi: tartib, soʻzida turish, odamlarga hurmat</p></details>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Dosmetov · «Xarakter» suhbati</span>
+    <h2>Xarakter karra-karra koʻpayadi</h2>
+    <p class="lead">Pul va odamlar koʻpaysa, xarakteringiz ham kattalashadi. Yaxshisi ham, yomoni ham.</p>
+    <div class="mul">
+      <div class="card"><span class="eyebrow">Bugun · maktabda</span><p class="t">Uy vazifasini oxirgi daqiqada qilaman</p></div>
+      <div class="card"><span class="eyebrow">Ertaga · 1 mijoz</span><p class="t">Buyurtmani kechiktiraman. Bitta odam xafa</p></div>
+      <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">Keyin · 1 000 mijoz</span><p class="t">Hamma kechikadi. Mijozlar ketadi, biznes yopiladi</p></div>
+    </div>
+    <div class="mul">
+      <div class="card"><span class="eyebrow">Bugun · maktabda</span><p class="t">Vaʼda bersam, bajaraman</p></div>
+      <div class="card"><span class="eyebrow">Ertaga · 1 mijoz</span><p class="t">Mijoz menga ishonadi va doʻstini olib keladi</p></div>
+      <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">Keyin · 1 000 mijoz</span><p class="t">Ishonch — eng qimmat brend</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide white">
+  <div class="in">
+    <span class="eyebrow">Xarakter qanday quriladi?</span>
+    <div class="vs">
+      <div class="card"><div class="k c">Intizom</div><h3>Jarayon</h3><p class="t">Har kuni qilinadigan ish: kitob, sport, vaʼdani bajarish. Sport zalidagi mashq kabi.</p></div>
+      <div class="card hl"><div class="k">Xarakter</div><h3>Natija</h3><p class="t">Mashqdan keyingi kuchli mushak. Uni sotib olib boʻlmaydi, faqat oʻstirsa boʻladi.</p></div>
+    </div>
+    <p class="lead">Dosmetov: «Hech kim sizning oʻrningizga kelib xarakteringizni toʻgʻrilab bermaydi».</p>
+  </div>
+</section>
+
+<!-- ================= 2. YUQORIDA TUR ================= -->
+<section class="slide dark" id="s-yuqori">
+  <div class="in">
+    <div class="split">
+      <div class="pyr">
+        <div class="top">Maqsad · Orzu · Missiya<small>Sizdan yuqorida turadi</small></div>
+        <div class="me">SIZ</div>
+        <div class="low">Pul · Telefon · Narsalar · Baho · Layklar<small>Sizdan pastda turishi kerak</small></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:calc(var(--u)*2)">
+        <span class="eyebrow">2-bekat</span>
+        <h1>Yuqorida tur</h1>
+        <p class="lead">Dosmetov: sizdan yuqorida faqat maqsadingiz turishi mumkin. Pul, biznes, narsalar — sizdan pastda. Ular sizga xizmat qiladi, siz ularga emas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <div class="split">
+      <div style="display:flex;flex-direction:column;gap:calc(var(--u)*2)">
+        <span class="eyebrow">Savol</span>
+        <h2>Telefonni siz ishlatasizmi yoki telefon sizni?</h2>
+        <p class="t">Telefon — zoʻr asbob. Lekin ilovalar sizni iloji boricha uzoq ushlab turish uchun qurilgan. Dosmetov: «Kontent hech qachon tugamaydi. Umringiz tugashi mumkin, lekin kontent tugamaydi».</p>
+      </div>
+      <div class="ph" data-src="img/sh/puppet.jpg" data-cap="Telefon va qoʻgʻirchoq" style="--ar:3/2"></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide blue" id="s-sorov-qr">
+  <div class="in">
+    <span class="eyebrow" style="color:#9fe3ff">Telefon · 1 daqiqa · anonim</span>
+    <h2>Halol javob bering</h2>
+    <div class="qrbox">
+      <div class="qr" data-qr="sorov"></div>
+      <div style="display:flex;flex-direction:column;gap:12px"><p class="lead">1. Kuniga necha soat telefonda oʻtiraman?<br>2. Meni koʻproq nima boshqaradi?</p><p class="link" data-href="sorov" style="color:#fff"></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide dark" id="s-sorov">
+  <div class="in">
+    <h2>Sinfimizning halol xaritasi</h2>
+    <p class="small" id="sorov-info"></p>
+    <div class="vs">
+      <div><span class="eyebrow">Kuniga ekranda</span><div class="bar-h" id="b-ekran" style="margin-top:12px"></div></div>
+      <div><span class="eyebrow">Meni koʻproq boshqaradi</span><div class="bar-h" id="b-xoja" style="margin-top:12px"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Qanday qilib yuqorida turiladi? · Fokus</span>
+    <div class="grid g2">
+      <figure style="margin:0"><div class="ph" data-src="img/sh/lupa.jpg" data-cap="Lupa" style="--ar:16/9"></div></figure>
+      <figure style="margin:0"><div class="ph" data-src="img/sh/drop.jpg" data-cap="Tomchi va tosh" style="--ar:16/9"></div></figure>
+    </div>
+    <div class="vs">
+      <div class="card"><h3>Lupa</h3><p class="t">Quyosh nurini bitta nuqtaga yigʻsa, yogʻoch yonadi. Qimirlatib tursangiz — hech narsa boʻlmaydi.</p></div>
+      <div class="card hl"><h3>Tomchi</h3><p class="t">Bitta tomchi yengil. Lekin yillar davomida bitta joyga tomib, toshni teshadi.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide white">
+  <div class="in">
+    <span class="eyebrow">Dosmetov</span>
+    <p class="quote xl">«Minglab odamni boshqarish mumkin. Eng qiyini — oʻzingizni boshqarish.»</p>
+    <div class="grid c4">
+      <div class="card"><h3>Jahl</h3><p class="small">Gʻazab kelganda 10 gacha sanayman</p></div>
+      <div class="card"><h3>Dangasalik</h3><p class="small">Avval eng muhim «10» lik ish</p></div>
+      <div class="card"><h3>Telefon</h3><p class="small">Dars paytida boshqa xonada</p></div>
+      <div class="card"><h3>Boshqalar fikri</h3><p class="small">«Ular nima deydi?» emas, «Men nima deyman?»</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 3. MEHMONDEK YASHA ================= -->
+<section class="slide dark" id="s-mehmon">
+  <div class="in">
+    <div class="split">
+      <div style="display:flex;flex-direction:column;gap:calc(var(--u)*2)">
+        <span class="eyebrow">3-bekat</span>
+        <h1>Mehmondek yasha</h1>
+        <p class="quote">«Dunyoda xuddi gʻarib yoki yoʻlovchidek boʻl.»</p>
+        <p class="small">Hadis, Imom Buxoriy rivoyati (6416)</p>
+      </div>
+      <div class="ph" data-src="img/sh/traveler.jpg" data-cap="Yengil yuklangan yoʻlovchi" style="--ar:3/2"></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide dark" id="s-100">
+  <div class="in">
+    <span class="eyebrow">Mashq · 3 daqiqa · daftarga</span>
+    <h2>Pulingiz cheksiz boʻlsa, nima sotib olasiz?</h2>
+    <div class="split">
+      <div style="display:flex;flex-direction:column;gap:calc(var(--u)*2)">
+        <p class="lead">Roʻyxat yozing. Maqsad — <strong style="color:#fff">100 ta</strong>.</p>
+        <button class="timer" data-sec="180" style="align-self:flex-start">▶ 3:00 · yozish</button>
+        <details class="qa"><summary>Nechtaga yetdingiz?</summary><p>Dosmetov: «10 tasini ham yoza olmaysiz». Demak, narsalar — maqsad emas, ehtiyoj</p></details>
+      </div>
+      <div style="text-align:center"><div class="count100">100</div><p class="small">ta narsa</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide grey">
+  <div class="in">
+    <span class="eyebrow">Dosmetov · 2 hafta qoidasi</span>
+    <h2>Har qanday yangi narsa 2 haftada oddiy buyumga aylanadi</h2>
+    <div class="joy">
+      <svg viewBox="0 0 800 260" role="img" aria-label="Yangi narsadan quvonch grafigi: birinchi kuni baland, 2 haftada pasayadi">
+        <line x1="60" y1="220" x2="780" y2="220" stroke="#86868b" stroke-width="2"/>
+        <line x1="60" y1="20" x2="60" y2="220" stroke="#86868b" stroke-width="2"/>
+        <path d="M60 40 C 180 40, 220 170, 360 190 S 620 200, 780 200" fill="none" stroke="#0b2db4" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="60" cy="40" r="9" fill="#0b2db4"/>
+        <text x="80" y="35" font-size="22" font-weight="700" fill="#1d1d1f">1-kun: yangi telefon!</text>
+        <text x="380" y="175" font-size="22" font-weight="700" fill="#1d1d1f">2 hafta: oddiy telefon</text>
+        <text x="60" y="250" font-size="18" fill="#515154">vaqt →</text>
+        <text x="10" y="30" font-size="18" fill="#515154" transform="rotate(-90 22 120)">quvonch</text>
+      </svg>
+    </div>
+    <p class="lead">Shuning uchun narsani maqsad qilish — xato. Narsa — ehtiyoj. Maqsad esa bundan katta boʻlishi kerak.</p>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <div class="split">
+      <div style="display:flex;flex-direction:column;gap:calc(var(--u)*2)">
+        <span class="eyebrow">Dosmetovning shogirdi · Istanbul</span>
+        <h2>63 yosh. 100 million dollar.</h2>
+        <p class="quote">«Ikkalamizning yoshimiz almashsa, oxirgi dollarimgacha sizga berishga tayyorman.»</p>
+        <p class="t">— dedi va yigʻlab yubordi. «Hamma narsa pulda deb oʻylabman. Bugun pulim bor, lekin u menga kerak emas».</p>
+      </div>
+      <div class="ph" data-src="img/sh/oldman.jpg" data-cap="Katta ofisda yolgʻiz odam" style="--ar:3/2"></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide white">
+  <div class="in">
+    <div class="split">
+      <div style="display:flex;flex-direction:column;gap:calc(var(--u)*2)">
+        <span class="eyebrow">Egalik va foydalanish</span>
+        <h2>Kutubxona kitobi kabi</h2>
+        <p class="t">Kutubxona kitobini oʻqiysiz, undan foyda olasiz. Lekin u sizniki emas. Uni toza holda keyingi oʻquvchiga qoldirasiz.</p>
+        <p class="t">Partangiz, maktabingiz, shahringiz, hatto pulingiz ham shunday. <strong>Foydalaning, lekin ularga qul boʻlmang.</strong></p>
+      </div>
+      <div class="ph" data-src="img/sh/library.jpg" data-cap="Kutubxonada kitob qaytarish" style="--ar:3/2"></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <div class="split">
+      <div style="display:flex;flex-direction:column;gap:calc(var(--u)*1.6)">
+        <span class="eyebrow">Mehmon odobi = hayot odobi</span>
+        <h2>Yaxshi mehmon nima qiladi?</h2>
+        <div class="rows">
+          <div class="row"><b>1</b><p class="t">Rahmat aytadi. Berilganiga shukr qiladi</p></div>
+          <div class="row"><b>2</b><p class="t">Joyni toza va yaxshiroq qoldiradi</p></div>
+          <div class="row"><b>3</b><p class="t">Bu yer vaqtincha ekanini biladi, bahslashib oʻtirmaydi</p></div>
+          <div class="row on"><b>4</b><p class="t">Quruq qoʻl bilan kelmaydi — avval beradi</p></div>
+        </div>
+      </div>
+      <div class="ph" data-src="img/sh/mehmon.jpg" data-cap="Dasturxon va mehmon" style="--ar:3/2"></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide grey">
+  <div class="in">
+    <span class="eyebrow">Muhim · notoʻgʻri tushunmang</span>
+    <div class="vs">
+      <div class="card"><span class="eyebrow" style="color:var(--mute)">Mehmondek yashash EMAS ✗</span><p class="t">Hech narsaga intilmaslik, ishlamaslik, «baribir hammasi oʻtkinchi» deb dangasalik qilish</p></div>
+      <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">Mehmondek yashash ✓</span><p class="t">Koʻp ishlash, koʻp topish, lekin narsaga qul boʻlmaslik. Topganini odamlarga foydaga ishlatish</p></div>
+    </div>
+    <p class="lead">Dosmetovning tadbirkorlarga maslahati: yilni rejalashtirganda <strong>avval ehson</strong>, keyin dam, keyin taʼlim, oxirida ish.</p>
+  </div>
+</section>
+
+<!-- ================= 4. KUCHLI SHAXS ================= -->
+<section class="slide blue" id="s-kuch">
+  <div class="in">
+    <span class="eyebrow" style="color:#9fe3ff">4-bekat</span>
+    <h1>Kuchli shaxsning 4 belgisi</h1>
+    <div class="grid c4">
+      <div class="card"><div class="k">1</div><h3>Qoʻrquvni yengadi</h3></div>
+      <div class="card"><div class="k">2</div><h3>Aybni boshqadan qidirmaydi</h3></div>
+      <div class="card"><div class="k">3</div><h3>Keyinga qoldirmaydi</h3></div>
+      <div class="card"><div class="k">4</div><h3>Avval beradi</h3></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <div class="split">
+      <div style="display:flex;flex-direction:column;gap:calc(var(--u)*2)">
+        <span class="eyebrow">1 · Qoʻrquvni yengadi</span>
+        <h2>Uyalchang boladan 1&nbsp;000 kishilik zalgacha</h2>
+        <p class="t">Dosmetov: «18–20 yoshimda ham juda uyalchang, yigʻloqi bola edim». Bugun u minglab odam oldida gapiradi.</p>
+        <p class="quote">«Yo qoʻrquvni yengasiz, yo hozirgi holatingizga koʻnasiz. Bu — tanlov.»</p>
+      </div>
+      <div class="ph" data-src="img/sh/stage.jpg" data-cap="Sahnaga chiqayotgan bola" style="--ar:3/2"></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide white">
+  <div class="in">
+    <span class="eyebrow">2 · Aybni boshqadan qidirmaydi</span>
+    <h2>«Atrofdagilar aybdor emas»</h2>
+    <div class="rows">
+      <div class="row"><b>✗</b><p class="t">«Ustoz yomon tushuntirdi» → <strong>✓ «Men qayta soʻradimmi?»</strong></p></div>
+      <div class="row"><b>✗</b><p class="t">«Telefon chalgʻitdi» → <strong>✓ «Telefonni nega yonimga qoʻydim?»</strong></p></div>
+      <div class="row"><b>✗</b><p class="t">«Jamoam ishlamadi» → <strong>✓ «Men ularni qanday ruhlantirdim?»</strong></p></div>
+    </div>
+    <p class="lead">Aybni oʻzidan qidirgan odamning qoʻlida kuch bor: u oʻzgartira oladi.</p>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <div class="split">
+      <div style="display:flex;flex-direction:column;gap:calc(var(--u)*2)">
+        <span class="eyebrow">3 · Keyinga qoldirmaydi</span>
+        <h2>«Janubga koʻchganda…»</h2>
+        <p class="t">Olimlar shimolda yashovchilardan soʻragan: «Qachon baxtli boʻlasiz?» Deyarli hammasi: «Janubga koʻchganimizda». Lekin ular deyarli hech qachon koʻchmagan.</p>
+        <p class="quote">«Keyinga qoldirilgan hayot — deyarli hech qachon boʻlmaydigan hayot.»</p>
+      </div>
+      <div class="ph" data-src="img/sh/north.jpg" data-cap="Qorli shahar va janubga qarash" style="--ar:3/2"></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <div class="split">
+      <div style="display:flex;flex-direction:column;gap:calc(var(--u)*2)">
+        <span class="eyebrow">4 · Avval beradi</span>
+        <h2>«Avval qoʻy soʻy»</h2>
+        <p class="t">Bir kishi Dosmetovga: «Duo qiling, ishlarim yurishsa, qoʻy soʻyaman», — debdi.</p>
+        <p class="t">Javob: <strong>«Avval qoʻy soʻy, keyin ishlaring yurishadi».</strong></p>
+        <p class="t">Bolalar uchun: avval yordam bering, bilganingizni oʻrgating, kutmasdan bering.</p>
+      </div>
+      <div class="ph" data-src="img/sh/give.jpg" data-cap="Qoʻshniga non berayotgan bola" style="--ar:3/2"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 5. MASHQ ================= -->
+<section class="slide dark" id="s-yol">
+  <div class="in">
+    <div class="split">
+      <div style="display:flex;flex-direction:column;gap:calc(var(--u)*1.6)">
+        <span class="eyebrow">Mashq · Dosmetovning A → B usuli</span>
+        <h2>Menga nima yetishmayapti?</h2>
+        <div class="rows" style="gap:0">
+          <div class="row"><b>A</b><p class="t">Men hozir kimman? Halol yozing</p></div>
+          <div class="row"><b>B</b><p class="t">1 yildan keyin kim boʻlmoqchiman?</p></div>
+          <div class="row"><b>5</b><p class="t">B ga yetish uchun yetishmayotgan 5 ta narsa: koʻnikma, odat, bilim</p></div>
+          <div class="row on"><b>1</b><p class="t">Birinchi qadam: dushanba kuni nima qilaman?</p></div>
+        </div>
+        <button class="timer" data-sec="420" style="align-self:flex-start">▶ 7:00 · yozish</button>
+      </div>
+      <div class="ph" data-src="img/sh/path.jpg" data-cap="A dan B ga yoʻl" style="--ar:3/2"></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide blue" id="s-topshiriq">
+  <div class="in">
+    <span class="eyebrow" style="color:#9fe3ff">Telefon orqali yuboring · har kim alohida</span>
+    <h2>Mening yoʻlim: A dan B ga</h2>
+    <div class="split" style="align-items:start">
+      <div class="rows">
+        <div class="row"><b>B</b><p class="t">1 yildan keyin kim boʻlmoqchiman</p></div>
+        <div class="row"><b>5</b><p class="t">Yetishmayotgan 5 ta narsa</p></div>
+        <div class="row"><b>1</b><p class="t">Birinchi qadam</p></div>
+        <div class="row"><b>?</b><p class="t">Yengmoqchi boʻlgan qoʻrquvim (ixtiyoriy)</p></div>
+        <p class="small" style="color:#cfe0ff">Keyingi shanba: birinchi qadamni qilganlar 1 daqiqa gapirib beradi.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="qr" data-qr="yol"></div>
+        <p class="small" style="color:#cfe0ff">Skanerlang: <span class="link" data-href="yol" style="color:#fff"></span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide grey">
+  <div class="in">
+    <h2>Bugungi 3 saboq</h2>
+    <div class="rows">
+      <div class="row"><b>1</b><p class="quote" style="font-size:max(20px,calc(var(--u)*3))">Biznes — oyna. Avval oʻzingizni quring, biznes orqasidan keladi.</p></div>
+      <div class="row"><b>2</b><p class="quote" style="font-size:max(20px,calc(var(--u)*3))">Yuqorida turing: telefon, pul va narsalar sizga xizmat qilsin.</p></div>
+      <div class="row"><b>3</b><p class="quote" style="font-size:max(20px,calc(var(--u)*3))">Mehmondek yashang: foydalaning, rahmat ayting, yaxshiroq qoldiring.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in" style="align-items:center;text-align:center">
+    <span class="eyebrow">Biznes — bu shaxsiyat</span>
+    <h1 style="font-size:max(48px,calc(var(--u)*11))">Sen ham<br><span class="grad">uddalaysan.</span></h1>
+    <p class="eyebrow" style="margin-top:calc(var(--u)*3)">DATA · Bilimga toʻldiramiz</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  DATA xalqaro maktabi · Biznes klub · 7–10-sinflar · har shanba<br>
+  <a href="tadbirkor.html">4-dars: Tadbirkor kabi fikrla</a> · <a href="#sorov">Soʻrovnoma</a> · <a href="#yol">Mening yoʻlim</a><br>
+  <span style="font-size:11px">Manba: Ixtiyor Dosmetov YouTube kanali (9 video) va «Xarakter» loyihasi, 2-son. Iqtiboslar avtomatik transkriptdan, mazmunan berilgan.<br>Illyustratsiyalar: sunʼiy intellekt (ChatGPT) yordamida yaratilgan.</span>
+</footer>
+
+<div class="hud"><i id="prog"></i></div>
+<button class="btn ghost exit" id="exit-present">Esc · chiqish</button>
+
+<!-- ============ telefon: soʻrovnoma ============ -->
+<section class="view" id="v-sorov">
+  <div class="box">
+    <span class="eyebrow" style="color:var(--data)">DATA Biznes Klub · anonim soʻrovnoma</span>
+    <h2>Halol javob</h2>
+    <p><strong>1. Kuniga necha soat telefonda oʻtiraman?</strong></p>
+    <div class="pick" data-kind="ekran"></div>
+    <p><strong>2. Meni koʻproq nima boshqaradi?</strong></p>
+    <div class="pick" data-kind="xoja"></div>
+    <button class="btn" id="sorov-send">Yuborish</button>
+    <p class="msg" id="sorov-msg" role="status"></p>
+    <p class="small">Ism soʻralmaydi. Natija faqat umumiy koʻrinadi.</p>
+  </div>
+</section>
+
+<!-- ============ telefon: A dan B ga ============ -->
+<section class="view" id="v-yol">
+  <form class="box" id="y-form">
+    <span class="eyebrow" style="color:var(--data)">DATA Biznes Klub · mashq</span>
+    <h2>Mening yoʻlim: A dan B ga</h2>
+    <label for="y-author">Ism va familiya, sinf<input id="y-author" maxlength="80" required placeholder="Masalan: Aziza Karimova, 8-B"></label>
+    <label for="y-b">B nuqta: 1 yildan keyin kim boʻlmoqchiman?<textarea id="y-b" maxlength="300" required></textarea></label>
+    <label for="y-miss">Menga yetishmayotgan 5 ta narsa<textarea id="y-miss" maxlength="800" required style="min-height:140px" placeholder="1.&#10;2.&#10;3.&#10;4.&#10;5."></textarea></label>
+    <label for="y-step">Birinchi qadam: dushanba kuni nima qilaman?<textarea id="y-step" maxlength="300" required></textarea></label>
+    <label for="y-fear">Yengmoqchi boʻlgan qoʻrquvim (ixtiyoriy)<input id="y-fear" maxlength="300"></label>
+    <button class="btn" type="submit">Yuborish</button>
+    <p class="msg" id="y-msg" role="status"></p>
+  </form>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+const SB_URL = 'https://onbvjawjvxbiyqnimvnh.supabase.co';
+const SB_KEY = 'sb_publishable_ch6uaEZEkI5r-fTOtlJxrw_XI0qJuUQ';
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const dir = location.origin + location.pathname.replace(/[^/]*$/, '');
+const links = { sorov: dir + 'shaxsiyat.html#sorov', yol: dir + 'shaxsiyat.html#yol' };
+const OPT = {
+  ekran: ['1 soatdan kam', '1–2 soat', '2–4 soat', '4–6 soat', '6 soatdan koʻp'],
+  xoja: ['Telefon', 'Dangasalik', 'Qoʻrquv', 'Jahl', 'Boshqalar fikri']
+};
+
+async function api(path, opt = {}) {
+  const r = await fetch(SB_URL + '/rest/v1/' + path, { ...opt, headers: { apikey: SB_KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal', ...(opt.headers || {}) } });
+  if (!r.ok) throw new Error(r.status + ' ' + await r.text());
+  return r.status === 200 ? r.json() : null;
+}
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+
+/* ---------- surat joylari ---------- */
+$$('.ph[data-src]').forEach(el => {
+  const f = el.dataset.src;
+  el.innerHTML = `<span>📷 ${esc(el.dataset.cap)}<br>${f}</span><img src="${f}" alt="${esc(el.dataset.cap)}" loading="lazy" onerror="this.remove()">`;
+});
+
+/* ---------- QR va havolalar ---------- */
+$$('[data-qr]').forEach(el => { if (window.QRCode) new QRCode(el, { text: links[el.dataset.qr], width: 512, height: 512, correctLevel: QRCode.CorrectLevel.M }) });
+$$('[data-href]').forEach(el => el.textContent = links[el.dataset.href].replace(/^https?:\/\//, ''));
+
+/* ---------- taqdimot rejimi ---------- */
+const slides = $$('.deck .slide');
+slides.forEach((s, i) => { const n = document.createElement('span'); n.className = 'num'; n.textContent = String(i + 1).padStart(2, '0') + ' / ' + slides.length; s.append(n) });
+let cur = 0;
+function show(i) {
+  cur = Math.max(0, Math.min(slides.length - 1, i));
+  slides.forEach((s, j) => { s.classList.toggle('cur', j === cur); s.classList.toggle('active', j === cur) });
+  $('#prog').style.width = ((cur + 1) / slides.length * 100) + '%';
+  onSlide(slides[cur]);
+}
+function present(on) {
+  document.body.classList.toggle('present', on);
+  if (on) {
+    const y = window.scrollY + innerHeight / 3;
+    const k = slides.findIndex(s => s.offsetTop + s.offsetHeight > y);
+    show(k < 0 ? 0 : k);
+    document.documentElement.requestFullscreen?.().catch(() => {});
+  } else {
+    slides.forEach(s => s.classList.remove('cur'));
+    document.fullscreenElement && document.exitFullscreen?.().catch(() => {});
+    slides[cur].scrollIntoView();
+  }
+}
+$('#go-present').onclick = () => present(true);
+$('#exit-present').onclick = () => present(false);
+document.addEventListener('fullscreenchange', () => { if (!document.fullscreenElement && document.body.classList.contains('present')) present(false) });
+document.addEventListener('keydown', e => {
+  if (document.body.classList.contains('v') || e.target.closest('input,textarea,select')) return;
+  const p = document.body.classList.contains('present');
+  if (!p) { if (e.key === 'p' || e.key === 'P') present(true); return }
+  if (['ArrowRight','ArrowDown','PageDown',' ','Enter'].includes(e.key)) { e.preventDefault(); show(cur + 1) }
+  else if (['ArrowLeft','ArrowUp','PageUp','Backspace'].includes(e.key)) { e.preventDefault(); show(cur - 1) }
+  else if (e.key === 'Home') show(0);
+  else if (e.key === 'End') show(slides.length - 1);
+  else if (e.key === 'Escape') present(false);
+});
+document.addEventListener('click', e => {
+  if (!document.body.classList.contains('present') || e.target.closest('button,a,input,label,details,.qr')) return;
+  show(cur + (e.clientX > innerWidth / 3 ? 1 : -1));
+});
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (document.body.classList.contains('present')) return;
+  e.target.classList.toggle('active', e.isIntersecting);
+  if (e.isIntersecting) onSlide(e.target);
+}), { threshold: .35 });
+slides.forEach(s => io.observe(s));
+
+/* ---------- jonli soʻrovnoma natijasi ---------- */
+let pollT = null;
+async function pullPoll() {
+  try {
+    const rows = await api('rpc/sh_poll_counts', { method: 'POST', body: '{}' });
+    const c = { ekran: [0,0,0,0,0], xoja: [0,0,0,0,0] };
+    rows.forEach(r => c[r.kind][r.pick - 1] = r.n);
+    for (const k of ['ekran', 'xoja']) {
+      const max = Math.max(1, ...c[k]);
+      $('#b-' + k).innerHTML = OPT[k].map((o, i) => `<div class="r"><span>${o}</span><i style="width:${c[k][i] / max * 100}%"></i><b>${c[k][i]}</b></div>`).join('');
+    }
+    $('#sorov-info').textContent = c.ekran.reduce((a, b) => a + b, 0) + ' kishi javob berdi';
+  } catch { $('#sorov-info').textContent = 'Jonli natija uchun internet kerak.' }
+}
+function onSlide(s) {
+  if (s.id === 's-sorov' && !pollT) { pullPoll(); pollT = setInterval(pullPoll, 4000) }
+  if (s.id !== 's-sorov' && pollT && !$('#s-sorov').classList.contains('active')) { clearInterval(pollT); pollT = null }
+}
+
+/* ---------- taymerlar ---------- */
+const fmt = s => Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+$$('.timer').forEach(b => {
+  const total = +b.dataset.sec, label = b.textContent.replace(/^▶\s*\S+/, '');
+  let left = total, t = null;
+  const paint = () => { b.textContent = (t ? '❚❚ ' : left === 0 ? '↺ ' : '▶ ') + fmt(left) + label };
+  b.onclick = e => {
+    e.stopPropagation();
+    if (left === 0) { left = total; b.classList.remove('done') }
+    if (t) { clearInterval(t); t = null; b.classList.remove('run') }
+    else {
+      b.classList.add('run');
+      t = setInterval(() => {
+        left--;
+        if (left <= 0) { left = 0; clearInterval(t); t = null; b.classList.remove('run'); b.classList.add('done') }
+        paint();
+      }, 1000);
+    }
+    paint();
+  };
+});
+
+/* ---------- telefon: soʻrovnoma ---------- */
+const sel = { ekran: 0, xoja: 0 };
+$$('.pick[data-kind]').forEach(row => {
+  row.innerHTML = OPT[row.dataset.kind].map((o, i) => `<button type="button" data-v="${i + 1}">${o}</button>`).join('');
+  row.onclick = e => { const b = e.target.closest('button'); if (!b) return; sel[row.dataset.kind] = +b.dataset.v; $$('button', row).forEach(x => x.classList.toggle('sel', x === b)) };
+});
+$('#sorov-send').onclick = async () => {
+  const m = $('#sorov-msg');
+  if (localStorage.shVoted) { m.innerHTML = '<span class="ok">Siz allaqachon javob bergansiz ✓</span>'; return }
+  if (!sel.ekran || !sel.xoja) { m.innerHTML = '<span class="no">Ikkala savolga ham javob bering.</span>'; return }
+  m.textContent = 'Yuborilmoqda...';
+  try {
+    await api('sh_poll', { method: 'POST', body: JSON.stringify([{ kind: 'ekran', pick: sel.ekran }, { kind: 'xoja', pick: sel.xoja }]) });
+    localStorage.shVoted = 1; m.innerHTML = '<span class="ok">✓ Rahmat! Ekranga qarang.</span>';
+  } catch { m.innerHTML = '<span class="no">Yuborilmadi. Internetni tekshirib, qayta urinib koʻring.</span>' }
+};
+
+/* ---------- telefon: A dan B ga ---------- */
+$('#y-form').addEventListener('submit', async e => {
+  e.preventDefault();
+  const m = $('#y-msg'), v = id => $('#' + id).value.trim();
+  const row = { author: v('y-author'), point_b: v('y-b'), missing: v('y-miss'), first_step: v('y-step'), fear: v('y-fear') || null };
+  m.textContent = 'Yuborilmoqda...';
+  try { await api('sh_path', { method: 'POST', body: JSON.stringify(row) }); m.innerHTML = '<span class="ok">✓ Qabul qilindi! Dushanba — birinchi qadam.</span>'; e.target.reset() }
+  catch { m.innerHTML = '<span class="no">Yuborilmadi. Internetni tekshirib, qayta urinib koʻring.</span>' }
+});
+
+/* ---------- marshrut: #sorov, #yol ---------- */
+function route() {
+  const h = location.hash.slice(1), v = h === 'sorov' || h === 'yol';
+  document.body.classList.toggle('v', v);
+  ['sorov', 'yol'].forEach(k => document.body.classList.toggle('v-' + k, h === k));
+  if (v) scrollTo(0, 0);
+}
+addEventListener('hashchange', route); route();
+const qs = +new URLSearchParams(location.search).get('s');
+if (qs) { document.body.classList.add('present'); show(qs - 1) }
+</script>
+</body>
+</html>
