@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Tadbirkor kabi fikrla · DATA Biznes Klub</title>
-<meta name="description" content="DATA Biznes Klub 4-mashg‘ulot: Tadbirkor kabi fikrla. Qoidaga zid 6 fikrlash va 6% klubi.">
+<meta name="description" content="DATA Biznes Klub 4-mashgʻulot: Tadbirkor kabi fikrla. Qoidaga zid 6 fikrlash va 6% klubi.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
 <style>
@@ -303,7 +303,7 @@ body.v-ovoz #v-ovoz,body.v-reja #v-reja{display:block}
 .lab .r.ten b{color:#fff}
 .teamdraw{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(var(--u)*1.2)}
 @media (max-width:760px){.teamdraw{grid-template-columns:1fr 1fr}}
-.teamdraw .card{min-height:calc(var(--u)*9)}
+.teamdraw{gap:8px!important}.teamdraw .card{min-height:0;padding:calc(var(--u)*1.1) calc(var(--u)*1.6)}
 .teamdraw .card h3{transition:opacity .3s}
 .ladder{display:flex;gap:calc(var(--u)*1);align-items:flex-end;flex-wrap:wrap}
 .ladder div{flex:1;min-width:120px;border-radius:14px;padding:calc(var(--u)*1.6);background:#1c1c1e;font-weight:700;font-size:max(14px,calc(var(--u)*1.7))}
@@ -329,11 +329,11 @@ body.v-ovoz #v-ovoz,body.v-reja #v-reja{display:block}
 
 <header class="bar">
   <span class="logo"><i></i>DATA Biznes Klub</span>
-  <nav aria-label="Bo‘limlar">
+  <nav aria-label="Boʻlimlar">
     <a href="#s-takror">Takrorlash</a>
     <a href="#s-lynda">Kirish</a>
-    <a href="#s-m1">6 fikrlash</a>
-    <a href="#s-ovoz">Ovoz va mashq</a>
+    <a href="#s-m1">6 odat</a>
+    <a href="#s-ovoz-qr">Oʻyin</a>
     <a href="#s-6">6% klubi</a>
     <a href="#s-topshiriq">Topshiriq</a>
     <a href="ai.html">← AI darsi</a>
@@ -347,380 +347,259 @@ body.v-ovoz #v-ovoz,body.v-reja #v-reja{display:block}
 <section class="slide hero dark">
   <div class="in">
     <div class="txt">
-      <span class="eyebrow">DATA Biznes Klub · 4-mashg‘ulot</span>
+      <span class="eyebrow">DATA Biznes Klub · 4-mashgʻulot</span>
       <h1>Tadbirkor kabi fikrla</h1>
-      <p class="lead" style="color:#fff;font-weight:700">Qoidaga zid 6 fikrlash va maqsadiga yetadigan 6 foiz odamning siri</p>
+      <p class="lead" style="color:#fff;font-weight:700">Biznes qurganlar boshqalardan nimasi bilan farq qiladi?</p>
       <p class="t" style="color:#cfe0ff">Shanba, 31-oktabr · 12:30–14:30</p>
       <p class="small" style="color:#9fb6ff">Shahzod Sobirov · DATA asoschisi</p>
     </div>
-    <div class="pic ph" data-img="knight" data-cap="Bill Bowerman va yuguruvchilar"></div>
+    <div class="pic ph" data-src="img/ai/hero.jpg" data-cap="Oʻquvchilar gʻoya ustida"></div>
   </div>
 </section>
 
 <!-- 02 reja -->
 <section class="slide dark">
   <div class="in">
-    <span class="eyebrow">Bugungi yo‘l xaritasi</span>
-    <h2>2 soat, 5 bekat</h2>
-    <div class="grid c3">
-      <div class="card"><span class="eyebrow">12:30 · 15 daq</span><h3>Takrorlash va kirish</h3><p class="small">AI darsi: 3 savol. O‘qituvchi qanday qilib 1,5 mlrd $ lik kompaniya qurdi?</p></div>
-      <div class="card"><span class="eyebrow">12:45 · 45 daq</span><h3>6 fikrlash</h3><p class="small">Nike, Tesla, Go Ape, Uber… Katta kompaniya qoidasi va tadbirkor qoidasi</p></div>
-      <div class="card"><span class="eyebrow">13:30 · 30 daq</span><h3>Ovoz va jamoa mashqi</h3><p class="small">Qaysi fikrlash sizda bor? 6 jamoa — 6 fikrlash — 1 muammo</p></div>
-      <div class="card"><span class="eyebrow">14:00 · 20 daq</span><h3>6% klubi</h3><p class="small">Nega 94% odam maqsadidan voz kechadi? 3 sir va 0–10 qoidasi</p></div>
-      <div class="card"><span class="eyebrow">14:20 · 10 daq</span><h3>Topshiriq</h3><p class="small">30 kunlik aniq reja</p></div>
-      <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">Bugungi savol</span><h3>A’lochi bo‘lish va tadbirkor bo‘lish — bir xil narsami?</h3></div>
+    <span class="eyebrow">Bugun</span>
+    <h2>2 soat, 4 qism</h2>
+    <div class="rows">
+      <div class="row"><b>12:30</b><p class="t"><strong>Takrorlash.</strong> AI darsidan 3 savol</p></div>
+      <div class="row"><b>12:40</b><p class="t"><strong>Tadbirkorning 6 odati.</strong> Dunyo va Oʻzbekistondan misollar</p></div>
+      <div class="row"><b>13:30</b><p class="t"><strong>Oʻyin.</strong> Telefon bilan ovoz va jamoa mashqi</p></div>
+      <div class="row on"><b>14:00</b><p class="t"><strong>6% klubi.</strong> Maqsadga qanday yetiladi + uy vazifasi</p></div>
     </div>
   </div>
 </section>
 
 <!-- ================= TAKRORLASH ================= -->
-<section class="slide blue" id="s-takror">
+<section class="slide dark" id="s-takror">
   <div class="in">
-    <span class="eyebrow" style="color:#9fe3ff">O‘tgan dars · takrorlash</span>
-    <h1>Sun’iy intellekt: birinchi xodimingiz</h1>
-    <p class="lead">AI — raqib emas, xodim. Siz esa unga vazifa beradigan rahbar. Eslaymizmi?</p>
-  </div>
-</section>
-
-<section class="slide dark">
-  <div class="in">
-    <h2>3 savol</h2>
-    <details class="qa"><summary>AI ga yaxshi topshiriq berish formulasi qanday? 5 harf</summary><p>R-V-K-N-Ch: Rol, Vazifa, Kontekst, Natija, Chegara</p></details>
-    <details class="qa"><summary>AI bilan ishlaganda siz kimsiz: foydalanuvchimi yoki rahbarmi?</summary><p>Rahbar: vazifa beraman, natijani tekshiraman, javobgarlik menda</p></details>
-    <details class="qa"><summary>AI xato qilib, o‘ylab topilgan narsani ishonch bilan aytishi nima deyiladi?</summary><p>Gallyutsinatsiya. Shuning uchun faktni doim tekshiramiz</p></details>
-    <p class="lead">Uy vazifasi: “Kasbim va mening AI-xodimim”. 2–3 kishi o‘qib beradi.</p>
+    <span class="eyebrow">Oʻtgan dars · AI — birinchi xodimingiz</span>
+    <h2>Eslaymizmi?</h2>
+    <details class="qa"><summary>AI ga topshiriq berish formulasi: 5 harf</summary><p>R-V-K-N-Ch: Rol, Vazifa, Kontekst, Natija, Chegara</p></details>
+    <details class="qa"><summary>AI bilan ishlaganda siz kimsiz?</summary><p>Rahbar: vazifa beraman, natijani tekshiraman</p></details>
+    <details class="qa"><summary>AI notoʻgʻri narsani ishonch bilan aytsa, bu nima deyiladi?</summary><p>Gallyutsinatsiya. Shuning uchun doim tekshiramiz</p></details>
   </div>
 </section>
 
 <!-- ================= KIRISH ================= -->
-<section class="slide white">
-  <div class="in">
-    <span class="eyebrow">Bugungi 3 ustoz · 3 video</span>
-    <h2>Kimdan o‘rganamiz?</h2>
-    <div class="grid c3">
-      <div class="card"><span class="eyebrow">TED · London Business School</span><h3>John Mullins</h3><p class="small">Biznes-maktab professori. “Tadbirkorning qoidaga zid 6 fikrlashi”</p></div>
-      <div class="card"><span class="eyebrow">YouTube · 2,5 soat</span><h3>Simon Squibb</h3><p class="small">30 yilda 19 ta kompaniya qurgan, 78 ta startapga pul tikkan. “30 yillik biznes bilimi”</p></div>
-      <div class="card"><span class="eyebrow">TEDx · psixolog</span><h3>Dr. Michelle Rozen</h3><p class="small">1 000 kishi ustida tadqiqot. “6 foiz siri: maqsadga qanday yetiladi”</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="slide dark" id="s-lynda">
+<section class="slide white" id="s-lynda">
   <div class="in">
     <div class="split">
       <div style="display:flex;flex-direction:column;gap:calc(var(--u)*2)">
-        <span class="eyebrow">Tarix · AQSH</span>
-        <h2>Oddiy o‘qituvchi va 1,5 mlrd $</h2>
+        <span class="eyebrow">Bir oddiy oʻqituvchi</span>
+        <h2>Darsini internetga qoʻydi</h2>
         <div class="rows">
-          <div class="row"><b>1995</b><p class="t">Grafik dizayn o‘qituvchisi Linda Vaynman o‘quvchilari ishlarini qo‘yish uchun lynda.com saytini ochdi</p></div>
-          <div class="row"><b>2002</b><p class="t">Tushundi: sayt ko‘proq narsa bo‘la oladi. Barcha darslarini onlayn qildi</p></div>
-          <div class="row on"><b>2015</b><p class="t">LinkedIn kompaniyani <strong>1,5 mlrd $</strong> ga sotib oldi. Bugun u LinkedIn Learning</p></div>
+          <div class="row"><b>1995</b><p class="t">AQSHlik dizayn oʻqituvchisi Linda oʻquvchilari ishlarini koʻrsatish uchun sayt ochdi</p></div>
+          <div class="row"><b>2002</b><p class="t">Hamma darslarini videoga olib, saytga qoʻydi</p></div>
+          <div class="row on"><b>2015</b><p class="t">Saytini LinkedIn <strong>1,5 milliard dollarga</strong> sotib oldi</p></div>
         </div>
       </div>
-      <figure style="margin:0"><div class="ph sq" data-img="lynda" data-cap="Linda Vaynman"></div><figcaption>Lynda Weinman · Wikimedia Commons, CC BY 2.0</figcaption></figure>
+      <div class="ph" data-src="img/ai/teacher.jpg" data-cap="Oʻqituvchi va kompyuter" style="--ar:3/2"></div>
     </div>
   </div>
 </section>
 
-<section class="slide grey">
+<section class="slide blue">
   <div class="in">
-    <span class="eyebrow">John Mullins</span>
-    <p class="quote xl">“Tadbirkorlar biznes-maktabda biz o‘rgatadigan qoidalarning teskarisini qiladi.”</p>
-    <p class="lead">Katta kompaniyada ishlaydigan qoidalar yangi boshlagan odamga ko‘pincha xalaqit beradi. Bugun shunday 6 ta qoidani ko‘ramiz.</p>
-  </div>
-</section>
-
-<section class="slide dark">
-  <div class="in">
-    <h2>Katta kompaniya va tadbirkor</h2>
-    <div class="vstack">
-    <div class="vrow"><div class="card"><span class="eyebrow" style="color:var(--mute)">Katta kompaniya qoidasi</span></div><div class="card t"><span class="eyebrow">Tadbirkor fikrlashi</span></div></div>
-    <div class="vrow"><div class="card"><p class="t">Faqat bilgan ishingni qil</p></div><div class="card t"><p class="t"><b>1. Ha, qila olamiz</b></p></div></div>
-    <div class="vrow"><div class="card"><p class="t">Mahsulotni yangila (rangini o‘zgartir)</p></div><div class="card t"><p class="t"><b>2. Avval muammo, keyin mahsulot</b></p></div></div>
-    <div class="vrow"><div class="card"><p class="t">Katta bozorni ol</p></div><div class="card t"><p class="t"><b>3. Tor bozordan boshla</b></p></div></div>
-    <div class="vrow"><div class="card"><p class="t">Pul bor, sarflaymiz</p></div><div class="card t"><p class="t"><b>4. Avval mijozdan pul ol</b></p></div></div>
-    <div class="vrow"><div class="card"><p class="t">Hammasini o‘zimiz sotib olamiz</p></div><div class="card t"><p class="t"><b>5. Qarzga ol, lekin o‘g‘irlama</b></p></div></div>
-    <div class="vrow"><div class="card"><p class="t">Avval yuristlardan ruxsat</p></div><div class="card t"><p class="t"><b>6. Ruxsat kutib o‘tirma</b></p></div></div>
-    </div>
+    <span class="eyebrow" style="color:#9fe3ff">London biznes maktabi professori John Mullins</span>
+    <p class="quote xl">«Tadbirkorlar katta kompaniyalar qoidasining teskarisini qiladi.»</p>
+    <p class="lead">U buni 6 ta odatga ajratgan. Bugun har biriga dunyo misoli va bizdagi misolni koʻramiz.</p>
   </div>
 </section>
 
 <!-- ================= 1 ================= -->
-<section class="slide blue" id="s-m1">
+<section class="slide dark" id="s-m1">
   <div class="in">
-    <span class="eyebrow" style="color:#9fe3ff">1-fikrlash</span>
-    <h1>“Ha, qila olamiz”</h1>
-    <p class="lead">Mijoz siz hali bilmagan narsani so‘rasa, “bizda bunday ish yo‘q” demang.</p>
-  </div>
-</section>
-
-<section class="slide dark">
-  <div class="in">
-    <span class="eyebrow">Braziliya · Arnaldo Korrea</span>
-    <h2>Tadbir tashkilotchisidan reklama ekranlarigacha</h2>
-    <div class="grid c3">
-      <div class="phase"><span class="s">MIJOZ SO‘RADI</span><h3>260 ta do‘konga jonli trening</h3><p class="small">“Barcha do‘konlarimga sun’iy yo‘ldosh orqali dars ko‘rsata olasizmi?” Arnaldo sun’iy yo‘ldoshni bilmasdi. “Ha” dedi.</p></div>
-      <div class="phase"><span class="s">YANA SO‘RADI</span><h3>Walmart: ekranlarni zalga chiqaramiz</h3><p class="small">“Xaridor kir yuvish kukuni yonidan o‘tganda shu kukun reklamasi chiqsa-chi?” Yana “ha”.</p></div>
-      <div class="phase on"><span class="s">NATIJA</span><h3>Biznes 4 marta qayta qurildi</h3><p class="small">Bugun bu Braziliyadagi yirik raqamli reklama kompaniyasi</p></div>
+    <div class="split">
+      <div style="display:flex;flex-direction:column;gap:calc(var(--u)*2)">
+        <span class="eyebrow">1-odat</span>
+        <h1>«Ha, qila olaman»</h1>
+        <p class="lead">Mijoz siz hali bilmagan narsani soʻrasa, «yoʻq» demang. «Ha» deng va oʻrganing.</p>
+      </div>
+      <div class="ph" data-src="img/ai/m1.jpg" data-cap="Nonvoy va mijoz" style="--ar:3/2"></div>
     </div>
   </div>
 </section>
 
 <section class="slide grey">
   <div class="in">
-    <span class="eyebrow">Simon Squibb tajribasi</span>
-    <h2>Birinchi mijozga tekin ishladi</h2>
-    <div class="split">
-      <div class="rows">
-        <div class="row"><b>500</b><p class="t">Fluid agentligini ochganda xuddi shunday ish qiladigan 500 ta raqobatchi bor edi</p></div>
-        <div class="row"><b>0 $</b><p class="t">Birinchi mijoz uchun tekin ishladi va kutganidan ko‘p qilib berdi</p></div>
-        <div class="row on"><b>16 yil</b><p class="t">O‘sha mijoz 16 yil u bilan qoldi va keyingi mijozlarning hammasini o‘zi olib keldi</p></div>
-      </div>
-      <div class="card hl"><p class="quote">“Hamma g‘oya bilan boshla deydi. Biznes g‘oyadan emas, his-tuyg‘u va sevgan ishingdan boshlanadi.”</p><p class="who" style="color:#cfe0ff">Simon Squibb</p></div>
+    <div class="vs">
+      <div class="card"><span class="eyebrow">Dunyoda · Braziliya</span><h3>Arnaldo</h3><p class="t">Mijoz soʻradi: «260 ta doʻkonimga onlayn dars koʻrsata olasanmi?» U bu texnologiyani bilmasdi, lekin «ha» dedi. Keyin yana va yana. Biznesi 4 marta oʻzgarib, katta kompaniyaga aylandi.</p></div>
+      <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">Bizda · tasavvur qiling</span><h3>Urganchdagi nonvoy</h3><p class="t">Mijoz: «Tort ham pishirasizmi?» Nonvoy: «Ha». Bir hafta oʻrganadi. Endi u toʻylarga ham buyurtma oladi.</p></div>
     </div>
-    <p class="lead"><strong>Sizga savol:</strong> oxirgi marta qachon “bilmayman, qila olmayman” dedingiz?</p>
+    <p class="lead"><strong>Savol:</strong> sizdan kimdir yordam soʻrab, siz «bilmayman» deb qaytargan paytingiz boʻlganmi?</p>
   </div>
 </section>
 
 <!-- ================= 2 ================= -->
-<section class="slide blue">
-  <div class="in">
-    <span class="eyebrow" style="color:#9fe3ff">2-fikrlash</span>
-    <h1>Avval muammo, keyin mahsulot</h1>
-    <p class="lead">Kukunning rangini ko‘kdan yashilga almashtirish — innovatsiya emas. Kimningdir og‘rig‘ini olib tashlash — innovatsiya.</p>
-  </div>
-</section>
-
 <section class="slide dark">
   <div class="in">
     <div class="split">
       <div style="display:flex;flex-direction:column;gap:calc(var(--u)*2)">
-        <span class="eyebrow">AQSH · Jonatan Torn</span>
-        <h2>Yopishmaydigan qisqich</h2>
-        <p class="t">Jarrohlar ishlatadigan qisqich tirik to‘qimaga yopishib qoladi. Torn kumush-nikel qotishmasidan yopishmaydigan qisqich yasadi.</p>
-        <div class="rows">
-          <div class="row"><b>1</b><p class="t">Plastik jarrohlarga sotdi. Sekin o‘sdi</p></div>
-          <div class="row"><b>2</b><p class="t">So‘radi: “Kimda bu muammo kattaroq?” Javob: miya va umurtqa jarrohlari</p></div>
-          <div class="row on"><b>3</b><p class="t">Kompaniyani tibbiyot giganti Stryker sotib oldi</p></div>
-        </div>
+        <span class="eyebrow">2-odat</span>
+        <h1>Avval muammo</h1>
+        <p class="lead">«Nima sotsam ekan?» emas. «Odamlarni nima qiynayapti?» deb soʻrang.</p>
       </div>
-      <figure style="margin:0"><div class="ph" data-img="forceps" data-cap="Jarrohlik qisqichi"></div><figcaption>Jarrohlik qisqichi (XIX asr) · Wellcome Collection, CC BY 4.0</figcaption></figure>
+      <div class="ph" data-src="img/ai/m2.jpg" data-cap="Navbat va telefon" style="--ar:3/2"></div>
     </div>
   </div>
 </section>
 
-<section class="slide white">
+<section class="slide grey">
   <div class="in">
-    <span class="eyebrow">Simon Squibb</span>
     <div class="vs">
-      <div class="card"><span class="eyebrow" style="color:var(--mute)">Maktab beradigan savol</span><p class="quote">“Katta bo‘lsang kim bo‘lmoqchisan?”</p></div>
-      <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">Tadbirkor beradigan savol</span><p class="quote">“Qaysi muammoni hal qilmoqchisan?”</p></div>
+      <div class="card"><span class="eyebrow">Dunyoda · AQSH</span><h3>Yopishmaydigan qisqich</h3><p class="t">Jarrohlarning asbobi operatsiyada toʻqimaga yopishib qolardi. Jonatan Torn yopishmaydigan qisqich yasadi. Uni katta tibbiyot kompaniyasi sotib oldi.</p></div>
+      <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">Bizda · Click va Payme</span><h3>Navbatsiz toʻlov</h3><p class="t">Muammo: gaz va svet pulini toʻlash uchun navbatda turish. Yechim: telefonda bitta tugma. Bugun buni millionlab odam ishlatadi.</p></div>
     </div>
-    <p class="lead">Squibbning maslahati: kichik noqulayliklarni yozib boring. “Bank erta ochilmaydi”, “basseyn men xohlagan vaqtda ishlamaydi”. Shunda miyangizdagi tadbirkorlik mushagi uyg‘onadi.</p>
-    <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap"><button class="timer" data-sec="90">▶ 1:30 · mashq</button><p class="t">Daftarga: maktabda yoki uyda sizni bezovta qiladigan 3 ta muammo</p></div>
+    <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><button class="timer" data-sec="90">▶ 1:30 · mashq</button><p class="t">Daftarga: maktabda yoki uyda sizni bezovta qiladigan <strong>3 ta muammo</strong></p></div>
   </div>
 </section>
 
 <!-- ================= 3 ================= -->
-<section class="slide blue">
-  <div class="in">
-    <span class="eyebrow" style="color:#9fe3ff">3-fikrlash</span>
-    <h1>Tor bozordan boshla</h1>
-    <p class="lead">Katta kompaniya “hamma uchun” deydi. Tadbirkor “aynan shu odamlar uchun” deydi.</p>
-  </div>
-</section>
-
 <section class="slide dark">
   <div class="in">
     <div class="split">
       <div style="display:flex;flex-direction:column;gap:calc(var(--u)*2)">
-        <span class="eyebrow">AQSH · Nike</span>
-        <h2>Faqat uzoq masofaga yuguruvchilar uchun</h2>
-        <p class="t">Fil Nayt yuguruvchi edi, Bill Bowerman — uning murabbiyi. O‘sha paytdagi poyabzallar sprinterlar uchun edi. Uzoq masofachilar esa dala yo‘llarida yugurib, tosh va shoxlarga oyog‘ini qayirardi.</p>
-        <p class="t"><strong>Yechim:</strong> kengroq taglik, ko‘proq yumshoqlik, yengilroq vazn. Bir necha gramm × minglab qadam = tezroq natija.</p>
+        <span class="eyebrow">3-odat</span>
+        <h1>Kichik boshlang</h1>
+        <p class="lead">«Hamma uchun» emas. Avval aniq bir guruh uchun eng yaxshisini qiling.</p>
       </div>
-      <figure style="margin:0"><div class="ph" data-img="cortez" data-cap="Nike Cortez"></div><figcaption>Nike Cortez · Wikimedia Commons, CC0</figcaption></figure>
+      <div class="ph" data-src="img/ai/m3.jpg" data-cap="Yuguruvchi" style="--ar:3/2"></div>
     </div>
   </div>
 </section>
 
-<section class="slide dark">
+<section class="slide grey">
   <div class="in">
-    <h2>Tordan kenggacha</h2>
-    <div class="ladder">
-      <div>Uzoq masofa yuguruvchilari<small>Boshlanish</small></div>
-      <div>Tennis<small>Jon Makinro</small></div>
-      <div>Basketbol<small>Maykl Jordan</small></div>
-      <div>Butun dunyo<small>Sport kiyimida 1-raqam</small></div>
+    <div class="vs">
+      <div class="card"><span class="eyebrow">Dunyoda · Nike</span><h3>Faqat yuguruvchilar uchun</h3><p class="t">Avval faqat uzoq masofaga yuguradiganlar uchun poyabzal qilishdi. Keyin tennis, basketbol, keyin butun dunyo.</p></div>
+      <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">Bizda · DATA</span><h3>Durbin ilovasi</h3><p class="t">Avval faqat bitta maktab — DATA uchun qilindi. Yaxshi ishlagach, boshqa maktablar ham ulana boshladi: hozir 8 ta.</p></div>
     </div>
     <div class="vs">
-      <div class="card"><span class="eyebrow" style="color:var(--mute)">Juda keng</span><p class="t">“O‘quvchilar uchun ilova”</p></div>
-      <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">Tor va aniq</span><p class="t">“Matematikadan imtihonga tayyorlanayotgan 8-sinflar uchun ilova”</p></div>
+      <div class="card"><span class="eyebrow" style="color:var(--mute)">Juda keng ✗</span><p class="t">«Oʻquvchilar uchun ilova»</p></div>
+      <div class="card"><span class="eyebrow">Aniq ✓</span><p class="t">«Matematikadan imtihonga tayyorlanayotgan 8-sinflar uchun»</p></div>
     </div>
-    <p class="lead">Squibb ham tor boshlagan: arzon mikrofon bilan birinchi podkast. “Birinchi qadamni murakkablashtirma.”</p>
   </div>
 </section>
 
 <!-- ================= 4 ================= -->
-<section class="slide blue">
+<section class="slide dark">
   <div class="in">
-    <span class="eyebrow" style="color:#9fe3ff">4-fikrlash</span>
-    <h1>Avval mijozdan pul ol</h1>
-    <p class="lead">Tadbirkor uchun pul — qon. Uni investordan emas, birinchi navbatda mijozdan oling.</p>
+    <div class="split">
+      <div style="display:flex;flex-direction:column;gap:calc(var(--u)*2)">
+        <span class="eyebrow">4-odat</span>
+        <h1>Avval mijozdan pul</h1>
+        <p class="lead">Boshlash uchun investor shart emas. Birinchi pulni mijozdan oldindan olsa boʻladi.</p>
+      </div>
+      <div class="ph" data-src="img/ai/m4.jpg" data-cap="Oldindan buyurtma" style="--ar:3/2"></div>
+    </div>
   </div>
 </section>
 
-<section class="slide dark">
+<section class="slide grey">
   <div class="in">
-    <span class="eyebrow">AQSH · Tesla</span>
-    <h2>Mashina yo‘q, pul bor</h2>
-    <div class="grid g2">
-      <figure style="margin:0"><div class="ph" style="--ar:21/9" data-img="roadster" data-cap="Tesla Roadster 2008"></div></figure>
-      <figure style="margin:0"><div class="ph" style="--ar:21/9" data-img="model3" data-cap="Tesla Model 3"></div></figure>
-    </div>
-    <div class="grid g2">
-      <div class="card"><span class="eyebrow">Roadster</span><div class="k c">100 × 100 000 $</div><p class="t">= <strong>10 mln $</strong> naqd pul, birinchi mashina yasalmasdan oldin</p></div>
-      <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">Model 3</span><div class="k">~500 000 × 1 000 $</div><p class="t">≈ <strong>0,5 mlrd $</strong> oldindan to‘lov. Shu pulga zavod qurildi</p></div>
+    <div class="vs">
+      <div class="card"><span class="eyebrow">Dunyoda · Tesla</span><h3>Mashina yoʻq, pul bor</h3><p class="t">100 kishi birinchi mashina yasalmasdan oldin 100 000 dollardan toʻladi. Bu <strong>10 million dollar</strong>. Shu pulga mashinalar yasaldi.</p></div>
+      <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">Bizda · toʻyxona va tikuvchi</span><h3>Zaklad</h3><p class="t">Toʻyxona avval zaklad oladi, keyin toʻy oʻtadi. Tikuvchi avval avans oladi, keyin koʻylak tikadi. Bu ham shu odat.</p></div>
     </div>
   </div>
 </section>
 
 <section class="slide dark" id="s-calc">
   <div class="in">
-    <span class="eyebrow">Hisoblab ko‘ramiz</span>
-    <h2>Oldindan to‘lov kalkulyatori</h2>
+    <span class="eyebrow">Hisoblab koʻramiz</span>
+    <h2>Oldindan toʻlov kalkulyatori</h2>
     <div class="calc">
       <div style="display:flex;flex-direction:column;gap:18px">
         <div class="presets" id="presets">
-          <button data-p="100,100000,$">Tesla Roadster</button>
-          <button data-p="500000,1000,$">Tesla Model 3</button>
-          <button data-p="30,20000,so‘m" class="sel">Bizning sinf</button>
+          <button data-p="30,20000,soʻm" class="sel">Bizning sinf</button>
+          <button data-p="300,20000,soʻm">Butun maktab</button>
+          <button data-p="100,100000,$">Tesla</button>
         </div>
-        <label>Necha kishi oldindan to‘laydi <b id="o-n"></b><input type="range" id="i-n" min="1" max="1000" value="30"></label>
-        <label>Har biri qancha to‘laydi <b id="o-p"></b><input type="range" id="i-p" min="1000" max="200000" step="1000" value="20000"></label>
+        <label>Necha kishi oldindan toʻlaydi <b id="o-n"></b><input type="range" id="i-n" min="1" max="1000" value="30"></label>
+        <label>Har biri qancha toʻlaydi <b id="o-p"></b><input type="range" id="i-p" min="1000" max="200000" step="1000" value="20000"></label>
       </div>
       <div class="res">
         <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">Mahsulot yasalmasdan oldin</span><div class="k" id="r-sum"></div></div>
         <p class="t" id="r-note"></p>
       </div>
     </div>
-    <p class="small">Mavzu: Simon Squibb — “Maslahat so‘rasangiz, pul olasiz. Pul so‘rasangiz, maslahat olasiz.” Airbnb asoschilari ham boshida pul topish uchun maxsus dizaynli yorma qutilari sotgan.</p>
   </div>
 </section>
 
 <!-- ================= 5 ================= -->
-<section class="slide blue">
-  <div class="in">
-    <span class="eyebrow" style="color:#9fe3ff">5-fikrlash</span>
-    <h1>Qarzga ol, lekin o‘g‘irlama</h1>
-    <p class="lead">Hammasini sotib olish shart emas. Sizga kerak narsa allaqachon kimdadir bor.</p>
-  </div>
-</section>
-
 <section class="slide dark">
   <div class="in">
     <div class="split">
       <div style="display:flex;flex-direction:column;gap:calc(var(--u)*2)">
-        <span class="eyebrow">Buyuk Britaniya · Go Ape</span>
-        <h2>Daraxtlar kimda?</h2>
-        <p class="t">Tristram va Rebekka Mayhyu Fransiyada ta’tilda daraxtlar ustidagi sarguzasht parkini ko‘rishdi. Uyda shunday qilmoqchi bo‘lishdi. Lekin daraxt yo‘q.</p>
-        <div class="rows">
-          <div class="row"><b>Kimda?</b><p class="t">Davlat o‘rmon xo‘jaligi komissiyasida. Ular esa ko‘proq tashrif buyuruvchi istardi</p></div>
-          <div class="row"><b>Kelishuv</b><p class="t">“5 ta park qurib, ishlashini ko‘rsatamiz. Keyin 25 yilga eksklyuziv huquq bering”</p></div>
-          <div class="row on"><b>30+</b><p class="t">Bugun Britaniyada 30 dan ortiq park, AQSHda ham. Daraxt, yer, avtoturargoh — hammasi qarzga</p></div>
-        </div>
+        <span class="eyebrow">5-odat</span>
+        <h1>Hammasini sotib olmang</h1>
+        <p class="lead">Sizga kerak narsa allaqachon kimdadir bor. Soʻrang, kelishing, birga ishlating.</p>
       </div>
-      <figure style="margin:0"><div class="ph" data-img="goape" data-cap="Go Ape parki"></div><figcaption>Go Ape, Coombe Abbey · geograph.org.uk, CC BY-SA 2.0</figcaption></figure>
+      <div class="ph" data-src="img/ai/m5.jpg" data-cap="Daraxtlar ustidagi park" style="--ar:3/2"></div>
     </div>
   </div>
 </section>
 
 <section class="slide grey">
   <div class="in">
-    <span class="eyebrow">Mashq · 2 daqiqa · jamoada</span>
-    <h2>Bizda yo‘q. Kimda bor?</h2>
-    <div class="grid c4">
-      <div class="card"><h3>Zal yoki xona</h3><p class="small">Maktab, mahalla markazi, ota-onaning ofisi</p></div>
-      <div class="card"><h3>Auditoriya</h3><p class="small">Maktab Telegram kanali, sinf guruhi, mahalliy blogger</p></div>
-      <div class="card"><h3>Uskuna</h3><p class="small">Printer, kamera, noutbuk, 3D-printer</p></div>
-      <div class="card"><h3>Bilim</h3><p class="small">O‘qituvchi, katta sinf o‘quvchisi, mutaxassis ota-ona</p></div>
+    <div class="vs">
+      <div class="card"><span class="eyebrow">Dunyoda · Angliya, Go Ape</span><h3>Daraxtlar davlatniki</h3><p class="t">Er-xotin daraxtlar ustida sarguzasht parki ochmoqchi edi. Daraxt yoʻq. Davlat oʻrmon idorasi bilan kelishdi: ular — daraxt, bular — park. Bugun 30 dan ortiq park bor.</p></div>
+      <div class="card hl"><div class="ph" data-src="img/ai/taxi.jpg" data-cap="Haydovchi va oʻz mashinasi" style="--ar:21/9;min-height:0"></div><span class="eyebrow" style="color:#9fe3ff">Bizda · Yandex Go</span><h3>Mashinasiz taksi</h3><p class="t">Yandex Go bitta ham mashina sotib olmagan. Haydovchilar oʻz mashinasida ishlaydi, kompaniya esa ilovani beradi.</p></div>
     </div>
-    <div class="card hl"><p class="quote">“Bu ‘ber va ol’ emas. Bu ‘evaziga kutmay ber’.”</p><p class="who" style="color:#cfe0ff">Simon Squibb. Bir yigit uning saytini so‘ramasdan, tekin qayta qilib bergan. Squibb unga vaqtini berdi va ustoz bo‘ldi.</p></div>
-    <button class="timer" data-sec="120">▶ 2:00 · mashq</button>
+    <p class="lead"><strong>Mashq:</strong> sizga zal, printer, kamera yoki auditoriya kerak. Ular kimda bor? <span style="white-space:nowrap">Maktab, ota-ona, sinf kanali…</span></p>
   </div>
 </section>
 
 <!-- ================= 6 ================= -->
-<section class="slide blue">
-  <div class="in">
-    <span class="eyebrow" style="color:#9fe3ff">6-fikrlash</span>
-    <h1>Ruxsat kutib o‘tirma</h1>
-    <p class="lead">Katta kompaniyada yangi narsa uchun oylab ruxsat kutiladi. Tadbirkor sinab ko‘radi.</p>
-  </div>
-</section>
-
 <section class="slide dark">
   <div class="in">
-    <span class="eyebrow">AQSH · Uber</span>
-    <h2>Taksisiz taksi kompaniyasi</h2>
-    <p class="lead">Uber asoschilari San-Fransisko rasmiylaridan “taksisiz taksi xizmati ochsak bo‘ladimi?” deb so‘rashmadi. So‘rashganda javob “yo‘q” bo‘lardi.</p>
-    <div class="warn">⚠ Mullinsning o‘zi aytadi: “Uberning ko‘p ishlarini oqlamayman. Ularning ko‘pi noetik, ba’zisi noqonuniy edi.” Bu qoida faqat qonun hali yozilmagan, yangi joylar uchun.</div>
-  </div>
-</section>
-
-<section class="slide dark">
-  <div class="in">
-    <h2>Bizning chegaramiz</h2>
-    <div class="light3">
-      <div class="card r"><span class="eyebrow" style="color:#ff6961">Qizil · ruxsat shart</span><h3>Qonun, maktab qoidasi, boshqalarning xavfsizligi va puli</h3><p class="small">Bu yerda “avval qilaman, keyin so‘rayman” — yo‘q</p></div>
-      <div class="card y"><span class="eyebrow" style="color:#ffd60a">Sariq · maslahatlash</span><h3>Ota-onaning narsasi, maktab nomidan chiqish</h3><p class="small">Kattalarga g‘oyani ko‘rsating, birga qaror qiling</p></div>
-      <div class="card g"><span class="eyebrow" style="color:#30d158">Yashil · kutmang</span><h3>Post yozish, 10 kishidan so‘rash, mutaxassisga xat, birinchi MVP</h3><p class="small">Bu yerda ruxsat kutish — vaqt yo‘qotish</p></div>
+    <div class="split">
+      <div style="display:flex;flex-direction:column;gap:calc(var(--u)*2)">
+        <span class="eyebrow">6-odat</span>
+        <h1>Ruxsat kutib oʻtirmang</h1>
+        <p class="lead">Lekin chegarani biling. Svetofor kabi.</p>
+      </div>
+      <div class="ph" data-src="img/ai/m6.jpg" data-cap="Svetofor yoʻllari" style="--ar:3/2"></div>
     </div>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <h2>Svetofor qoidasi</h2>
+    <div class="light3">
+      <div class="card r"><span class="eyebrow" style="color:#ff6961">Qizil · toʻxta</span><h3>Qonun, maktab qoidasi, birovning puli va xavfsizligi</h3><p class="small">Bu yerda albatta ruxsat soʻraladi</p></div>
+      <div class="card y"><span class="eyebrow" style="color:#ffd60a">Sariq · maslahatlash</span><h3>Ota-onaning narsasi, maktab nomidan chiqish</h3><p class="small">Kattalarga koʻrsating, birga qaror qiling</p></div>
+      <div class="card g"><span class="eyebrow" style="color:#30d158">Yashil · kutmang</span><h3>Sahifa ochish, 10 kishidan soʻrash, birinchi namunani yasash</h3><p class="small">Bu yerda ruxsat kutish — vaqt yoʻqotish</p></div>
+    </div>
+    <p class="small">Mullins Uber misolini keltiradi, lekin oʻzi ogohlantiradi: Uberning koʻp ishi notoʻgʻri boʻlgan. Qonunni buzish — tadbirkorlik emas.</p>
   </div>
 </section>
 
 <section class="slide grey">
   <div class="in">
-    <span class="eyebrow">Simon Squibb · ajralib tur</span>
-    <h2>26 000 £ ga zinapoya</h2>
-    <div class="split">
-      <div class="rows">
-        <div class="row"><b>1</b><p class="t">Londonda bir zinapoya auksionga qo‘yilgani haqida yangilik chiqdi. Hamma hayron: kim zinapoya sotadi?</p></div>
-        <div class="row"><b>2</b><p class="t">2 kundan keyin Squibb uni 26 000 funtga sotib oldi</p></div>
-        <div class="row on"><b>3</b><p class="t">Pastiga qo‘ng‘iroq qo‘ydi: “Orzuing bo‘lsa, bos. Orzuingni 4 mln obunachimizga ko‘rsatamiz.” BBC va The New York Times yozdi</p></div>
-      </div>
-      <div class="card hl"><p class="quote">“Bifshteksni emas, uning jizillashini sot.”</p><p class="who" style="color:#cfe0ff">Mahsulot xususiyatini emas, odam his qiladigan natijani soting. Stiv Jobs ham protsessorni emas, ijodkorlikni sotgan.</p></div>
+    <span class="eyebrow">Ikkinchi ustoz · Simon Squibb, 19 ta kompaniya asoschisi</span>
+    <div class="vs">
+      <div class="card"><div class="k c">1 mln £</div><h3>Yoʻqotdi</h3><p class="t">Bir biznesida katta pul yoʻqotgan. Uning soʻzi: «Aynan shu xato menga qanday yutishni oʻrgatdi».</p></div>
+      <div class="card hl"><div class="k">16 yil</div><h3>Birinchi mijoz</h3><p class="t">Birinchi mijoziga tekin ishladi va kutganidan koʻp qildi. U 16 yil u bilan qoldi va yangi mijozlar olib keldi.</p></div>
     </div>
-  </div>
-</section>
-
-<section class="slide dark">
-  <div class="in">
-    <span class="eyebrow">Simon Squibb · yutqazishni o‘rgan</span>
-    <div class="split">
-      <div style="display:flex;flex-direction:column;gap:calc(var(--u)*2)">
-        <div class="card"><div class="k c">1 mln £</div><p class="t">Squibb komiks biznesida yo‘qotgan pul. Uning so‘zi bilan: aynan shu xato unga qanday yutqazishni o‘rgatdi va keyin boy qildi.</p></div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:calc(var(--u)*2)">
-        <p class="quote">“A’lochilar yutqazishdan qo‘rqadi. Ular doim eng aqlli ko‘rinishni xohlaydi.”</p>
-        <p class="t">Gap baho haqida emas. Gap xatodan qo‘rqmaslik haqida: o‘qishda ham, biznesda ham xato — ma’lumot.</p>
-      </div>
-    </div>
+    <p class="lead">Xato — baho emas, maʼlumot. Xatodan qoʻrqqan odam boshlamaydi ham.</p>
   </div>
 </section>
 
 <section class="slide white">
   <div class="in">
-    <h2>6 fikrlash · bir qarashda</h2>
+    <h2>6 odat · bir qarashda</h2>
     <div class="m6">
-      <div class="card"><div class="k c">1</div><h3>Ha, qila olamiz</h3><p class="small">Arnaldo Korrea</p></div>
-      <div class="card"><div class="k c">2</div><h3>Avval muammo</h3><p class="small">Yopishmaydigan qisqich</p></div>
-      <div class="card"><div class="k c">3</div><h3>Tor bozor</h3><p class="small">Nike</p></div>
-      <div class="card"><div class="k c">4</div><h3>Avval mijozdan pul</h3><p class="small">Tesla</p></div>
-      <div class="card"><div class="k c">5</div><h3>Qarzga ol</h3><p class="small">Go Ape</p></div>
-      <div class="card"><div class="k c">6</div><h3>Ruxsat kutma</h3><p class="small">Uber · chegara bilan</p></div>
+      <div class="card"><div class="k c">1</div><h3>«Ha, qila olaman»</h3><p class="small">Nonvoy tort ham pishiradi</p></div>
+      <div class="card"><div class="k c">2</div><h3>Avval muammo</h3><p class="small">Click, Payme</p></div>
+      <div class="card"><div class="k c">3</div><h3>Kichik boshlang</h3><p class="small">Nike, Durbin</p></div>
+      <div class="card"><div class="k c">4</div><h3>Avval mijozdan pul</h3><p class="small">Tesla, toʻyxona zakladi</p></div>
+      <div class="card"><div class="k c">5</div><h3>Hammasini sotib olmang</h3><p class="small">Go Ape, Yandex Go</p></div>
+      <div class="card"><div class="k c">6</div><h3>Ruxsat kutmang</h3><p class="small">Svetofor qoidasi bilan</p></div>
     </div>
-    <p class="lead">Mullins: “Bu fikrlashlarni o‘rgansa bo‘ladi.”</p>
   </div>
 </section>
 
@@ -728,10 +607,10 @@ body.v-ovoz #v-ovoz,body.v-reja #v-reja{display:block}
 <section class="slide blue" id="s-ovoz-qr">
   <div class="in">
     <span class="eyebrow" style="color:#9fe3ff">Telefon · 1 daqiqa</span>
-    <h2>Qaysi biri sizda bor? Qaysini o‘rganmoqchisiz?</h2>
+    <h2>Qaysi odat sizda bor? Qaysini oʻrganmoqchisiz?</h2>
     <div class="qrbox">
       <div class="qr" data-qr="ovoz"></div>
-      <div style="display:flex;flex-direction:column;gap:12px"><p class="lead">Skanerlang va 2 ta tugma bosing: biri “menda bor”, biri “o‘rganmoqchiman”.</p><p class="link" data-href="ovoz" style="color:#fff"></p></div>
+      <div style="display:flex;flex-direction:column;gap:12px"><p class="lead">Skanerlang va 2 ta tugma bosing.</p><p class="link" data-href="ovoz" style="color:#fff"></p></div>
     </div>
   </div>
 </section>
@@ -739,71 +618,67 @@ body.v-ovoz #v-ovoz,body.v-reja #v-reja{display:block}
 <section class="slide dark" id="s-ovoz">
   <div class="in">
     <h2>Sinfimizning tadbirkorlik xaritasi</h2>
-    <div class="legend"><span><i style="background:var(--cyan)"></i>Menda bor</span><span><i style="background:#bf5af2"></i>O‘rganmoqchiman</span><span id="ovoz-info"></span></div>
+    <div class="legend"><span><i style="background:var(--cyan)"></i>Menda bor</span><span><i style="background:#bf5af2"></i>Oʻrganmoqchiman</span><span id="ovoz-info"></span></div>
     <div class="bar-h bars2" id="ovoz-bars"></div>
   </div>
 </section>
 
 <section class="slide dark">
   <div class="in">
-    <span class="eyebrow">Jamoa mashqi · 6 jamoa · 6 fikrlash</span>
-    <h2>Bitta muammo — 6 xil yechim</h2>
-    <p class="lead">Muammo: <strong>“Maktabimizda tanaffusda o‘quvchilar zerikadi va telefonga tikiladi.”</strong> Jamoangizga tushgan fikrlash bilan biznes yechim toping.</p>
+    <div class="split" style="align-items:start">
+      <div style="display:flex;flex-direction:column;gap:calc(var(--u)*1.6)">
+        <span class="eyebrow">Jamoa mashqi · 10 daqiqa</span>
+        <h2>Bitta muammo, 6 xil yechim</h2>
+        <p class="t">Muammo: <strong>«Tanaffusda oʻquvchilar zerikadi va telefonga tikiladi.»</strong></p>
+        <p class="t">Jamoangizga tushgan odat bilan yechim toping. Keyin 1 daqiqada ayting: <strong>mijoz kim, yechim nima, dushanba kuni nima qilamiz.</strong></p>
+      </div>
+      <div class="ph" data-src="img/ai/break.jpg" data-cap="Tanaffus" style="--ar:2/1"></div>
+    </div>
     <div class="teamdraw" id="draw">
       <div class="card"><span class="eyebrow">1-jamoa</span><h3>?</h3></div><div class="card"><span class="eyebrow">2-jamoa</span><h3>?</h3></div><div class="card"><span class="eyebrow">3-jamoa</span><h3>?</h3></div>
       <div class="card"><span class="eyebrow">4-jamoa</span><h3>?</h3></div><div class="card"><span class="eyebrow">5-jamoa</span><h3>?</h3></div><div class="card"><span class="eyebrow">6-jamoa</span><h3>?</h3></div>
     </div>
-    <div style="display:flex;gap:12px;flex-wrap:wrap"><button class="btn light" id="draw-btn">🎲 Qur’a tashlash</button><button class="timer" data-sec="600">▶ 10:00 · jamoada ishlash</button><button class="timer" data-sec="60">▶ 1:00 · har jamoa taqdimoti</button></div>
-  </div>
-</section>
-
-<section class="slide grey">
-  <div class="in">
-    <span class="eyebrow">Jamoa taqdimoti · 1 daqiqa</span>
-    <h2>Javob qolipi</h2>
-    <div class="grid c4">
-      <div class="card"><div class="k c">1</div><h3>Fikrlashimiz</h3><p class="small">Bizga qaysi biri tushdi</p></div>
-      <div class="card"><div class="k c">2</div><h3>Mijoz</h3><p class="small">Tor va aniq: aynan kim?</p></div>
-      <div class="card"><div class="k c">3</div><h3>Yechim</h3><p class="small">Bitta jumlada</p></div>
-      <div class="card"><div class="k c">4</div><h3>Birinchi qadam</h3><p class="small">Dushanba kuni nima qilamiz?</p></div>
-    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap"><button class="btn light" id="draw-btn">🎲 Qurʼa tashlash</button><button class="timer" data-sec="600">▶ 10:00 · ishlash</button><button class="timer" data-sec="60">▶ 1:00 · taqdimot</button></div>
   </div>
 </section>
 
 <!-- ================= 6% ================= -->
-<section class="slide blue" id="s-6">
+<section class="slide dark" id="s-6">
   <div class="in">
-    <span class="eyebrow" style="color:#9fe3ff">Dr. Michelle Rozen</span>
-    <h1>6% klubi</h1>
-    <p class="lead">Fikrlash bor. Endi uni bajarish kerak. Nega ko‘pchilik boshlaydi-yu, oxiriga yetmaydi?</p>
-  </div>
-</section>
-
-<section class="slide dark">
-  <div class="in">
-    <span class="eyebrow">Tadqiqot · 1 000 kishi · yanvardan iyungacha</span>
-    <h2><span class="grad">94%</span> fevralgacha voz kechdi</h2>
-    <div class="dots" id="dots"></div>
-    <p class="lead">Hammasi yangi yilda “sportga boraman”, “pul yig‘aman”, “biznesimni o‘stiraman” degan. Faqat 6 foizi yetib bordi. Ular nimani boshqacha qildi?</p>
-    <p class="small">Manba: Rozenning o‘z so‘rovi (TEDxUNLV). Ilmiy jurnalda chop etilmagan.</p>
-  </div>
-</section>
-
-<section class="slide dark">
-  <div class="in">
-    <span class="eyebrow">1-sir · boshqaruvni qo‘lga ol</span>
     <div class="split">
       <div style="display:flex;flex-direction:column;gap:calc(var(--u)*2)">
-        <h2>Miyangiz sizga bitim taklif qiladi</h2>
-        <p class="t">Miya tana energiyasining taxminan 20 foizini oladi. Yangi narsa unga qo‘shimcha mehnat. Shuning uchun u eski odatda qolishni xohlaydi.</p>
-        <p class="t"><strong>94%</strong> shartnomani o‘qimay imzolaydi. <strong>6%</strong> mayda harflarni o‘qiydi.</p>
-        <button class="btn light" id="deal-btn" style="align-self:flex-start">🔍 Mayda harflarni o‘qish</button>
+        <span class="eyebrow">Uchinchi ustoz · psixolog Michelle Rozen</span>
+        <h1>6% klubi</h1>
+        <p class="lead">U 1 000 kishini kuzatdi. Yangi yilda hamma maqsad qoʻydi. Fevralgacha <strong style="color:#fff">94%</strong> tashlab ketdi. Faqat <strong style="color:var(--cyan)">6%</strong> yetib bordi.</p>
       </div>
-      <div class="deal" id="deal">
-        <h3>BITIM</h3>
-        <p style="margin-top:12px">Men, Miya, senga energiya tejab beraman. Sen esa har kuni bir xil ishlarni qilasan.</p>
-        <p class="fine">* Natijada sen joyingda qotib qolasan, maqsadlaringga yetmaysan va buni sezmaysan ham.</p>
-        <p style="margin-top:16px">Imzo: <span class="sign">Miya</span></p>
+      <div class="ph" data-src="img/ai/six.jpg" data-cap="Zinapoya va 6 kishi" style="--ar:3/2"></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">100 kishidan</span>
+    <h2><span class="grad">6 tasi</span> maqsadiga yetadi</h2>
+    <div class="dots" id="dots"></div>
+    <p class="lead">Ular nimani boshqacha qiladi? 3 ta sir.</p>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">1-sir · miyangiz dangasa</span>
+    <div class="split" style="grid-template-columns:1fr 1fr">
+      <div class="ph" data-src="img/ai/brain.jpg" data-cap="Miya va bitim" style="--ar:3/2"></div>
+      <div style="display:flex;flex-direction:column;gap:calc(var(--u)*1.6)">
+        <h2>Miya sizga «bitim» taklif qiladi</h2>
+        <div class="deal" id="deal" style="padding:calc(var(--u)*2)">
+          <p>Men, Miya, senga kuch tejab beraman. Sen esa har kuni bir xil ishlarni qilasan.</p>
+          <p class="fine">* Natijada sen joyingda qolasan, orzularingga yetmaysan va buni sezmaysan ham.</p>
+          <p style="margin-top:10px">Imzo: <span class="sign">Miya</span></p>
+        </div>
+        <p class="t"><strong>94%</strong> oʻqimay imzolaydi. <strong>6%</strong> mayda harflarni oʻqiydi.</p>
+        <button class="btn light" id="deal-btn" style="align-self:flex-start">🔍 Mayda harflarni oʻqish</button>
       </div>
     </div>
   </div>
@@ -811,35 +686,39 @@ body.v-ovoz #v-ovoz,body.v-reja #v-reja{display:block}
 
 <section class="slide white">
   <div class="in">
-    <span class="eyebrow">2-sir · aniqlik qonuni</span>
-    <h2>Qancha aniq bo‘lsa, shuncha ishlaydi</h2>
+    <span class="eyebrow">2-sir · aniq yozing</span>
+    <h2>Qancha aniq, shuncha ishlaydi</h2>
     <div class="vs">
-      <div class="card"><span class="eyebrow" style="color:var(--mute)">94% shunday deydi</span><p class="quote">“Bu yil ingliz tilini yaxshi o‘rganaman.”</p></div>
+      <div class="card"><span class="eyebrow" style="color:var(--mute)">94% shunday deydi</span><p class="quote">«Ingliz tilini yaxshi oʻrganaman.»</p></div>
       <div class="card hl"><span class="eyebrow" style="color:#9fe3ff">6% shunday deydi</span>
-        <p class="t">Har kuni 21:00–21:20, Duolingo + 10 ta yangi so‘z.<br>Telefonda 20:55 ga budilnik.<br>Daftar stol ustida turadi.<br>Sherigim: Aziz, har kuni kechqurun bir-birimizga yozamiz.<br>O‘tkazib yuborsam, ertasi kuni +10 daqiqa.</p></div>
+        <p class="t"><strong>Qachon:</strong> har kuni 21:00–21:20<br><strong>Nima:</strong> 10 ta yangi soʻz<br><strong>Eslatma:</strong> 20:55 da budilnik<br><strong>Sherik:</strong> Aziz bilan bir-birimizga yozamiz<br><strong>Jarima:</strong> oʻtkazsam, ertasi kuni +10 daqiqa</p></div>
     </div>
-    <p class="lead">Rozen misoli: “Sportzalga boraman” emas. “Har kuni 7:00–8:00, budilnik 30 daqiqa erta, kiyim karavot yonida, sherigim Jim, o‘tkazib yuborsam +30 daqiqa jarima.”</p>
   </div>
 </section>
 
 <section class="slide dark" id="s-lab">
   <div class="in">
-    <span class="eyebrow">3-sir · 0–10 qoidasi · birga baholaymiz</span>
-    <h2>Band bo‘lish — bu hali muvaffaqiyat emas</h2>
-    <p class="t">Har bir ishga maqsadingiz uchun 0 dan 10 gacha baho bering. 6% avval “10”larni qiladi. Maqsad misoli: <strong>“chorakni yaxshi bahoga tugatish”</strong>.</p>
+    <span class="eyebrow">3-sir · avval eng muhimi · birga baholaymiz</span>
+    <h2>Band boʻlish ≠ oldinga yurish</h2>
+    <p class="t">Maqsad: <strong>«chorakni yaxshi baholarga tugatish»</strong>. Har ishga 0 dan 10 gacha baho bering. 6% avval «10» larni qiladi.</p>
     <div class="lab" id="lab"></div>
     <div style="display:flex;gap:12px;flex-wrap:wrap"><button class="btn" id="lab-sort">Tartiblash</button><button class="btn ghost" id="lab-reset">Qaytadan</button></div>
   </div>
 </section>
 
-<section class="slide grey">
+<section class="slide dark">
   <div class="in">
-    <span class="eyebrow">Bittadan, 30 kun</span>
-    <h2>Bir yilda 10 ta yangi odat</h2>
-    <div class="grid c3">
-      <div class="card"><div class="k c">1</div><h3>Bitta “10” ni tanla</h3><p class="small">5 ta narsani birdan boshlama. Miya charchaydi va hammasini tashlaysan</p></div>
-      <div class="card"><div class="k c">30</div><h3>30 kun takrorla</h3><p class="small">Rozen: miyada yangi yo‘l paydo bo‘lishi uchun taxminan 30 kun kerak</p></div>
-      <div class="card hl"><div class="k">12 − 2 = 10</div><h3>Keyingisiga o‘t</h3><p class="small" style="color:#cfe0ff">Yiliga 12 ta urinish. 2 tasi tushib qolsa ham, 10 ta yangi odat</p></div>
+    <div class="split">
+      <div style="display:flex;flex-direction:column;gap:calc(var(--u)*2)">
+        <span class="eyebrow">Bittadan, 30 kun</span>
+        <h2>Bir yilda 10 ta yangi odat</h2>
+        <div class="rows">
+          <div class="row"><b>1</b><p class="t">Bitta eng muhim odatni tanlang. Beshtasini birdan emas</p></div>
+          <div class="row"><b>30</b><p class="t">30 kun takrorlang. Shunda u avtomatik boʻlib qoladi</p></div>
+          <div class="row on"><b>10</b><p class="t">Keyingisiga oʻting. 2 tasi chiqmasa ham, yiliga 10 ta yangi odat</p></div>
+        </div>
+      </div>
+      <div class="ph" data-src="img/ai/habit.jpg" data-cap="Ertalabki yugurish va kalendar" style="--ar:3/2"></div>
     </div>
   </div>
 </section>
@@ -847,23 +726,19 @@ body.v-ovoz #v-ovoz,body.v-reja #v-reja{display:block}
 <!-- ================= TOPSHIRIQ ================= -->
 <section class="slide blue" id="s-topshiriq">
   <div class="in">
-    <span class="eyebrow" style="color:#9fe3ff">Topshiriq · 30 kun · har kim alohida</span>
+    <span class="eyebrow" style="color:#9fe3ff">Uy vazifasi · 30 kun</span>
     <h2>Mening 30 kunlik rejam</h2>
     <div class="split" style="align-items:start">
-      <div style="display:flex;flex-direction:column;gap:14px">
-        <p class="t">Bitta “10” lik maqsad tanlang va aniqlik qonuni bilan yozing. Bugun to‘ldiring.</p>
-        <div class="grid c3" style="gap:8px">
-          <div class="card" style="padding:12px 14px"><span class="eyebrow" style="color:#9fe3ff">1</span><p class="t">Maqsad: 30 kunda nimaga erishaman?</p></div>
-          <div class="card" style="padding:12px 14px"><span class="eyebrow" style="color:#9fe3ff">2</span><p class="t">Reja: har kuni qachon, qayerda, qancha?</p></div>
-          <div class="card" style="padding:12px 14px"><span class="eyebrow" style="color:#9fe3ff">3</span><p class="t">Sherik: kim meni nazorat qiladi?</p></div>
-          <div class="card" style="padding:12px 14px"><span class="eyebrow" style="color:#9fe3ff">4</span><p class="t">Jarima: o‘tkazib yuborsam nima qilaman?</p></div>
-          <div class="card" style="padding:12px 14px"><span class="eyebrow" style="color:#9fe3ff">+</span><p class="t">6 fikrlashdan qaysi biri yordam beradi?</p></div>
-        </div>
-        <p class="small" style="color:#cfe0ff"><strong>Hisobot:</strong> har shanba 1 daqiqa: “nechta kun bajardim?”. Tugashi: <span id="deadline"></span>.</p>
+      <div class="rows">
+        <div class="row"><b>1</b><p class="t">Maqsad: 30 kunda nimaga erishaman?</p></div>
+        <div class="row"><b>2</b><p class="t">Har kuni qachon, qayerda, qancha?</p></div>
+        <div class="row"><b>3</b><p class="t">Sherik: kim meni nazorat qiladi?</p></div>
+        <div class="row"><b>4</b><p class="t">Jarima: oʻtkazsam nima qilaman?</p></div>
+        <p class="small" style="color:#cfe0ff">Har shanba 1 daqiqa hisobot: «nechta kun bajardim?». Tugashi: <span id="deadline"></span></p>
       </div>
       <div style="display:flex;flex-direction:column;gap:14px">
         <div class="qr" data-qr="reja"></div>
-        <p class="small" style="color:#cfe0ff">Skanerlang yoki oching: <span class="link" data-href="reja" style="color:#fff"></span></p>
+        <p class="small" style="color:#cfe0ff">Skanerlang: <span class="link" data-href="reja" style="color:#fff"></span></p>
       </div>
     </div>
   </div>
@@ -873,9 +748,9 @@ body.v-ovoz #v-ovoz,body.v-reja #v-reja{display:block}
   <div class="in">
     <h2>Bugungi 3 saboq</h2>
     <div class="rows">
-      <div class="row"><b>1</b><p class="quote" style="font-size:max(20px,calc(var(--u)*3))">Tadbirkor muammodan, tor bozordan va mijoz pulidan boshlaydi.</p></div>
-      <div class="row"><b>2</b><p class="quote" style="font-size:max(20px,calc(var(--u)*3))">Xato — ma’lumot. Yutqazishdan qo‘rqqan odam boshlamaydi ham.</p></div>
-      <div class="row"><b>3</b><p class="quote" style="font-size:max(20px,calc(var(--u)*3))">Bitta maqsad, aniq reja, 30 kun. Shunda 94% dan 6% ga o‘tasiz.</p></div>
+      <div class="row"><b>1</b><p class="quote" style="font-size:max(20px,calc(var(--u)*3))">Muammodan, kichik guruhdan va mijoz pulidan boshlang.</p></div>
+      <div class="row"><b>2</b><p class="quote" style="font-size:max(20px,calc(var(--u)*3))">Xato — maʼlumot. Qoʻrqmasdan sinab koʻring.</p></div>
+      <div class="row"><b>3</b><p class="quote" style="font-size:max(20px,calc(var(--u)*3))">Bitta maqsad, aniq reja, 30 kun.</p></div>
     </div>
   </div>
 </section>
@@ -884,8 +759,7 @@ body.v-ovoz #v-ovoz,body.v-reja #v-reja{display:block}
   <div class="in" style="align-items:center;text-align:center">
     <span class="eyebrow">6% klubiga xush kelibsiz</span>
     <h1 style="font-size:max(48px,calc(var(--u)*11))">Sen ham<br><span class="grad">uddalaysan.</span></h1>
-    <p class="lead">“Ha, qila olamiz.” · Arnaldo Korrea</p>
-    <p class="eyebrow" style="margin-top:calc(var(--u)*3)">DATA · Bilimga to‘ldiramiz</p>
+    <p class="eyebrow" style="margin-top:calc(var(--u)*3)">DATA · Bilimga toʻldiramiz</p>
   </div>
 </section>
 
@@ -894,7 +768,7 @@ body.v-ovoz #v-ovoz,body.v-reja #v-reja{display:block}
 <footer class="foot">
   DATA xalqaro maktabi · Biznes klub · 7–10-sinflar · har shanba<br>
   <a href="index.html">1-dars: Stiv Jobs</a> · <a href="startup.html">2-dars: Startup</a> · <a href="ai.html">3-dars: AI</a> · <a href="#ovoz">Ovoz</a> · <a href="#reja">30 kunlik reja</a><br>
-  <span style="font-size:11px">Manbalar: John Mullins, “6 tips on being a successful entrepreneur” (TED); Simon Squibb, “30 Years of Business Knowledge in 2hrs 26mins”; Michelle Rozen, “Secrets of the 6%” (TEDxUNLV).<br>Suratlar: Wikimedia Commons · <a href="https://commons.wikimedia.org/wiki/File:Knight_and_Bowerman.jpg">Knight and Bowerman.jpg</a> (Public domain) · <a href="https://commons.wikimedia.org/wiki/File:Lynda_Weinman.jpg">Lynda Weinman.jpg</a> (CC BY 2.0) · <a href="https://commons.wikimedia.org/wiki/File:Richet-type_forceps,_Paris,_France,_1851-1900_Wellcome_L0057983.jpg">Richet-type forceps, Wellcome L0057983</a> (CC BY 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Nike_Cortez.jpg">Nike Cortez.jpg</a> (CC0) · <a href="https://commons.wikimedia.org/wiki/File:Tesla_%22Roadster%22_-_2008.jpg">Tesla “Roadster” - 2008.jpg</a> (CC BY 2.0) · <a href="https://commons.wikimedia.org/wiki/File:Tesla_Model_3_in_M%C3%BCnchen_geparkt.jpg">Tesla Model 3 in München geparkt.jpg</a> (CC BY 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Go_Ape_treetop_course,_Coombe_Abbey_-_geograph.org.uk_-_6829100.jpg">Go Ape treetop course, Coombe Abbey</a> (CC BY-SA 2.0)</span>
+  <span style="font-size:11px">Manbalar: John Mullins, “6 tips on being a successful entrepreneur” (TED); Simon Squibb, “30 Years of Business Knowledge in 2hrs 26mins”; Michelle Rozen, “Secrets of the 6%” (TEDxUNLV).<br>Illyustratsiyalar: sunʼiy intellekt (ChatGPT) yordamida yaratilgan.</span>
 </footer>
 
 <div class="hud"><i id="prog"></i></div>
@@ -905,13 +779,13 @@ body.v-ovoz #v-ovoz,body.v-reja #v-reja{display:block}
   <div class="box">
     <span class="eyebrow" style="color:var(--data)">DATA Biznes Klub · ovoz</span>
     <h2>Tadbirkorlik xaritam</h2>
-    <p><strong>1. Qaysi fikrlash sizda allaqachon bor?</strong></p>
+    <p><strong>1. Qaysi odat sizda allaqachon bor?</strong></p>
     <div class="mrow" data-kind="bor"></div>
-    <p><strong>2. Qaysi birini o‘rganmoqchisiz?</strong></p>
+    <p><strong>2. Qaysi birini oʻrganmoqchisiz?</strong></p>
     <div class="mrow" data-kind="organ"></div>
     <button class="btn" id="ovoz-send">Yuborish</button>
     <p class="msg" id="ovoz-msg" role="status"></p>
-    <p class="small">1 — Ha, qila olamiz · 2 — Avval muammo · 3 — Tor bozor · 4 — Avval mijozdan pul · 5 — Qarzga ol · 6 — Ruxsat kutma</p>
+    <p class="small">1 — Ha, qila olaman · 2 — Avval muammo · 3 — Kichik boshlang · 4 — Avval mijozdan pul · 5 — Hammasini sotib olmang · 6 — Ruxsat kutmang</p>
   </div>
 </section>
 
@@ -923,10 +797,10 @@ body.v-ovoz #v-ovoz,body.v-reja #v-reja{display:block}
     <p>Bitta maqsad. Aniqlik qonuni: qachon, qayerda, qancha.</p>
     <label for="r-author">Ism va familiya, sinf<input id="r-author" maxlength="80" required placeholder="Masalan: Aziza Karimova, 8-B"></label>
     <label for="r-goal">Maqsad: 30 kunda nimaga erishaman?<textarea id="r-goal" maxlength="300" required></textarea></label>
-    <label for="r-plan">Reja: har kuni qachon, qayerda, qancha?<textarea id="r-plan" maxlength="600" required placeholder="Masalan: har kuni 21:00–21:20, xonamda, 10 ta yangi so‘z"></textarea></label>
+    <label for="r-plan">Reja: har kuni qachon, qayerda, qancha?<textarea id="r-plan" maxlength="600" required placeholder="Masalan: har kuni 21:00–21:20, xonamda, 10 ta yangi soʻz"></textarea></label>
     <label for="r-buddy">Sherik: kim meni nazorat qiladi?<input id="r-buddy" maxlength="120"></label>
-    <label for="r-penalty">Jarima: o‘tkazib yuborsam nima qilaman?<input id="r-penalty" maxlength="200"></label>
-    <label for="r-mind">Qaysi fikrlash yordam beradi? (ixtiyoriy)<select id="r-mind"><option value="">—</option><option value="1">1 · Ha, qila olamiz</option><option value="2">2 · Avval muammo</option><option value="3">3 · Tor bozor</option><option value="4">4 · Avval mijozdan pul</option><option value="5">5 · Qarzga ol</option><option value="6">6 · Ruxsat kutma</option></select></label>
+    <label for="r-penalty">Jarima: oʻtkazib yuborsam nima qilaman?<input id="r-penalty" maxlength="200"></label>
+    <label for="r-mind">Qaysi odat yordam beradi? (ixtiyoriy)<select id="r-mind"><option value="">—</option><option value="1">1 · Ha, qila olaman</option><option value="2">2 · Avval muammo</option><option value="3">3 · Kichik boshlang</option><option value="4">4 · Avval mijozdan pul</option><option value="5">5 · Hammasini sotib olmang</option><option value="6">6 · Ruxsat kutmang</option></select></label>
     <button class="btn" type="submit">Yuborish</button>
     <p class="msg" id="r-msg" role="status"></p>
   </form>
@@ -940,7 +814,7 @@ const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const dir = location.origin + location.pathname.replace(/[^/]*$/, '');
 const links = { ovoz: dir + 'tadbirkor.html#ovoz', reja: dir + 'tadbirkor.html#reja' };
-const MIND = ['Ha, qila olamiz', 'Avval muammo', 'Tor bozor', 'Avval mijozdan pul', 'Qarzga ol', 'Ruxsat kutma'];
+const MIND = ['Ha, qila olaman', 'Avval muammo', 'Kichik boshlang', 'Avval mijozdan pul', 'Hammasini sotib olmang', 'Ruxsat kutmang'];
 
 async function api(path, opt = {}) {
   const r = await fetch(SB_URL + '/rest/v1/' + path, { ...opt, headers: { apikey: SB_KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal', ...(opt.headers || {}) } });
@@ -950,8 +824,8 @@ async function api(path, opt = {}) {
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 
 /* ---------- surat joylari ---------- */
-$$('.ph[data-img]').forEach(el => {
-  const f = 'img/s/' + el.dataset.img + '.jpg';
+$$('.ph[data-img],.ph[data-src]').forEach(el => {
+  const f = el.dataset.src || 'img/s/' + el.dataset.img + '.jpg';
   el.innerHTML = `<span>📷 ${esc(el.dataset.cap)}<br>${f}</span><img src="${f}" alt="${esc(el.dataset.cap)}" loading="lazy" onerror="this.remove()">`;
 });
 
@@ -1054,12 +928,12 @@ $$('.timer').forEach(b => {
 
 /* ---------- oldindan to'lov kalkulyatori ---------- */
 const nf = n => Math.round(n).toLocaleString('ru-RU');
-let cur$ = 'so‘m';
+let cur$ = 'soʻm';
 function calc() {
   const n = +$('#i-n').value, p = +$('#i-p').value, sum = n * p;
   $('#o-n').textContent = nf(n) + ' kishi'; $('#o-p').textContent = nf(p) + ' ' + cur$;
   $('#r-sum').textContent = nf(sum) + ' ' + cur$;
-  $('#r-note').textContent = cur$ === '$' ? (sum >= 1e8 ? 'Shu pulga zavod quriladi.' : 'Shu pulga birinchi mashinalar yasaladi.') : 'Mahsulotni hali yasamay turib, shuncha pul bilan boshlash mumkin. Lekin va’dani albatta bajaring!';
+  $('#r-note').textContent = cur$ === '$' ? (sum >= 1e8 ? 'Shu pulga zavod quriladi.' : 'Shu pulga birinchi mashinalar yasaladi.') : 'Mahsulotni hali yasamay turib, shuncha pul bilan boshlash mumkin. Lekin vaʼdani albatta bajaring!';
 }
 function setRange(el, max, step, v) { el.max = max; el.step = step; el.value = v }
 $$('#s-calc input').forEach(i => i.oninput = () => calc());
@@ -1088,7 +962,7 @@ $('#dots').innerHTML = Array.from({ length: 100 }, (_, i) => `<i class="${i >= 9
 $('#deal-btn').onclick = e => { e.stopPropagation(); $('#deal').classList.toggle('open') };
 
 /* ---------- 0-10 laboratoriyasi ---------- */
-const TASKS = ['Instagram va TikTok ko‘rish', 'Ertangi nazoratga tayyorlanish', 'Do‘stlar bilan chatda yozishish', 'Tushunmagan mavzuni o‘qituvchidan so‘rash', 'Uy vazifasini bajarish', 'Kecha o‘tgan darsni takrorlash'];
+const TASKS = ['Instagram va TikTok koʻrish', 'Ertangi nazoratga tayyorlanish', 'Doʻstlar bilan chatda yozishish', 'Tushunmagan mavzuni oʻqituvchidan soʻrash', 'Uy vazifasini bajarish', 'Kecha oʻtgan darsni takrorlash'];
 function lab() {
   $('#lab').innerHTML = TASKS.map(t => `<div class="r"><span>${t}</span><input type="range" min="0" max="10" value="5" aria-label="${t}"><b>5</b></div>`).join('');
   $$('#lab .r').forEach(r => r.querySelector('input').oninput = e => { const v = +e.target.value; r.querySelector('b').textContent = v; r.classList.toggle('ten', v >= 9); r.classList.toggle('low', v <= 2) });
@@ -1111,7 +985,7 @@ $('#ovoz-send').onclick = async () => {
   try {
     await api('tf_mindset', { method: 'POST', body: JSON.stringify([{ kind: 'bor', pick: sel.bor }, { kind: 'organ', pick: sel.organ }]) });
     localStorage.tfVoted = 1; m.innerHTML = '<span class="ok">✓ Qabul qilindi! Ekranga qarang.</span>';
-  } catch { m.innerHTML = '<span class="no">Yuborilmadi. Internetni tekshirib, qayta urinib ko‘ring.</span>' }
+  } catch { m.innerHTML = '<span class="no">Yuborilmadi. Internetni tekshirib, qayta urinib koʻring.</span>' }
 };
 
 /* ---------- telefon: 30 kunlik reja ---------- */
@@ -1121,7 +995,7 @@ $('#r-form').addEventListener('submit', async e => {
   const row = { author: v('r-author'), goal: v('r-goal'), plan: v('r-plan'), buddy: v('r-buddy') || null, penalty: v('r-penalty') || null, mindset: +v('r-mind') || null };
   m.textContent = 'Yuborilmoqda...';
   try { await api('tf_plans', { method: 'POST', body: JSON.stringify(row) }); m.innerHTML = '<span class="ok">✓ Rejangiz qabul qilindi! 6% klubiga xush kelibsiz.</span>'; e.target.reset() }
-  catch { m.innerHTML = '<span class="no">Yuborilmadi. Internetni tekshirib, qayta urinib ko‘ring.</span>' }
+  catch { m.innerHTML = '<span class="no">Yuborilmadi. Internetni tekshirib, qayta urinib koʻring.</span>' }
 });
 
 /* ---------- marshrut: #ovoz, #reja ---------- */
