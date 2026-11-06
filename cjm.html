@@ -1,0 +1,1385 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Mijoz sayohat yoʻli (CJM) · DATA Biznes Klub</title>
+<meta name="description" content="DATA Biznes Klub: CJM, mijoz sayohat yoʻli, SOP va sotuv voronkasi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: Apple keynote — har bo'lim bitta fikr. Sayt rejimida bo'limlar ketma-ket, taqdimot rejimida bittadan 16:9 ekranda. */
+:root{
+  --black:#000; --ink:#1d1d1f; --grey:#f5f5f7; --mute:#86868b; --line:#d2d2d7;
+  --data:#0b2db4; --cyan:#29c5ff; --white:#fff; --good:#30d158;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","Manrope",system-ui,"Segoe UI",sans-serif;
+  --u:clamp(5.6px,1vw,12px);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:var(--font);background:var(--black);color:var(--white);-webkit-font-smoothing:antialiased;line-height:1.45;overflow-x:hidden}
+img{max-width:100%;display:block}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+
+/* ---------- top bar (sayt rejimi) ---------- */
+.bar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:12px;padding:10px 16px;padding-top:calc(10px + env(safe-area-inset-top,0px));background:rgba(0,0,0,.78);backdrop-filter:saturate(180%) blur(18px);-webkit-backdrop-filter:saturate(180%) blur(18px);border-bottom:1px solid rgba(255,255,255,.08);font-size:14px}
+.bar .logo{font-weight:800;letter-spacing:.02em;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.bar .logo i{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--cyan)}
+.bar nav{display:flex;gap:4px;overflow-x:auto;flex:1;min-width:0;scrollbar-width:none}
+.bar nav a{color:#d2d2d7;text-decoration:none;padding:6px 10px;border-radius:99px;white-space:nowrap}
+.bar nav a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:99px;padding:10px 18px;background:var(--data);color:#fff;font-weight:700;text-decoration:none;white-space:nowrap}
+.btn:hover{filter:brightness(1.15)}
+.btn.ghost{background:rgba(255,255,255,.1)}
+.btn.light{background:#fff;color:var(--ink)}
+
+/* ---------- slides ---------- */
+.slide{position:relative;padding:calc(var(--u)*7) max(16px,calc(var(--u)*7));display:flex;flex-direction:column;justify-content:safe center;min-height:min(70vh,820px);overflow:hidden}
+.slide>.in{width:100%;max-width:calc(var(--u)*120);margin:0 auto;display:flex;flex-direction:column;gap:calc(var(--u)*2.6)}
+.slide.dark{background:var(--black);color:#f5f5f7}
+.slide.grey{background:var(--grey);color:var(--ink)}
+.slide.white{background:#fff;color:var(--ink)}
+.slide.blue{background:var(--data);color:#fff}
+.num{position:absolute;right:max(16px,calc(var(--u)*4));bottom:calc(var(--u)*2.4);font-size:12px;opacity:.45;font-variant-numeric:tabular-nums;letter-spacing:.08em}
+
+.eyebrow{font-size:max(12px,calc(var(--u)*1.25));font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}
+.grey .eyebrow,.white .eyebrow{color:var(--data)}
+.new{display:inline-block;margin-left:10px;padding:2px 8px;border-radius:99px;background:var(--cyan);color:#001b33;font-size:.8em;letter-spacing:.06em;vertical-align:1px}
+h1,h2,h3{margin:0;font-weight:800;letter-spacing:-.025em;line-height:1.04;text-wrap:balance}
+h1{font-size:max(44px,calc(var(--u)*9.5))}
+h2{font-size:max(32px,calc(var(--u)*5.6))}
+h3{font-size:max(19px,calc(var(--u)*2.3));letter-spacing:-.01em;line-height:1.2}
+p{margin:0}
+.lead{font-size:max(18px,calc(var(--u)*2.3));color:#a1a1a6;max-width:60ch;text-wrap:pretty}
+.grey .lead,.white .lead{color:#515154}
+.blue .lead{color:#cfe0ff}
+.t{font-size:max(15px,calc(var(--u)*1.75))}
+.small{font-size:max(13px,calc(var(--u)*1.35));color:var(--mute)}
+.grad{background:linear-gradient(90deg,#fff 0%,var(--cyan) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.grey .grad,.white .grad{background-image:linear-gradient(90deg,var(--data),#3b7bff)}
+
+.quote{font-size:max(22px,calc(var(--u)*3.4));font-weight:700;letter-spacing:-.02em;line-height:1.15;text-wrap:balance;margin:0}
+.quote.xl{font-size:max(28px,calc(var(--u)*5))}
+.who{font-size:max(13px,calc(var(--u)*1.4));color:var(--mute);margin-top:calc(var(--u)*1.2)}
+.post{display:inline-block;font-size:max(11px,calc(var(--u)*1.1));font-weight:700;letter-spacing:.08em;color:var(--mute);border:1px solid currentColor;border-radius:99px;padding:2px 9px}
+
+.grid{display:grid;gap:calc(var(--u)*1.6)}
+.g2{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr))}
+.split{display:grid;grid-template-columns:1.25fr 1fr;gap:calc(var(--u)*4);align-items:center}
+.split>*{min-width:0}
+@media (max-width:760px){.split{grid-template-columns:1fr}}
+
+.card{border-radius:calc(var(--u)*1.8);padding:calc(var(--u)*2.4);background:#1c1c1e;display:flex;flex-direction:column;gap:6px}
+.grey .card{background:#fff}
+.white .card{background:var(--grey)}
+.blue .card{background:rgba(255,255,255,.1)}
+.card .k{font-size:max(28px,calc(var(--u)*4));font-weight:800;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.card .k.c{color:var(--cyan)}
+.grey .card .k.c,.white .card .k.c{color:var(--data)}
+.card.hl{background:var(--data);color:#fff}
+
+.photo{border-radius:calc(var(--u)*1.8);overflow:hidden;background:#111}
+.photo img{width:100%;height:100%;object-fit:cover}
+figcaption{font-size:max(12px,calc(var(--u)*1.2));color:var(--mute);margin-top:8px}
+
+.rows{display:flex;flex-direction:column;gap:calc(var(--u)*.9)}
+.row{display:grid;grid-template-columns:minmax(70px,calc(var(--u)*13)) 1fr;gap:calc(var(--u)*2);align-items:baseline;padding:calc(var(--u)*1.1) 0;border-top:1px solid rgba(128,128,128,.25)}
+.row b{font-size:max(18px,calc(var(--u)*2.6));letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.row.on b{color:var(--cyan)}
+.grey .row.on b,.white .row.on b{color:var(--data)}
+
+/* hero */
+.hero{padding:0;min-height:auto}
+.hero .in{max-width:none;display:grid;grid-template-columns:1.1fr 1fr;gap:0;align-items:stretch}
+.hero .txt{padding:calc(var(--u)*8) max(16px,calc(var(--u)*7));display:flex;flex-direction:column;justify-content:center;gap:calc(var(--u)*2.4);background:var(--data)}
+.hero .pic{background:#fff;display:flex;align-items:flex-end;justify-content:center;min-height:320px}
+.hero .pic img{max-height:88vh;width:auto;object-fit:contain}
+@media (max-width:760px){.hero .in{grid-template-columns:1fr}.hero .pic img{max-height:60vh}}
+
+/* 6 soha */
+.era{border-left:2px solid var(--cyan);padding-left:calc(var(--u)*1.6)}
+.era .y{font-size:max(26px,calc(var(--u)*3.6));font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+
+/* 2x2 fokus jadvali */
+.matrix{display:grid;grid-template-columns:auto 1fr 1fr;gap:6px;font-size:max(15px,calc(var(--u)*2));text-align:center}
+.matrix div{padding:calc(var(--u)*1.8) 10px;border-radius:10px;background:#fff}
+.matrix .h{background:transparent;font-weight:700;color:#515154;font-size:.8em}
+.matrix .p{background:var(--data);color:#fff;font-weight:800}
+
+/* feature chips (12 -> 4) */
+.chips{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:8px}
+.chip{position:relative;border-radius:12px;padding:12px 14px;background:#1c1c1e;font-weight:600;font-size:max(14px,calc(var(--u)*1.6));overflow:hidden;display:flex;justify-content:space-between;gap:8px}
+.chip .fill{position:absolute;inset:0;width:0;background:var(--data);transition:width .6s ease;z-index:0}
+.chip span{position:relative;z-index:1}
+.chip .c{font-variant-numeric:tabular-nums;color:var(--cyan)}
+
+/* chorraha */
+.venn{display:flex;justify-content:center;align-items:center;padding:calc(var(--u)*2) 0}
+.venn div{width:calc(var(--u)*24);height:calc(var(--u)*24);min-width:150px;min-height:150px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:800;padding:20px;font-size:max(13px,calc(var(--u)*1.6))}
+.venn div:first-child{background:rgba(41,197,255,.25);border:2px solid var(--cyan);margin-right:calc(var(--u)*-5)}
+.venn div:last-child{background:rgba(11,45,180,.45);border:2px solid #4f74ff}
+
+/* iPhone: 3 -> 1 */
+.merge{display:flex;justify-content:center;gap:calc(var(--u)*3);flex-wrap:wrap;position:relative;padding:calc(var(--u)*3) 0}
+.merge .d{width:calc(var(--u)*17);min-width:110px;aspect-ratio:1;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:max(15px,calc(var(--u)*2));border:2px solid #3a3a3c;transition:transform 1.1s cubic-bezier(.7,0,.2,1),opacity .6s ease 1s}
+.merge .one{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:max(40px,calc(var(--u)*8));font-weight:800;letter-spacing:-.04em;opacity:0;transform:scale(.8);transition:opacity .8s ease 1.4s,transform .8s ease 1.4s;pointer-events:none}
+.active .merge .d:nth-child(1){transform:translateX(calc(var(--u)*20))}
+.active .merge .d:nth-child(3){transform:translateX(calc(var(--u)*-20))}
+.active .merge .d{opacity:0}
+.active .merge .one{opacity:1;transform:none}
+
+/* timers */
+.timer{display:inline-flex;align-items:center;gap:10px;border:0;border-radius:99px;padding:10px 20px;background:#fff;color:var(--ink);font-weight:800;font-variant-numeric:tabular-nums;font-size:max(16px,calc(var(--u)*2))}
+.timer.run{background:var(--cyan);color:#001b33}
+.timer.done{background:#ff453a;color:#fff;animation:pulse 1s infinite}
+@keyframes pulse{50%{transform:scale(1.06)}}
+.phases{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:8px}
+.phase{border-radius:14px;padding:calc(var(--u)*1.8);background:#1c1c1e;transition:background .3s}
+.phase .s{font-size:max(12px,calc(var(--u)*1.2));font-weight:800;color:var(--cyan);letter-spacing:.08em}
+.phase.on{background:var(--data)}
+
+/* breakout */
+.game{position:relative;border-radius:16px;overflow:hidden;background:#000;border:1px solid #2c2c2e;touch-action:none}
+.game canvas{display:block;width:100%;height:auto;aspect-ratio:16/10}
+.game .go{position:absolute;inset:0;margin:auto;width:max-content;height:max-content}
+
+/* QR */
+.qrbox{display:flex;gap:calc(var(--u)*2.4);align-items:center;flex-wrap:wrap}
+.qr{background:#fff;padding:12px;border-radius:16px;width:calc(var(--u)*20);min-width:150px;aspect-ratio:1}
+.qr img,.qr canvas{width:100%!important;height:auto!important}
+.link{font-weight:700;word-break:break-all;color:var(--cyan)}
+.grey .link,.white .link{color:var(--data)}
+
+.ok{color:var(--good)}
+.no{color:#ff6961}
+
+/* ---------- taqdimot rejimi ---------- */
+body.present{overflow:hidden;cursor:default}
+body.present .bar,body.present .foot{display:none}
+body.present{--u:min(.86vw,1.53vh)}
+body.present .slide{display:none;position:fixed;inset:0;min-height:0;height:100%;overflow:auto}
+body.present .slide.cur{display:flex;animation:in .45s ease both}
+body.present .hero{display:none}
+body.present .hero.cur{display:block}
+body.present .hero .in{height:100%}
+body.present .hero .pic img{max-height:100vh}
+@keyframes in{from{opacity:0;transform:scale(.985)}}
+.hud{display:none;position:fixed;z-index:30;left:0;right:0;bottom:0;height:3px;background:rgba(128,128,128,.25)}
+.hud i{display:block;height:100%;background:var(--cyan);width:0;transition:width .3s}
+body.present .hud{display:block}
+.exit{display:none;position:fixed;z-index:31;top:12px;right:12px;opacity:0;transition:opacity .3s}
+body.present .exit{display:inline-flex}
+body.present:hover .exit{opacity:.6}
+
+/* ---------- telefon sahifalari ---------- */
+.view{display:none;min-height:100vh;background:var(--grey);color:var(--ink);padding:24px 16px 60px}
+.view .box{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.view h2{font-size:30px}
+body.v .deck,body.v .bar,body.v .foot{display:none}
+body.v-mashq #v-mashq,body.v-vazifa #v-vazifa,body.v-goyalar #v-goyalar{display:block}
+.view label{font-weight:700;font-size:14px;display:flex;flex-direction:column;gap:6px}
+.view input,.view textarea,.view select{font:inherit;font-size:16px;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--ink);width:100%}
+.view textarea{min-height:84px;resize:vertical}
+.teams{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.teams button,.pick button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:12px 8px;font-weight:700;color:var(--ink)}
+.teams button.sel,.pick button.sel{border-color:var(--data);background:var(--data);color:#fff}
+.pick{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.msg{font-weight:700;min-height:1.4em}
+.idea{background:#fff;border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:8px}
+.idea h3{font-size:22px}
+.idea .meta{font-size:13px;color:#6e6e73}
+.idea .vote{align-self:flex-start}
+.idea .vote.sel{background:var(--good)}
+.wide{max-width:1200px!important}
+.ideas{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:14px}
+.foot{background:#000;color:var(--mute);font-size:13px;padding:28px 16px 48px;text-align:center}
+.foot a{color:#d2d2d7}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ---------- startup darsi: qo'shimcha ---------- */
+/* Surat joyi: fayl qo'yilsa rasm chiqadi, bo'lmasa nomi ko'rinadi */
+.ph{position:relative;border-radius:calc(var(--u)*1.8);overflow:hidden;background:repeating-linear-gradient(135deg,rgba(128,128,128,.08) 0 12px,transparent 12px 24px);border:2px dashed rgba(128,128,128,.45);min-height:160px;aspect-ratio:var(--ar,4/3);display:flex;align-items:center;justify-content:center;text-align:center;padding:14px}
+.ph span{font-size:max(12px,calc(var(--u)*1.2));color:var(--mute);font-weight:600;line-height:1.35}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%}
+.ph.logo{background:#fff;border-style:solid}.ph.logo img{object-fit:contain;padding:8px}
+.ph.sq{--ar:1/1}.ph.tall{--ar:3/4}.ph.wide{--ar:16/9}
+.card .ph{min-height:90px;margin-bottom:6px}
+.g6{grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr))}
+.g6 .card{padding:calc(var(--u)*1.6)}
+.c3{grid-template-columns:repeat(3,1fr)}.c4{grid-template-columns:repeat(4,1fr)}
+@media (max-width:760px){.c3,.c4{grid-template-columns:repeat(2,1fr)}}@media (max-width:420px){.c3,.c4{grid-template-columns:1fr}}
+.c4 .ph.wide{--ar:5/2;min-height:70px}.card .ph.sq{--ar:4/3}
+#teens .ph{--ar:16/9}.c4.big .ph.wide{--ar:16/10}
+.g6 h3{font-size:max(16px,calc(var(--u)*1.9))}
+.hero .pic.ph img{width:100%;height:100%;max-height:none;object-fit:cover}
+.hero .pic.ph{border-radius:0;border:0;aspect-ratio:auto;min-height:320px;background-color:#fff}
+
+.tl{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:calc(var(--u)*1.4)}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--u)*1.6)}
+@media (max-width:560px){.vs{grid-template-columns:1fr}}
+.bar-h{display:flex;flex-direction:column;gap:8px}
+.bar-h .r{display:grid;grid-template-columns:minmax(120px,38%) 1fr auto;gap:12px;align-items:center;font-size:max(14px,calc(var(--u)*1.7))}
+.bar-h .r i{display:block;height:calc(var(--u)*1.8);min-height:12px;border-radius:99px;background:var(--cyan)}
+.white .bar-h .r i,.grey .bar-h .r i{background:var(--data)}
+.bar-h .r b{font-variant-numeric:tabular-nums}
+
+/* savol-javob (takrorlash) */
+.qa{border-radius:14px;background:#1c1c1e;padding:calc(var(--u)*1.6) calc(var(--u)*2)}
+.qa summary{cursor:pointer;font-weight:700;font-size:max(16px,calc(var(--u)*2));list-style:none}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::before{content:"? ";color:var(--cyan)}
+.qa[open] summary::before{content:"✓ ";color:var(--good)}
+.qa p{margin-top:8px;color:var(--cyan);font-weight:700;font-size:max(15px,calc(var(--u)*1.8))}
+
+/* jonli g'oyalar va podium */
+.board{display:flex;flex-direction:column;gap:8px}
+.board .it{position:relative;border-radius:12px;background:#1c1c1e;padding:10px 14px;display:flex;justify-content:space-between;gap:12px;overflow:hidden;font-size:max(14px,calc(var(--u)*1.7))}
+.board .it .fill{position:absolute;inset:0;width:0;background:var(--data);transition:width .6s ease}
+.board .it>span{position:relative}
+.board .it .c{color:var(--cyan);font-weight:800;font-variant-numeric:tabular-nums}
+.podium{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:calc(var(--u)*1.6);align-items:end}
+.podium .p{border-radius:18px 18px 0 0;padding:calc(var(--u)*2);text-align:center;display:flex;flex-direction:column;gap:6px;align-items:center}
+.podium .p .m{font-size:max(34px,calc(var(--u)*5))}
+.podium .p1{background:var(--data);min-height:calc(var(--u)*22)}
+.podium .p2{background:#2c2c2e;min-height:calc(var(--u)*18)}
+.podium .p3{background:#1c1c1e;min-height:calc(var(--u)*15)}
+@media (max-width:560px){.podium{grid-template-columns:1fr}}
+
+/* million kalkulyatori */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--u)*3);align-items:start}
+@media (max-width:760px){.calc{grid-template-columns:1fr}}
+.calc label{display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:max(14px,calc(var(--u)*1.6))}
+.calc label b{color:var(--cyan);font-size:1.3em;font-variant-numeric:tabular-nums}
+.calc input[type=range]{width:100%;accent-color:var(--cyan)}
+.calc .presets{display:flex;flex-wrap:wrap;gap:8px}
+.calc .presets button{border:1px solid #3a3a3c;background:#1c1c1e;color:#fff;border-radius:99px;padding:8px 14px;font-weight:600}
+.calc .presets button.sel{background:var(--data);border-color:var(--data)}
+.res{display:flex;flex-direction:column;gap:calc(var(--u)*1.4)}
+.res .card .k{font-size:max(30px,calc(var(--u)*5))}
+.track{height:14px;border-radius:99px;background:#2c2c2e;overflow:hidden}
+.track i{display:block;height:100%;background:var(--good);width:0;transition:width .4s}
+
+.grey .phase{background:#fff;color:var(--ink)}.grey .phase .s{color:var(--data)}
+.phase .ph{--ar:4/3;min-height:0;margin:8px 0;border:0;background:#fff}
+/* telefon: g'oya kartasi */
+body.v-karta #v-karta{display:block}
+/* ---------- tadbirkor darsi: qo'shimcha ---------- */
+body.v-ovoz #v-ovoz,body.v-reja #v-reja{display:block}
+.m6{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(var(--u)*1.4)}
+@media (max-width:760px){.m6{grid-template-columns:repeat(2,1fr)}}
+.m6 .card .k{font-size:max(22px,calc(var(--u)*3))}
+.vrow{display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--u)*1.2)}
+.vrow .card{padding:calc(var(--u)*1.1) calc(var(--u)*2)}
+.vstack{display:flex;flex-direction:column;gap:calc(var(--u)*.7)}
+.vrow .card{border-left:4px solid #3a3a3c}
+.vrow .card.t{border-left-color:var(--cyan)}
+.white .vrow .card.t,.grey .vrow .card.t{border-left-color:var(--data)}
+@media (max-width:560px){.vrow{grid-template-columns:1fr}}
+.warn{border-radius:14px;padding:calc(var(--u)*1.8) calc(var(--u)*2.2);background:rgba(255,159,10,.14);border:1px solid rgba(255,159,10,.55);color:#ffd60a;font-weight:600;font-size:max(15px,calc(var(--u)*1.8))}
+.white .warn,.grey .warn{color:#7a4a00;background:#fff4e0}
+.light3{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(var(--u)*1.4)}
+@media (max-width:760px){.light3{grid-template-columns:1fr}}
+.light3 .card{border-top:6px solid}
+.light3 .r{border-color:#ff453a}.light3 .y{border-color:#ffd60a}.light3 .g{border-color:#30d158}
+.dots{display:grid;grid-template-columns:repeat(20,1fr);gap:calc(var(--u)*.6);max-width:calc(var(--u)*70)}
+.dots i{aspect-ratio:1;border-radius:50%;background:#3a3a3c;transition:background .4s}
+.active .dots i.six{background:var(--cyan)}
+.deal{background:#fffdf5;color:#1d1d1f;border-radius:6px;padding:calc(var(--u)*3);font-family:Georgia,serif;box-shadow:0 20px 60px rgba(0,0,0,.5);max-width:calc(var(--u)*70)}
+.deal h3{font-family:Georgia,serif;text-align:center;letter-spacing:.1em}
+.deal .fine{font-size:max(11px,calc(var(--u)*1.05));color:#86868b;margin-top:12px;transition:all .6s}
+.deal.open .fine{font-size:max(16px,calc(var(--u)*2));color:#c00;font-weight:700}
+.sign{font-family:"Brush Script MT",cursive;font-size:max(28px,calc(var(--u)*4));border-bottom:1px solid #999;min-width:200px;display:inline-block;color:#0b2db4}
+.lab{display:flex;flex-direction:column;gap:8px}
+.lab{gap:5px!important}.lab .r{display:grid;grid-template-columns:1fr minmax(120px,30%) 3ch;gap:14px;align-items:center;border-radius:10px;background:#1c1c1e;padding:5px 14px;font-size:max(14px,calc(var(--u)*1.7));transition:background .3s}
+.lab .r.ten{background:var(--data)}
+.lab .r.low{opacity:.45}
+.lab input[type=range]{width:100%;accent-color:var(--cyan)}
+.lab .r b{font-variant-numeric:tabular-nums;color:var(--cyan);text-align:right}
+.lab .r.ten b{color:#fff}
+.teamdraw{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(var(--u)*1.2)}
+@media (max-width:760px){.teamdraw{grid-template-columns:1fr 1fr}}
+.teamdraw{gap:8px!important}.teamdraw .card{min-height:0;padding:calc(var(--u)*1.1) calc(var(--u)*1.6)}
+.teamdraw .card h3{transition:opacity .3s}
+.ladder{display:flex;gap:calc(var(--u)*1);align-items:flex-end;flex-wrap:wrap}
+.ladder div{flex:1;min-width:120px;border-radius:14px;padding:calc(var(--u)*1.6);background:#1c1c1e;font-weight:700;font-size:max(14px,calc(var(--u)*1.7))}
+.ladder div:nth-child(1){min-height:calc(var(--u)*6);background:var(--data)}
+.ladder div:nth-child(2){min-height:calc(var(--u)*8)}
+.ladder div:nth-child(3){min-height:calc(var(--u)*10)}
+.ladder div:nth-child(4){min-height:calc(var(--u)*12)}
+.ladder small{display:block;color:var(--mute);font-weight:600;margin-top:4px}
+.mrow{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+.mrow button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 4px;font-weight:800;color:var(--ink);font-size:13px;line-height:1.2}
+.mrow button.sel{border-color:var(--data);background:var(--data);color:#fff}
+@media (max-width:420px){.mrow{grid-template-columns:repeat(3,1fr)}}
+.legend{display:flex;gap:18px;font-size:max(13px,calc(var(--u)*1.4));color:var(--mute)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.bars2 .r{grid-template-columns:minmax(120px,30%) 1fr}
+.bars2 .two{display:flex;flex-direction:column;gap:4px}
+.bars2 .two span{display:flex;align-items:center;gap:8px;font-variant-numeric:tabular-nums;font-weight:700}
+.bars2 .two i{height:calc(var(--u)*1.4);min-height:10px;border-radius:99px;width:0;transition:width .6s}
+.bars2 .two i.a{background:var(--cyan)}.bars2 .two i.b{background:#bf5af2}
+/* ---------- shaxsiyat darsi ---------- */
+body.v-sorov #v-sorov,body.v-yol #v-yol{display:block}
+.pyr{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.pyr div{border-radius:14px;padding:calc(var(--u)*1.4) calc(var(--u)*2);font-weight:800;font-size:max(15px,calc(var(--u)*2))}
+.pyr .top{background:var(--cyan);color:#001b33;width:55%}
+.pyr .me{background:#fff;color:var(--ink);width:70%;font-size:max(20px,calc(var(--u)*3))}
+.pyr .low{background:#2c2c2e;color:#d2d2d7;width:90%}
+.pyr small{display:block;font-weight:600;opacity:.7;font-size:.75em}
+.joy svg{display:block;width:100%;height:calc(var(--u)*19)}
+.mul{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(var(--u)*1.2)}
+.mul .card .k{font-size:max(22px,calc(var(--u)*3))}
+@media (max-width:760px){.mul{grid-template-columns:1fr}}
+.arrow{font-size:max(22px,calc(var(--u)*3));color:var(--cyan);font-weight:800}
+.count100{font-size:max(60px,calc(var(--u)*14));font-weight:800;letter-spacing:-.04em;color:var(--cyan);line-height:1}
+/* ---------- CJM darsi ---------- */
+body.v-sorov #v-sorov,body.v-xarita #v-xarita,body.v-uy #v-uy{display:block}
+.izoh{border-left:3px solid var(--cyan);padding:2px 0 2px calc(var(--u)*1.6);font-size:max(14px,calc(var(--u)*1.5));max-width:90ch}
+.grey .izoh,.white .izoh{border-left-color:var(--data)}
+.izoh summary{cursor:pointer;font-weight:700;color:var(--mute);font-size:max(12px,calc(var(--u)*1.25));list-style:none;width:max-content}
+.izoh summary::-webkit-details-marker{display:none}
+.izoh summary::before{content:"＋ "}
+.izoh[open] summary::before{content:"－ "}
+.izoh p{margin-top:6px;color:#c7c7cc}
+.grey .izoh p,.white .izoh p{color:#515154}
+.blue .izoh{border-left-color:#fff}.blue .izoh p,.blue .izoh summary{color:#cfe0ff}
+.road{display:flex;align-items:flex-start;gap:0;position:relative;margin:calc(var(--u)*2) 0}
+.road::before{content:"";position:absolute;left:4%;right:4%;top:calc(var(--u)*3);height:3px;background:linear-gradient(90deg,var(--data),var(--cyan))}
+.road a{flex:1;position:relative;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;color:inherit;text-decoration:none;min-width:0}
+.road a i{font-style:normal;width:calc(var(--u)*6);height:calc(var(--u)*6);min-width:34px;min-height:34px;border-radius:50%;background:var(--data);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:max(15px,calc(var(--u)*2.2));border:3px solid var(--cyan)}
+.road a b{font-size:max(12px,calc(var(--u)*1.55));line-height:1.15}
+.road a span{font-size:max(11px,calc(var(--u)*1.2));color:var(--mute);line-height:1.2}
+@media (max-width:620px){.road{flex-direction:column;gap:10px}.road::before{display:none}.road a{flex-direction:row;text-align:left}}
+.st-dots{display:flex;gap:6px;align-items:center}
+.st-dots i{width:calc(var(--u)*1.1);height:calc(var(--u)*1.1);min-width:8px;min-height:8px;border-radius:50%;background:rgba(128,128,128,.35)}
+.st-dots i.done{background:var(--cyan)}.grey .st-dots i.done,.white .st-dots i.done{background:var(--data)}
+.st-dots i.now{transform:scale(1.7);background:var(--cyan)}.grey .st-dots i.now,.white .st-dots i.now{background:var(--data)}
+.datab{border-radius:14px;padding:calc(var(--u)*1.5) calc(var(--u)*2);background:var(--data);color:#fff;font-size:max(15px,calc(var(--u)*1.75))}
+.datab b{color:#9fe3ff}
+.lbl{font-size:max(11px,calc(var(--u)*1.15));font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--mute)}
+.card.bad{border-top:4px solid #ff453a}.card.good{border-top:4px solid var(--good)}
+.map18{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+.map18 button{border:0;border-radius:10px;padding:calc(var(--u)*.9) 8px;background:#fff;color:var(--ink);text-align:left;font-weight:700;font-size:max(12px,calc(var(--u)*1.3));line-height:1.15;display:flex;flex-direction:column;gap:3px;min-height:calc(var(--u)*7.4)}
+.map18 button small{color:var(--data);font-weight:800}
+.map18 button.pre{background:#dfe7ff}
+.map18 button.sel{background:var(--data);color:#fff}.map18 button.sel small{color:#9fe3ff}
+@media (max-width:760px){.map18{grid-template-columns:repeat(3,1fr)}}
+.mapd{border-radius:14px;background:#fff;padding:calc(var(--u)*1.5) calc(var(--u)*2);min-height:calc(var(--u)*9)}
+.big2{display:grid;grid-template-columns:var(--a,1fr) var(--b,4fr);gap:6px;align-items:stretch}
+.big2 div{border-radius:14px;padding:calc(var(--u)*2);min-width:0}
+.big2 div:first-child{background:#2c2c2e}.big2 div:last-child{background:var(--data)}
+.big2 b{display:block;font-size:max(30px,calc(var(--u)*6));letter-spacing:-.03em;line-height:1}
+.chain{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:calc(var(--u)*1);align-items:stretch}
+.chain .ar{align-self:center;font-size:max(20px,calc(var(--u)*3));color:var(--cyan);font-weight:800}
+.white .chain .ar,.grey .chain .ar{color:var(--data)}
+@media (max-width:620px){.chain{grid-template-columns:1fr}.chain .ar{transform:rotate(90deg);justify-self:center}}
+.anat{display:grid;grid-template-columns:auto 1fr;gap:0 calc(var(--u)*2);font-size:max(15px,calc(var(--u)*1.85))}
+.anat>*{padding:calc(var(--u)*.85) 0;border-top:1px solid rgba(128,128,128,.25)}
+.anat b{color:var(--cyan);white-space:nowrap}.grey .anat b,.white .anat b{color:var(--data)}
+.tog{display:inline-flex;border-radius:99px;background:#2c2c2e;padding:4px;width:max-content;max-width:100%}
+.tog button{border:0;background:transparent;color:#d2d2d7;padding:8px 18px;border-radius:99px;font-weight:800}
+.tog button.sel{background:#fff;color:var(--ink)}
+.tog button.sel[data-v=bor]{background:var(--good);color:#00230c}
+.tog button.sel[data-v=yoq]{background:#ff453a;color:#fff}
+.story{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+.story .card{padding:calc(var(--u)*1.2);font-size:max(13px,calc(var(--u)*1.42));line-height:1.28;gap:4px;min-height:calc(var(--u)*14)}
+.story .card b{font-size:.85em;color:var(--mute)}
+@media (max-width:760px){.story{grid-template-columns:repeat(2,1fr)}}
+.curve{display:block;width:100%;height:calc(var(--u)*11);min-height:70px}
+.ctable{width:100%;border-collapse:collapse;font-size:max(14px,calc(var(--u)*1.65))}
+.ctable th,.ctable td{text-align:left;padding:calc(var(--u)*1) calc(var(--u)*1.2);border-top:1px solid rgba(128,128,128,.3);vertical-align:top}
+.ctable thead th{border-top:0;font-size:max(17px,calc(var(--u)*2.2));letter-spacing:-.01em}
+.ctable tbody th{color:var(--mute);font-weight:600;white-space:nowrap}
+.tscroll{overflow-x:auto}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:8px}
+.rules .card{flex-direction:row;gap:12px;padding:calc(var(--u)*1.3) calc(var(--u)*1.6);align-items:flex-start}
+.rules .n{font-weight:800;font-size:max(22px,calc(var(--u)*3));color:var(--data);line-height:1;min-width:1.1em}
+.dark .rules .n{color:var(--cyan)}
+.rules h3{font-size:max(16px,calc(var(--u)*1.95))}
+.fn{display:flex;flex-direction:column;align-items:center;gap:4px}
+.fn div{background:var(--data);color:#fff;border-radius:8px;padding:calc(var(--u)*.85) 6px;text-align:center;font-weight:800;font-size:max(13px,calc(var(--u)*1.7));min-width:max-content;transition:width .35s;white-space:nowrap}
+.fn div.last{background:var(--good);color:#00230c}
+.fn small{color:var(--mute);font-weight:700;font-size:max(12px,calc(var(--u)*1.3))}
+.fn small.hole{color:#ff6961}
+.src .r{display:grid;grid-template-columns:minmax(130px,24%) 1fr 1fr;gap:12px;align-items:center;font-size:max(14px,calc(var(--u)*1.7))}
+.src .r .h{font-size:.8em;color:var(--mute);font-weight:700}
+.src .b{display:flex;align-items:center;gap:8px;font-weight:800;font-variant-numeric:tabular-nums;min-width:0}
+.src .b i{height:calc(var(--u)*1.8);min-height:10px;border-radius:99px;background:#3a3a3c;width:0;transition:width .7s}
+.src .s i{background:var(--good)}
+.src .s{opacity:0;transition:opacity .5s}.src.open .s{opacity:1}
+.src{display:flex;flex-direction:column;gap:9px}
+.steps5{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.steps5 div{border-radius:12px;background:#fff;color:var(--ink);padding:calc(var(--u)*1.2);font-weight:800;font-size:max(14px,calc(var(--u)*1.7));text-align:center}
+.steps5 div.f{background:var(--data);color:#fff}
+.steps5 small{display:block;font-weight:600;color:#6e6e73;font-size:.76em;margin-top:3px;line-height:1.2}
+.steps5 div.f small{color:#cfe0ff}
+@media (max-width:620px){.steps5{grid-template-columns:1fr}}
+.wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:10px}
+.wall .card{gap:4px;padding:calc(var(--u)*1.5)}
+.wall .curve{height:calc(var(--u)*7)}
+body.present .slide{padding-top:calc(var(--u)*3);padding-bottom:calc(var(--u)*3.6)}
+body.present .slide>.in{gap:calc(var(--u)*1.7)}
+body.present .qr{width:calc(var(--u)*17);min-width:0}
+body.present .row{padding:calc(var(--u)*.55) 0}
+body.present .rows{gap:calc(var(--u)*.3)}
+body.present .map18 button{min-height:calc(var(--u)*6.2);padding:calc(var(--u)*.6) 8px}
+body.present #s-calc .fn div{padding:calc(var(--u)*.5) 6px}
+body.present #s-calc .res{gap:calc(var(--u)*.8)}
+body.present #s-calc .res .card{padding:calc(var(--u)*1.3)}
+body.present #s-calc .res .card .k{font-size:max(26px,calc(var(--u)*3.6))}
+#s-calc label{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:baseline}#s-calc label input{grid-column:1/-1}
+.stepf{background:#fff;border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.stepf .moods{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.stepf .moods button{border:2px solid var(--line);background:#fff;border-radius:10px;padding:6px 0;font-size:22px}
+.stepf .moods button.sel{border-color:var(--data);background:#dfe7ff}
+.stepf p{margin:0;font-size:13px;color:#6e6e73}
+.four{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <span class="logo"><i></i>DATA Biznes Klub</span>
+  <nav aria-label="Boʻlimlar">
+    <a href="#s-kirish">Kirish</a>
+    <a href="#s-nima">CJM nima</a>
+    <a href="#s-yol7">7 bosqich</a>
+    <a href="#s-farq">Farqi</a>
+    <a href="#s-qoida">Qoidalar</a>
+    <a href="#s-voronka">Voronka</a>
+    <a href="#s-mashq">Mashq</a>
+    <a href="#s-uy">Uyga vazifa</a>
+    <a href="ai.html">← AI darsi</a>
+  </nav>
+  <button class="btn" id="go-present" title="Klaviatura: P">▶ Taqdimot</button>
+</header>
+
+<main class="deck" id="deck">
+
+<section class="slide hero dark">
+  <div class="in">
+    <div class="txt">
+      <span class="eyebrow">DATA Biznes Klub · 7–10-sinflar</span>
+      <h1 style="font-size:max(40px,calc(var(--u)*7.5))">Mijoz sayohat yoʻli</h1>
+      <p class="lead" style="color:#fff;font-weight:700">CJM: biznesning xaritasi. Mijoz qayerda keladi, qayerda yoʻqoladi va nega qaytadi.</p>
+      <p class="small" style="color:#9fb6ff">Shahzod Sobirov · DATA asoschisi</p>
+    </div>
+    <div class="pic ph" data-src="img/sh/path.jpg" data-cap="Xarita bilan yoʻlda"></div>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Bugun</span>
+    <h2>2 soat, 6 bekat</h2>
+    <div class="rows">
+      <div class="row"><b>10 daq</b><p class="t"><strong>Kirish.</strong> AI darsidan CJM ga</p></div>
+      <div class="row"><b>20 daq</b><p class="t"><strong>CJM nima.</strong> Nega koʻp biznes buni bilmay pul yoʻqotadi</p></div>
+      <div class="row"><b>30 daq</b><p class="t"><strong>7 bosqich.</strong> Tort doʻkoni va DATA maktabi misolida</p></div>
+      <div class="row"><b>15 daq</b><p class="t"><strong>Farqi va qoidalar.</strong> Xaritasi bor biznes va yoʻq biznes</p></div>
+      <div class="row"><b>20 daq</b><p class="t"><strong>Sotuv voronkasi.</strong> Raqamlar bilan teshikni topamiz</p></div>
+      <div class="row on"><b>25 daq</b><p class="t"><strong>Jamoaviy mashq.</strong> Oʻz biznesingiz xaritasini chizasiz</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= KIRISH ================= -->
+<section class="slide grey" id="s-kirish">
+  <div class="in">
+    <span class="eyebrow">Oʻtgan dars · Sunʼiy intellekt</span>
+    <h2>AI — birinchi xodimingiz</h2>
+    <div class="grid c3">
+      <div class="card"><div class="k c">R-V-K-N-Ch</div><h3>Vazifa berishni oʻrgandik</h3><p class="small">Rol, Vazifa, Kontekst, Natija, Chegara</p></div>
+      <div class="card"><div class="k c">?</div><h3>Yangi savol</h3><p class="small">Xodimga <strong>qaysi</strong> vazifani berasiz? Biznesda nima, qachon va kim tomonidan qilinishi kerak?</p></div>
+      <div class="card hl"><div class="k">Xarita</div><h3 style="color:#fff">Bugungi javob</h3><p style="color:#cfe0ff" class="small">Avval xarita kerak. Xaritasiz na odam, na AI toʻgʻri ishlaydi</p></div>
+    </div>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>Oʻtgan safar AI ga topshiriq berishni oʻrgandik. Lekin topshiriq sifati fikr sifatidan oshmaydi. Agar egasi oʻz biznesida mijoz qaysi yoʻldan yurishini bilmasa, AI ga ham, xodimga ham aniq vazifa bera olmaydi. Shuning uchun bugun bir qadam orqaga qaytamiz va biznesning xaritasini chizishni oʻrganamiz.</p></details>
+  </div>
+</section>
+
+<section class="slide dark" id="s-sorov">
+  <div class="in">
+    <span class="eyebrow">Telefonni oling · 1 daqiqa</span>
+    <h2>Nega oʻsha joyga qaytib bormadingiz?</h2>
+    <div class="split">
+      <div class="bar-h" id="b-sorov"></div>
+      <div class="qrbox"><div class="qr" data-qr="sorov"></div><div><p class="small" id="sorov-info">Natija shu yerda chiqadi</p><p class="link small" data-href="sorov"></p></div></div>
+    </div>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>Bitta doʻkon, kafe yoki oʻquv markazini eslang. Bir marta borgansiz, lekin ikkinchi marta bormagansiz. Natijaga qarang: agar sabablarning koʻpi «mahsulot yomon» boʻlmasa, demak mijoz mahsulotdan oldin yoki keyin, <strong>yoʻlda</strong> yoʻqolgan. CJM aynan shu yoʻlni koʻrsatadi.</p></details>
+  </div>
+</section>
+
+<!-- ================= CJM NIMA ================= -->
+<section class="slide dark" id="s-nima">
+  <div class="in">
+    <span class="eyebrow">CJM nima</span>
+    <div class="grid c3">
+      <div class="card"><div class="k c">C</div><h3>Customer</h3><p class="small">Mijoz</p></div>
+      <div class="card"><div class="k c">J</div><h3>Journey</h3><p class="small">Sayohat, yoʻl</p></div>
+      <div class="card"><div class="k c">M</div><h3>Map</h3><p class="small">Xarita</p></div>
+    </div>
+    <p class="quote">Mijoz sizni birinchi marta eshitganidan to doʻstiga tavsiya qilgunicha bosib oʻtadigan yoʻlning xaritasi.</p>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>CJM — bu hujjat emas, koʻrish usuli. Unda uch narsa yoziladi: mijoz har bosqichda <strong>nima qiladi</strong>, <strong>nima oʻylaydi</strong> va <strong>nimani his qiladi</strong>. Biznes egasi oʻzini mijoz oʻrniga qoʻyib, butun yoʻlni boshidan oxirigacha yuradi. Atrofimizdagi biznes egalarining taxminan 90 foizi bu bilimni bilmaydi (bu Shahzod Sobirovning kuzatuvi, rasmiy statistika emas).</p></details>
+  </div>
+</section>
+
+<section class="slide white">
+  <div class="in">
+    <div class="split">
+      <div style="display:flex;flex-direction:column;gap:calc(var(--u)*1.6)">
+        <span class="eyebrow">Siz CJM ni bilasiz, faqat nomini bilmagansiz</span>
+        <h2>Taksi chaqirish</h2>
+        <div class="rows">
+          <div class="row"><b>1</b><p class="t">Ilovani ochdingiz, narxni koʻrdingiz</p></div>
+          <div class="row"><b>2</b><p class="t">Mashina topildi, xaritada kelayotganini koʻrasiz</p></div>
+          <div class="row"><b>3</b><p class="t">Haydovchi bilan yoʻlga chiqdingiz</p></div>
+          <div class="row"><b>4</b><p class="t">Yetib keldingiz, pul oʻzi yechildi</p></div>
+          <div class="row on"><b>5</b><p class="t">Yulduz qoʻydingiz, keyingi safar yana shu ilova</p></div>
+        </div>
+      </div>
+      <div class="ph" data-src="img/ai/taxi.jpg" data-cap="Taksi" style="--ar:3/2"></div>
+    </div>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>Oldin koʻchada qoʻl koʻtarib, narx talashib, haydovchi qachon kelishini bilmay kutardik. Mashina oʻzgarmadi, <strong>yoʻl</strong> oʻzgardi. Taksi ilovalari mijozning har bir qadamidagi xavotirni olib tashladi: narx oldindan maʼlum, mashina xaritada koʻrinadi, toʻlov oson. Bu CJM ni tushunishning eng oddiy misoli.</p></details>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Asosiy muammo</span>
+    <h2>Egasi biznesga ichkaridan qaraydi</h2>
+    <div class="vs">
+      <div class="card"><span class="lbl">Egasi nima deydi</span><h3>«Mahsulotimiz zoʻr»</h3><h3>«Reklamaga pul sarfladim»</h3><h3>«Mijoz oʻzi keladi»</h3></div>
+      <div class="card hl"><span class="lbl" style="color:#9fe3ff">Mijoz nima koʻradi</span><h3 style="color:#fff">«Narxini soʻradim, ikki kun javob yoʻq»</h3><h3 style="color:#fff">«Kirdim, hech kim qaramadi»</h3><h3 style="color:#fff">«Pulni olgach, unutishdi»</h3></div>
+    </div>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>Biznes egasi oʻz doʻkoniga har kuni kiradi, shuning uchun kamchilikni koʻrmay qoladi. Mijoz esa birinchi marta keladi va hamma narsani sezadi: eshik, salom, kutish, narx yozuvi. CJM egasini ichkaridan koʻchaga olib chiqadi. Birinchi qoida shu: <strong>xaritani mijoz koʻzi bilan chizing.</strong></p></details>
+  </div>
+</section>
+
+<section class="slide grey">
+  <div class="in">
+    <span class="eyebrow">Nega kerak</span>
+    <h2>CJM 4 ta savolga javob beradi</h2>
+    <div class="grid g2">
+      <div class="card"><h3>1. Pul qayerdan oqib ketyapti?</h3><p class="small">Reklamaga pul quyasiz, mijoz yoʻlda yoʻqoladi. Teshikli chelakka suv quyish kabi.</p></div>
+      <div class="card"><h3>2. Qaysi bosqich kimning ishi?</h3><p class="small">Egasi yoʻq bosqichni hech kim qilmaydi. Keyin hamma bir-birini ayblaydi.</p></div>
+      <div class="card"><h3>3. Mijoz nimadan xavotirda?</h3><p class="small">Har bosqichda xavotir boshqa. Uni olib tashlasangiz, mijoz oʻzi oldinga yuradi.</p></div>
+      <div class="card"><h3>4. Xodim ketsa nima boʻladi?</h3><p class="small">Bilim odamning boshida emas, tizimda qoladi. Yangi xodim xaritadan oʻrganadi.</p></div>
+    </div>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>Koʻp tadbirkor savdo tushsa, birinchi reklamani oshiradi. Bu teshik chelakka koʻproq suv quyish bilan barobar. Avval teshikni topish arzonroq. CJM biznesni «odamlarga bogʻliq» holatdan «tizimga bogʻliq» holatga olib oʻtadi. Shu sababli biznes egasi ketsa ham ish toʻxtamaydi.</p></details>
+  </div>
+</section>
+
+<section class="slide blue">
+  <div class="in">
+    <span class="eyebrow" style="color:#9fe3ff">Tarix · SAS aviakompaniyasi, 1980-yillar</span>
+    <h2>«Haqiqat lahzasi»</h2>
+    <div class="grid c4">
+      <div class="card"><div class="k">10 mln</div><p class="small" style="color:#cfe0ff">mijoz yiliga</p></div>
+      <div class="card"><div class="k">× 5</div><p class="small" style="color:#cfe0ff">xodim bilan koʻrishadi</p></div>
+      <div class="card"><div class="k">15 son</div><p class="small" style="color:#cfe0ff">har bir uchrashuv</p></div>
+      <div class="card"><div class="k">50 mln</div><p class="small" style="color:#cfe0ff">yiliga shuncha lahza</p></div>
+    </div>
+    <p class="lead">Kompaniyaning taqdiri ofisda emas, shu 15 soniyalarda hal boʻladi.</p>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>Yan Karlson SAS aviakompaniyasi rahbari boʻlib, «Haqiqat lahzalari» kitobini yozgan (1987). U shunday hisoblagan: mijoz uchun kompaniya bu binolar emas, oʻsha 15 soniyada koʻrgan xodim. Bir xodimning sovuq javobi butun kompaniya haqidagi fikrni belgilaydi. CJM ana shu lahzalarni bitta xaritaga yigʻadi.</p></details>
+  </div>
+</section>
+
+<!-- ================= 7 BOSQICH ================= -->
+<section class="slide white" id="s-yol7">
+  <div class="in">
+    <span class="eyebrow">Har qanday biznes uchun</span>
+    <h2>Mijoz yoʻlining 7 bosqichi</h2>
+    <div class="road">
+      <a href="#b1"><i>1</i><b>Eshitdi</b><span>Bunday joy bor ekan</span></a>
+      <a href="#b2"><i>2</i><b>Solishtirdi</b><span>Menga kerakmi?</span></a>
+      <a href="#b3"><i>3</i><b>Uchrashdi</b><span>Bularga ishonsa boʻladimi?</span></a>
+      <a href="#b4"><i>4</i><b>Sotib oldi</b><span>Pulim kuymaydimi?</span></a>
+      <a href="#b5"><i>5</i><b>Sinab koʻrdi</b><span>Toʻgʻri qildimmi?</span></a>
+      <a href="#b6"><i>6</i><b>Foydalandi</b><span>Vaʼda bajarilyaptimi?</span></a>
+      <a href="#b7"><i>7</i><b>Qaytdi</b><span>Doʻstimga aytamanmi?</span></a>
+    </div>
+    <p class="lead">Misolimiz: <strong>Malika opaning tort doʻkoni</strong>. Mahsulot sodda, lekin yoʻl butunlay koʻrinadi.</p>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>Bosqichlar soni biznesga qarab oʻzgaradi. Kichik doʻkonda 5 ta boʻlishi mumkin, DATA maktabida 18 ta. Lekin mantiq bir xil: mijoz sizni bilmaydi, keyin qiziqadi, ishonadi, toʻlaydi, foydalanadi va qaytadi yoki ketadi. Har bosqichda mijozning <strong>xavotiri boshqacha</strong>, shuning uchun har birida boshqa ish kerak.</p></details>
+  </div>
+</section>
+
+<section class="slide dark" id="b1" data-st="1">
+  <div class="in">
+    <div class="st-dots"></div>
+    <h2>1. Eshitdi</h2>
+    <p class="lead">Mijoz: «Bunday joy bor ekan».</p>
+    <div class="grid c3">
+      <div class="card"><span class="lbl">Tort doʻkonida</span><p class="t">Dugonasining bazmidagi tortni Instagramda koʻrdi</p></div>
+      <div class="card bad"><span class="lbl">Odatdagi xato</span><p class="t">Hammaga reklama. Kimga sotishni bilmaydi</p></div>
+      <div class="card good"><span class="lbl">Toʻgʻri yoʻl</span><p class="t">Aniq mijoz: bazm tayyorlayotgan onalar. Ular koʻradigan joyda boʻlish</p></div>
+    </div>
+    <div class="datab"><b>DATA maktabida:</b> har bir murojaat qaysi kanaldan kelgani tizimda majburiy belgilanadi. Aks holda qaysi reklama ishlaganini bilib boʻlmaydi.</div>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>Bu bosqichda mijoz hali sizni izlamayapti. Maqsad sotish emas, esda qolish. Eng muhim savol: «Mening mijozim kim va u kunini qayerda oʻtkazadi?» Bosqich natijasi — mijoz sizni bilib oldi.</p></details>
+  </div>
+</section>
+
+<section class="slide grey" id="b2" data-st="2">
+  <div class="in">
+    <div class="st-dots"></div>
+    <h2>2. Solishtirdi</h2>
+    <p class="lead">Mijoz: «Bu menga kerakmi? Boshqalardan nimasi yaxshi?»</p>
+    <div class="grid c3">
+      <div class="card"><span class="lbl">Tort doʻkonida</span><p class="t">Soat 21:00 da uchta doʻkonga «narxi qancha?» deb yozdi</p></div>
+      <div class="card bad"><span class="lbl">Odatdagi xato</span><p class="t">Ertasi kuni javob. «Directga yozing», narx yashirin</p></div>
+      <div class="card good"><span class="lbl">Toʻgʻri yoʻl</span><p class="t">Narx koʻrinib turadi. Birinchi javob bergan yutadi</p></div>
+    </div>
+    <div class="datab"><b>DATA maktabida:</b> onlayn murojaatga 15 daqiqa ichida, telefonga 1 soat ichida javob. Javob boʻlmasa, 3 marta urinish yoziladi.</div>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>Mijoz bu bosqichda bir vaqtda bir nechta variantga qaraydi. Tezlik bu yerda narxdan ham kuchli ishlashi mumkin: kim birinchi javob bersa, suhbatni oʻsha boshqaradi. Javob berishni tasodifga qoldirmaslik uchun aniq muddat yozib qoʻyiladi.</p></details>
+  </div>
+</section>
+
+<section class="slide dark" id="b3" data-st="3">
+  <div class="in">
+    <div class="st-dots"></div>
+    <h2>3. Uchrashdi</h2>
+    <p class="lead">Mijoz: «Bularga ishonsa boʻladimi?»</p>
+    <div class="grid c3">
+      <div class="card"><span class="lbl">Tort doʻkonida</span><p class="t">Doʻkonga kirdi, namunani tatib koʻrdi, savol berdi</p></div>
+      <div class="card bad"><span class="lbl">Odatdagi xato</span><p class="t">Sotuvchi telefonda. Mijozga qaramaydi, ehtiyojini soʻramaydi</p></div>
+      <div class="card good"><span class="lbl">Toʻgʻri yoʻl</span><p class="t">Salom, savol, tinglash. Avval ehtiyoj, keyin taklif</p></div>
+    </div>
+    <div class="datab"><b>DATA maktabida:</b> tashrifdan bir kun oldin eslatma, tashrif kuni bino aylanishi, keyin 48 soat ichida «taassurotingiz qanday?» qoʻngʻirogʻi.</div>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>Birinchi jonli uchrashuv ishonchni shakllantiradi. Ota-onaning xavotiri uning oʻz soʻzlari bilan yozib olinadi: nimani kutadi, nimadan qoʻrqadi. Bu keyingi xodimga ham kerak. Mijozdan ikkinchi marta bir xil savolni soʻrash — yomon xizmat belgisi.</p></details>
+  </div>
+</section>
+
+<section class="slide grey" id="b4" data-st="4">
+  <div class="in">
+    <div class="st-dots"></div>
+    <h2>4. Sotib oldi</h2>
+    <p class="lead">Mijoz: «Pulim kuymaydimi? Aldanmaymanmi?»</p>
+    <div class="grid c3">
+      <div class="card"><span class="lbl">Tort doʻkonida</span><p class="t">Sana, ism, oʻlchamni aytdi, oldindan toʻlov qildi</p></div>
+      <div class="card bad"><span class="lbl">Odatdagi xato</span><p class="t">Faqat naqd pul. Chek yoʻq. Nima kelishilgani yozilmagan</p></div>
+      <div class="card good"><span class="lbl">Toʻgʻri yoʻl</span><p class="t">Karta orqali toʻlov, yozma tasdiq, aniq sana</p></div>
+    </div>
+    <div class="datab"><b>DATA maktabida:</b> shartnoma imzolanmaguncha toʻlov olinmaydi. Har toʻlovga kvitansiya beriladi va nima uchun olingani tushuntiriladi.</div>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>Koʻp mijoz «tayyor» boʻlib ham oxirgi qadamda ketadi, chunki toʻlash noqulay yoki shart noaniq. Sotib olish qanchalik oson va shaffof boʻlsa, shunchalik kam odam yoʻqoladi. Hamma kelishuv yozma boʻlishi ikki tomonni ham himoya qiladi.</p></details>
+  </div>
+</section>
+
+<section class="slide dark" id="b5" data-st="5">
+  <div class="in">
+    <div class="st-dots"></div>
+    <h2>5. Sinab koʻrdi</h2>
+    <p class="lead">Mijoz: «Toʻgʻri qildimmi?»</p>
+    <div class="grid c3">
+      <div class="card"><span class="lbl">Tort doʻkonida</span><p class="t">Tortni oldi. Bazmda hamma birinchi boʻlaklarni kesdi</p></div>
+      <div class="card bad"><span class="lbl">Odatdagi xato</span><p class="t">Pul olindi, ish tugadi deb oʻylash</p></div>
+      <div class="card good"><span class="lbl">Toʻgʻri yoʻl</span><p class="t">Oʻzi yetkazish, tayyor rasm yuborish, ertasi kuni fikr soʻrash</p></div>
+    </div>
+    <div class="datab"><b>DATA maktabida:</b> birinchi kun tugagach, 4 soat ichida sinf rahbari ota-onaga yozadi. 30-kuni moslashuv 1–10 baholanadi, 7 dan past boʻlsa direktorga chiqadi.</div>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>Inglizcha nomi onboarding, yaʼni «moslashtirish». Xariddan keyin odamda shubha paydo boʻladi: «Shoshilmadimmi?». Birinchi tajriba keyingi hamma narsaning ohangini belgilaydi. Shuning uchun DATA da birinchi kunning oʻziga alohida vazifalar yozilgan.</p></details>
+  </div>
+</section>
+
+<section class="slide grey" id="b6" data-st="6">
+  <div class="in">
+    <div class="st-dots"></div>
+    <h2>6. Foydalandi</h2>
+    <p class="lead">Mijoz: «Vaʼda bajarilyaptimi? Muammo boʻlsa, kim yordam beradi?»</p>
+    <div class="grid c3">
+      <div class="card"><span class="lbl">Tort doʻkonida</span><p class="t">Tortdagi ism xato yozilgan ekan. Malika opaga yozdi</p></div>
+      <div class="card bad"><span class="lbl">Odatdagi xato</span><p class="t">«Bizda xato boʻlmaydi». Bahs, izohni oʻchirish</p></div>
+      <div class="card good"><span class="lbl">Toʻgʻri yoʻl</span><p class="t">Darhol kechirim va tuzatish. Sababini yozib, takrorlamaslik</p></div>
+    </div>
+    <div class="datab"><b>DATA maktabida:</b> ijtimoiy tarmoqdagi salbiy izohga 1 soat ichida javob. Xavotirli holatda ota-onaga darhol xabar beriladi.</div>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>Xatosiz biznes yoʻq. Mijoz xatoni kechiradi, lekin eʼtiborsizlikni kechirmaydi. Yaxshi hal qilingan shikoyat ishonchni oshiradi. Har muammoni yozib borish kerak: bir xil muammo uch marta takrorlansa, bu xodim xatosi emas, tizimdagi teshik.</p></details>
+  </div>
+</section>
+
+<section class="slide dark" id="b7" data-st="7">
+  <div class="in">
+    <div class="st-dots"></div>
+    <h2>7. Qaytdi yoki ketdi</h2>
+    <p class="lead">Mijoz: «Yana kelamanmi? Doʻstimga aytamanmi?»</p>
+    <div class="grid c3">
+      <div class="card"><span class="lbl">Tort doʻkonida</span><p class="t">Dugonasi «tortni qayerdan oldingiz?» deb soʻradi</p></div>
+      <div class="card bad"><span class="lbl">Odatdagi xato</span><p class="t">Mijozni unutish. Hamma kuch yangi mijozga ketadi</p></div>
+      <div class="card good"><span class="lbl">Toʻgʻri yoʻl</span><p class="t">Keyingi tugʻilgan kunga eslatma. Tavsiya qilganga rahmat va sovgʻa</p></div>
+    </div>
+    <div class="datab"><b>DATA maktabida:</b> tavsiya bergan ota-onaga 3 ish kuni ichida shaxsan rahmat aytiladi. Ketayotgan oila bilan suhbatda sababi yozib olinadi.</div>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>Yoʻl aylana shaklida: mamnun mijoz keyingi mijozning 1-bosqichiga aylanadi. Ketayotgan mijoz ham foydali: u nega ketayotganini aytsa, keyingilarni saqlab qolasiz. Bu suhbat inglizcha exit interview deyiladi.</p></details>
+  </div>
+</section>
+
+<section class="slide grey" id="s-data18">
+  <div class="in">
+    <span class="eyebrow">Haqiqiy misol · DATA maktabi</span>
+    <h2>Ota-ona yoʻli: 18 bosqich. Bosing</h2>
+    <div class="map18" id="map18"></div>
+    <div class="mapd" id="mapd" aria-live="polite"></div>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>Bu kichik biznes uchun namuna emas. Maktabda mijoz bilan munosabat yillar davom etgani uchun xarita katta. Och koʻk rang — sotuvgacha boʻlgan bosqichlar. Har katakdagi raqam: shu bosqichda yozilgan vazifalar soni. Sizga 18 ta kerak emas, 5–7 tasidan boshlang.</p></details>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Xaritadan chiqqan xulosa</span>
+    <h2>Ishning asosiy qismi sotuvdan keyin</h2>
+    <div class="big2" style="--a:219fr;--b:887fr">
+      <div><b>219</b><p class="small">sotuvgacha</p></div>
+      <div><b>887</b><p class="small" style="color:#cfe0ff">sotuvdan keyin (sinfga joylashdan ketishgacha)</p></div>
+    </div>
+    <p class="lead">Koʻp biznes hamma kuchni chapdagi kichik qismga sarflaydi.</p>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>DATA ning 1 600 ta vazifasidan 1 106 tasi ota-ona yoʻliga tegishli (qolgan 494 tasi HR, moliya kabi ichki ishlar). Ulardan 219 tasi 1–8-bosqichda, 887 tasi 9–18-bosqichda. Yaʼni vazifalarning 80 foizi pul olingandan keyin boshlanadi. Maktab uchun bu tabiiy, lekin savol hamma biznesga tegishli: siz mijozni olgandan keyin nima qilasiz?</p></details>
+  </div>
+</section>
+
+<section class="slide white" id="s-sop">
+  <div class="in">
+    <span class="eyebrow">CJM dan ishga</span>
+    <h2>Xarita, SOP, vazifa</h2>
+    <div class="chain">
+      <div class="card"><div class="k c">18</div><h3>CJM bosqichi</h3><p class="small"><strong>Qayerda?</strong> Mijoz yoʻlining qaysi nuqtasi</p></div>
+      <span class="ar">→</span>
+      <div class="card"><div class="k c">73</div><h3>SOP</h3><p class="small"><strong>Qanday?</strong> Ishni bajarishning yozma qoidasi</p></div>
+      <span class="ar">→</span>
+      <div class="card hl"><div class="k">1 600</div><h3 style="color:#fff">Vazifa</h3><p class="small" style="color:#cfe0ff"><strong>Kim, qachon?</strong> Aniq odam, aniq muddat</p></div>
+    </div>
+    <p class="lead"><strong>SOP</strong> (Standard Operating Procedure) — ish tartibi. Xuddi retsept: kim pishirsa ham, osh bir xil chiqadi.</p>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>CJM nima boʻlishi kerakligini koʻrsatadi, lekin ishni bajarmaydi. Xarita ishlashi uchun har bosqich SOP ga, SOP esa aniq vazifalarga aylanadi. Biz hamma narsani Durbin tizimiga kiritish ustida ishlayapmiz. Shuni ochiq aytaman: SOPlarning koʻpi yangi va bosqichma-bosqich joriy etilmoqda. Yozish oson, bajarish qiyin.</p></details>
+  </div>
+</section>
+
+<section class="slide grey">
+  <div class="in">
+    <span class="eyebrow">Bitta vazifaning anatomiyasi · SOP-SAL-001</span>
+    <h2>Yaxshi vazifa 5 savolga javob beradi</h2>
+    <div class="anat">
+      <b>Nima?</b><span>Yangi murojaatga birinchi qoʻngʻiroq</span>
+      <b>Kim?</b><span>Qabul boʻlimi</span>
+      <b>Qachon boshlanadi?</b><span>Yangi murojaat tizimga tushishi bilan, avtomatik</span>
+      <b>Muddat?</b><span>1 soat</span>
+      <b>Kechiksa?</b><span>Marketing rahbariga chiqadi</span>
+    </div>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>«Mijozlarga yaxshi munosabatda boʻling» — bu vazifa emas, orzu. Vazifada nima, kim, qachon, muddat va kechiksa nima boʻlishi yoziladi. Bunday vazifani odam eslab yurishi shart emas, tizimning oʻzi yaratadi. Kechikish esa avtomatik rahbarga chiqadi. Bu <strong>eskalatsiya</strong> deyiladi.</p></details>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">1-topshiriq · Jamoalarda · 5 daqiqa</span>
+    <h2>Qaysi bosqichda yoʻqotdik?</h2>
+    <p class="small">Jamoa barmoq bilan 1 dan 7 gacha koʻrsatadi, keyin ochamiz.</p>
+    <div class="grid g2">
+      <details class="qa"><summary>Telefon doʻkoni izohlarga javob bermaydi, mijoz boshqasidan oldi</summary><p>2-bosqich. Solishtirish paytida javob yoʻq</p></details>
+      <details class="qa"><summary>Oʻquv markaziga keldi. Administrator telefondan boshini koʻtarmadi</summary><p>3-bosqich. Birinchi uchrashuv</p></details>
+      <details class="qa"><summary>Kiyimni tanladi, lekin karta qabul qilinmas ekan, ketdi</summary><p>4-bosqich. Toʻlash noqulay</p></details>
+      <details class="qa"><summary>Kursga yozildi, birinchi darsda hech kim uni tanishtirmadi</summary><p>5-bosqich. Birinchi tajriba</p></details>
+      <details class="qa"><summary>Yetkazish kechikdi, yozsa, «kuryer bilan gaplashing» deyishdi</summary><p>6-bosqich. Muammoda yordam yoʻq</p></details>
+      <details class="qa"><summary>Sartaroshga 3 yil bordi. U ochgan yangi joyni hech kim aytmadi</summary><p>7-bosqich. Doimiy mijoz unutildi</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FARQI ================= -->
+<section class="slide dark" id="s-farq">
+  <div class="in">
+    <span class="eyebrow">Solishtiramiz · Bir xil tort, bir xil narx</span>
+    <div class="tog" role="group" aria-label="Variant"><button data-v="yoq" class="sel">CJM yoʻq</button><button data-v="bor">CJM bor</button></div>
+    <svg class="curve" id="tog-curve" viewBox="0 0 600 100" preserveAspectRatio="none" aria-label="Mijoz kayfiyati chizigʻi"></svg>
+    <div class="story" id="tog-story"></div>
+    <p class="lead" id="tog-res"></p>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>Ikkala holatda tort mazasi bir xil. Oʻzgargan yagona narsa — yoʻl. Yuqoridagi chiziq <strong>kayfiyat chizigʻi</strong>: mijoz har lahzada oʻzini qanday his qilganini koʻrsatadi. U CJM ning eng muhim qismi. Chiziq pastga tushgan joy — biznesning teshigi.</p></details>
+  </div>
+</section>
+
+<section class="slide white">
+  <div class="in">
+    <span class="eyebrow">Adashtirmang</span>
+    <h2>CJM, voronka va SOP farqi</h2>
+    <div class="tscroll">
+    <table class="ctable">
+      <thead><tr><th></th><th>CJM</th><th>Voronka</th><th>SOP</th></tr></thead>
+      <tbody>
+        <tr><th>Savoli</th><td>Mijoz nimani boshdan kechiradi?</td><td>Necha kishi yoʻqoldi?</td><td>Xodim qanday bajaradi?</td></tr>
+        <tr><th>Kimning koʻzi</th><td>Mijozniki</td><td>Biznes egasiniki</td><td>Xodimniki</td></tr>
+        <tr><th>Tili</th><td>His, xavotir, kutish</td><td>Raqam, foiz</td><td>Qadam, muddat</td></tr>
+        <tr><th>Qamrovi</th><td>Eshitishdan tavsiyagacha</td><td>Asosan sotuvgacha</td><td>Bitta jarayon</td></tr>
+        <tr><th>Tort doʻkonida</th><td>«Javob kutib jahlim chiqdi»</td><td>100 yozdi, 40 ga javob berildi</td><td>Har xabarga 15 daqiqada javob</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="lead">Voronka <strong>qayerda</strong> yoʻqotganingizni aytadi, CJM <strong>nega</strong> ekanini, SOP <strong>qanday tuzatishni</strong>.</p>
+  </div>
+</section>
+
+<!-- ================= QOIDALAR ================= -->
+<section class="slide grey" id="s-qoida">
+  <div class="in">
+    <span class="eyebrow">Asosiy qoidalar</span>
+    <h2>CJM ning 7 qoidasi</h2>
+    <div class="rules">
+      <div class="card"><span class="n">1</span><div><h3>Mijoz koʻzi bilan yoz</h3><p class="small">«Javob berdik» emas, «javob kutdim»</p></div></div>
+      <div class="card"><span class="n">2</span><div><h3>Taxmin qilma, soʻra</h3><p class="small">5 ta mijoz bilan gaplash</p></div></div>
+      <div class="card"><span class="n">3</span><div><h3>Bosqichga bitta egasi</h3><p class="small">Ikki kishi javobgar = hech kim javobgar emas</p></div></div>
+      <div class="card"><span class="n">4</span><div><h3>Har bosqichga muddat va raqam</h3><p class="small">Muddat yoʻq boʻlsa, kechikish koʻrinmaydi</p></div></div>
+      <div class="card"><span class="n">5</span><div><h3>Uzatishda yoʻqotma</h3><p class="small">Mijoz bir gapni ikki marta aytmasin</p></div></div>
+      <div class="card"><span class="n">6</span><div><h3>Eng katta teshikdan boshla</h3><p class="small">Hammasini birdan tuzatib boʻlmaydi</p></div></div>
+      <div class="card"><span class="n">7</span><div><h3>Xaritani yangilab tur</h3><p class="small">Mijoz oʻzgaradi, xarita ham oʻzgaradi</p></div></div>
+    </div>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>Bu qoidalar DATA ning qabul SOPlarida ham bor. Masalan, voronkaning har bosqichida bitta javobgar rol belgilanadi, bir menejerdan ikkinchisiga uzatish nuqtalari yozma koʻrsatiladi, ota-ona kutuvi uning oʻz soʻzlari bilan yoziladi, suhbat skripti esa yiliga ikki marta mijoz suhbatlari asosida yangilanadi. 2-qoida CustDev mavzusi: mijoz bilan gaplashib, haqiqatni bilib olish.</p></details>
+  </div>
+</section>
+
+<section class="slide blue">
+  <div class="in">
+    <span class="eyebrow" style="color:#9fe3ff">Psixologiya · Kaneman, 1993</span>
+    <h2>Odam yoʻlning hammasini eslamaydi</h2>
+    <div class="vs">
+      <div class="card"><h3>A tajriba</h3><p class="t">Qoʻl 14°C suvda 60 soniya</p></div>
+      <div class="card"><h3>B tajriba</h3><p class="t">Xuddi shu 60 soniya + yana 30 soniya, suv sal iliydi (15°C)</p></div>
+    </div>
+    <p class="quote">Koʻpchilik takrorlash uchun uzunroq azobni, B ni tanladi.</p>
+    <p class="lead">Xotirada eng kuchli lahza va <strong style="color:#fff">oxiri</strong> qoladi.</p>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>Bu «choʻqqi va yakun qoidasi» deyiladi. Biznes uchun xulosa: butun yoʻlni mukammal qilish shart emas. Bitta kuchli lahza yarating va yakunni chiroyli tugating. Xizmatdan keyingi «rahmat», bepul kichik sovgʻa, ertasi kungi xabar shu sababli ishlaydi. Lekin bu yomon xizmatni oqlamaydi: yaxshi yakun yomon mahsulotni qutqarmaydi.</p></details>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Mening xatom</span>
+    <h2>Xaritani ortiqcha kattalashtirmang</h2>
+    <div class="grid c3">
+      <div class="card"><div class="k c">1 600</div><h3>Vazifa yozdim</h3><p class="small">Toʻliq va chiroyli koʻrindi</p></div>
+      <div class="card bad"><div class="k">~45 / 5–10</div><h3>Sinf rahbariga kuniga</h3><p class="small">Faylda ~45 ta tushdi. Haqiqatda 5–10 tasini yopa oladi</p></div>
+      <div class="card good"><div class="k">~300</div><h3>Birinchi toʻlqin</h3><p class="small">Qisqartirishga qaror qildik</p></div>
+    </div>
+    <p class="lead">Bajarilmaydigan xarita — chiroyli qogʻoz.</p>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>Bu dars ichidagi eng muhim saboq boʻlishi mumkin. Oʻz xaritangizni chizganda hamma narsani yozgingiz keladi. Lekin har qator kimningdir kunidagi vaqtni oladi. Shuning uchun DATA da SOPlar hamma birdan emas, toʻlqinlar bilan joriy etilmoqda. Siz ham bir varaqdan boshlang.</p></details>
+  </div>
+</section>
+
+<!-- ================= VORONKA ================= -->
+<section class="slide dark" id="s-voronka">
+  <div class="in">
+    <span class="eyebrow">Sotuv voronkasi</span>
+    <div class="split">
+      <div style="display:flex;flex-direction:column;gap:calc(var(--u)*1.6)">
+        <h2>Har qadamda odam kamayadi</h2>
+        <p class="lead">Voronka — CJM ning raqamli qismi. Har bosqichda necha kishi qolganini koʻrsatadi.</p>
+        <div class="rows">
+          <div class="row"><b>Lid</b><p class="t">Qiziqib murojaat qilgan odam</p></div>
+          <div class="row"><b>Konversiya</b><p class="t">Keyingi bosqichga oʻtganlar foizi</p></div>
+          <div class="row"><b>Oʻrtacha chek</b><p class="t">Bir mijoz oʻrtacha qancha toʻlaydi</p></div>
+        </div>
+      </div>
+      <div class="fn" aria-label="Voronka namunasi">
+        <div style="width:100%">10 000 koʻrdi</div><small class="hole">3%</small>
+        <div style="width:70%">300 yozdi</div><small>40%</small>
+        <div style="width:48%">120 keldi</div><small>50%</small>
+        <div class="last" style="width:34%">60 sotib oldi</div>
+      </div>
+    </div>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>Hisob oddiy: <strong>konversiya = keyingi bosqich ÷ oldingi bosqich × 100</strong>. 300 kishi yozib, 120 tasi kelsa, 120 ÷ 300 × 100 = 40%. Voronka shakli tabiiy: hech qachon hamma sotib olmaydi. Maqsad 100% emas, har bosqichda bilib turish. Voronkani inglizcha sales funnel deyishadi. Rasmdagi raqamlar namuna uchun.</p></details>
+  </div>
+</section>
+
+<section class="slide grey">
+  <div class="in">
+    <span class="eyebrow">Voronka qanday tuziladi</span>
+    <h2>5 qadam</h2>
+    <div class="steps5">
+      <div>1. Boʻl<small>Yoʻlni mijoz harakatlariga boʻling</small></div>
+      <div>2. Sana<small>Har bosqichda nechta odam?</small></div>
+      <div>3. Hisobla<small>Bosqichlar orasidagi foiz</small></div>
+      <div class="f">4. Teshikni top<small>Eng koʻp yoʻqotish qayerda?</small></div>
+      <div>5. Tuzat<small>Bitta narsani oʻzgartir, qayta oʻlcha</small></div>
+    </div>
+    <div class="datab"><b>DATA maktabida:</b> bosqichlar konversiyasi har oy hisoblanadi. Yoʻqotilgan oilalar sababi 4 guruhga ajratiladi: narx, joylashuv, raqobatchi, ishonch.</div>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>1-qadamda bosqich — bu <strong>mijozning aniq harakati</strong>: «yozdi», «keldi», «toʻladi». «Oʻylab koʻryapti» bosqich emas, uni oʻlchab boʻlmaydi. 2-qadamga qimmat dastur shart emas: daftar yoki Excel yetadi. 5-qadamda bir vaqtda bitta narsani oʻzgartiring, aks holda nima ishlaganini bilmaysiz.</p></details>
+  </div>
+</section>
+
+<section class="slide dark" id="s-calc">
+  <div class="in">
+    <span class="eyebrow">Sinab koʻring</span>
+    <h2>Voronka kalkulyatori</h2>
+    <div class="calc">
+      <div style="display:flex;flex-direction:column;gap:calc(var(--u)*1)">
+        <label>Reklamani koʻrdi <b id="o-see"></b><input type="range" id="f-see" min="1000" max="50000" step="1000" value="10000"></label>
+        <label>Yozdi, % <b id="o-msg"></b><input type="range" id="f-msg" min="0.5" max="10" step="0.5" value="3"></label>
+        <label>Keldi, % <b id="o-come"></b><input type="range" id="f-come" min="5" max="90" step="5" value="40"></label>
+        <label>Sotib oldi, % <b id="o-buy"></b><input type="range" id="f-buy" min="5" max="90" step="5" value="50"></label>
+        <label>Oʻrtacha chek, ming soʻm <b id="o-chek"></b><input type="range" id="f-chek" min="20" max="500" step="10" value="250"></label>
+      </div>
+      <div class="res">
+        <div class="fn" id="fn-live"></div>
+        <div class="card hl"><div class="k" id="f-sum"></div><p class="small" style="color:#cfe0ff" id="f-note"></p></div>
+      </div>
+    </div>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>Mashq: «Yozdi» foizini oʻzgartirmay, «Keldi» ni 40 dan 80 ga koʻtaring. Daromad ikki barobar boʻladi. Xuddi shu natijani reklamani ikki barobar koʻpaytirib ham olish mumkin, lekin reklama pul turadi. «Keldi» foizini esa koʻpincha tez javob va eslatma oshiradi, bu deyarli bepul. Xulosa: avval teshik, keyin reklama.</p></details>
+  </div>
+</section>
+
+<section class="slide grey" id="s-manba">
+  <div class="in">
+    <span class="eyebrow">Haqiqiy raqamlar · DATA maktabi · Durbin</span>
+    <h2>Qaysi manba koʻproq oʻquvchi keltirdi?</h2>
+    <div class="src" id="src">
+      <div class="r"><span class="h">Manba</span><span class="h">Murojaat (lid)</span><span class="h s">Oʻquvchi boʻldi</span></div>
+    </div>
+    <button class="btn" id="src-open" style="align-self:flex-start">Avval taxmin qiling, keyin bosing</button>
+    <p class="lead" id="src-note" hidden>Eng koʻp lid bergan kanal eng koʻp oʻquvchi bermadi.</p>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>Barcha vaqt uchun jami 6 505 ta murojaatdan 220 tasi oʻquvchi boʻlgan, yaʼni 3,4%. Reklama eng koʻp lid beradi, lekin ularning 0,7 foizi keladi. Tavsiya bilan kelganlar juda oz, atigi 10 ta, shuning uchun 50% ni aniq xulosa deb boʻlmaydi, faqat yoʻnalish deb qarang. Lid sonini emas, oxirgi natijani oʻlchang. Boʻsh manbali 387 lid va mayda kanallar jadvalda koʻrsatilmagan.</p></details>
+  </div>
+</section>
+
+<section class="slide white">
+  <div class="in">
+    <span class="eyebrow">DATA qarori · Filtrli voronka</span>
+    <h2>Hamma ham sizning mijozingiz emas</h2>
+    <div class="steps5">
+      <div>Murojaat</div><div>Tashrif</div><div class="f">Suhbat<small>Moslik baholanadi</small></div><div>Taklif</div><div>Shartnoma</div>
+    </div>
+    <p class="quote">«DATA faqat oʻquvchini emas, oilani tanlaydi.»</p>
+    <p class="who">SOP-ADM-001, Qabul jarayoni</p>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>Voronka faqat koʻproq sotish uchun emas, toʻgʻri mijozni tanlash uchun ham kerak. Mos boʻlmagan mijozga sotsangiz, keyin shikoyat, qaytarish va yomon nom keladi. Shuning uchun ota-ona kutgan narsa maktab imkoniyatiga mos kelmasa, suhbatda ochiq aytiladi. Soʻzda oson, lekin baʼzan bu pulni rad etish degani.</p></details>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Eng muhim rasm</span>
+    <h2>Voronka sotuvda tugamaydi</h2>
+    <svg viewBox="0 0 900 220" style="width:100%;height:calc(var(--u)*22);min-height:150px" role="img" aria-label="Kapalak shaklidagi voronka: chapda toraygan sotuv, oʻngda kengaygan qaytish va tavsiya">
+      <path d="M0 10 L420 90 L420 130 L0 210Z" fill="#0b2db4"/>
+      <path d="M480 90 L900 10 L900 210 L480 130Z" fill="#30d158"/>
+      <circle cx="450" cy="110" r="44" fill="#29c5ff"/>
+      <text x="450" y="116" text-anchor="middle" font-size="19" font-weight="800" fill="#001b33">Sotuv</text>
+      <text x="190" y="116" text-anchor="middle" font-size="24" font-weight="800" fill="#fff">Mijozni topish</text>
+      <text x="710" y="116" text-anchor="middle" font-size="24" font-weight="800" fill="#00230c">Saqlash va tavsiya</text>
+    </svg>
+    <p class="lead">Chap tomon reklama bilan oʻsadi. Oʻng tomon xizmat bilan oʻsadi, va u yangi mijoz olib keladi.</p>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>Oddiy voronka sotuv bilan tugaydi. Haqiqiy biznes esa kapalakka oʻxshaydi. Sotuvdan keyingi tomon kengayadi: bir mijoz qayta xarid qiladi va doʻstini olib keladi. Shu sababli CJM va voronka birga ishlaydi. Oʻng tomonga eʼtibor berishning eng katta foydasi: bu mijozlar uchun reklamaga pul ketmaydi.</p></details>
+  </div>
+</section>
+
+<!-- ================= MASHQ ================= -->
+<section class="slide grey" id="s-mashq">
+  <div class="in">
+    <span class="eyebrow">2-topshiriq · Jamoaviy mashq · 20 daqiqa</span>
+    <h2>Biznesingiz xaritasini chizing</h2>
+    <div class="split">
+      <div class="rows">
+        <div class="row"><b>1</b><p class="t">Biznes tanlang: oʻz gʻoyangiz yoki kofexona, sartarosh, onlayn kiyim, repetitor, telefon taʼmiri, sport zal</p></div>
+        <div class="row"><b>2</b><p class="t">7 bosqichning har biri uchun: mijoz nima qiladi va qanday his qiladi</p></div>
+        <div class="row"><b>3</b><p class="t">Kayfiyat eng pastga tushgan joyni — teshikni toping</p></div>
+        <div class="row on"><b>4</b><p class="t">Teshikni tuzatadigan bitta aniq ishni yozing</p></div>
+      </div>
+      <div class="qrbox"><div class="qr" data-qr="xarita"></div><p class="link small" data-href="xarita"></p></div>
+    </div>
+    <button class="timer" data-sec="1200" style="align-self:flex-start">▶ 20:00 mashq</button>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>Jamoadan bitta odam telefonda toʻldiradi, qolganlar muhokama qiladi. Telefon qulflanib qolsa, yozilgan matn yoʻqolmaydi. Egasi koʻzi bilan emas, mijoz koʻzi bilan yozing: «reklama beramiz» emas, «Instagramda koʻrdim». Har bosqichga bitta jumla yetadi.</p></details>
+  </div>
+</section>
+
+<section class="slide dark" id="s-devor">
+  <div class="in">
+    <span class="eyebrow">Jonli · har jamoaga 1,5 daqiqa</span>
+    <h2>Xaritalar devori</h2>
+    <div class="wall" id="wall"></div>
+    <p class="small" id="wall-info">Xaritalar shu yerda chiqadi</p>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>Har jamoa uchta savolga javob beradi: mijoz kim, teshik qayerda, nimani oʻzgartiramiz. Qolganlar bitta savol beradi: «Buni mijozdan soʻradingizmi yoki oʻzingiz oʻylab topdingizmi?»</p></details>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Takrorlash · 3 daqiqa</span>
+    <h2>Eslab qoldingizmi?</h2>
+    <div class="grid g2">
+      <details class="qa"><summary>CJM nima?</summary><p>Mijoz bosib oʻtadigan yoʻlning xaritasi, uning koʻzi bilan</p></details>
+      <details class="qa"><summary>CJM va voronka farqi?</summary><p>Voronka qayerda, CJM nega yoʻqotganingizni koʻrsatadi</p></details>
+      <details class="qa"><summary>SOP nima?</summary><p>Ishni kim bajarsa ham bir xil chiqishi uchun yozilgan tartib</p></details>
+      <details class="qa"><summary>300 yozdi, 120 keldi. Konversiya?</summary><p>120 ÷ 300 × 100 = 40%</p></details>
+      <details class="qa"><summary>Yaxshi vazifaning 5 savoli?</summary><p>Nima? Kim? Qachon boshlanadi? Muddat? Kechiksa?</p></details>
+      <details class="qa"><summary>Savdo tushsa, birinchi nima qilinadi?</summary><p>Reklama emas. Avval teshikni topish</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="slide blue" id="s-uy">
+  <div class="in">
+    <span class="eyebrow" style="color:#9fe3ff">Uyga vazifa · keyingi shanbagacha</span>
+    <h2>Maxfiy mijoz</h2>
+    <div class="split">
+      <div class="rows">
+        <div class="row"><b>1</b><p class="t">Haqiqiy biznesni tanlang: doʻkon, kafe, oʻquv markazi</p></div>
+        <div class="row"><b>2</b><p class="t">Oddiy mijoz boʻlib yoʻlni bosib oʻting: yozing, boring, soʻrang</p></div>
+        <div class="row"><b>3</b><p class="t">7 bosqichni baholang va eng katta teshikni toping</p></div>
+        <div class="row"><b>4</b><p class="t">Bitta tuzatish taklif qiling</p></div>
+        <div class="row on"><b>★</b><p class="t">Qoʻshimcha: egasiga ayting va javobini yozing</p></div>
+      </div>
+      <div class="qrbox"><div class="qr" data-qr="uy"></div><p class="link small" data-href="uy"></p></div>
+    </div>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>Sotib olish shart emas. Narx soʻrash, yozish, borib koʻrish yetadi. Odob bilan yuring, hech kimni kamsitmang, xodimni suratga olmang. Eng yaxshi uchta ish keyingi darsda koʻrsatiladi. Agar biznes egasi sizning taklifingizni qabul qilsa, bu sizning birinchi konsalting ishingiz.</p></details>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="in">
+    <span class="eyebrow">Yakun</span>
+    <p class="quote xl">Mijoz faqat mahsulotingizni eslamaydi. U yoʻlni eslaydi.</p>
+    <div class="grid c3">
+      <div class="card"><h3>Xarita</h3><p class="small">Mijoz koʻzi bilan yoʻlni chizing</p></div>
+      <div class="card"><h3>Raqam</h3><p class="small">Voronka bilan teshikni toping</p></div>
+      <div class="card"><h3>Tartib</h3><p class="small">SOP bilan tuzatishni doimiy qiling</p></div>
+    </div>
+    <p class="lead">Oʻtgan darsga qaytamiz: yozilgan jarayonni AI ga topshirish mumkin. Yozilmaganini — yoʻq.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  DATA xalqaro maktabi · Biznes klub · 7–10-sinflar · har shanba<br>
+  <a href="index.html">Stiv Jobs</a> · <a href="startup.html">Startup</a> · <a href="ai.html">AI</a> · <a href="tadbirkor.html">Tadbirkor</a> · <a href="shaxsiyat.html">Shaxsiyat</a> · <a href="cjm.html">CJM</a><br>
+  <a href="#sorov">Soʻrovnoma</a> · <a href="#xarita">Jamoa xaritasi</a> · <a href="#uy">Uyga vazifa</a><br>
+  <span style="font-size:11px">Manbalar: DATA_Durbin_Vazifalar v17 (CJM, SOP, vazifalar); Durbin, manbalar boʻyicha lidlar, 2026-yil 7-noyabr holatiga, barcha vaqt. J. Carlzon, Moments of Truth (1987). D. Kahneman va boshq., When More Pain Is Preferred to Less, Psychological Science (1993). Tort doʻkoni — oʻylab topilgan misol.</span>
+</footer>
+
+<div class="hud"><i id="prog"></i></div>
+<button class="btn ghost exit" id="exit-present">Esc · chiqish</button>
+
+<!-- ============ telefon: soʻrovnoma ============ -->
+<section class="view" id="v-sorov">
+  <div class="box">
+    <span class="eyebrow" style="color:var(--data)">DATA Biznes Klub · anonim soʻrovnoma</span>
+    <h2>Nega qaytib bormadingiz?</h2>
+    <p>Bir marta borib, ikkinchi marta bormagan joyingizni eslang. Asosiy sabab nima edi?</p>
+    <div class="pick" id="sorov-pick"></div>
+    <button class="btn" id="sorov-send">Yuborish</button>
+    <p class="msg" id="sorov-msg" role="status"></p>
+    <p class="small">Ism soʻralmaydi. Natija faqat umumiy koʻrinadi.</p>
+  </div>
+</section>
+
+<!-- ============ telefon: jamoa xaritasi ============ -->
+<section class="view" id="v-xarita">
+  <form class="box" id="x-form">
+    <span class="eyebrow" style="color:var(--data)">DATA Biznes Klub · jamoaviy mashq</span>
+    <h2>Mijoz yoʻli xaritasi</h2>
+    <label for="x-team">Jamoa nomi<input id="x-team" maxlength="40" required></label>
+    <label for="x-biz">Biznes<input id="x-biz" maxlength="80" required placeholder="Masalan: maktab yonidagi kofexona"></label>
+    <div id="x-steps" style="display:flex;flex-direction:column;gap:10px"></div>
+    <label for="x-hole">Eng katta teshik qaysi bosqichda?<select id="x-hole" required></select></label>
+    <label for="x-fix">Teshikni qanday tuzatamiz?<textarea id="x-fix" maxlength="300" required></textarea></label>
+    <button class="btn" type="submit">Yuborish</button>
+    <p class="msg" id="x-msg" role="status"></p>
+  </form>
+</section>
+
+<!-- ============ telefon: uyga vazifa ============ -->
+<section class="view" id="v-uy">
+  <form class="box" id="u-form">
+    <span class="eyebrow" style="color:var(--data)">DATA Biznes Klub · uyga vazifa</span>
+    <h2>Maxfiy mijoz</h2>
+    <label for="u-author">Ism va familiya, sinf<input id="u-author" maxlength="80" required placeholder="Masalan: Aziza Karimova, 8-B"></label>
+    <label for="u-biz">Qaysi biznesni tekshirdingiz?<input id="u-biz" maxlength="120" required></label>
+    <div id="u-steps" style="display:flex;flex-direction:column;gap:10px"></div>
+    <label for="u-hole">Eng katta teshik qaysi bosqichda?<select id="u-hole" required></select></label>
+    <label for="u-why">Nega aynan shu yerda? Nima boʻldi?<textarea id="u-why" maxlength="500" required></textarea></label>
+    <label for="u-fix">Bitta tuzatish taklifingiz<textarea id="u-fix" maxlength="500" required></textarea></label>
+    <label for="u-owner">Qoʻshimcha: egasi nima dedi? (ixtiyoriy)<textarea id="u-owner" maxlength="500"></textarea></label>
+    <button class="btn" type="submit">Topshirish</button>
+    <p class="msg" id="u-msg" role="status"></p>
+  </form>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+const SB_URL = 'https://onbvjawjvxbiyqnimvnh.supabase.co';
+const SB_KEY = 'sb_publishable_ch6uaEZEkI5r-fTOtlJxrw_XI0qJuUQ';
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const dir = location.origin + location.pathname.replace(/[^/]*$/, '');
+const links = { sorov: dir + 'cjm.html#sorov', xarita: dir + 'cjm.html#xarita', uy: dir + 'cjm.html#uy' };
+const WHY = ['Uzoq kutdim', 'Muomala yoqmadi', 'Yozdim, javob berishmadi', 'Aytganidek chiqmadi', 'Narxi qimmat', 'Mahsuloti yomon'];
+const STAGES = [
+  ['Eshitdi', 'Bu joy haqida qayerdan bildi?'],
+  ['Solishtirdi', 'Nimani soʻradi, nimaga qaradi?'],
+  ['Uchrashdi', 'Birinchi uchrashuv qanday oʻtdi?'],
+  ['Sotib oldi', 'Toʻlash oson boʻldimi?'],
+  ['Sinab koʻrdi', 'Birinchi tajriba qanday boʻldi?'],
+  ['Foydalandi', 'Muammo boʻlsa, kim yordam berdi?'],
+  ['Qaytdi', 'Nega qaytadi yoki tavsiya qiladi?']
+];
+const MOODS = ['😡', '😟', '😐', '🙂', '😍'];
+const MAP18 = [
+  ['Xabardorlik', 'Marketing', 52, 'Instagram va Telegram postlarini brend ovozida joylash'],
+  ['Qiziqish', 'Qabul', 31, 'Onlayn murojaatga 15 daqiqa ichida birinchi javob berish'],
+  ['Taqqoslash', 'Qabul / Marketing', 22, 'Raqobatchi maktabga ketgan oilalarni alohida yozib borish'],
+  ['Maktabga tashrif', 'Qabul / Admin', 12, 'Tashrifdan bir kun oldin eslatma yuborib, kelishini tasdiqlash'],
+  ['Qabul suhbati', 'Qabul', 25, 'Ota-onaning asosiy ehtiyojini uning oʻz soʻzlari bilan yozib olish'],
+  ['Test / Baholash', 'Akademik boʻlim', 7, 'Oʻquvchiga kirish testini tashkil qilish'],
+  ['Shartnoma', 'Qabul / Moliya', 20, 'Shartnoma imzolanmaguncha toʻlov olinmasligini nazorat qilish'],
+  ['Toʻlov', 'Moliya', 50, 'Har toʻlovga kvitansiya berib, nima uchun olinayotganini tushuntirish'],
+  ['Sinfga joylash', 'Qabul / Akademik', 28, 'Oʻquvchini akademik jamoaga rasmiy topshirish, 48 soat ichida'],
+  ['Birinchi kun', 'Sinf rahbari / Admin', 13, 'Birinchi kun yakunida ota-onaga xabar berish, 4 soat ichida'],
+  ['Adaptatsiya', 'Psixolog', 34, '30-kuni moslashuvni 1–10 baholash, 7 dan past boʻlsa direktorga'],
+  ['Kundalik taʼlim jarayoni', 'Akademik / Operatsiya', 436, 'Har smena boshida oshxona xodimlarining salomatligini soʻrab qayd etish'],
+  ['Akademik monitoring', 'Akademik boʻlim', 111, 'Dushanba kuni 60 foizdan past natija olgan oʻquvchilarni aniqlash'],
+  ['Ota-ona bilan aloqa', 'Ota-ona aloqasi', 106, 'Xavotirli holat sezilganda ota-onaga darhol xabar berish'],
+  ['Muammo / shikoyat', 'Operatsiya / Direktor', 97, 'Ijtimoiy tarmoqdagi salbiy izohga 1 soat ichida javob berish'],
+  ['Qayta qabul', 'Operatsiya / Direktor', 25, 'Boshqa maktabga qiziqqan ota-ona bilan direktor 48 soat ichida gaplashadi'],
+  ['Tavsiya', 'Marketing / Operatsiya', 14, 'Tavsiya bergan ota-onaga 3 ish kuni ichida shaxsan rahmat aytish'],
+  ['Chiqib ketish', 'Qabul / Direktor', 23, 'Suhbatda ketish sababini yozib olish']
+];
+const STORY = {
+  yoq: { m: [3, 1, 2, 1, 1, 1], t: ['Narx yozilmagan, «directga yozing»', 'Kechki 21:00 da soʻradi, javob ertasi kechqurun', 'Uch marta qayta yozishdi, shart noaniq', 'Tort kechikdi, ism xato', '«Bizda xato boʻlmaydi»', 'Hech kim yozmadi. Keyingi safar boshqa doʻkon'], r: 'Bitta buyurtma va yomon fikr. Tort mazali edi, lekin mijoz yoʻqoldi.' },
+  bor: { m: [4, 5, 4, 5, 4, 5], t: ['Narx va namunalar darhol koʻrinadi', '15 daqiqada javob keldi', 'Bitta forma: sana, ism, oʻlcham', 'Kecha eslatma, tort oʻz vaqtida', 'Kechirim va keyingi tortga chegirma', '«Bazm qanday oʻtdi?» Keyingi yil eslatma. Dugonasiga tavsiya'], r: 'Mijoz qaytdi va dugonasini olib keldi. Reklama yana kerak boʻlmadi.' }
+};
+const NAMES = ['Koʻrdi', 'Soʻradi', 'Buyurtma', 'Oldi', 'Muammo', 'Keyin'];
+const SRC = [['Reklama (target)', 3111, 23], ['Ijtimoiy tarmoq jamoasi', 2019, 28], ['Call-markaz', 637, 50], ['Markaz', 267, 107], ['Doʻst tavsiyasi', 10, 5]];
+
+async function api(path, opt = {}) {
+  const r = await fetch(SB_URL + '/rest/v1/' + path, { ...opt, headers: { apikey: SB_KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal', ...(opt.headers || {}) } });
+  if (!r.ok) throw new Error(r.status + ' ' + await r.text());
+  return r.status === 200 ? r.json() : null;
+}
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+const num = n => Math.round(n).toLocaleString('ru-RU').replace(/,/g, ' ');
+
+/* kayfiyat chizigʻi: 1..5 qiymatlardan SVG */
+function curve(moods, stroke = '#29c5ff') {
+  const pts = moods.map((m, i) => [10 + i * 580 / (moods.length - 1), 92 - (m - 1) * 21]);
+  return `<polyline fill="none" stroke="${stroke}" stroke-width="4" vector-effect="non-scaling-stroke" points="${pts.map(p => p.join(',')).join(' ')}"/>` +
+    pts.map(p => `<path d="M${p[0]} ${p[1]}h.01" stroke="${stroke}" stroke-width="13" stroke-linecap="round" vector-effect="non-scaling-stroke"/>`).join('');
+}
+
+/* ---------- surat joylari ---------- */
+$$('.ph[data-src]').forEach(el => {
+  const f = el.dataset.src;
+  el.innerHTML = `<span>📷 ${esc(el.dataset.cap)}<br>${f}</span><img src="${f}" alt="${esc(el.dataset.cap)}" loading="lazy" onerror="this.remove()">`;
+});
+
+/* ---------- QR va havolalar ---------- */
+$$('[data-qr]').forEach(el => { if (window.QRCode) new QRCode(el, { text: links[el.dataset.qr], width: 512, height: 512, correctLevel: QRCode.CorrectLevel.M }) });
+$$('[data-href]').forEach(el => el.textContent = links[el.dataset.href].replace(/^https?:\/\//, ''));
+
+/* ---------- 7 bosqich nuqtalari ---------- */
+$$('[data-st]').forEach(s => {
+  const n = +s.dataset.st;
+  $('.st-dots', s).innerHTML = [1, 2, 3, 4, 5, 6, 7].map(i => `<i class="${i < n ? 'done' : i === n ? 'now' : ''}"></i>`).join('');
+});
+
+/* ---------- izohlar: saytda ochiq, taqdimotda yopiq ---------- */
+const izoh = open => $$('.izoh').forEach(d => d.open = open);
+izoh(true);
+
+/* ---------- DATA 18 bosqich ---------- */
+function pick18(i) {
+  const [name, dep, n, ex] = MAP18[i];
+  $$('#map18 button').forEach((b, j) => b.classList.toggle('sel', j === i));
+  $('#mapd').innerHTML = `<h3>${i + 1}. ${name}</h3><p class="small">${dep} · ${n} ta vazifa</p><p class="t"><strong>Namuna:</strong> ${ex}</p>`;
+}
+$('#map18').innerHTML = MAP18.map((m, i) => `<button type="button" class="${i < 8 ? 'pre' : ''}" data-i="${i}">${i + 1}. ${m[0]}<small>${m[2]}</small></button>`).join('');
+$('#map18').onclick = e => { const b = e.target.closest('button'); if (b) pick18(+b.dataset.i) };
+pick18(1);
+
+/* ---------- CJM bor/yoʻq ---------- */
+function story(v) {
+  const s = STORY[v];
+  $$('.tog button').forEach(b => b.classList.toggle('sel', b.dataset.v === v));
+  $('#tog-curve').innerHTML = curve(s.m, v === 'bor' ? '#30d158' : '#ff453a');
+  $('#tog-story').innerHTML = s.t.map((t, i) => `<div class="card"><b>${NAMES[i]}</b>${MOODS[s.m[i] - 1]} ${t}</div>`).join('');
+  $('#tog-res').textContent = s.r;
+}
+$$('.tog button').forEach(b => b.onclick = () => story(b.dataset.v));
+story('yoq');
+
+/* ---------- voronka kalkulyatori ---------- */
+function calc() {
+  const v = id => +$('#f-' + id).value;
+  const see = v('see'), msg = see * v('msg') / 100, come = msg * v('come') / 100, buy = come * v('buy') / 100, sum = buy * v('chek') * 1000;
+  $('#o-see').textContent = num(see); $('#o-msg').textContent = v('msg') + '%'; $('#o-come').textContent = v('come') + '%'; $('#o-buy').textContent = v('buy') + '%'; $('#o-chek').textContent = v('chek');
+  const lv = [['koʻrdi', see], ['yozdi', msg], ['keldi', come], ['sotib oldi', buy]];
+  const rates = [v('come'), v('buy')], low = rates[0] <= rates[1] ? 0 : 1;
+  $('#fn-live').innerHTML = lv.map(([n, x], i) => `<div class="${i === 3 ? 'last' : ''}" style="width:${Math.max(30, Math.sqrt(x / see) * 100)}%">${num(x)} ${n}</div>`).join('');
+  $('#f-sum').textContent = num(sum) + ' soʻm';
+  $('#f-note').textContent = `Eng kuchsiz joy (reklamadan keyin): «${low ? 'Sotib oldi' : 'Keldi'}», ${rates[low]}%. Shuni 2 barobar oshirsangiz: ${num(sum * 2)} soʻm.`;
+}
+$$('#s-calc input').forEach(i => i.oninput = calc);
+calc();
+
+/* ---------- haqiqiy manbalar ---------- */
+const maxL = Math.max(...SRC.map(s => s[1])), maxS = Math.max(...SRC.map(s => s[2]));
+$('#src').insertAdjacentHTML('beforeend', SRC.map(([n, l, s]) => `<div class="r"><span>${n}</span><span class="b"><i style="width:${l / maxL * 70}%"></i>${num(l)}</span><span class="b s"><i style="width:${s / maxS * 70}%"></i>${s} <small>(${(s / l * 100).toFixed(1).replace('.', ',')}%)</small></span></div>`).join(''));
+$('#src-open').onclick = () => { $('#src').classList.add('open'); $('#src-note').hidden = false; $('#src-open').remove() };
+
+/* ---------- taqdimot rejimi ---------- */
+const slides = $$('.deck .slide');
+slides.forEach((s, i) => { const n = document.createElement('span'); n.className = 'num'; n.textContent = String(i + 1).padStart(2, '0') + ' / ' + slides.length; s.append(n) });
+let cur = 0;
+function show(i) {
+  cur = Math.max(0, Math.min(slides.length - 1, i));
+  slides.forEach((s, j) => { s.classList.toggle('cur', j === cur); s.classList.toggle('active', j === cur) });
+  $('#prog').style.width = ((cur + 1) / slides.length * 100) + '%';
+  onSlide(slides[cur]);
+}
+function present(on) {
+  document.body.classList.toggle('present', on);
+  izoh(!on);
+  if (on) {
+    const y = window.scrollY + innerHeight / 3;
+    const k = slides.findIndex(s => s.offsetTop + s.offsetHeight > y);
+    show(k < 0 ? 0 : k);
+    document.documentElement.requestFullscreen?.().catch(() => {});
+  } else {
+    slides.forEach(s => s.classList.remove('cur'));
+    document.fullscreenElement && document.exitFullscreen?.().catch(() => {});
+    slides[cur].scrollIntoView();
+  }
+}
+$('#go-present').onclick = () => present(true);
+$('#exit-present').onclick = () => present(false);
+document.addEventListener('fullscreenchange', () => { if (!document.fullscreenElement && document.body.classList.contains('present')) present(false) });
+document.addEventListener('keydown', e => {
+  if (document.body.classList.contains('v') || e.target.closest('input,textarea,select')) return;
+  const p = document.body.classList.contains('present');
+  if (!p) { if (e.key === 'p' || e.key === 'P') present(true); return }
+  if (['ArrowRight','ArrowDown','PageDown',' ','Enter'].includes(e.key)) { e.preventDefault(); show(cur + 1) }
+  else if (['ArrowLeft','ArrowUp','PageUp','Backspace'].includes(e.key)) { e.preventDefault(); show(cur - 1) }
+  else if (e.key === 'Home') show(0);
+  else if (e.key === 'End') show(slides.length - 1);
+  else if (e.key === 'Escape') present(false);
+  else if (e.key === 'i' || e.key === 'I') { const d = $('.izoh', slides[cur]); if (d) d.open = !d.open }
+});
+document.addEventListener('click', e => {
+  if (!document.body.classList.contains('present') || e.target.closest('button,a,input,label,details,.qr')) return;
+  show(cur + (e.clientX > innerWidth / 3 ? 1 : -1));
+});
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (document.body.classList.contains('present')) return;
+  e.target.classList.toggle('active', e.isIntersecting);
+  if (e.isIntersecting) onSlide(e.target);
+}), { threshold: .35 });
+slides.forEach(s => io.observe(s));
+
+/* ---------- jonli natijalar ---------- */
+async function pullPoll() {
+  try {
+    const rows = await api('rpc/cjm_poll_counts', { method: 'POST', body: '{}' });
+    const c = WHY.map(() => 0);
+    rows.forEach(r => c[r.pick - 1] = r.n);
+    const max = Math.max(1, ...c);
+    $('#b-sorov').innerHTML = WHY.map((o, i) => `<div class="r"><span>${o}</span><i style="width:${c[i] / max * 100}%"></i><b>${c[i]}</b></div>`).join('');
+    $('#sorov-info').textContent = c.reduce((a, b) => a + b, 0) + ' kishi javob berdi';
+  } catch { $('#sorov-info').textContent = 'Jonli natija uchun internet kerak.' }
+}
+async function pullWall() {
+  try {
+    const rows = await api('cjm_maps?select=id,team,biz,steps,hole,fix&order=id.desc&limit=30');
+    const seen = new Set(), list = rows.filter(r => { const k = r.team.trim().toLowerCase(); if (seen.has(k)) return false; seen.add(k); return true });
+    $('#wall').innerHTML = list.map(r => `<div class="card"><h3>${esc(r.team)}</h3><p class="small">${esc(r.biz)}</p><svg class="curve" viewBox="0 0 600 100" preserveAspectRatio="none">${curve(r.steps.map(s => +s.m || 3))}</svg><p class="small"><strong style="color:#ff6961">Teshik: ${r.hole}. ${esc(STAGES[r.hole - 1]?.[0])}</strong></p><p class="small" style="color:#fff">${esc(r.fix)}</p></div>`).join('');
+    $('#wall-info').textContent = list.length ? list.length + ' ta jamoa' : 'Xaritalar shu yerda chiqadi';
+  } catch { $('#wall-info').textContent = 'Jonli natija uchun internet kerak.' }
+}
+const LIVE = { 's-sorov': pullPoll, 's-devor': pullWall };
+let liveT = null, liveId = null;
+function onSlide(s) {
+  if (liveId && !$('#' + liveId).classList.contains('active')) { clearInterval(liveT); liveT = liveId = null }
+  if (LIVE[s.id] && !liveT) { liveId = s.id; LIVE[s.id](); liveT = setInterval(LIVE[s.id], 4000) }
+}
+
+/* ---------- taymer ---------- */
+const fmt = s => Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+$$('.timer').forEach(b => {
+  const total = +b.dataset.sec, label = b.textContent.replace(/^▶\s*\S+/, '');
+  let left = total, t = null;
+  const paint = () => { b.textContent = (t ? '❚❚ ' : left === 0 ? '↺ ' : '▶ ') + fmt(left) + label };
+  b.onclick = e => {
+    e.stopPropagation();
+    if (left === 0) { left = total; b.classList.remove('done') }
+    if (t) { clearInterval(t); t = null; b.classList.remove('run') }
+    else {
+      b.classList.add('run');
+      t = setInterval(() => {
+        left--;
+        if (left <= 0) { left = 0; clearInterval(t); t = null; b.classList.remove('run'); b.classList.add('done') }
+        paint();
+      }, 1000);
+    }
+    paint();
+  };
+});
+
+/* ---------- telefon: soʻrovnoma ---------- */
+let why = 0;
+$('#sorov-pick').innerHTML = WHY.map((o, i) => `<button type="button" data-v="${i + 1}">${o}</button>`).join('');
+$('#sorov-pick').onclick = e => { const b = e.target.closest('button'); if (!b) return; why = +b.dataset.v; $$('#sorov-pick button').forEach(x => x.classList.toggle('sel', x === b)) };
+$('#sorov-send').onclick = async () => {
+  const m = $('#sorov-msg');
+  if (localStorage.cjmVoted) { m.innerHTML = '<span class="ok">Siz allaqachon javob bergansiz ✓</span>'; return }
+  if (!why) { m.innerHTML = '<span class="no">Bitta sababni tanlang.</span>'; return }
+  m.textContent = 'Yuborilmoqda...';
+  try {
+    await api('cjm_poll', { method: 'POST', body: JSON.stringify({ pick: why }) });
+    localStorage.cjmVoted = 1; m.innerHTML = '<span class="ok">✓ Rahmat! Ekranga qarang.</span>';
+  } catch { m.innerHTML = '<span class="no">Yuborilmadi. Internetni tekshirib, qayta urinib koʻring.</span>' }
+};
+
+/* ---------- telefon: 7 bosqichli forma, qoralama avtomatik saqlanadi ---------- */
+function stageForm(form, box, hole, key) {
+  const moods = Array(7).fill(0);
+  box.innerHTML = STAGES.map(([n, h], i) => `<div class="stepf"><strong>${i + 1}. ${n}</strong><p>${h}</p><textarea data-s="${i}" maxlength="400" required aria-label="${n}"></textarea><div class="moods" data-s="${i}">${MOODS.map((e, j) => `<button type="button" data-m="${j + 1}" aria-label="Kayfiyat ${j + 1}">${e}</button>`).join('')}</div></div>`).join('');
+  hole.innerHTML = '<option value="">Tanlang</option>' + STAGES.map(([n], i) => `<option value="${i + 1}">${i + 1}. ${n}</option>`).join('');
+  const paintM = () => $$('.moods', box).forEach(r => $$('button', r).forEach(b => b.classList.toggle('sel', +b.dataset.m === moods[+r.dataset.s])));
+  const fields = () => $$('input,textarea,select', form);
+  const save = () => localStorage.setItem(key, JSON.stringify({ v: fields().map(f => f.value), moods }));
+  try {
+    const d = JSON.parse(localStorage.getItem(key) || 'null');
+    if (d) { fields().forEach((f, i) => f.value = d.v[i] ?? ''); d.moods.forEach((m, i) => moods[i] = m) }
+  } catch {}
+  paintM();
+  box.addEventListener('click', e => {
+    const b = e.target.closest('.moods button'); if (!b) return;
+    moods[+b.closest('.moods').dataset.s] = +b.dataset.m; paintM(); save();
+  });
+  form.addEventListener('input', save);
+  return {
+    moods,
+    steps: () => STAGES.map((_, i) => ({ a: $(`textarea[data-s="${i}"]`, box).value.trim(), m: moods[i] })),
+    done() { localStorage.removeItem(key); form.reset(); moods.fill(0); paintM() }
+  };
+}
+function bindSend(form, msgEl, ctl, send, okText) {
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (ctl.moods.includes(0)) { msgEl.innerHTML = '<span class="no">Har bosqich uchun kayfiyatni tanlang.</span>'; return }
+    msgEl.textContent = 'Yuborilmoqda...';
+    try { await send(); ctl.done(); msgEl.innerHTML = `<span class="ok">✓ ${okText}</span>` }
+    catch { msgEl.innerHTML = '<span class="no">Yuborilmadi. Yozganingiz saqlangan. Internetni tekshirib, qayta urinib koʻring.</span>' }
+  });
+}
+const val = id => $('#' + id).value.trim();
+const xc = stageForm($('#x-form'), $('#x-steps'), $('#x-hole'), 'cjmDraftX');
+bindSend($('#x-form'), $('#x-msg'), xc, () => api('cjm_maps', { method: 'POST', body: JSON.stringify({ team: val('x-team'), biz: val('x-biz'), steps: xc.steps(), hole: +val('x-hole'), fix: val('x-fix') }) }), 'Xaritangiz devorda!');
+const uc = stageForm($('#u-form'), $('#u-steps'), $('#u-hole'), 'cjmDraftU');
+bindSend($('#u-form'), $('#u-msg'), uc, () => api('cjm_homework', { method: 'POST', body: JSON.stringify({ author: val('u-author'), biz: val('u-biz'), answers: { steps: uc.steps(), hole: +val('u-hole'), why: val('u-why'), fix: val('u-fix'), owner: val('u-owner') || null } }) }), 'Vazifa qabul qilindi!');
+
+/* ---------- marshrut: #sorov, #xarita, #uy ---------- */
+function route() {
+  const h = location.hash.slice(1), v = ['sorov', 'xarita', 'uy'].includes(h);
+  document.body.classList.toggle('v', v);
+  ['sorov', 'xarita', 'uy'].forEach(k => document.body.classList.toggle('v-' + k, h === k));
+  if (v) scrollTo(0, 0);
+}
+addEventListener('hashchange', route); route();
+const qs = +new URLSearchParams(location.search).get('s');
+if (qs) { document.body.classList.add('present'); izoh(false); show(qs - 1) }
+</script>
+</body>
+</html>
