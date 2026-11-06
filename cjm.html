@@ -433,6 +433,16 @@ body.present #s-calc .res{gap:calc(var(--u)*.8)}
 body.present #s-calc .res .card{padding:calc(var(--u)*1.3)}
 body.present #s-calc .res .card .k{font-size:max(26px,calc(var(--u)*3.6))}
 #s-calc label{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:baseline}#s-calc label input{grid-column:1/-1}
+.ph{border:0}
+.top2 .ph img{object-position:50% 50%}
+.ph[data-src$="cold.jpg"] img,.ph[data-src$="funnel.jpg"] img{object-position:50% 90%}
+.top2{display:grid;grid-template-columns:1fr 1.15fr;gap:calc(var(--u)*3);align-items:center}
+.top2>div:first-child{display:flex;flex-direction:column;gap:calc(var(--u)*1.2);min-width:0}
+.top2 .ph{height:calc(var(--u)*20);min-height:150px;aspect-ratio:auto}
+.vs3{display:grid;grid-template-columns:1fr 1fr 1.15fr;gap:calc(var(--u)*1.6);align-items:stretch}
+.qrov{position:relative}
+.qrov .qr{position:absolute;right:10px;bottom:10px;width:calc(var(--u)*15);min-width:120px;padding:8px;border-radius:12px;z-index:2}
+@media (max-width:760px){.top2,.vs3{grid-template-columns:1fr}.top2 .ph{height:auto;aspect-ratio:3/2}}
 .stepf{background:#fff;border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px}
 .stepf .moods{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
 .stepf .moods button{border:2px solid var(--line);background:#fff;border-radius:10px;padding:6px 0;font-size:22px}
@@ -518,12 +528,17 @@ body.present #s-calc .res .card .k{font-size:max(26px,calc(var(--u)*3.6))}
 <section class="slide dark" id="s-nima">
   <div class="in">
     <span class="eyebrow">CJM nima</span>
-    <div class="grid c3">
-      <div class="card"><div class="k c">C</div><h3>Customer</h3><p class="small">Mijoz</p></div>
-      <div class="card"><div class="k c">J</div><h3>Journey</h3><p class="small">Sayohat, yoʻl</p></div>
-      <div class="card"><div class="k c">M</div><h3>Map</h3><p class="small">Xarita</p></div>
+    <div class="split">
+      <div style="display:flex;flex-direction:column;gap:calc(var(--u)*2)">
+        <div class="grid c3">
+          <div class="card"><div class="k c">C</div><h3>Customer</h3><p class="small">Mijoz</p></div>
+          <div class="card"><div class="k c">J</div><h3>Journey</h3><p class="small">Sayohat, yoʻl</p></div>
+          <div class="card"><div class="k c">M</div><h3>Map</h3><p class="small">Xarita</p></div>
+        </div>
+        <p class="quote">Mijoz sizni birinchi marta eshitganidan to doʻstiga tavsiya qilgunicha bosib oʻtadigan yoʻlning xaritasi.</p>
+      </div>
+      <div class="ph" data-src="img/cjm/journey.jpg" data-cap="Mijoz yoʻli xaritasi" style="--ar:3/2"></div>
     </div>
-    <p class="quote">Mijoz sizni birinchi marta eshitganidan to doʻstiga tavsiya qilgunicha bosib oʻtadigan yoʻlning xaritasi.</p>
     <details class="izoh"><summary>Batafsil izoh</summary><p>CJM — bu hujjat emas, koʻrish usuli. Unda uch narsa yoziladi: mijoz har bosqichda <strong>nima qiladi</strong>, <strong>nima oʻylaydi</strong> va <strong>nimani his qiladi</strong>. Biznes egasi oʻzini mijoz oʻrniga qoʻyib, butun yoʻlni boshidan oxirigacha yuradi. Atrofimizdagi biznes egalarining taxminan 90 foizi bu bilimni bilmaydi (bu Shahzod Sobirovning kuzatuvi, rasmiy statistika emas).</p></details>
   </div>
 </section>
@@ -552,9 +567,10 @@ body.present #s-calc .res .card .k{font-size:max(26px,calc(var(--u)*3.6))}
   <div class="in">
     <span class="eyebrow">Asosiy muammo</span>
     <h2>Egasi biznesga ichkaridan qaraydi</h2>
-    <div class="vs">
+    <div class="vs3">
       <div class="card"><span class="lbl">Egasi nima deydi</span><h3>«Mahsulotimiz zoʻr»</h3><h3>«Reklamaga pul sarfladim»</h3><h3>«Mijoz oʻzi keladi»</h3></div>
       <div class="card hl"><span class="lbl" style="color:#9fe3ff">Mijoz nima koʻradi</span><h3 style="color:#fff">«Narxini soʻradim, ikki kun javob yoʻq»</h3><h3 style="color:#fff">«Kirdim, hech kim qaramadi»</h3><h3 style="color:#fff">«Pulni olgach, unutishdi»</h3></div>
+      <div class="ph" data-src="img/cjm/inout.jpg" data-cap="Egasi ichkarida, mijoz tashqarida" style="--ar:auto"></div>
     </div>
     <details class="izoh"><summary>Batafsil izoh</summary><p>Biznes egasi oʻz doʻkoniga har kuni kiradi, shuning uchun kamchilikni koʻrmay qoladi. Mijoz esa birinchi marta keladi va hamma narsani sezadi: eshik, salom, kutish, narx yozuvi. CJM egasini ichkaridan koʻchaga olib chiqadi. Birinchi qoida shu: <strong>xaritani mijoz koʻzi bilan chizing.</strong></p></details>
   </div>
@@ -564,11 +580,14 @@ body.present #s-calc .res .card .k{font-size:max(26px,calc(var(--u)*3.6))}
   <div class="in">
     <span class="eyebrow">Nega kerak</span>
     <h2>CJM 4 ta savolga javob beradi</h2>
-    <div class="grid g2">
+    <div class="split">
+      <div class="grid g2">
       <div class="card"><h3>1. Pul qayerdan oqib ketyapti?</h3><p class="small">Reklamaga pul quyasiz, mijoz yoʻlda yoʻqoladi. Teshikli chelakka suv quyish kabi.</p></div>
       <div class="card"><h3>2. Qaysi bosqich kimning ishi?</h3><p class="small">Egasi yoʻq bosqichni hech kim qilmaydi. Keyin hamma bir-birini ayblaydi.</p></div>
       <div class="card"><h3>3. Mijoz nimadan xavotirda?</h3><p class="small">Har bosqichda xavotir boshqa. Uni olib tashlasangiz, mijoz oʻzi oldinga yuradi.</p></div>
       <div class="card"><h3>4. Xodim ketsa nima boʻladi?</h3><p class="small">Bilim odamning boshida emas, tizimda qoladi. Yangi xodim xaritadan oʻrganadi.</p></div>
+    </div>
+      <div class="ph" data-src="img/cjm/bucket.jpg" data-cap="Teshik chelak" style="--ar:3/2"></div>
     </div>
     <details class="izoh"><summary>Batafsil izoh</summary><p>Koʻp tadbirkor savdo tushsa, birinchi reklamani oshiradi. Bu teshik chelakka koʻproq suv quyish bilan barobar. Avval teshikni topish arzonroq. CJM biznesni «odamlarga bogʻliq» holatdan «tizimga bogʻliq» holatga olib oʻtadi. Shu sababli biznes egasi ketsa ham ish toʻxtamaydi.</p></details>
   </div>
@@ -578,13 +597,17 @@ body.present #s-calc .res .card .k{font-size:max(26px,calc(var(--u)*3.6))}
   <div class="in">
     <span class="eyebrow" style="color:#9fe3ff">Tarix · SAS aviakompaniyasi, 1980-yillar</span>
     <h2>«Haqiqat lahzasi»</h2>
-    <div class="grid c4">
+    <div class="split">
+      <div style="display:flex;flex-direction:column;gap:calc(var(--u)*1.6)">
+        <div class="grid g2" style="grid-template-columns:1fr 1fr">
       <div class="card"><div class="k">10 mln</div><p class="small" style="color:#cfe0ff">mijoz yiliga</p></div>
       <div class="card"><div class="k">× 5</div><p class="small" style="color:#cfe0ff">xodim bilan koʻrishadi</p></div>
       <div class="card"><div class="k">15 son</div><p class="small" style="color:#cfe0ff">har bir uchrashuv</p></div>
-      <div class="card"><div class="k">50 mln</div><p class="small" style="color:#cfe0ff">yiliga shuncha lahza</p></div>
+      <div class="card"><div class="k">50 mln</div><p class="small" style="color:#cfe0ff">yiliga shuncha lahza</p></div></div>
+        <p class="lead">Kompaniyaning taqdiri ofisda emas, shu 15 soniyalarda hal boʻladi.</p>
+      </div>
+      <div class="ph" data-src="img/cjm/moment.jpg" data-cap="Aeroportdagi 15 soniya" style="--ar:3/2"></div>
     </div>
-    <p class="lead">Kompaniyaning taqdiri ofisda emas, shu 15 soniyalarda hal boʻladi.</p>
     <details class="izoh"><summary>Batafsil izoh</summary><p>Yan Karlson SAS aviakompaniyasi rahbari boʻlib, «Haqiqat lahzalari» kitobini yozgan (1987). U shunday hisoblagan: mijoz uchun kompaniya bu binolar emas, oʻsha 15 soniyada koʻrgan xodim. Bir xodimning sovuq javobi butun kompaniya haqidagi fikrni belgilaydi. CJM ana shu lahzalarni bitta xaritaga yigʻadi.</p></details>
   </div>
 </section>
@@ -610,9 +633,7 @@ body.present #s-calc .res .card .k{font-size:max(26px,calc(var(--u)*3.6))}
 
 <section class="slide dark" id="b1" data-st="1">
   <div class="in">
-    <div class="st-dots"></div>
-    <h2>1. Eshitdi</h2>
-    <p class="lead">Mijoz: «Bunday joy bor ekan».</p>
+    <div class="top2"><div><div class="st-dots"></div><h2>1. Eshitdi</h2><p class="lead">Mijoz: «Bunday joy bor ekan».</p></div><div class="ph" data-src="img/cjm/b1.jpg" data-cap="Bazmda tortni koʻrdi" style="--ar:3/2"></div></div>
     <div class="grid c3">
       <div class="card"><span class="lbl">Tort doʻkonida</span><p class="t">Dugonasining bazmidagi tortni Instagramda koʻrdi</p></div>
       <div class="card bad"><span class="lbl">Odatdagi xato</span><p class="t">Hammaga reklama. Kimga sotishni bilmaydi</p></div>
@@ -625,9 +646,7 @@ body.present #s-calc .res .card .k{font-size:max(26px,calc(var(--u)*3.6))}
 
 <section class="slide grey" id="b2" data-st="2">
   <div class="in">
-    <div class="st-dots"></div>
-    <h2>2. Solishtirdi</h2>
-    <p class="lead">Mijoz: «Bu menga kerakmi? Boshqalardan nimasi yaxshi?»</p>
+    <div class="top2"><div><div class="st-dots"></div><h2>2. Solishtirdi</h2><p class="lead">Mijoz: «Bu menga kerakmi? Boshqalardan nimasi yaxshi?»</p></div><div class="ph" data-src="img/cjm/b2.jpg" data-cap="Kechasi javob kutyapti" style="--ar:3/2"></div></div>
     <div class="grid c3">
       <div class="card"><span class="lbl">Tort doʻkonida</span><p class="t">Soat 21:00 da uchta doʻkonga «narxi qancha?» deb yozdi</p></div>
       <div class="card bad"><span class="lbl">Odatdagi xato</span><p class="t">Ertasi kuni javob. «Directga yozing», narx yashirin</p></div>
@@ -640,9 +659,7 @@ body.present #s-calc .res .card .k{font-size:max(26px,calc(var(--u)*3.6))}
 
 <section class="slide dark" id="b3" data-st="3">
   <div class="in">
-    <div class="st-dots"></div>
-    <h2>3. Uchrashdi</h2>
-    <p class="lead">Mijoz: «Bularga ishonsa boʻladimi?»</p>
+    <div class="top2"><div><div class="st-dots"></div><h2>3. Uchrashdi</h2><p class="lead">Mijoz: «Bularga ishonsa boʻladimi?»</p></div><div class="ph" data-src="img/cjm/b3.jpg" data-cap="Doʻkonda tatib koʻrdi" style="--ar:3/2"></div></div>
     <div class="grid c3">
       <div class="card"><span class="lbl">Tort doʻkonida</span><p class="t">Doʻkonga kirdi, namunani tatib koʻrdi, savol berdi</p></div>
       <div class="card bad"><span class="lbl">Odatdagi xato</span><p class="t">Sotuvchi telefonda. Mijozga qaramaydi, ehtiyojini soʻramaydi</p></div>
@@ -655,9 +672,7 @@ body.present #s-calc .res .card .k{font-size:max(26px,calc(var(--u)*3.6))}
 
 <section class="slide grey" id="b4" data-st="4">
   <div class="in">
-    <div class="st-dots"></div>
-    <h2>4. Sotib oldi</h2>
-    <p class="lead">Mijoz: «Pulim kuymaydimi? Aldanmaymanmi?»</p>
+    <div class="top2"><div><div class="st-dots"></div><h2>4. Sotib oldi</h2><p class="lead">Mijoz: «Pulim kuymaydimi? Aldanmaymanmi?»</p></div><div class="ph" data-src="img/cjm/b4.jpg" data-cap="Karta bilan toʻlov" style="--ar:3/2"></div></div>
     <div class="grid c3">
       <div class="card"><span class="lbl">Tort doʻkonida</span><p class="t">Sana, ism, oʻlchamni aytdi, oldindan toʻlov qildi</p></div>
       <div class="card bad"><span class="lbl">Odatdagi xato</span><p class="t">Faqat naqd pul. Chek yoʻq. Nima kelishilgani yozilmagan</p></div>
@@ -670,9 +685,7 @@ body.present #s-calc .res .card .k{font-size:max(26px,calc(var(--u)*3.6))}
 
 <section class="slide dark" id="b5" data-st="5">
   <div class="in">
-    <div class="st-dots"></div>
-    <h2>5. Sinab koʻrdi</h2>
-    <p class="lead">Mijoz: «Toʻgʻri qildimmi?»</p>
+    <div class="top2"><div><div class="st-dots"></div><h2>5. Sinab koʻrdi</h2><p class="lead">Mijoz: «Toʻgʻri qildimmi?»</p></div><div class="ph" data-src="img/cjm/b5.jpg" data-cap="Tugʻilgan kun bazmi" style="--ar:3/2"></div></div>
     <div class="grid c3">
       <div class="card"><span class="lbl">Tort doʻkonida</span><p class="t">Tortni oldi. Bazmda hamma birinchi boʻlaklarni kesdi</p></div>
       <div class="card bad"><span class="lbl">Odatdagi xato</span><p class="t">Pul olindi, ish tugadi deb oʻylash</p></div>
@@ -685,9 +698,7 @@ body.present #s-calc .res .card .k{font-size:max(26px,calc(var(--u)*3.6))}
 
 <section class="slide grey" id="b6" data-st="6">
   <div class="in">
-    <div class="st-dots"></div>
-    <h2>6. Foydalandi</h2>
-    <p class="lead">Mijoz: «Vaʼda bajarilyaptimi? Muammo boʻlsa, kim yordam beradi?»</p>
+    <div class="top2"><div><div class="st-dots"></div><h2>6. Foydalandi</h2><p class="lead">Mijoz: «Vaʼda bajarilyaptimi? Muammo boʻlsa, kim yordam beradi?»</p></div><div class="ph" data-src="img/cjm/b6.jpg" data-cap="Malika opa tuzatilgan tortni olib keldi" style="--ar:3/2"></div></div>
     <div class="grid c3">
       <div class="card"><span class="lbl">Tort doʻkonida</span><p class="t">Tortdagi ism xato yozilgan ekan. Malika opaga yozdi</p></div>
       <div class="card bad"><span class="lbl">Odatdagi xato</span><p class="t">«Bizda xato boʻlmaydi». Bahs, izohni oʻchirish</p></div>
@@ -700,9 +711,7 @@ body.present #s-calc .res .card .k{font-size:max(26px,calc(var(--u)*3.6))}
 
 <section class="slide dark" id="b7" data-st="7">
   <div class="in">
-    <div class="st-dots"></div>
-    <h2>7. Qaytdi yoki ketdi</h2>
-    <p class="lead">Mijoz: «Yana kelamanmi? Doʻstimga aytamanmi?»</p>
+    <div class="top2"><div><div class="st-dots"></div><h2>7. Qaytdi yoki ketdi</h2><p class="lead">Mijoz: «Yana kelamanmi? Doʻstimga aytamanmi?»</p></div><div class="ph" data-src="img/cjm/b7.jpg" data-cap="Dugonasiga tavsiya qildi" style="--ar:3/2"></div></div>
     <div class="grid c3">
       <div class="card"><span class="lbl">Tort doʻkonida</span><p class="t">Dugonasi «tortni qayerdan oldingiz?» deb soʻradi</p></div>
       <div class="card bad"><span class="lbl">Odatdagi xato</span><p class="t">Mijozni unutish. Hamma kuch yangi mijozga ketadi</p></div>
@@ -738,8 +747,7 @@ body.present #s-calc .res .card .k{font-size:max(26px,calc(var(--u)*3.6))}
 
 <section class="slide white" id="s-sop">
   <div class="in">
-    <span class="eyebrow">CJM dan ishga</span>
-    <h2>Xarita, SOP, vazifa</h2>
+    <div class="top2"><div><span class="eyebrow">CJM dan ishga</span><h2>Xarita, SOP, vazifa</h2><p class="lead"><strong>SOP</strong> (Standard Operating Procedure) — ish tartibi. Xuddi retsept: kim pishirsa ham, osh bir xil chiqadi.</p></div><div class="ph" data-src="img/cjm/recipe.jpg" data-cap="Bir xil retsept, bir xil osh" style="--ar:3/2"></div></div>
     <div class="chain">
       <div class="card"><div class="k c">18</div><h3>CJM bosqichi</h3><p class="small"><strong>Qayerda?</strong> Mijoz yoʻlining qaysi nuqtasi</p></div>
       <span class="ar">→</span>
@@ -747,7 +755,6 @@ body.present #s-calc .res .card .k{font-size:max(26px,calc(var(--u)*3.6))}
       <span class="ar">→</span>
       <div class="card hl"><div class="k">1 600</div><h3 style="color:#fff">Vazifa</h3><p class="small" style="color:#cfe0ff"><strong>Kim, qachon?</strong> Aniq odam, aniq muddat</p></div>
     </div>
-    <p class="lead"><strong>SOP</strong> (Standard Operating Procedure) — ish tartibi. Xuddi retsept: kim pishirsa ham, osh bir xil chiqadi.</p>
     <details class="izoh"><summary>Batafsil izoh</summary><p>CJM nima boʻlishi kerakligini koʻrsatadi, lekin ishni bajarmaydi. Xarita ishlashi uchun har bosqich SOP ga, SOP esa aniq vazifalarga aylanadi. Biz hamma narsani Durbin tizimiga kiritish ustida ishlayapmiz. Shuni ochiq aytaman: SOPlarning koʻpi yangi va bosqichma-bosqich joriy etilmoqda. Yozish oson, bajarish qiyin.</p></details>
   </div>
 </section>
@@ -835,8 +842,7 @@ body.present #s-calc .res .card .k{font-size:max(26px,calc(var(--u)*3.6))}
 
 <section class="slide blue">
   <div class="in">
-    <span class="eyebrow" style="color:#9fe3ff">Psixologiya · Kaneman, 1993</span>
-    <h2>Odam yoʻlning hammasini eslamaydi</h2>
+    <div class="top2"><div><span class="eyebrow" style="color:#9fe3ff">Psixologiya · Kaneman, 1993</span><h2>Odam yoʻlning hammasini eslamaydi</h2></div><div class="ph" data-src="img/cjm/cold.jpg" data-cap="Sovuq suv tajribasi" style="--ar:3/2"></div></div>
     <div class="vs">
       <div class="card"><h3>A tajriba</h3><p class="t">Qoʻl 14°C suvda 60 soniya</p></div>
       <div class="card"><h3>B tajriba</h3><p class="t">Xuddi shu 60 soniya + yana 30 soniya, suv sal iliydi (15°C)</p></div>
@@ -888,8 +894,7 @@ body.present #s-calc .res .card .k{font-size:max(26px,calc(var(--u)*3.6))}
 
 <section class="slide grey">
   <div class="in">
-    <span class="eyebrow">Voronka qanday tuziladi</span>
-    <h2>5 qadam</h2>
+    <div class="top2"><div><span class="eyebrow">Voronka qanday tuziladi</span><h2>5 qadam</h2><p class="lead">Koʻp odam kiradi, ozi chiqadi. Vazifa: qayerda toʻsilganini topish.</p></div><div class="ph" data-src="img/cjm/funnel.jpg" data-cap="Odamlar voronkasi" style="--ar:3/2"></div></div>
     <div class="steps5">
       <div>1. Boʻl<small>Yoʻlni mijoz harakatlariga boʻling</small></div>
       <div>2. Sana<small>Har bosqichda nechta odam?</small></div>
@@ -978,7 +983,7 @@ body.present #s-calc .res .card .k{font-size:max(26px,calc(var(--u)*3.6))}
         <div class="row"><b>3</b><p class="t">Kayfiyat eng pastga tushgan joyni — teshikni toping</p></div>
         <div class="row on"><b>4</b><p class="t">Teshikni tuzatadigan bitta aniq ishni yozing</p></div>
       </div>
-      <div class="qrbox"><div class="qr" data-qr="xarita"></div><p class="link small" data-href="xarita"></p></div>
+      <div><div class="qrov"><div class="ph" data-src="img/cjm/team.jpg" data-cap="Jamoa xarita chizyapti" style="--ar:3/2"></div><div class="qr" data-qr="xarita"></div></div><p class="link small" data-href="xarita" style="margin-top:8px"></p></div>
     </div>
     <button class="timer" data-sec="1200" style="align-self:flex-start">▶ 20:00 mashq</button>
     <details class="izoh"><summary>Batafsil izoh</summary><p>Jamoadan bitta odam telefonda toʻldiradi, qolganlar muhokama qiladi. Telefon qulflanib qolsa, yozilgan matn yoʻqolmaydi. Egasi koʻzi bilan emas, mijoz koʻzi bilan yozing: «reklama beramiz» emas, «Instagramda koʻrdim». Har bosqichga bitta jumla yetadi.</p></details>
@@ -1022,7 +1027,7 @@ body.present #s-calc .res .card .k{font-size:max(26px,calc(var(--u)*3.6))}
         <div class="row"><b>4</b><p class="t">Bitta tuzatish taklif qiling</p></div>
         <div class="row on"><b>★</b><p class="t">Qoʻshimcha: egasiga ayting va javobini yozing</p></div>
       </div>
-      <div class="qrbox"><div class="qr" data-qr="uy"></div><p class="link small" data-href="uy"></p></div>
+      <div><div class="qrov"><div class="ph" data-src="img/cjm/secret.jpg" data-cap="Maxfiy mijoz" style="--ar:3/2"></div><div class="qr" data-qr="uy"></div></div><p class="link small" data-href="uy" style="margin-top:8px;color:#fff"></p></div>
     </div>
     <details class="izoh"><summary>Batafsil izoh</summary><p>Sotib olish shart emas. Narx soʻrash, yozish, borib koʻrish yetadi. Odob bilan yuring, hech kimni kamsitmang, xodimni suratga olmang. Eng yaxshi uchta ish keyingi darsda koʻrsatiladi. Agar biznes egasi sizning taklifingizni qabul qilsa, bu sizning birinchi konsalting ishingiz.</p></details>
   </div>
@@ -1047,7 +1052,7 @@ body.present #s-calc .res .card .k{font-size:max(26px,calc(var(--u)*3.6))}
   DATA xalqaro maktabi · Biznes klub · 7–10-sinflar · har shanba<br>
   <a href="index.html">Stiv Jobs</a> · <a href="startup.html">Startup</a> · <a href="ai.html">AI</a> · <a href="tadbirkor.html">Tadbirkor</a> · <a href="shaxsiyat.html">Shaxsiyat</a> · <a href="cjm.html">CJM</a><br>
   <a href="#sorov">Soʻrovnoma</a> · <a href="#xarita">Jamoa xaritasi</a> · <a href="#uy">Uyga vazifa</a><br>
-  <span style="font-size:11px">Manbalar: DATA_Durbin_Vazifalar v17 (CJM, SOP, vazifalar); Durbin, manbalar boʻyicha lidlar, 2026-yil 7-noyabr holatiga, barcha vaqt. J. Carlzon, Moments of Truth (1987). D. Kahneman va boshq., When More Pain Is Preferred to Less, Psychological Science (1993). Tort doʻkoni — oʻylab topilgan misol.</span>
+  <span style="font-size:11px">Manbalar: DATA_Durbin_Vazifalar v17 (CJM, SOP, vazifalar); Durbin, manbalar boʻyicha lidlar, 2026-yil 7-noyabr holatiga, barcha vaqt. J. Carlzon, Moments of Truth (1987). D. Kahneman va boshq., When More Pain Is Preferred to Less, Psychological Science (1993). Tort doʻkoni — oʻylab topilgan misol. Rasmlar sunʼiy intellekt (ChatGPT) yordamida yaratilgan.</span>
 </footer>
 
 <div class="hud"><i id="prog"></i></div>
@@ -1162,7 +1167,7 @@ function curve(moods, stroke = '#29c5ff') {
 /* ---------- surat joylari ---------- */
 $$('.ph[data-src]').forEach(el => {
   const f = el.dataset.src;
-  el.innerHTML = `<span>📷 ${esc(el.dataset.cap)}<br>${f}</span><img src="${f}" alt="${esc(el.dataset.cap)}" loading="lazy" onerror="this.remove()">`;
+  el.innerHTML = `<span>📷 ${esc(el.dataset.cap)}<br>${f}</span><img src="${f}" alt="${esc(el.dataset.cap)}" onerror="this.remove()">`;
 });
 
 /* ---------- QR va havolalar ---------- */
@@ -1283,7 +1288,7 @@ async function pullWall() {
   try {
     const rows = await api('cjm_maps?select=id,team,biz,steps,hole,fix&order=id.desc&limit=30');
     const seen = new Set(), list = rows.filter(r => { const k = r.team.trim().toLowerCase(); if (seen.has(k)) return false; seen.add(k); return true });
-    $('#wall').innerHTML = list.map(r => `<div class="card"><h3>${esc(r.team)}</h3><p class="small">${esc(r.biz)}</p><svg class="curve" viewBox="0 0 600 100" preserveAspectRatio="none">${curve(r.steps.map(s => +s.m || 3))}</svg><p class="small"><strong style="color:#ff6961">Teshik: ${r.hole}. ${esc(STAGES[r.hole - 1]?.[0])}</strong></p><p class="small" style="color:#fff">${esc(r.fix)}</p></div>`).join('');
+    $('#wall').innerHTML = list.map(r => `<div class="card"><h3>${esc(r.team)}</h3><p class="small">${esc(r.biz)}</p><svg class="curve" viewBox="0 0 600 100" preserveAspectRatio="none">${curve(r.steps.map(s => +s?.m || 3))}</svg><p class="small"><strong style="color:#ff6961">Teshik: ${r.hole}. ${esc(STAGES[r.hole - 1]?.[0])}</strong></p><p class="small" style="color:#fff">${esc(r.fix)}</p></div>`).join('');
     $('#wall-info').textContent = list.length ? list.length + ' ta jamoa' : 'Xaritalar shu yerda chiqadi';
   } catch { $('#wall-info').textContent = 'Jonli natija uchun internet kerak.' }
 }
