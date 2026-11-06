@@ -448,6 +448,31 @@ body.present .top2 .ph{height:calc(var(--u)*23);justify-self:end}
 .qrov{position:relative}
 .qrov .qr{position:absolute;right:10px;bottom:10px;width:calc(var(--u)*15);min-width:120px;padding:8px;border-radius:12px;z-index:2}
 @media (max-width:760px){.top2,.vs3{grid-template-columns:1fr}}
+body.present #b-chastota{gap:2px}body.present #b-chastota .r i{min-height:9px;height:calc(var(--u)*1.1)}
+#xl-open[hidden]{display:none!important}
+#xl-lock[hidden]{display:none}
+.xlbar{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.xlbar input,.xlbar select{font:inherit;font-size:max(13px,calc(var(--u)*1.25));padding:6px 8px;border:1px solid #b7b7b7;border-radius:6px;background:#fff;color:var(--ink);min-width:0;max-width:calc(var(--u)*20)}
+.xlbar input{flex:1;min-width:150px}
+.xls{display:flex;flex-direction:column;height:min(62vh,calc(var(--u)*44));min-height:320px;background:#fff;color:#1d1d1f;border:1px solid #b7b7b7;border-radius:8px;overflow:hidden;font-size:max(12px,calc(var(--u)*1.2));font-family:Calibri,"Segoe UI",system-ui,sans-serif}
+.xls .fx{display:flex;gap:8px;border-bottom:1px solid #d4d4d4;padding:5px 8px;min-height:2.2em;background:#fff}
+.xls .fx b{color:#107c41;font-style:italic}
+.xls .scroll{flex:1;overflow:auto;min-height:0;overscroll-behavior:contain}
+.xls table{border-collapse:separate;border-spacing:0;table-layout:fixed}
+.xls th,.xls td{border-right:1px solid #e1e1e1;border-bottom:1px solid #e1e1e1;padding:3px 7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:left;font-weight:400}
+.xls thead th{position:sticky;background:#f3f3f3;color:#444;z-index:2}
+.xls thead tr:first-child th{top:0;text-align:center;font-size:.85em;color:#666}
+.xls thead tr:nth-child(2) th{top:1.75em;font-weight:700;color:#fff;background:#107c41}
+.xls td.n,.xls th.n{position:sticky;left:0;background:#f3f3f3;color:#666;text-align:right;z-index:1}
+.xls thead th.n{z-index:3}
+.xls tbody tr{cursor:pointer}
+.xls tbody tr:hover td{background:#e9f5ee}
+.xls tbody tr.sel td{background:#cfe9da}
+.xls td.u{color:#c00;font-weight:700}.xls td.y{color:#b35c00}
+.xls .tabs{display:flex;align-items:center;gap:2px;background:#f3f3f3;border-top:1px solid #d4d4d4;padding:0 6px;overflow-x:auto}
+.xls .tabs button{border:0;background:transparent;color:#444;padding:6px 14px;font:inherit;font-weight:600;white-space:nowrap}
+.xls .tabs button.sel{background:#fff;color:#107c41;box-shadow:inset 0 -3px 0 #107c41}
+.xls .tabs span{margin-left:auto;color:#555;white-space:nowrap;padding:0 6px}
 .stepf{background:#fff;border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px}
 .stepf .moods{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
 .stepf .moods button{border:2px solid var(--line);background:#fff;border-radius:10px;padding:6px 0;font-size:22px}
@@ -464,6 +489,7 @@ body.present .top2 .ph{height:calc(var(--u)*23);justify-self:end}
     <a href="#s-kirish">Kirish</a>
     <a href="#s-nima">CJM nima</a>
     <a href="#s-yol7">7 bosqich</a>
+    <a href="#s-excel">Jadval</a>
     <a href="#s-farq">Farqi</a>
     <a href="#s-qoida">Qoidalar</a>
     <a href="#s-voronka">Voronka</a>
@@ -771,7 +797,7 @@ body.present .top2 .ph{height:calc(var(--u)*23);justify-self:end}
     <div class="chain">
       <div class="card"><div class="k c">18</div><h3>CJM bosqichi</h3><p class="small"><strong>Qayerda?</strong> Mijoz yoʻlining qaysi nuqtasi</p></div>
       <span class="ar">→</span>
-      <div class="card"><div class="k c">73</div><h3>SOP</h3><p class="small"><strong>Qanday?</strong> Ishni bajarishning yozma qoidasi</p></div>
+      <div class="card"><div class="k c">72</div><h3>SOP</h3><p class="small"><strong>Qanday?</strong> Ishni bajarishning yozma qoidasi</p></div>
       <span class="ar">→</span>
       <div class="card hl"><div class="k">1 600</div><h3 style="color:#fff">Vazifa</h3><p class="small" style="color:#cfe0ff"><strong>Kim, qachon?</strong> Aniq odam, aniq muddat</p></div>
     </div>
@@ -791,6 +817,53 @@ body.present .top2 .ph{height:calc(var(--u)*23);justify-self:end}
       <b>Kechiksa?</b><span>Marketing rahbariga chiqadi</span>
     </div>
     <details class="izoh"><summary>Batafsil izoh</summary><p>«Mijozlarga yaxshi munosabatda boʻling» — bu vazifa emas, orzu. Vazifada nima, kim, qachon, muddat va kechiksa nima boʻlishi yoziladi. Bunday vazifani odam eslab yurishi shart emas, tizimning oʻzi yaratadi. Kechikish esa avtomatik rahbarga chiqadi. Bu <strong>eskalatsiya</strong> deyiladi.</p></details>
+  </div>
+</section>
+
+<section class="slide dark" id="s-hajm">
+  <div class="in">
+    <span class="eyebrow">Bu qancha ish?</span>
+    <h2>Bitta maktab ishi yozilsa</h2>
+    <div class="grid c4">
+      <div class="card"><div class="k c">18 + 1</div><p class="small">mijoz bosqichi va ichki jarayonlar</p></div>
+      <div class="card"><div class="k c">72</div><p class="small">SOP, yaʼni ish tartibi</p></div>
+      <div class="card hl"><div class="k">1 600</div><p class="small" style="color:#cfe0ff">alohida yozilgan vazifa</p></div>
+      <div class="card"><div class="k c">45</div><p class="small">masʼul rol</p></div>
+    </div>
+    <div class="bar-h" id="b-chastota"></div>
+    <p class="lead">Har qator 1 daqiqada oʻqilsa, 27 soatga yaqin vaqt ketadi. Biznes ishi shu darajada birma-bir yoziladi.</p>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>Koʻp egasi «biz hammasini bilamiz» deydi. Bilim bir odamning boshida boʻlsa, u kasal boʻlganda yoki ketganda ish toʻxtaydi. Yozilgan jarayonni esa yangi xodim oʻqib bajaradi. Shuning uchun CJM dan keyingi ish — har bosqichni kim, nima, qachon, qancha muddatda qilishini yozish. Bu hisob faqat hajmni koʻrsatadi: hammasi hali amalda ishlayotgani yoʻq, joriy etish bosqichma-bosqich boradi.</p></details>
+  </div>
+</section>
+
+<section class="slide grey" id="s-excel">
+  <div class="in">
+    <span class="eyebrow">Haqiqiy fayl · Bosing, qidiring, filtrlang</span>
+    <h2 style="font-size:max(26px,calc(var(--u)*3.6))">DATA maktabining CJM va SOP jadvali</h2>
+    <form class="card" id="xl-lock" style="max-width:calc(var(--u)*50)">
+      <h3>Bu sahifa parol bilan himoyalangan</h3>
+      <label for="xl-pw" class="small">Parolni kiriting</label>
+      <input id="xl-pw" type="password" required autocomplete="off" style="font:inherit;padding:10px 12px;border:1px solid #b7b7b7;border-radius:8px">
+      <button class="btn" type="submit" style="align-self:flex-start">Ochish</button>
+      <p class="small no" id="xl-msg" role="status"></p>
+    </form>
+    <div id="xl-open" hidden style="display:contents">
+    <div class="xlbar" id="xl-bar">
+      <input id="xl-q" type="search" placeholder="Qidirish: masalan, shikoyat" aria-label="Qidirish">
+      <select id="xl-st" aria-label="CJM bosqichi"></select>
+      <select id="xl-sop" aria-label="SOP"></select>
+      <select id="xl-rol" aria-label="Masʼul rol"></select>
+      <select id="xl-muh" aria-label="Muhimlik"></select>
+      <select id="xl-ch" aria-label="Chastota"></select>
+      <button class="btn ghost" id="xl-reset" type="button" style="background:#fff;color:var(--ink);padding:6px 12px">Tozalash</button>
+    </div>
+    <div class="xls">
+      <div class="fx"><b>fx</b><span id="xl-fx">Qatorni bosing</span></div>
+      <div class="scroll"><table id="xl-t"></table></div>
+      <div class="tabs" id="xl-tabs"></div>
+    </div>
+    </div>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>Pastdagi varaqlar Excel kabi ishlaydi: CJM, SOPlar, Vazifalar, Rollar. CJM yoki SOP qatorini bossangiz, unga tegishli vazifalar ochiladi. Sinfga topshiriq: 1) «Birinchi kun» bosqichida nechta vazifa bor? 2) Sinf rahbari nechta vazifaga masʼul? 3) «shikoyat» soʻzi nechta vazifada uchraydi? Uzun matn yuqoridagi fx qatorida toʻliq chiqadi.</p></details>
   </div>
 </section>
 
@@ -1102,7 +1175,7 @@ body.present .top2 .ph{height:calc(var(--u)*23);justify-self:end}
   DATA xalqaro maktabi · Biznes klub · 7–10-sinflar · har shanba<br>
   <a href="index.html">Stiv Jobs</a> · <a href="startup.html">Startup</a> · <a href="ai.html">AI</a> · <a href="tadbirkor.html">Tadbirkor</a> · <a href="shaxsiyat.html">Shaxsiyat</a> · <a href="cjm.html">CJM</a><br>
   <a href="#sorov">Soʻrovnoma</a> · <a href="#xarita">Jamoa xaritasi</a> · <a href="#uy">Uyga vazifa</a><br>
-  <span style="font-size:11px">Manbalar: DATA_Durbin_Vazifalar v17 (CJM, SOP, vazifalar); Durbin, manbalar boʻyicha lidlar, 2026-yil 7-noyabr holatiga, barcha vaqt. J. Carlzon, Moments of Truth (1987). D. Kahneman va boshq., When More Pain Is Preferred to Less, Psychological Science (1993). Redelmeier, Katz, Kahneman, Memories of colonoscopy, Pain (2003). SAS raqamlari: Vikipediya, Jan Carlzon. Tort doʻkoni — oʻylab topilgan misol. Rasmlar sunʼiy intellekt (ChatGPT) yordamida yaratilgan.</span>
+  <span style="font-size:11px">Manbalar: DATA_Durbin_Vazifalar v17 (CJM, 72 SOP, 1 600 vazifa); Durbin, manbalar boʻyicha lidlar, 2026-yil 7-noyabr holatiga, barcha vaqt. J. Carlzon, Moments of Truth (1987). D. Kahneman va boshq., When More Pain Is Preferred to Less, Psychological Science (1993). Redelmeier, Katz, Kahneman, Memories of colonoscopy, Pain (2003). SAS raqamlari: Vikipediya, Jan Carlzon. Tort doʻkoni — oʻylab topilgan misol. Rasmlar sunʼiy intellekt (ChatGPT) yordamida yaratilgan.</span>
 </footer>
 
 <div class="hud"><i id="prog"></i></div>
@@ -1154,6 +1227,7 @@ body.present .top2 .ph{height:calc(var(--u)*23);justify-self:end}
 </section>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="cjm-data.js"></script>
 <script>
 const SB_URL = 'https://onbvjawjvxbiyqnimvnh.supabase.co';
 const SB_KEY = 'sb_publishable_ch6uaEZEkI5r-fTOtlJxrw_XI0qJuUQ';
@@ -1275,6 +1349,77 @@ $('#src').insertAdjacentHTML('beforeend', SRC.map(([n, l, s]) => `<div class="r"
 $('#src-open').onclick = () => { $('#src').classList.add('open'); $('#src-note').hidden = false; $('#src-open').remove() };
 
 /* ---------- taqdimot rejimi ---------- */
+/* ---------- Excel jadvali ---------- */
+const xl = { sheet: 'cjm', ready: false, q: '', st: '', sop: '', rol: '', muh: '', ch: '' };
+const FREQ = [['Hodisa boʻlganda', 515], ['Yiliga bir marta', 322], ['Har oy', 259], ['Har chorak', 211], ['Har kuni', 100], ['Har hafta', 95], ['Tadbir, yangi xodim va boshqa', 98]];
+$('#b-chastota').innerHTML = FREQ.map(([n, c]) => `<div class="r"><span>${n}</span><i style="width:${c / 515 * 100}%"></i><b>${c}</b></div>`).join('');
+let XL = null;
+const unb64 = t => Uint8Array.from(atob(t), c => c.charCodeAt(0));
+async function xlOpen(pw) {
+  const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(pw), 'PBKDF2', false, ['deriveKey']);
+  const key = await crypto.subtle.deriveKey({ name: 'PBKDF2', hash: 'SHA-256', salt: unb64(XLC.s), iterations: XLC.n }, base, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
+  return JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({ name: 'AES-GCM', iv: unb64(XLC.i) }, key, unb64(XLC.c))));
+}
+$('#s-excel').addEventListener('click', e => e.stopPropagation()); /* jadvalni bosish slaydni almashtirmasin */
+$('#xl-lock').addEventListener('submit', async e => {
+  e.preventDefault();
+  const m = $('#xl-msg'); m.textContent = 'Tekshirilmoqda...';
+  try { XL = await xlOpen($('#xl-pw').value) } catch { m.textContent = 'Parol notoʻgʻri.'; return }
+  $('#xl-lock').hidden = true; $('#xl-open').hidden = false; xlInit();
+});
+const count = i => XL.t.reduce((a, t) => { a[t[i]] = (a[t[i]] || 0) + 1; return a }, {});
+function xlRows() {
+  const low = xl.q.toLowerCase(), has = (...v) => !low || v.join(' ').toLowerCase().includes(low);
+  if (xl.sheet === 'cjm') {
+    const n = count(4), so = {}; XL.t.forEach(t => (so[t[4]] ||= new Set).add(t[2]));
+    return { w: [6, 22, 30, 7, 7], h: ['Bosqich', 'Nomi', 'Boʻlim', 'SOP', 'Vazifa'], r: XL.cjm.filter(c => has(c[1], c[2])).map(c => ({ c: [c[0], c[1], c[2], so[c[0]]?.size || 0, n[c[0]] || 0], go: { st: String(c[0]) } })) };
+  }
+  if (xl.sheet === 'sop') {
+    const n = count(2);
+    return { w: [11, 28, 38, 7], h: ['SOP kodi', 'Nomi', 'Maqsadi', 'Vazifa'], r: XL.sop.map((s, i) => ({ s, i })).filter(({ s }) => has(...s)).map(({ s, i }) => ({ c: [s[0], s[1], s[2], n[i] || 0], go: { sop: String(i) } })) };
+  }
+  if (xl.sheet === 'rol') {
+    const n = count(3);
+    return { w: [60, 10], h: ['Rol', 'Vazifa'], r: XL.rol.map((s, i) => ({ s, i })).filter(({ s, i }) => n[i] && has(s)).sort((a, b) => n[b.i] - n[a.i]).map(({ s, i }) => ({ c: [s, n[i]], go: { rol: String(i) } })) };
+  }
+  const t = XL.t.filter(v => (!xl.st || v[4] === +xl.st) && (!xl.sop || v[2] === +xl.sop) && (!xl.rol || v[3] === +xl.rol) && (!xl.muh || v[6] === xl.muh) && (!xl.ch || v[7] === xl.ch) && has(v[0], v[1], XL.rol[v[3]], XL.sop[v[2]][0]));
+  return { w: [11, 52, 12, 26, 6, 8, 11, 11, 22], h: ['Kod', 'Vazifa', 'SOP', 'Masʼul rol', 'CJM', 'Muddat, soat', 'Muhimlik', 'Chastota', 'Nazoratchi'], r: t.map(v => ({ c: [v[0], v[1], XL.sop[v[2]][0], XL.rol[v[3]], v[4], v[5], v[6], v[7], v[8] < 0 ? '' : XL.rol[v[8]]] })) };
+}
+function xlDraw() {
+  const { w, h, r } = xlRows(), L = 'ABCDEFGHIJ';
+  const cls = x => x === 'shoshilinch' ? ' class="u"' : x === 'yuqori' ? ' class="y"' : '';
+  xl.view = r;
+  $('#xl-t').style.width = w.reduce((a, b) => a + b, 4.2) + 'em';
+  $('#xl-t').innerHTML = `<colgroup><col style="width:4.2em">${w.map(x => `<col style="width:${x}em">`).join('')}</colgroup><thead><tr><th class="n"></th>${h.map((_, i) => `<th>${L[i]}</th>`).join('')}</tr><tr><th class="n">1</th>${h.map(x => `<th>${x}</th>`).join('')}</tr></thead><tbody>` +
+    r.map((o, i) => `<tr data-i="${i}"><td class="n">${i + 2}</td>${o.c.map(x => `<td${cls(x)}>${esc(x)}</td>`).join('')}</tr>`).join('') + '</tbody>';
+  const total = { cjm: XL.cjm.length, sop: XL.sop.length, rol: new Set(XL.t.map(t => t[3])).size, t: XL.t.length }[xl.sheet];
+  $('#xl-tabs').innerHTML = [['cjm', 'CJM'], ['sop', 'SOPlar'], ['t', 'Vazifalar'], ['rol', 'Rollar']].map(([k, n]) => `<button type="button" data-s="${k}" class="${k === xl.sheet ? 'sel' : ''}">${n}</button>`).join('') + `<span>${num(total)} qatordan ${num(r.length)} tasi</span>`;
+  $$('#xl-bar select').forEach(el => el.hidden = xl.sheet !== 't');
+  $('.xls .scroll').scrollTop = 0;
+}
+function xlInit() {
+  if (xl.ready) return; xl.ready = true;
+  const opt = (id, all, list) => $(id).innerHTML = `<option value="">${all}</option>` + list.map(([v, n]) => `<option value="${esc(v)}">${esc(n)}</option>`).join('');
+  opt('#xl-st', 'Barcha bosqich', XL.cjm.map(c => [c[0], c[0] + '. ' + c[1]]));
+  opt('#xl-sop', 'Barcha SOP', XL.sop.map((c, i) => [i, c[0] + ' ' + c[1]]));
+  opt('#xl-rol', 'Barcha rol', XL.rol.map((c, i) => [i, c]));
+  opt('#xl-muh', 'Muhimlik', [...new Set(XL.t.map(t => t[6]))].map(x => [x, x]));
+  opt('#xl-ch', 'Chastota', [...new Set(XL.t.map(t => t[7]))].map(x => [x, x]));
+  ['st', 'sop', 'rol', 'muh', 'ch'].forEach(k => $('#xl-' + k).onchange = e => { xl[k] = e.target.value; xlDraw() });
+  $('#xl-q').oninput = e => { xl.q = e.target.value.trim(); xlDraw() };
+  const clear = () => ['q', 'st', 'sop', 'rol', 'muh', 'ch'].forEach(k => { xl[k] = ''; $('#xl-' + k).value = '' });
+  $('#xl-reset').onclick = () => { clear(); xlDraw() };
+  $('#xl-tabs').onclick = e => { const b = e.target.closest('button'); if (b) { clear(); xl.sheet = b.dataset.s; xlDraw() } };
+  $('#xl-t').onclick = e => {
+    const tr = e.target.closest('tbody tr'); if (!tr) return;
+    const o = xl.view[+tr.dataset.i];
+    if (o.go) { clear(); Object.entries(o.go).forEach(([k, v]) => { xl[k] = v; $('#xl-' + k).value = v }); xl.sheet = 't'; xlDraw(); return }
+    $$('#xl-t tr.sel').forEach(x => x.classList.remove('sel')); tr.classList.add('sel');
+    $('#xl-fx').textContent = o.c[0] + ' · ' + o.c[1];
+  };
+  xlDraw();
+}
+
 const slides = $$('.deck .slide');
 slides.forEach((s, i) => { const n = document.createElement('span'); n.className = 'num'; n.textContent = String(i + 1).padStart(2, '0') + ' / ' + slides.length; s.append(n) });
 let cur = 0;
@@ -1313,7 +1458,7 @@ document.addEventListener('keydown', e => {
   else if (e.key === 'i' || e.key === 'I') { const d = $('.izoh', slides[cur]); if (d) d.open = !d.open }
 });
 document.addEventListener('click', e => {
-  if (!document.body.classList.contains('present') || e.target.closest('button,a,input,label,details,.qr')) return;
+  if (!document.body.classList.contains('present') || e.target.closest('button,a,input,select,label,details,.qr,.xls')) return;
   show(cur + (e.clientX > innerWidth / 3 ? 1 : -1));
 });
 const io = new IntersectionObserver(es => es.forEach(e => {
