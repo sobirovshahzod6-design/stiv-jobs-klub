@@ -424,6 +424,7 @@ body.v-sorov #v-sorov,body.v-xarita #v-xarita,body.v-uy #v-uy{display:block}
 .wall .curve{height:calc(var(--u)*7)}
 body.present .slide{padding-top:calc(var(--u)*3);padding-bottom:calc(var(--u)*3.6)}
 body.present .slide>.in{gap:calc(var(--u)*1.7)}
+body.present .hero>.in{gap:0}
 body.present .qr{width:calc(var(--u)*17);min-width:0}
 body.present .row{padding:calc(var(--u)*.55) 0}
 body.present .rows{gap:calc(var(--u)*.3)}
@@ -434,15 +435,19 @@ body.present #s-calc .res .card{padding:calc(var(--u)*1.3)}
 body.present #s-calc .res .card .k{font-size:max(26px,calc(var(--u)*3.6))}
 #s-calc label{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:baseline}#s-calc label input{grid-column:1/-1}
 .ph{border:0}
-.top2 .ph img{object-position:50% 50%}
-.ph[data-src$="cold.jpg"] img,.ph[data-src$="funnel.jpg"] img{object-position:50% 90%}
+.hero .pic.ph{background:var(--data)}
+.hero .pic.ph span{display:none}
+.hero .pic.ph img{object-fit:contain;object-position:center}
+@media (min-width:761px){.hero .in{grid-template-columns:1fr 1.3fr}}
 .top2{display:grid;grid-template-columns:1fr 1.15fr;gap:calc(var(--u)*3);align-items:center}
 .top2>div:first-child{display:flex;flex-direction:column;gap:calc(var(--u)*1.2);min-width:0}
-.top2 .ph{height:calc(var(--u)*20);min-height:150px;aspect-ratio:auto}
+.top2 .ph{min-height:0;--ar:3/2}
+body.present .top2 .ph{height:calc(var(--u)*23);justify-self:end}
+.vs3 .ph{align-self:center;min-height:0}
 .vs3{display:grid;grid-template-columns:1fr 1fr 1.15fr;gap:calc(var(--u)*1.6);align-items:stretch}
 .qrov{position:relative}
 .qrov .qr{position:absolute;right:10px;bottom:10px;width:calc(var(--u)*15);min-width:120px;padding:8px;border-radius:12px;z-index:2}
-@media (max-width:760px){.top2,.vs3{grid-template-columns:1fr}.top2 .ph{height:auto;aspect-ratio:3/2}}
+@media (max-width:760px){.top2,.vs3{grid-template-columns:1fr}}
 .stepf{background:#fff;border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px}
 .stepf .moods{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
 .stepf .moods button{border:2px solid var(--line);background:#fff;border-radius:10px;padding:6px 0;font-size:22px}
@@ -570,7 +575,7 @@ body.present #s-calc .res .card .k{font-size:max(26px,calc(var(--u)*3.6))}
     <div class="vs3">
       <div class="card"><span class="lbl">Egasi nima deydi</span><h3>«Mahsulotimiz zoʻr»</h3><h3>«Reklamaga pul sarfladim»</h3><h3>«Mijoz oʻzi keladi»</h3></div>
       <div class="card hl"><span class="lbl" style="color:#9fe3ff">Mijoz nima koʻradi</span><h3 style="color:#fff">«Narxini soʻradim, ikki kun javob yoʻq»</h3><h3 style="color:#fff">«Kirdim, hech kim qaramadi»</h3><h3 style="color:#fff">«Pulni olgach, unutishdi»</h3></div>
-      <div class="ph" data-src="img/cjm/inout.jpg" data-cap="Egasi ichkarida, mijoz tashqarida" style="--ar:auto"></div>
+      <div class="ph" data-src="img/cjm/inout.jpg" data-cap="Egasi ichkarida, mijoz tashqarida" style="--ar:3/2"></div>
     </div>
     <details class="izoh"><summary>Batafsil izoh</summary><p>Biznes egasi oʻz doʻkoniga har kuni kiradi, shuning uchun kamchilikni koʻrmay qoladi. Mijoz esa birinchi marta keladi va hamma narsani sezadi: eshik, salom, kutish, narx yozuvi. CJM egasini ichkaridan koʻchaga olib chiqadi. Birinchi qoida shu: <strong>xaritani mijoz koʻzi bilan chizing.</strong></p></details>
   </div>
@@ -609,6 +614,21 @@ body.present #s-calc .res .card .k{font-size:max(26px,calc(var(--u)*3.6))}
       <div class="ph" data-src="img/cjm/moment.jpg" data-cap="Aeroportdagi 15 soniya" style="--ar:3/2"></div>
     </div>
     <details class="izoh"><summary>Batafsil izoh</summary><p>Yan Karlson SAS aviakompaniyasi rahbari boʻlib, «Haqiqat lahzalari» kitobini yozgan (1987). U shunday hisoblagan: mijoz uchun kompaniya bu binolar emas, oʻsha 15 soniyada koʻrgan xodim. Bir xodimning sovuq javobi butun kompaniya haqidagi fikrni belgilaydi. CJM ana shu lahzalarni bitta xaritaga yigʻadi.</p></details>
+  </div>
+</section>
+
+<section class="slide dark" id="s-sas">
+  <div class="in">
+    <span class="eyebrow">Tarix · Batafsil hikoya</span>
+    <h2>SAS qanday qutqarildi</h2>
+    <div class="rows">
+      <div class="row"><b>1981</b><p class="t"><strong>Yan Karlson SAS rahbari boʻldi.</strong> Skandinaviya aviakompaniyasi zarar koʻrayotgan edi. Vaqtida uchish boʻyicha Yevropadagi 17 kompaniya ichida 14-oʻrinda turardi.</p></div>
+      <div class="row"><b>Muammo</b><p class="t">Hamma qarorni yuqoridagilar qabul qilardi. Mijoz oldidagi xodim kichik muammoni ham oʻzi hal qila olmasdi, mijoz esa kutardi.</p></div>
+      <div class="row"><b>Yechim</b><p class="t">Karlson qoida qoʻydi: mijoz oldidagi xodim muammoni joyida hal qiladi, rahbar ruxsatini kutmaydi. Xodimlarni shunga oʻqitdi, biznes yoʻlovchilar uchun alohida salon ochdi.</p></div>
+      <div class="row on"><b>Natija</b><p class="t">Bir yilda Yevropaning eng aniq uchadigan aviakompaniyasiga aylandi. 1982-yilda 54 mln dollar foyda. «1983-yil aviakompaniyasi» unvonini oldi.</p></div>
+    </div>
+    <div class="card hl"><span class="lbl" style="color:#9fe3ff">Karlson kitobini shu voqea bilan boshlaydi</span><p class="t">Rudi Peterson ismli biznesmen parvoz oldidan chiptasini unutganini bildi. Odatda bu parvozdan qolish degani. SAS xodimi muammoni oʻzi hal qildi va Peterson uchib ketdi. Oʻsha 15 soniyalar kompaniya haqidagi fikrni belgilaydi.</p></div>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>Sinfga savol bering: «Siz xodimingizga mijoz muammosini oʻzi hal qilishga ruxsat berarmidingiz? Nima uchun?» Zarar miqdorini aniq aytmang: manbalarda yiliga 8 mln dan 20 mln dollargacha turli raqamlar bor. Bu CJM bilan qanday bogʻliq? Karlson kompaniyani samolyot va ofis sifatida emas, mijoz bilan uchrashuvlar yigʻindisi sifatida koʻrdi. CJM oʻsha uchrashuvlarning xaritasi.</p></details>
   </div>
 </section>
 
@@ -853,6 +873,36 @@ body.present #s-calc .res .card .k{font-size:max(26px,calc(var(--u)*3.6))}
   </div>
 </section>
 
+<section class="slide dark" id="s-tajriba">
+  <div class="in">
+    <span class="eyebrow">Tajriba · Batafsil hikoya</span>
+    <h2>Tajriba qanday oʻtgan</h2>
+    <div class="rows">
+      <div class="row"><b>1-qadam</b><p class="t">Odam bir qoʻlini 14°C suvga solib, 60 soniya ushlab turadi. Bu ogʻriqli darajada sovuq.</p></div>
+      <div class="row"><b>2-qadam</b><p class="t">Ikkinchi qoʻl bilan ham shunday: 60 soniya 14°C. Lekin keyin qoʻl yana 30 soniya suvda qoladi va suv asta 15°C gacha iliydi. Baribir sovuq, faqat sal yengilroq.</p></div>
+      <div class="row"><b>3-qadam</b><p class="t">Olimlar soʻraydi: bittasini yana takrorlash kerak boʻlsa, qaysi birini tanlaysiz?</p></div>
+      <div class="row on"><b>Natija</b><p class="t">Koʻpchilik uzunini tanladi, garchi unda azob koʻproq boʻlsa ham: oʻsha 60 soniya va yana 30 soniya. Sababi bitta: u yaxshiroq tugagan.</p></div>
+    </div>
+    <p class="lead">Miya vaqtni deyarli hisoblamaydi. U eng kuchli lahzani va <strong style="color:#fff">oxirini</strong> eslaydi. Buni «choʻqqi va yakun qoidasi» deyishadi.</p>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>Daniel Kaneman psixolog boʻlgan, 2002-yilda iqtisodiyot boʻyicha Nobel mukofotini olgan. Tajriba 1993-yilda chop etilgan. Sinfga savol bering: «Eng yaxshi koʻrgan kafengizdan chiqayotganda oxirgi lahzada nima boʻladi?» Foiz aytmang, «koʻpchilik» deng: ilmiy maqola annotatsiyasida ham «sezilarli koʻpchilik» deyilgan.</p></details>
+  </div>
+</section>
+
+<section class="slide grey" id="s-shifo">
+  <div class="in">
+    <span class="eyebrow">Real hayotda sinovdan oʻtdi · 2003</span>
+    <h2>Shifoxonada ham shunday chiqdi</h2>
+    <p class="lead">Kolonoskopiya — ichakni ichidan tekshiradigan noqulay muolaja. Kaneman va shifokorlar 682 bemorda sinab koʻrdi.</p>
+    <div class="grid c3">
+      <div class="card"><div class="k c">682</div><h3>bemor</h3><p class="small">Yarmida muolaja oxirida qisqa, yengil bosqich qoʻshildi. Muolaja uzaydi, lekin yakuni yengillashdi</p></div>
+      <div class="card"><div class="k c">1,7 / 2,5</div><h3>oxirgi lahzalar ogʻrigʻi</h3><p class="small">10 ballik shkalada. Oxiri yengil boʻlganlar butun muolajani ham kamroq yomon deb baholadi</p></div>
+      <div class="card hl"><div class="k">Qaytdi</div><h3 style="color:#fff">koʻproq odam</h3><p class="small" style="color:#cfe0ff">Keyingi yillarda ular qayta tekshiruvga biroz koʻproq kelgan</p></div>
+    </div>
+    <div class="datab"><b>Biznesga xulosa:</b> mijoz bilan xayrlashish lahzasini oʻylab qoʻying. Kafeda «rahmat» va kichik shirinlik, tort doʻkonida ertasi kungi xabar, maktabda birinchi kun oxiridagi xabar.</div>
+    <details class="izoh"><summary>Batafsil izoh</summary><p>Maqola: Redelmeier, Katz, Kahneman, Pain jurnali, 2003. Kuzatuv oʻrtacha 5 yildan ortiq davom etgan. Bu tajriba muhim, chunki u laboratoriyada emas, haqiqiy bemorlarda oʻtgan. Bir ogohlantirish: yaxshi yakun yomon xizmatni oqlamaydi, u yaxshi xizmatni esda qoldiradi.</p></details>
+  </div>
+</section>
+
 <section class="slide dark">
   <div class="in">
     <span class="eyebrow">Mening xatom</span>
@@ -1052,7 +1102,7 @@ body.present #s-calc .res .card .k{font-size:max(26px,calc(var(--u)*3.6))}
   DATA xalqaro maktabi · Biznes klub · 7–10-sinflar · har shanba<br>
   <a href="index.html">Stiv Jobs</a> · <a href="startup.html">Startup</a> · <a href="ai.html">AI</a> · <a href="tadbirkor.html">Tadbirkor</a> · <a href="shaxsiyat.html">Shaxsiyat</a> · <a href="cjm.html">CJM</a><br>
   <a href="#sorov">Soʻrovnoma</a> · <a href="#xarita">Jamoa xaritasi</a> · <a href="#uy">Uyga vazifa</a><br>
-  <span style="font-size:11px">Manbalar: DATA_Durbin_Vazifalar v17 (CJM, SOP, vazifalar); Durbin, manbalar boʻyicha lidlar, 2026-yil 7-noyabr holatiga, barcha vaqt. J. Carlzon, Moments of Truth (1987). D. Kahneman va boshq., When More Pain Is Preferred to Less, Psychological Science (1993). Tort doʻkoni — oʻylab topilgan misol. Rasmlar sunʼiy intellekt (ChatGPT) yordamida yaratilgan.</span>
+  <span style="font-size:11px">Manbalar: DATA_Durbin_Vazifalar v17 (CJM, SOP, vazifalar); Durbin, manbalar boʻyicha lidlar, 2026-yil 7-noyabr holatiga, barcha vaqt. J. Carlzon, Moments of Truth (1987). D. Kahneman va boshq., When More Pain Is Preferred to Less, Psychological Science (1993). Redelmeier, Katz, Kahneman, Memories of colonoscopy, Pain (2003). SAS raqamlari: Vikipediya, Jan Carlzon. Tort doʻkoni — oʻylab topilgan misol. Rasmlar sunʼiy intellekt (ChatGPT) yordamida yaratilgan.</span>
 </footer>
 
 <div class="hud"><i id="prog"></i></div>
